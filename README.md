@@ -1,6 +1,8 @@
 Sparky Stereo OS:
 -----------------
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23309032.svg)](https://doi.org/10.5281/zenodo.23309032)
+
 This is the stereo version of Sparky APTus AppCenter by Sparky Stereo OS, forked
 from sparkylinux/sparky-aptus-appcenter
 (https://github.com/sparkylinux/sparky-aptus-appcenter). It adds the edition's

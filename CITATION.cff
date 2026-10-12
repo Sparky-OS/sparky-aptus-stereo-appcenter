@@ -10,6 +10,7 @@ authors:
     given-names: "Daniel Campos"
     orcid: "https://orcid.org/0009-0001-4546-8673"
 license: GPL-3.0-or-later
+doi: "10.5281/zenodo.23309032"
 repository-code: "https://github.com/Sparky-OS/sparky-aptus-stereo-appcenter"
 keywords:
   - "SparkyLinux"

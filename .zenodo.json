@@ -1,0 +1,49 @@
+{
+  "title": "Sparky APTus AppCenter, stereo version",
+  "description": "The stereo version of Sparky APTus AppCenter for Sparky Stereo OS, forked from Paweł Pijanowski's Sparky APTus AppCenter: it adds the edition's entries to the application catalogue. Licence unchanged: GPL-3.0-or-later.",
+  "creators": [
+    {
+      "name": "Pijanowski, Paweł"
+    },
+    {
+      "name": "Ramos, Daniel Campos",
+      "orcid": "0009-0001-4546-8673"
+    }
+  ],
+  "contributors": [
+    {
+      "name": "OkayPJ",
+      "type": "Other"
+    },
+    {
+      "name": "bunnymnemonic",
+      "type": "Other"
+    },
+    {
+      "name": "mband008",
+      "type": "Other"
+    }
+  ],
+  "license": "gpl-3.0-or-later",
+  "upload_type": "software",
+  "access_right": "open",
+  "keywords": [
+    "SparkyLinux",
+    "Sparky Stereo OS",
+    "application center",
+    "Debian",
+    "Bash"
+  ],
+  "related_identifiers": [
+    {
+      "identifier": "https://github.com/sparkylinux/sparky-aptus-appcenter",
+      "relation": "isDerivedFrom",
+      "scheme": "url"
+    },
+    {
+      "identifier": "https://github.com/Sparky-OS/sparky-stereo-os",
+      "relation": "isPartOf",
+      "scheme": "url"
+    }
+  ]
+}

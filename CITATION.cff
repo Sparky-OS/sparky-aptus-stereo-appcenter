@@ -1,0 +1,19 @@
+cff-version: 1.2.0
+message: "If you use this work, please cite it as below."
+type: software
+title: "Sparky APTus AppCenter, stereo version"
+abstract: "The stereo version of Sparky APTus AppCenter for Sparky Stereo OS, forked from Paweł Pijanowski's Sparky APTus AppCenter: it adds the edition's entries to the application catalogue. Licence unchanged: GPL-3.0-or-later."
+authors:
+  - family-names: "Pijanowski"
+    given-names: "Paweł"
+  - family-names: "Ramos"
+    given-names: "Daniel Campos"
+    orcid: "https://orcid.org/0009-0001-4546-8673"
+license: GPL-3.0-or-later
+repository-code: "https://github.com/Sparky-OS/sparky-aptus-stereo-appcenter"
+keywords:
+  - "SparkyLinux"
+  - "Sparky Stereo OS"
+  - "application center"
+  - "Debian"
+  - "Bash"

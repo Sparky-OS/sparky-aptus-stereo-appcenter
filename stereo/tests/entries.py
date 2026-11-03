@@ -24,6 +24,11 @@ spec.loader.exec_module(action)
 
 
 class Transactions(unittest.TestCase):
+    def setUp(self):
+        policy = patch.object(action, 'only_ours', return_value={'bino'})
+        policy.start()
+        self.addCleanup(policy.stop)
+
     def test_exact_routes_only(self):
         for row in catalogue.entries():
             for operation in ('install', 'remove', 'repair'):
@@ -38,13 +43,28 @@ class Transactions(unittest.TestCase):
         version=types.SimpleNamespace(version='2.8+stereo3d9+lc1',origins=[types.SimpleNamespace(origin='Sparky Stereo OS',trusted=True)])
         with patch.dict(sys.modules,apt=types.SimpleNamespace(Cache=lambda: {'bino':types.SimpleNamespace(candidate=version)})), patch.object(action.subprocess,'run') as run:
             action.apt_change(row,'install')
-            self.assertEqual(run.call_args.args[0],['/usr/bin/apt-get','-y','--no-remove','install','bino=2.8+stereo3d9+lc1'])
+            self.assertEqual(run.call_args.args[0],['/usr/bin/apt-get','-y','--no-remove','--no-allow-unauthenticated','install','bino=2.8+stereo3d9+lc1'])
             for origin,trusted in [('Debian',True),('Sparky Stereo OS',False)]:
                 version.origins=[types.SimpleNamespace(origin=origin,trusted=trusted)]
                 run.reset_mock()
                 with self.assertRaisesRegex(RuntimeError,'bino'):
                     action.apt_change(row,'install')
                 run.assert_not_called()
+
+    def test_configured_archive_candidate(self):
+        row=catalogue.entry('simple-scan')
+        version=types.SimpleNamespace(version='50.0-2', origins=[types.SimpleNamespace(origin='Debian',trusted=True)])
+        with patch.dict(sys.modules,apt=types.SimpleNamespace(Cache=lambda: {'simple-scan':types.SimpleNamespace(candidate=version)})), patch.object(action.subprocess,'run') as run:
+            action.apt_change(row,'install')
+            self.assertEqual(run.call_args.args[0],['/usr/bin/apt-get','-y','--no-remove','--no-allow-unauthenticated','install','simple-scan=50.0-2'])
+
+    def test_visibility_follows_archive_and_edition_policy(self):
+        cache={'simple-scan':types.SimpleNamespace(candidate=types.SimpleNamespace(downloadable=True))}
+        self.assertTrue(action.visible(catalogue.entry('simple-scan'),cache,{'bino'}))
+        self.assertFalse(action.visible(catalogue.entry('openrv'),cache,{'bino'}))
+        self.assertTrue(action.visible(catalogue.entry('bino'),cache,{'bino'}))
+        cache['simple-scan'].candidate.downloadable=False
+        self.assertFalse(action.visible(catalogue.entry('simple-scan'),cache,{'bino'}))
 
     def test_absent_edition_candidate(self):
         with patch.dict(sys.modules,apt=types.SimpleNamespace(Cache=lambda:{})), patch.object(action.subprocess,'run') as run:
@@ -89,13 +109,17 @@ class Transactions(unittest.TestCase):
         page = importlib.util.module_from_spec(spec)
         spec.loader.exec_module(page)
         zram = dict(installed=False,title='zram',description='',state='absent',restart='',error='',button='Install')
-        states = {row['id']:dict(installed=False,error='') for row in catalogue.entries()}
+        states = {row['id']:dict(installed=False,error='',visible=True) for row in catalogue.entries()}
         states['slimevr-driver']['error']='SHA-256 mismatch'
+        states['openrv']['visible']=False
+        states['xstudio']['visible']=False
         results = [subprocess.CompletedProcess([],0,json.dumps(zram)),subprocess.CompletedProcess([],0,json.dumps(states))]
         with patch.object(page.subprocess,'run',side_effect=results):
             html = page.render()
         self.assertIn('aptus://stereo_entry_slimevr-driver_repair',html)
         self.assertIn('SHA-256 mismatch',html)
+        self.assertNotIn('entry-openrv',html)
+        self.assertNotIn('entry-xstudio',html)
         sections = ['stereo-emulation','stereo-media','stereo-vr','stereo-drivers','stereo-system','pawel-categories']
         self.assertEqual(sorted(sections,key=lambda name:html.index('id="'+name+'"')),sections)
 
@@ -120,5 +144,20 @@ class Transactions(unittest.TestCase):
                 self.assertEqual(fields(texts[key]),fields(english[key]),(path.name,key))
                 self.assertEqual(texts[key].count('%s'),english[key].count('%s'),(path.name,key))
             self.assertIn('LOCAL91=',path.with_suffix('').read_text())
+
+class GeneratedPolicy(unittest.TestCase):
+    def test_installed_pin_records_and_architectures(self):
+        import apt_pkg
+        apt_pkg.init_config()
+        native=apt_pkg.config.find('APT::Architecture')
+        other='arm64' if native!='arm64' else 'amd64'
+        with tempfile.TemporaryDirectory() as tmp:
+            policy=Path(tmp)/'only-ours'
+            policy.write_text(f'Package: bino:{native} foreign:{other} global:any plain\nPin: release o=Debian\nPin-Priority: -1\n\nPackage: carried:any\nPin: release o=Sparky Stereo OS\nPin-Priority: 400\n')
+            with patch.object(action,'ONLY_OURS',policy):
+                self.assertEqual(action.only_ours(),{'bino','global','plain'})
+            policy.unlink()
+            with patch.object(action,'ONLY_OURS',policy):
+                with self.assertRaises(FileNotFoundError): action.only_ours()
 
 if __name__=='__main__': unittest.main()

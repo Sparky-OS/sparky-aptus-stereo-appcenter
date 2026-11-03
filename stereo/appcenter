@@ -35,6 +35,8 @@ def render():
             if row['section'] != group:
                 continue
             current = states[row['id']]
+            if not current['visible']:
+                continue
             selected = current['installed']
             action = 'remove' if selected else 'install'
             button = text['remove' if selected else 'install']

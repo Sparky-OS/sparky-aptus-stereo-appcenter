@@ -3,6 +3,7 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 """Allowlisted edition packages, SlimeVR Flatpak and checked vendor downloads."""
 import hashlib
+from fnmatch import fnmatchcase
 import json
 import os
 from pathlib import Path
@@ -16,8 +17,37 @@ from catalogue import entries, entry
 ENGINE = '/usr/bin/sparky-stereo-problems'
 ACTION = str(BASE / 'actions/entry')
 DOWNLOADS = Path('/var/cache') / PACKAGE
+ONLY_OURS = Path('/etc/apt/preferences.d/sparky-stereo-only-ours')
 ENV = dict(os.environ, PATH='/usr/sbin:/usr/bin:/sbin:/bin', DEBIAN_FRONTEND='noninteractive')
 ENV.pop('PKEXEC_UID', None)
+
+
+def only_ours():
+    """Read the installed, generated policy; never maintain a second package list."""
+    import apt_pkg
+    apt_pkg.init_config()
+    native = apt_pkg.config.find('APT::Architecture')
+    patterns = set()
+    with ONLY_OURS.open() as stream:
+        for record in apt_pkg.TagFile(stream):
+            if int(record.get('Pin-Priority', '0')) >= 0:
+                continue
+            for spec in record.get('Package', '').split():
+                name, _, arch = spec.partition(':')
+                if not arch or arch in ('any', 'native', native):
+                    patterns.add(name)
+    return patterns
+
+
+def requires_edition(name, patterns):
+    return any(fnmatchcase(name, pattern) for pattern in patterns)
+
+
+def visible(row, cache, patterns):
+    if row['kind'] != 'apt' or requires_edition(row['package'], patterns):
+        return True
+    candidate = cache[row['package']].candidate if row['package'] in cache else None
+    return bool(candidate and candidate.downloadable)
 
 
 def installed(row):
@@ -39,6 +69,8 @@ def installed(row):
 
 
 def status():
+    import apt
+    cache, patterns = apt.Cache(), only_ours()
     problems = subprocess.run([ENGINE, 'list', '--json', PACKAGE], capture_output=True,
                               text=True, check=True, env=ENV)
     records = json.loads(problems.stdout)
@@ -49,7 +81,8 @@ def status():
         if record.get('unreadable') or not record.get('text', record.get('text_en')):
             raise RuntimeError(str(record))
         errors[record['key']] = '\n'.join(filter(None, [record.get('text', record.get('text_en')), record.get('output')]))
-    return {row['id']: dict(installed=installed(row), error=errors.get(row['id'], '')) for row in entries()}
+    return {row['id']: dict(installed=installed(row), error=errors.get(row['id'], ''),
+                           visible=visible(row, cache, patterns)) for row in entries()}
 
 
 def apt_change(row, operation):
@@ -58,11 +91,12 @@ def apt_change(row, operation):
         import apt
         cache = apt.Cache()
         candidate = cache[name].candidate if name in cache else None
-        # Pinning alone must not silently offer Debian when our archive is absent.
-        if candidate is None or not any(origin.origin == 'Sparky Stereo OS' and origin.trusted
-                                        for origin in candidate.origins):
+        # Enforce the edition's generated policy even if another pin changes APT's candidate.
+        if requires_edition(name, only_ours()) and (candidate is None or not any(
+                origin.origin == 'Sparky Stereo OS' and origin.trusted for origin in candidate.origins)):
             raise RuntimeError(messages()['edition_missing'].format(name=name))
-        command = ['/usr/bin/apt-get', '-y', '--no-remove', 'install', name + '=' + candidate.version]
+        command = ['/usr/bin/apt-get', '-y', '--no-remove', '--no-allow-unauthenticated',
+                   'install', name + '=' + candidate.version if candidate else name]
     else:
         command = ['/usr/bin/apt-get', '-y', 'remove', name]
     subprocess.run(command, check=True, env=ENV)

@@ -1,2 +1,3 @@
 LOCAL1="RAM 壓縮交換空間（zram）"
 LOCAL90="變更 zram 失敗：%s（結束代碼 %s）。請檢查輸出並重試。"
+LOCAL91="變更 Stereo APTus 失敗：%s（結束代碼 %s）。請檢查輸出並重試。"

@@ -12,5 +12,21 @@
   "description": "Συμπιέζει σελίδες εναλλαγής στη RAM. Η έκδοση το αφήνει απενεργοποιημένο από προεπιλογή και χρησιμοποιεί το Cushion Swap στον δίσκο.",
   "authorization": "Απαιτείται εξουσιοδότηση για αλλαγή πακέτων zram.",
   "failure": "Η αλλαγή του zram απέτυχε: %s (κωδικός εξόδου %s). Ελέγξτε την έξοδο και δοκιμάστε ξανά.",
-  "credit": "Sparky Stereo OS, Daniel Ramos's edition of SparkyLinux (by Paweł \"pavroo\" Pijanowski)"
+  "credit": "Sparky Stereo OS, Daniel Ramos's edition of SparkyLinux (by Paweł \"pavroo\" Pijanowski)",
+  "emulation": "Εξομοίωση 3D",
+  "media": "Στερεοσκοπικές εφαρμογές αναπαραγωγής, επεξεργασίας και εργαλεία",
+  "vr": "VR και SteamVR",
+  "drivers": "Οδηγοί",
+  "hardware": "Ρύθμιση υλικού",
+  "codesys_note": "Η εγγραφή και η EULA διαχειρίζονται από την CODESYS στο κατάστημά της.",
+  "download": "Λήψη",
+  "downloaded": "Ελήφθη",
+  "download_note": "Επαληθευμένο αρχείο οδηγού. Ακολουθήστε τις οδηγίες του SlimeVR για εγκατάσταση στο SteamVR.",
+  "checksum_failed": "Η τιμή SHA-256 δεν συμφωνεί. Η λήψη απορρίφθηκε.",
+  "edition_missing": "Το έμπιστο πακέτο της έκδοσης δεν είναι διαθέσιμο: {name}. Ελέγξτε το αποθετήριο Sparky Stereo OS και δοκιμάστε ξανά.",
+  "flathub_missing": "Το σύστημα δεν έχει αποθετήριο Flathub. Ελέγξτε τη ρύθμιση Flatpak και δοκιμάστε ξανά.",
+  "entry_authorization": "Απαιτείται εξουσιοδότηση για αλλαγή πακέτων Stereo APTus.",
+  "entry_failure": "Η αλλαγή του Stereo APTus απέτυχε: %s (κωδικός εξόδου %s). Ελέγξτε την έξοδο και δοκιμάστε ξανά.",
+  "download_ready": "Ελήφθη: {path}",
+  "repair": "Επιδιόρθωση"
 }

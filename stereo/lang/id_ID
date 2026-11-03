@@ -1,2 +1,3 @@
 LOCAL1="Swap RAM terkompresi (zram)"
 LOCAL90="Perubahan zram gagal: %s (kode keluar %s). Periksa keluaran dan coba lagi."
+LOCAL91="Perubahan Stereo APTus gagal: %s (kode keluar %s). Periksa keluaran dan coba lagi."

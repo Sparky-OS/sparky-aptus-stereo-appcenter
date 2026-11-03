@@ -1,2 +1,3 @@
 LOCAL1="Komprimierter RAM-Auslagerungsspeicher (zram)"
 LOCAL90="Die Änderung von zram ist fehlgeschlagen: %s (Exit-Code %s). Prüfen Sie die Ausgabe und versuchen Sie es erneut."
+LOCAL91="Die Änderung von Stereo APTus ist fehlgeschlagen: %s (Exit-Code %s). Prüfen Sie die Ausgabe und versuchen Sie es erneut."

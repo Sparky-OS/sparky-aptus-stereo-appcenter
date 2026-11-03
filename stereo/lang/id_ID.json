@@ -12,5 +12,21 @@
   "description": "Mengompresi halaman swap di RAM. Edisi ini menonaktifkannya secara bawaan dan menggunakan Cushion Swap di disk.",
   "authorization": "Otorisasi diperlukan untuk mengubah paket zram.",
   "failure": "Perubahan zram gagal: %s (kode keluar %s). Periksa keluaran dan coba lagi.",
-  "credit": "Sparky Stereo OS, Daniel Ramos's edition of SparkyLinux (by Paweł \"pavroo\" Pijanowski)"
+  "credit": "Sparky Stereo OS, Daniel Ramos's edition of SparkyLinux (by Paweł \"pavroo\" Pijanowski)",
+  "emulation": "Emulasi 3D",
+  "media": "Pemutar, penyunting, dan alat stereo",
+  "vr": "VR dan SteamVR",
+  "drivers": "Driver",
+  "hardware": "Pengaturan perangkat keras",
+  "codesys_note": "Pendaftaran dan EULA dikelola oleh CODESYS di tokonya.",
+  "download": "Unduh",
+  "downloaded": "Diunduh",
+  "download_note": "Arsip driver telah diverifikasi. Ikuti petunjuk SlimeVR untuk memasangnya di SteamVR.",
+  "checksum_failed": "SHA-256 tidak cocok. Unduhan ditolak.",
+  "edition_missing": "Paket tepercaya edisi ini tidak tersedia: {name}. Periksa repositori Sparky Stereo OS dan coba lagi.",
+  "flathub_missing": "Sistem tidak memiliki remote Flathub. Periksa pengaturan Flatpak dan coba lagi.",
+  "entry_authorization": "Otorisasi diperlukan untuk mengubah paket Stereo APTus.",
+  "entry_failure": "Perubahan Stereo APTus gagal: %s (kode keluar %s). Periksa keluaran dan coba lagi.",
+  "download_ready": "Diunduh: {path}",
+  "repair": "Perbaiki"
 }

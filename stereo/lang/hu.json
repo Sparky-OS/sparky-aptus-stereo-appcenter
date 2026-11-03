@@ -12,5 +12,21 @@
   "description": "A RAM-ban tömöríti a kilapozott oldalakat. A kiadás alapértelmezésben kikapcsolva hagyja, és a lemezen lévő Cushion Swapot használja.",
   "authorization": "A zram csomagok módosításához hitelesítés szükséges.",
   "failure": "A zram módosítása sikertelen: %s (kilépési kód: %s). Ellenőrizze a kimenetet, majd próbálja újra.",
-  "credit": "Sparky Stereo OS, Daniel Ramos's edition of SparkyLinux (by Paweł \"pavroo\" Pijanowski)"
+  "credit": "Sparky Stereo OS, Daniel Ramos's edition of SparkyLinux (by Paweł \"pavroo\" Pijanowski)",
+  "emulation": "3D-emuláció",
+  "media": "Sztereó lejátszók, szerkesztők és eszközök",
+  "vr": "VR és SteamVR",
+  "drivers": "Illesztőprogramok",
+  "hardware": "Hardverbeállítások",
+  "codesys_note": "A regisztrációt és az EULA-t a CODESYS kezeli a saját áruházában.",
+  "download": "Letöltés",
+  "downloaded": "Letöltve",
+  "download_note": "Ellenőrzött illesztőprogram-archívum. A SteamVR-be való telepítéshez kövesse a SlimeVR útmutatóját.",
+  "checksum_failed": "A SHA-256 ellenőrzőösszeg eltér. A letöltés elutasítva.",
+  "edition_missing": "A kiadás megbízható csomagja nem érhető el: {name}. Ellenőrizze a Sparky Stereo OS tárolóját, és próbálja újra.",
+  "flathub_missing": "A rendszerben nincs Flathub-tároló. Ellenőrizze a Flatpak beállításait, és próbálja újra.",
+  "entry_authorization": "A Stereo APTus csomagok módosításához hitelesítés szükséges.",
+  "entry_failure": "A Stereo APTus módosítása sikertelen: %s (kilépési kód: %s). Ellenőrizze a kimenetet, majd próbálja újra.",
+  "download_ready": "Letöltve: {path}",
+  "repair": "Javítás"
 }

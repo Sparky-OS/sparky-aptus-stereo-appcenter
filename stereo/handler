@@ -7,20 +7,21 @@ import signal
 import subprocess
 import sys
 from common import ACTION
+from catalogue import route
 
 uri = sys.argv[1] if len(sys.argv) > 1 else ''
-if uri.startswith('aptus://stereo_'):
-    operation = {'aptus://stereo_zram_install': 'install',
-                 'aptus://stereo_zram_remove': 'remove'}.get(uri)
-    if operation:
-        command = [ACTION, operation]
-        if os.geteuid() != 0:
-            command.insert(0, '/usr/bin/pkexec')
-        subprocess.run(command)
-        # The replacement page reads dpkg and kept failures again after the operation.
-        if os.environ.get('YAD_PID', '').isdigit():
-            os.kill(int(os.environ['YAD_PID']), signal.SIGUSR1)
-        subprocess.Popen(['/usr/bin/sparky-aptus-stereo-appcenter'])
+operation = {'aptus://stereo_zram_install': 'install',
+             'aptus://stereo_zram_remove': 'remove'}.get(uri)
+command = [ACTION, operation] if operation else route(uri)
+if uri == 'aptus://stereo_hardware':
+    command = ['/usr/bin/sparky-stereo-hardware']
+if command:
+    if os.geteuid() != 0:
+        command.insert(0, '/usr/bin/pkexec')
+    subprocess.run(command)
+    if os.environ.get('YAD_PID', '').isdigit():
+        os.kill(int(os.environ['YAD_PID']), signal.SIGUSR1)
+    subprocess.Popen(['/usr/bin/sparky-aptus-stereo-appcenter'])
     sys.exit(1)  # YAD must not navigate to the handled URI.
 
 # Paweł's protocol and its arguments stay his. His scripts use relative paths.

@@ -12,5 +12,21 @@
   "description": "Komprimiert ausgelagerte Seiten im RAM. Die Edition lässt dies standardmäßig ausgeschaltet und verwendet Cushion Swap auf dem Laufwerk.",
   "authorization": "Zum Ändern der zram-Pakete ist eine Autorisierung erforderlich.",
   "failure": "Die Änderung von zram ist fehlgeschlagen: %s (Exit-Code %s). Prüfen Sie die Ausgabe und versuchen Sie es erneut.",
-  "credit": "Sparky Stereo OS, Daniel Ramos's edition of SparkyLinux (by Paweł \"pavroo\" Pijanowski)"
+  "credit": "Sparky Stereo OS, Daniel Ramos's edition of SparkyLinux (by Paweł \"pavroo\" Pijanowski)",
+  "emulation": "3D-Emulation",
+  "media": "Stereo-Player, Editoren und Werkzeuge",
+  "vr": "VR und SteamVR",
+  "drivers": "Treiber",
+  "hardware": "Hardware-Einrichtung",
+  "codesys_note": "Registrierung und EULA werden von CODESYS in dessen Store verwaltet.",
+  "download": "Herunterladen",
+  "downloaded": "Heruntergeladen",
+  "download_note": "Geprüftes Treiberarchiv. Folgen Sie der SlimeVR-Anleitung, um es in SteamVR zu installieren.",
+  "checksum_failed": "SHA-256-Prüfsumme stimmt nicht überein. Der Download wurde abgelehnt.",
+  "edition_missing": "Das vertrauenswürdige Paket der Edition ist nicht verfügbar: {name}. Prüfen Sie das Sparky-Stereo-OS-Repository und versuchen Sie es erneut.",
+  "flathub_missing": "Es ist kein systemweites Flathub-Repository eingerichtet. Prüfen Sie die Flatpak-Einrichtung und versuchen Sie es erneut.",
+  "entry_authorization": "Zum Ändern der Stereo APTus-Pakete ist eine Autorisierung erforderlich.",
+  "entry_failure": "Die Änderung von Stereo APTus ist fehlgeschlagen: %s (Exit-Code %s). Prüfen Sie die Ausgabe und versuchen Sie es erneut.",
+  "download_ready": "Heruntergeladen: {path}",
+  "repair": "Reparieren"
 }

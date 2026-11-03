@@ -1,2 +1,3 @@
 LOCAL1="Skompresowana pamięć wymiany w RAM (zram)"
 LOCAL90="Zmiana zram nie powiodła się: %s (kod wyjścia %s). Sprawdź komunikaty i spróbuj ponownie."
+LOCAL91="Zmiana Stereo APTus nie powiodła się: %s (kod wyjścia %s). Sprawdź komunikaty i spróbuj ponownie."

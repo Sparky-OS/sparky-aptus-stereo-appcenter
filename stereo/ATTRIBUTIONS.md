@@ -13,3 +13,12 @@ This name comes from zram-tools 0.3.7-1's /usr/share/doc/zram-tools/copyright.
 This entry installs Debian's systemd-zram-generator; zram-tools remains the person's independent choice.
 
 Sparky Stereo OS, Daniel Ramos's edition of SparkyLinux (by Paweł "pavroo" Pijanowski).
+
+SlimeVR Server and SlimeVR OpenVR Driver are SlimeVR projects.
+The server is offered through its Flathub application dev.slimevr.SlimeVR.
+The Linux driver archive is downloaded from SlimeVR's GitHub release, with its published SHA-256 digest checked before it is exposed to the person.
+See https://slimevr.dev/ and https://github.com/SlimeVR/SlimeVR-OpenVR-Driver.
+
+CODESYS 4 and CODESYS Store are provided by CODESYS.
+This entry links to their store; registration, terms and downloads remain with CODESYS.
+See https://store.codesys.com/en/codesys-4.html.

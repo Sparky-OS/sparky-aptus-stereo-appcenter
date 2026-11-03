@@ -1,2 +1,3 @@
 LOCAL1="Tömörített RAM-csereterület (zram)"
 LOCAL90="A zram módosítása sikertelen: %s (kilépési kód: %s). Ellenőrizze a kimenetet, majd próbálja újra."
+LOCAL91="A Stereo APTus módosítása sikertelen: %s (kilépési kód: %s). Ellenőrizze a kimenetet, majd próbálja újra."

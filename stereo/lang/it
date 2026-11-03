@@ -1,2 +1,3 @@
 LOCAL1="Swap compresso nella RAM (zram)"
 LOCAL90="Modifica di zram non riuscita: %s (codice di uscita %s). Controllare l’output e riprovare."
+LOCAL91="Modifica di Stereo APTus non riuscita: %s (codice di uscita %s). Controllare l’output e riprovare."

@@ -12,5 +12,21 @@
   "description": "スワップしたページを RAM 内で圧縮します。このエディションでは標準で無効にし、ディスク上の Cushion Swap を使用します。",
   "authorization": "zram パッケージの変更には認証が必要です。",
   "failure": "zram の変更に失敗しました: %s（終了コード %s）。出力を確認して、もう一度お試しください。",
-  "credit": "Sparky Stereo OS, Daniel Ramos's edition of SparkyLinux (by Paweł \"pavroo\" Pijanowski)"
+  "credit": "Sparky Stereo OS, Daniel Ramos's edition of SparkyLinux (by Paweł \"pavroo\" Pijanowski)",
+  "emulation": "3Dエミュレーション",
+  "media": "ステレオプレーヤー、エディター、ツール",
+  "vr": "VRとSteamVR",
+  "drivers": "ドライバー",
+  "hardware": "ハードウェアの設定",
+  "codesys_note": "登録とEULAはCODESYSのストアで管理されます。",
+  "download": "ダウンロード",
+  "downloaded": "ダウンロード済み",
+  "download_note": "検証済みのドライバーアーカイブです。SlimeVRの手順に従ってSteamVRにインストールしてください。",
+  "checksum_failed": "SHA-256が一致しません。ダウンロードは拒否されました。",
+  "edition_missing": "このエディションの信頼できるパッケージが利用できません：{name}。Sparky Stereo OSのリポジトリを確認して再試行してください。",
+  "flathub_missing": "システムにFlathubリモートが設定されていません。Flatpakの設定を確認して再試行してください。",
+  "entry_authorization": "Stereo APTus パッケージの変更には認証が必要です。",
+  "entry_failure": "Stereo APTus の変更に失敗しました: %s（終了コード %s）。出力を確認して、もう一度お試しください。",
+  "download_ready": "ダウンロード済み: {path}",
+  "repair": "修復"
 }

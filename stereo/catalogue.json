@@ -1,0 +1,362 @@
+[
+  {
+    "id": "dolphin-emu",
+    "name": "dolphin-emu",
+    "section": "emulation",
+    "kind": "apt",
+    "package": "dolphin-emu"
+  },
+  {
+    "id": "libretro-beetle-vb",
+    "name": "libretro-beetle-vb",
+    "section": "emulation",
+    "kind": "apt",
+    "package": "libretro-beetle-vb"
+  },
+  {
+    "id": "mame",
+    "name": "mame",
+    "section": "emulation",
+    "kind": "apt",
+    "package": "mame"
+  },
+  {
+    "id": "mednafen",
+    "name": "mednafen",
+    "section": "emulation",
+    "kind": "apt",
+    "package": "mednafen"
+  },
+  {
+    "id": "retroarch",
+    "name": "retroarch",
+    "section": "emulation",
+    "kind": "apt",
+    "package": "retroarch"
+  },
+  {
+    "id": "bino",
+    "name": "bino",
+    "section": "media",
+    "kind": "apt",
+    "package": "bino"
+  },
+  {
+    "id": "blender",
+    "name": "blender",
+    "section": "media",
+    "kind": "apt",
+    "package": "blender"
+  },
+  {
+    "id": "digikam",
+    "name": "digikam",
+    "section": "media",
+    "kind": "apt",
+    "package": "digikam"
+  },
+  {
+    "id": "f3d",
+    "name": "f3d",
+    "section": "media",
+    "kind": "apt",
+    "package": "f3d"
+  },
+  {
+    "id": "filmcraft",
+    "name": "filmcraft",
+    "section": "media",
+    "kind": "apt",
+    "package": "filmcraft"
+  },
+  {
+    "id": "grass",
+    "name": "grass",
+    "section": "media",
+    "kind": "apt",
+    "package": "grass"
+  },
+  {
+    "id": "handbrake",
+    "name": "handbrake",
+    "section": "media",
+    "kind": "apt",
+    "package": "handbrake"
+  },
+  {
+    "id": "haruna",
+    "name": "haruna",
+    "section": "media",
+    "kind": "apt",
+    "package": "haruna"
+  },
+  {
+    "id": "hugin",
+    "name": "hugin",
+    "section": "media",
+    "kind": "apt",
+    "package": "hugin"
+  },
+  {
+    "id": "hugin-tools",
+    "name": "hugin-tools",
+    "section": "media",
+    "kind": "apt",
+    "package": "hugin-tools"
+  },
+  {
+    "id": "kalgebra",
+    "name": "kalgebra",
+    "section": "media",
+    "kind": "apt",
+    "package": "kalgebra"
+  },
+  {
+    "id": "kalzium",
+    "name": "kalzium",
+    "section": "media",
+    "kind": "apt",
+    "package": "kalzium"
+  },
+  {
+    "id": "kcm-ums",
+    "name": "kcm-ums",
+    "section": "media",
+    "kind": "apt",
+    "package": "kcm-ums"
+  },
+  {
+    "id": "kdenlive",
+    "name": "kdenlive",
+    "section": "media",
+    "kind": "apt",
+    "package": "kdenlive"
+  },
+  {
+    "id": "kicad",
+    "name": "kicad",
+    "section": "media",
+    "kind": "apt",
+    "package": "kicad"
+  },
+  {
+    "id": "kolourpaint",
+    "name": "kolourpaint",
+    "section": "media",
+    "kind": "apt",
+    "package": "kolourpaint"
+  },
+  {
+    "id": "krita",
+    "name": "krita",
+    "section": "media",
+    "kind": "apt",
+    "package": "krita"
+  },
+  {
+    "id": "kubrick",
+    "name": "kubrick",
+    "section": "media",
+    "kind": "apt",
+    "package": "kubrick"
+  },
+  {
+    "id": "marble",
+    "name": "marble",
+    "section": "media",
+    "kind": "apt",
+    "package": "marble"
+  },
+  {
+    "id": "marble-behaim",
+    "name": "marble-behaim",
+    "section": "media",
+    "kind": "apt",
+    "package": "marble-behaim"
+  },
+  {
+    "id": "mkvtoolnix-gui",
+    "name": "mkvtoolnix-gui",
+    "section": "media",
+    "kind": "apt",
+    "package": "mkvtoolnix-gui"
+  },
+  {
+    "id": "mpv",
+    "name": "mpv",
+    "section": "media",
+    "kind": "apt",
+    "package": "mpv"
+  },
+  {
+    "id": "netgen",
+    "name": "netgen",
+    "section": "media",
+    "kind": "apt",
+    "package": "netgen"
+  },
+  {
+    "id": "obs-studio",
+    "name": "obs-studio",
+    "section": "media",
+    "kind": "apt",
+    "package": "obs-studio"
+  },
+  {
+    "id": "octave",
+    "name": "octave",
+    "section": "media",
+    "kind": "apt",
+    "package": "octave"
+  },
+  {
+    "id": "openrgb",
+    "name": "openrgb",
+    "section": "media",
+    "kind": "apt",
+    "package": "openrgb"
+  },
+  {
+    "id": "openrv",
+    "name": "openrv",
+    "section": "media",
+    "kind": "apt",
+    "package": "openrv"
+  },
+  {
+    "id": "openscad",
+    "name": "openscad",
+    "section": "media",
+    "kind": "apt",
+    "package": "openscad"
+  },
+  {
+    "id": "opentrack",
+    "name": "opentrack",
+    "section": "media",
+    "kind": "apt",
+    "package": "opentrack"
+  },
+  {
+    "id": "photocraft",
+    "name": "photocraft",
+    "section": "media",
+    "kind": "apt",
+    "package": "photocraft"
+  },
+  {
+    "id": "plasmatube",
+    "name": "plasmatube",
+    "section": "media",
+    "kind": "apt",
+    "package": "plasmatube"
+  },
+  {
+    "id": "showfoto",
+    "name": "showfoto",
+    "section": "media",
+    "kind": "apt",
+    "package": "showfoto"
+  },
+  {
+    "id": "simple-scan",
+    "name": "simple-scan",
+    "section": "media",
+    "kind": "apt",
+    "package": "simple-scan"
+  },
+  {
+    "id": "sparky-stereo-browser",
+    "name": "sparky-stereo-browser",
+    "section": "media",
+    "kind": "apt",
+    "package": "sparky-stereo-browser"
+  },
+  {
+    "id": "sparky-stereo-graphics",
+    "name": "sparky-stereo-graphics",
+    "section": "media",
+    "kind": "apt",
+    "package": "sparky-stereo-graphics"
+  },
+  {
+    "id": "sparky-stereo-locales",
+    "name": "sparky-stereo-locales",
+    "section": "media",
+    "kind": "apt",
+    "package": "sparky-stereo-locales"
+  },
+  {
+    "id": "sparky-stereo-marble-planets",
+    "name": "sparky-stereo-marble-planets",
+    "section": "media",
+    "kind": "apt",
+    "package": "sparky-stereo-marble-planets"
+  },
+  {
+    "id": "stereo3ddemo",
+    "name": "stereo3ddemo",
+    "section": "media",
+    "kind": "apt",
+    "package": "stereo3ddemo"
+  },
+  {
+    "id": "subtitlecomposer",
+    "name": "subtitlecomposer",
+    "section": "media",
+    "kind": "apt",
+    "package": "subtitlecomposer"
+  },
+  {
+    "id": "sview",
+    "name": "sview",
+    "section": "media",
+    "kind": "apt",
+    "package": "sview"
+  },
+  {
+    "id": "ums",
+    "name": "ums",
+    "section": "media",
+    "kind": "apt",
+    "package": "ums"
+  },
+  {
+    "id": "vlc-stereo",
+    "name": "vlc-stereo",
+    "section": "media",
+    "kind": "apt",
+    "package": "vlc-stereo"
+  },
+  {
+    "id": "xstudio",
+    "name": "xstudio",
+    "section": "media",
+    "kind": "apt",
+    "package": "xstudio"
+  },
+  {
+    "id": "steam-installer",
+    "name": "steam-installer",
+    "section": "vr",
+    "kind": "apt",
+    "package": "steam-installer"
+  },
+  {
+    "id": "slimevr",
+    "name": "SlimeVR",
+    "section": "vr",
+    "kind": "flatpak",
+    "package": "dev.slimevr.SlimeVR"
+  },
+  {
+    "id": "slimevr-driver",
+    "name": "SlimeVR OpenVR Driver",
+    "section": "vr",
+    "kind": "download",
+    "url": "https://github.com/SlimeVR/SlimeVR-OpenVR-Driver/releases/download/v6.0.0/slimevr-openvr-driver-x64-linux.zip",
+    "sha256": "97e7b2210b5046a7fb4524fb4288ed8a0046dc7930ac8b4aff1143a870760dd7",
+    "filename": "slimevr-openvr-driver-v6.0.0-x64-linux.zip",
+    "documentation": "https://docs.slimevr.dev/tools/linux-installation.html"
+  }
+]

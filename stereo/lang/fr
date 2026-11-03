@@ -1,2 +1,3 @@
 LOCAL1="Mémoire d’échange compressée en RAM (zram)"
 LOCAL90="La modification de zram a échoué : %s (code de sortie %s). Vérifiez la sortie et réessayez."
+LOCAL91="La modification de Stereo APTus a échoué : %s (code de sortie %s). Vérifiez la sortie et réessayez."

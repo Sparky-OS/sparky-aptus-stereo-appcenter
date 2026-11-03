@@ -12,5 +12,21 @@
   "description": "Comprime páginas de swap na RAM. A edição o mantém desligado por padrão e usa Cushion Swap no disco.",
   "authorization": "É necessária autorização para alterar os pacotes de zram.",
   "failure": "Falha ao alterar o zram: %s (código de saída %s). Confira a saída e tente novamente.",
-  "credit": "Sparky Stereo OS, Daniel Ramos's edition of SparkyLinux (by Paweł \"pavroo\" Pijanowski)"
+  "credit": "Sparky Stereo OS, Daniel Ramos's edition of SparkyLinux (by Paweł \"pavroo\" Pijanowski)",
+  "emulation": "Emulação 3D",
+  "media": "Reprodutores, editores e ferramentas estéreo",
+  "vr": "VR e SteamVR",
+  "drivers": "Drivers",
+  "hardware": "Configuração de hardware",
+  "codesys_note": "O cadastro e o EULA são gerenciados pela CODESYS em sua loja.",
+  "download": "Baixar",
+  "downloaded": "Baixado",
+  "download_note": "Arquivo do driver verificado. Siga as instruções do SlimeVR para instalá-lo no SteamVR.",
+  "checksum_failed": "SHA-256 diferente do esperado. O download foi recusado.",
+  "edition_missing": "O pacote confiável da edição não está disponível: {name}. Confira o repositório do Sparky Stereo OS e tente novamente.",
+  "flathub_missing": "O sistema não tem o remoto Flathub. Confira a configuração do Flatpak e tente novamente.",
+  "entry_authorization": "É necessária autorização para alterar os pacotes de Stereo APTus.",
+  "entry_failure": "Falha ao alterar o Stereo APTus: %s (código de saída %s). Confira a saída e tente novamente.",
+  "download_ready": "Baixado: {path}",
+  "repair": "Reparar"
 }

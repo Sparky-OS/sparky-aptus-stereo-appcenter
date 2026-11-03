@@ -12,5 +12,21 @@
   "description": "Pakkaa sivutettuja sivuja RAM-muistiin. Tämä versio pitää toiminnon oletuksena pois käytöstä ja käyttää levyllä olevaa Cushion Swapia.",
   "authorization": "Zram-pakettien muuttaminen vaatii valtuutuksen.",
   "failure": "zram-muutos epäonnistui: %s (paluukoodi %s). Tarkista tuloste ja yritä uudelleen.",
-  "credit": "Sparky Stereo OS, Daniel Ramos's edition of SparkyLinux (by Paweł \"pavroo\" Pijanowski)"
+  "credit": "Sparky Stereo OS, Daniel Ramos's edition of SparkyLinux (by Paweł \"pavroo\" Pijanowski)",
+  "emulation": "3D-emulointi",
+  "media": "Stereosoittimet, muokkaimet ja työkalut",
+  "vr": "VR ja SteamVR",
+  "drivers": "Ajurit",
+  "hardware": "Laitteiston asetukset",
+  "codesys_note": "CODESYS hallinnoi rekisteröitymistä ja EULA-sopimusta kaupassaan.",
+  "download": "Lataa",
+  "downloaded": "Ladattu",
+  "download_note": "Tarkistettu ajuriarkisto. Asenna se SteamVR:ään SlimeVR:n ohjeiden mukaan.",
+  "checksum_failed": "SHA-256-tarkistussumma ei täsmää. Lataus hylättiin.",
+  "edition_missing": "Version luotettua pakettia ei ole saatavilla: {name}. Tarkista Sparky Stereo OS:n pakettivarasto ja yritä uudelleen.",
+  "flathub_missing": "Järjestelmässä ei ole Flathub-etävarastoa. Tarkista Flatpak-asetukset ja yritä uudelleen.",
+  "entry_authorization": "Zram-pakettien muuttaminen vaatii valtuutuksen.",
+  "entry_failure": "Stereo APTus-muutos epäonnistui: %s (paluukoodi %s). Tarkista tuloste ja yritä uudelleen.",
+  "download_ready": "Ladattu: {path}",
+  "repair": "Korjaa"
 }

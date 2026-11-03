@@ -12,5 +12,21 @@
   "description": "Стискає сторінки підкачки в оперативній пам’яті. У цій редакції функцію типово вимкнено, використовується Cushion Swap на диску.",
   "authorization": "Для зміни пакунків zram потрібна авторизація.",
   "failure": "Не вдалося змінити zram: %s (код виходу %s). Перевірте вивід і спробуйте ще раз.",
-  "credit": "Sparky Stereo OS, Daniel Ramos's edition of SparkyLinux (by Paweł \"pavroo\" Pijanowski)"
+  "credit": "Sparky Stereo OS, Daniel Ramos's edition of SparkyLinux (by Paweł \"pavroo\" Pijanowski)",
+  "emulation": "3D-емуляція",
+  "media": "Стереоплеєри, редактори та інструменти",
+  "vr": "VR і SteamVR",
+  "drivers": "Драйвери",
+  "hardware": "Налаштування обладнання",
+  "codesys_note": "Реєстрацією та EULA керує CODESYS у своєму магазині.",
+  "download": "Завантажити",
+  "downloaded": "Завантажено",
+  "download_note": "Архів драйвера перевірено. Установіть його в SteamVR за інструкціями SlimeVR.",
+  "checksum_failed": "Контрольна сума SHA-256 не збігається. Завантаження відхилено.",
+  "edition_missing": "Довірений пакет редакції недоступний: {name}. Перевірте репозиторій Sparky Stereo OS і спробуйте знову.",
+  "flathub_missing": "У системі не налаштовано репозиторій Flathub. Перевірте налаштування Flatpak і спробуйте знову.",
+  "entry_authorization": "Для зміни пакунків Stereo APTus потрібна авторизація.",
+  "entry_failure": "Не вдалося змінити Stereo APTus: %s (код виходу %s). Перевірте вивід і спробуйте ще раз.",
+  "download_ready": "Завантажено: {path}",
+  "repair": "Відновити"
 }

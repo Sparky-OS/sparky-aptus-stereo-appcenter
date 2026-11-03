@@ -12,5 +12,21 @@
   "description": "스왑된 페이지를 RAM에서 압축합니다. 이 에디션은 기본적으로 이 기능을 끄고 디스크의 Cushion Swap을 사용합니다.",
   "authorization": "zram 패키지를 변경하려면 인증이 필요합니다.",
   "failure": "zram 변경에 실패했습니다: %s (종료 코드 %s). 출력을 확인한 후 다시 시도하세요.",
-  "credit": "Sparky Stereo OS, Daniel Ramos's edition of SparkyLinux (by Paweł \"pavroo\" Pijanowski)"
+  "credit": "Sparky Stereo OS, Daniel Ramos's edition of SparkyLinux (by Paweł \"pavroo\" Pijanowski)",
+  "emulation": "3D 에뮬레이션",
+  "media": "스테레오 플레이어, 편집기 및 도구",
+  "vr": "VR 및 SteamVR",
+  "drivers": "드라이버",
+  "hardware": "하드웨어 설정",
+  "codesys_note": "등록과 EULA는 CODESYS 스토어에서 관리합니다.",
+  "download": "다운로드",
+  "downloaded": "다운로드됨",
+  "download_note": "검증된 드라이버 압축 파일입니다. SlimeVR 설치 안내에 따라 SteamVR에 설치하세요.",
+  "checksum_failed": "SHA-256이 일치하지 않아 다운로드를 거부했습니다.",
+  "edition_missing": "이 에디션의 신뢰할 수 있는 패키지를 사용할 수 없습니다: {name}. Sparky Stereo OS 저장소를 확인한 후 다시 시도하세요.",
+  "flathub_missing": "시스템에 Flathub 원격 저장소가 없습니다. Flatpak 설정을 확인한 후 다시 시도하세요.",
+  "entry_authorization": "Stereo APTus 패키지를 변경하려면 인증이 필요합니다.",
+  "entry_failure": "Stereo APTus 변경에 실패했습니다: %s (종료 코드 %s). 출력을 확인한 후 다시 시도하세요.",
+  "download_ready": "다운로드됨: {path}",
+  "repair": "복구"
 }

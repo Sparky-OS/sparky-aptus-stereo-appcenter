@@ -12,5 +12,21 @@
   "description": "在 RAM 中壓縮交換頁面。本版本預設關閉此功能，使用磁碟上的 Cushion Swap。",
   "authorization": "變更 zram 套件需要授權。",
   "failure": "變更 zram 失敗：%s（結束代碼 %s）。請檢查輸出並重試。",
-  "credit": "Sparky Stereo OS, Daniel Ramos's edition of SparkyLinux (by Paweł \"pavroo\" Pijanowski)"
+  "credit": "Sparky Stereo OS, Daniel Ramos's edition of SparkyLinux (by Paweł \"pavroo\" Pijanowski)",
+  "emulation": "3D 模擬",
+  "media": "立體播放器、編輯器和工具",
+  "vr": "VR 和 SteamVR",
+  "drivers": "驅動程式",
+  "hardware": "硬體設定",
+  "codesys_note": "註冊和 EULA 由 CODESYS 在其商店中管理。",
+  "download": "下載",
+  "downloaded": "已下載",
+  "download_note": "已驗證的驅動程式壓縮檔。請依照 SlimeVR 的說明將其安裝至 SteamVR。",
+  "checksum_failed": "SHA-256 不符。已拒絕此下載。",
+  "edition_missing": "無法取得此版本的可信套件：{name}。請檢查 Sparky Stereo OS 軟體來源後重試。",
+  "flathub_missing": "系統未設定 Flathub 遠端儲存庫。請檢查 Flatpak 設定後重試。",
+  "entry_authorization": "變更 Stereo APTus 套件需要授權。",
+  "entry_failure": "變更 Stereo APTus 失敗：%s（結束代碼 %s）。請檢查輸出並重試。",
+  "download_ready": "已下載: {path}",
+  "repair": "修復"
 }

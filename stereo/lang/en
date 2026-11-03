@@ -1,2 +1,3 @@
 LOCAL1="Compressed RAM swap (zram)"
 LOCAL90="Changing zram failed: %s (exit %s). Check the output and try again."
+LOCAL91="Changing Stereo APTus failed: %s (exit %s). Check the output and try again."

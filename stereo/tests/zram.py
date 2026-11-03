@@ -21,10 +21,14 @@ class Transaction(unittest.TestCase):
         self.failure = None
         self.skip_start = False
         self.manager = True
+        self.result = "success"
+        self.size = 0
+        self.hidden_stop_failure = False
         self.patches = [
             patch.object(zram, 'messages', return_value={'restart':'No running systemd. Starts after restart.', 'active':'active', 'inactive':'inactive'}),
             patch.object(zram, 'systemd_running', create=True, side_effect=lambda: self.manager),
             patch.object(zram, 'active', create=True, side_effect=lambda: self.swap),
+            patch.object(zram, 'disk_size', create=True, side_effect=lambda: self.size),
             patch.object(zram.subprocess, 'run', side_effect=self.run_command),
             patch.object(zram.os, 'geteuid', return_value=0),
         ]
@@ -39,7 +43,11 @@ class Transaction(unittest.TestCase):
             self.swap=True
         if command[:3] == ['/usr/bin/systemctl','stop','dev-zram0.swap']:
             self.swap=False
-        return subprocess.CompletedProcess(command, 0)
+        if command[:3] == ['/usr/bin/systemctl','stop','systemd-zram-setup@zram0.service']:
+            if self.hidden_stop_failure: self.result='exit-code'; self.size=4096
+            else: self.result='success'; self.size=0
+        if '--reset-device' in command: self.size=0
+        return subprocess.CompletedProcess(command, 0, stdout=self.result)
 
     def change(self, operation):
         # Red 0.1.0 has no transaction function: exercise its existing public path.
@@ -57,7 +65,7 @@ class Transaction(unittest.TestCase):
         self.swap=True
         self.change('remove')
         self.assertFalse(self.swap)
-        self.assertEqual(self.commands[:2], [['/usr/bin/systemctl','stop','dev-zram0.swap'], ['/usr/bin/systemctl','stop','systemd-zram-setup@zram0.service']])
+        self.assertEqual([c for c in self.commands if 'stop' in c], [['/usr/bin/systemctl','stop','dev-zram0.swap'], ['/usr/bin/systemctl','stop','systemd-zram-setup@zram0.service']])
         self.assertEqual(self.commands[-1], ['/usr/bin/apt-get','-y','remove','systemd-zram-generator'])
 
     def test_failed_swap_stop_preserves_provider_and_setup(self):
@@ -100,6 +108,25 @@ class Transaction(unittest.TestCase):
         self.swap=True
         with self.assertRaises(RuntimeError): self.change('remove')
         self.assertEqual(self.commands,[])
+
+    def test_successful_systemctl_with_failed_execstop_preserves_package(self):
+        self.hidden_stop_failure=True
+        with self.assertRaises(RuntimeError): self.change('remove')
+        self.assertFalse(any(c[0].endswith('apt-get') for c in self.commands))
+
+    def test_explicit_repair_retries_failed_reset(self):
+        self.hidden_stop_failure=True
+        zram.change('remove',repair=True)
+        reset=next(i for i,c in enumerate(self.commands) if '--reset-device' in c)
+        apt=next(i for i,c in enumerate(self.commands) if c[0].endswith('apt-get'))
+        self.assertLess(reset,apt)
+        self.assertEqual(self.size,0)
+
+    def test_failed_reset_repair_preserves_package(self):
+        self.hidden_stop_failure=True
+        self.failure='--reset-device'
+        with self.assertRaises(subprocess.CalledProcessError): zram.change('remove',repair=True)
+        self.assertFalse(any(c[0].endswith('apt-get') for c in self.commands))
 
     def test_engine_covers_complete_change_and_repairs_public_action(self):
         import json

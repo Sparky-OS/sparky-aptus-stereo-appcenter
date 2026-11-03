@@ -45,7 +45,7 @@ def render():
             if row['kind'] == 'download':
                 button = text['remove' if selected else 'download']
                 indicator = text['downloaded'] if selected else '—'
-                note = f'<p><a href="{e(row["documentation"])}">{e(text["download_note"])}</a></p>'
+                note += f'<p><a href="{e(row["documentation"])}">{e(text["download_note"])}</a></p>'
                 if selected:
                     note += f'<p>{e("/var/cache/sparky-aptus-stereo-appcenter/" + row["filename"])}</p>'
             cards.append(f'<article id="entry-{row["id"]}"><h3>{e(row["name"])}</h3>'
@@ -89,7 +89,7 @@ if __name__ == '__main__':
             subprocess.run(['yad', '--html', '--browser', '--width=1050', '--height=780',
                             '--title=Stereo APTus', '--uri=' + path.as_uri(),
                             '--user-agent=' + code, '--uri-handler=' + str(BASE / 'handler')])
-    except (OSError, ValueError, RuntimeError) as error:
+    except (OSError, ValueError, RuntimeError, subprocess.CalledProcessError) as error:
         print(str(error), file=sys.stderr)
         subprocess.run(['yad', '--error', '--title=Stereo APTus', '--text=' + str(error)])
         sys.exit(1)

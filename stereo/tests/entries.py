@@ -84,6 +84,21 @@ class Transactions(unittest.TestCase):
             action.download(row,'remove')
             self.assertFalse(action.installed(row))
 
+    def test_download_failure_has_visible_repair(self):
+        spec = importlib.util.spec_from_loader('page', importlib.machinery.SourceFileLoader('page', str(SOURCE/'appcenter')))
+        page = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(page)
+        zram = dict(installed=False,title='zram',description='',state='absent',restart='',error='',button='Install')
+        states = {row['id']:dict(installed=False,error='') for row in catalogue.entries()}
+        states['slimevr-driver']['error']='SHA-256 mismatch'
+        results = [subprocess.CompletedProcess([],0,json.dumps(zram)),subprocess.CompletedProcess([],0,json.dumps(states))]
+        with patch.object(page.subprocess,'run',side_effect=results):
+            html = page.render()
+        self.assertIn('aptus://stereo_entry_slimevr-driver_repair',html)
+        self.assertIn('SHA-256 mismatch',html)
+        sections = ['stereo-emulation','stereo-media','stereo-vr','stereo-drivers','stereo-system','pawel-categories']
+        self.assertEqual(sorted(sections,key=lambda name:html.index('id="'+name+'"')),sections)
+
     def test_catalogues(self):
         english=json.loads((SOURCE/'lang/en.json').read_text())
         import string

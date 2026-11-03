@@ -99,7 +99,7 @@
   },
   {
     "id": "hugin-tools",
-    "name": "Hugin tools",
+    "name": "Hugin (hugin-tools)",
     "section": "media",
     "kind": "apt",
     "package": "hugin-tools"
@@ -351,7 +351,7 @@
   },
   {
     "id": "slimevr-driver",
-    "name": "SlimeVR OpenVR Driver",
+    "name": "SlimeVR OpenVR Driver (Linux x64)",
     "section": "vr",
     "kind": "download",
     "url": "https://github.com/SlimeVR/SlimeVR-OpenVR-Driver/releases/download/v6.0.0/slimevr-openvr-driver-x64-linux.zip",

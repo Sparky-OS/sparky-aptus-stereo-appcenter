@@ -25,6 +25,10 @@ def status():
     if query.returncode not in (0, 1):
         raise RuntimeError(query.stderr.strip())
     installed = query.returncode == 0 and query.stdout == 'installed'
+    manual = subprocess.run(['/usr/bin/apt-mark', 'showmanual', TARGET], capture_output=True, text=True)
+    if manual.returncode:
+        raise RuntimeError(manual.stderr.strip())
+    chosen = TARGET in manual.stdout.splitlines()
     active = any(line.split()[0] == '/dev/zram0' for line in Path('/proc/swaps').read_text().splitlines()[1:] if line.split())
     problems = subprocess.run([ENGINE, 'list', '--json', PACKAGE], capture_output=True, text=True, env=ENGINE_ENV)
     if problems.returncode:
@@ -39,7 +43,7 @@ def status():
     return dict(installed=installed, active=active, title=text['title'],
                 description=text['description'], button=text['remove' if installed else 'install'],
                 state=text['installed' if installed else 'absent'] + ' · ' + text['active' if active else 'inactive'],
-                restart=text['restart'] if installed and not active else '', error=errors)
+                restart=text['restart'] if installed and chosen and not active else '', error=errors)
 
 
 def main():

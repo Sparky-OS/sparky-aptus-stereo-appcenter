@@ -1,119 +1,119 @@
 [
   {
     "id": "dolphin-emu",
-    "name": "dolphin-emu",
+    "name": "Dolphin Emulator",
     "section": "emulation",
     "kind": "apt",
     "package": "dolphin-emu"
   },
   {
     "id": "libretro-beetle-vb",
-    "name": "libretro-beetle-vb",
+    "name": "Beetle Virtual Boy (RetroArch)",
     "section": "emulation",
     "kind": "apt",
     "package": "libretro-beetle-vb"
   },
   {
     "id": "mame",
-    "name": "mame",
+    "name": "MAME",
     "section": "emulation",
     "kind": "apt",
     "package": "mame"
   },
   {
     "id": "mednafen",
-    "name": "mednafen",
+    "name": "Mednafen",
     "section": "emulation",
     "kind": "apt",
     "package": "mednafen"
   },
   {
     "id": "retroarch",
-    "name": "retroarch",
+    "name": "RetroArch",
     "section": "emulation",
     "kind": "apt",
     "package": "retroarch"
   },
   {
     "id": "bino",
-    "name": "bino",
+    "name": "Bino",
     "section": "media",
     "kind": "apt",
     "package": "bino"
   },
   {
     "id": "blender",
-    "name": "blender",
+    "name": "Blender",
     "section": "media",
     "kind": "apt",
     "package": "blender"
   },
   {
     "id": "digikam",
-    "name": "digikam",
+    "name": "digiKam",
     "section": "media",
     "kind": "apt",
     "package": "digikam"
   },
   {
     "id": "f3d",
-    "name": "f3d",
+    "name": "F3D",
     "section": "media",
     "kind": "apt",
     "package": "f3d"
   },
   {
     "id": "filmcraft",
-    "name": "filmcraft",
+    "name": "FilmCraft",
     "section": "media",
     "kind": "apt",
     "package": "filmcraft"
   },
   {
     "id": "grass",
-    "name": "grass",
+    "name": "GRASS GIS",
     "section": "media",
     "kind": "apt",
     "package": "grass"
   },
   {
     "id": "handbrake",
-    "name": "handbrake",
+    "name": "HandBrake",
     "section": "media",
     "kind": "apt",
     "package": "handbrake"
   },
   {
     "id": "haruna",
-    "name": "haruna",
+    "name": "Haruna",
     "section": "media",
     "kind": "apt",
     "package": "haruna"
   },
   {
     "id": "hugin",
-    "name": "hugin",
+    "name": "Hugin",
     "section": "media",
     "kind": "apt",
     "package": "hugin"
   },
   {
     "id": "hugin-tools",
-    "name": "hugin-tools",
+    "name": "Hugin tools",
     "section": "media",
     "kind": "apt",
     "package": "hugin-tools"
   },
   {
     "id": "kalgebra",
-    "name": "kalgebra",
+    "name": "KAlgebra",
     "section": "media",
     "kind": "apt",
     "package": "kalgebra"
   },
   {
     "id": "kalzium",
-    "name": "kalzium",
+    "name": "Kalzium",
     "section": "media",
     "kind": "apt",
     "package": "kalzium"
@@ -127,56 +127,56 @@
   },
   {
     "id": "kdenlive",
-    "name": "kdenlive",
+    "name": "Kdenlive",
     "section": "media",
     "kind": "apt",
     "package": "kdenlive"
   },
   {
     "id": "kicad",
-    "name": "kicad",
+    "name": "KiCad",
     "section": "media",
     "kind": "apt",
     "package": "kicad"
   },
   {
     "id": "kolourpaint",
-    "name": "kolourpaint",
+    "name": "KolourPaint",
     "section": "media",
     "kind": "apt",
     "package": "kolourpaint"
   },
   {
     "id": "krita",
-    "name": "krita",
+    "name": "Krita",
     "section": "media",
     "kind": "apt",
     "package": "krita"
   },
   {
     "id": "kubrick",
-    "name": "kubrick",
+    "name": "Kubrick",
     "section": "media",
     "kind": "apt",
     "package": "kubrick"
   },
   {
     "id": "marble",
-    "name": "marble",
+    "name": "Marble",
     "section": "media",
     "kind": "apt",
     "package": "marble"
   },
   {
     "id": "marble-behaim",
-    "name": "marble-behaim",
+    "name": "Marble Behaim",
     "section": "media",
     "kind": "apt",
     "package": "marble-behaim"
   },
   {
     "id": "mkvtoolnix-gui",
-    "name": "mkvtoolnix-gui",
+    "name": "MKVToolNix",
     "section": "media",
     "kind": "apt",
     "package": "mkvtoolnix-gui"
@@ -190,42 +190,42 @@
   },
   {
     "id": "netgen",
-    "name": "netgen",
+    "name": "Netgen",
     "section": "media",
     "kind": "apt",
     "package": "netgen"
   },
   {
     "id": "obs-studio",
-    "name": "obs-studio",
+    "name": "OBS Studio",
     "section": "media",
     "kind": "apt",
     "package": "obs-studio"
   },
   {
     "id": "octave",
-    "name": "octave",
+    "name": "GNU Octave",
     "section": "media",
     "kind": "apt",
     "package": "octave"
   },
   {
     "id": "openrgb",
-    "name": "openrgb",
+    "name": "OpenRGB",
     "section": "media",
     "kind": "apt",
     "package": "openrgb"
   },
   {
     "id": "openrv",
-    "name": "openrv",
+    "name": "Open RV",
     "section": "media",
     "kind": "apt",
     "package": "openrv"
   },
   {
     "id": "openscad",
-    "name": "openscad",
+    "name": "OpenSCAD",
     "section": "media",
     "kind": "apt",
     "package": "openscad"
@@ -239,35 +239,35 @@
   },
   {
     "id": "photocraft",
-    "name": "photocraft",
+    "name": "PhotoCraft",
     "section": "media",
     "kind": "apt",
     "package": "photocraft"
   },
   {
     "id": "plasmatube",
-    "name": "plasmatube",
+    "name": "PlasmaTube",
     "section": "media",
     "kind": "apt",
     "package": "plasmatube"
   },
   {
     "id": "showfoto",
-    "name": "showfoto",
+    "name": "Showfoto",
     "section": "media",
     "kind": "apt",
     "package": "showfoto"
   },
   {
     "id": "simple-scan",
-    "name": "simple-scan",
+    "name": "Simple Scan",
     "section": "media",
     "kind": "apt",
     "package": "simple-scan"
   },
   {
     "id": "sparky-stereo-browser",
-    "name": "sparky-stereo-browser",
+    "name": "Waterfox Stereo",
     "section": "media",
     "kind": "apt",
     "package": "sparky-stereo-browser"
@@ -288,56 +288,56 @@
   },
   {
     "id": "sparky-stereo-marble-planets",
-    "name": "sparky-stereo-marble-planets",
+    "name": "Marble Planets",
     "section": "media",
     "kind": "apt",
     "package": "sparky-stereo-marble-planets"
   },
   {
     "id": "stereo3ddemo",
-    "name": "stereo3ddemo",
+    "name": "Stereo 3D Demo",
     "section": "media",
     "kind": "apt",
     "package": "stereo3ddemo"
   },
   {
     "id": "subtitlecomposer",
-    "name": "subtitlecomposer",
+    "name": "Subtitle Composer",
     "section": "media",
     "kind": "apt",
     "package": "subtitlecomposer"
   },
   {
     "id": "sview",
-    "name": "sview",
+    "name": "sView",
     "section": "media",
     "kind": "apt",
     "package": "sview"
   },
   {
     "id": "ums",
-    "name": "ums",
+    "name": "Universal Media Server",
     "section": "media",
     "kind": "apt",
     "package": "ums"
   },
   {
     "id": "vlc-stereo",
-    "name": "vlc-stereo",
+    "name": "VLC Stereo",
     "section": "media",
     "kind": "apt",
     "package": "vlc-stereo"
   },
   {
     "id": "xstudio",
-    "name": "xstudio",
+    "name": "xSTUDIO",
     "section": "media",
     "kind": "apt",
     "package": "xstudio"
   },
   {
     "id": "steam-installer",
-    "name": "steam-installer",
+    "name": "Steam",
     "section": "vr",
     "kind": "apt",
     "package": "steam-installer"

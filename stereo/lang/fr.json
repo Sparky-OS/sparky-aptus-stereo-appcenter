@@ -27,6 +27,6 @@
   "flathub_missing": "Le dépôt Flathub n’est pas configuré pour le système. Vérifiez la configuration Flatpak et réessayez.",
   "entry_authorization": "Une autorisation est nécessaire pour modifier les paquets Stereo APTus.",
   "entry_failure": "La modification de Stereo APTus a échoué : %s (code de sortie %s). Vérifiez la sortie et réessayez.",
-  "download_ready": "Téléchargé: {path}",
+  "download_ready": "Téléchargé : {path}",
   "repair": "Réparer"
 }

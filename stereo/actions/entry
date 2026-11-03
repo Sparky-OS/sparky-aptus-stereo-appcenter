@@ -23,7 +23,10 @@ ENV.pop('PKEXEC_UID', None)
 def installed(row):
     if row['kind'] == 'download':
         path = DOWNLOADS / row['filename']
-        return path.is_file() and hashlib.file_digest(path.open('rb'), 'sha256').hexdigest() == row['sha256']
+        if not path.is_file():
+            return False
+        with path.open('rb') as stream:
+            return hashlib.file_digest(stream, 'sha256').hexdigest() == row['sha256']
     if row['kind'] == 'flatpak':
         result = subprocess.run(['/usr/bin/flatpak', 'list', '--system', '--app', '--columns=application'],
                                 capture_output=True, text=True, check=True)

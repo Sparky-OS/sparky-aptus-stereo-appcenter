@@ -143,6 +143,15 @@ class Transaction(unittest.TestCase):
         self.assertFalse(self.swap)
         self.assertFalse(self.masked)
 
+    def test_mask_reload_preserves_teardown_ordering(self):
+        self.swap=True
+        self.change('remove')
+        stop=next(i for i,c in enumerate(self.commands) if c[:3]==['/usr/bin/systemctl','stop','systemd-zram-setup@zram0.service'])
+        mask=next(i for i,c in enumerate(self.commands) if 'mask' in c)
+        apt=next(i for i,c in enumerate(self.commands) if c[0].endswith('apt-get'))
+        self.assertLess(stop,mask)
+        self.assertLess(mask,apt)
+
     def test_existing_runtime_mask_is_preserved(self):
         self.masked=True
         with patch.object(zram.os.path, 'lexists', return_value=True):

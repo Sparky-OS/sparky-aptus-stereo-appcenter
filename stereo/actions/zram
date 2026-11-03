@@ -64,6 +64,8 @@ def disk_size():
 def change(operation, repair=False):
     # APT can activate logind for its inhibitor, pulling swap.target back in.
     # Keep this unit stopped throughout removal without changing user masks.
+    if operation == 'remove':
+        stop_swap(repair)
     owned_mask = False
     try:
         if operation == 'remove' and systemd_running():
@@ -76,33 +78,36 @@ def change(operation, repair=False):
             subprocess.run(['/usr/bin/systemctl', 'unmask', '--runtime', 'dev-zram0.swap'], check=True)
 
 
-def transaction(operation, repair=False):
-    """Run the entire transaction under the engine's one failure/repair record."""
+def stop_swap(repair=False):
     text = messages()
     manager = systemd_running()
-    if operation == 'remove':
-        if manager:
-            # Do not reset the device or remove its provider if swapoff failed.
-            subprocess.run(['/usr/bin/systemctl', 'stop', 'dev-zram0.swap'], check=True)
-        if active():
-            raise RuntimeError(text['active'])
-        if manager:
-            subprocess.run(['/usr/bin/udevadm', 'settle'], check=True)
-            subprocess.run(['/usr/bin/systemctl', 'stop', SETUP], check=True)
-            result = subprocess.run(['/usr/bin/systemctl', 'show', '--property=Result', '--value', SETUP],
-                                    capture_output=True, text=True, check=True).stdout.strip()
-            # systemctl stop succeeds even when ExecStop fails. Retain the
-            # provider and the failed reset until the person requests repair.
-            if result != 'success' or disk_size():
-                if not repair:
-                    subprocess.run(['/usr/bin/systemctl', 'status', '--no-pager', SETUP])
-                    raise RuntimeError(f'{SETUP}: {result}; /sys/block/zram0/disksize={disk_size()}')
-                if disk_size():
-                    subprocess.run(['/usr/lib/systemd/system-generators/zram-generator',
-                                    '--reset-device', 'zram0'], check=True)
-                if disk_size():
-                    raise RuntimeError(f'/sys/block/zram0/disksize={disk_size()}')
-                subprocess.run(['/usr/bin/systemctl', 'reset-failed', SETUP], check=True)
+    if manager:
+        # Do not reset the device or remove its provider if swapoff failed.
+        subprocess.run(['/usr/bin/systemctl', 'stop', 'dev-zram0.swap'], check=True)
+    if active():
+        raise RuntimeError(text['active'])
+    if manager:
+        subprocess.run(['/usr/bin/udevadm', 'settle'], check=True)
+        subprocess.run(['/usr/bin/systemctl', 'stop', SETUP], check=True)
+        result = subprocess.run(['/usr/bin/systemctl', 'show', '--property=Result', '--value', SETUP],
+                                capture_output=True, text=True, check=True).stdout.strip()
+        # systemctl stop succeeds even when ExecStop fails. Retain the
+        # provider and the failed reset until the person requests repair.
+        if result != 'success' or disk_size():
+            if not repair:
+                subprocess.run(['/usr/bin/systemctl', 'status', '--no-pager', SETUP])
+                raise RuntimeError(f'{SETUP}: {result}; /sys/block/zram0/disksize={disk_size()}')
+            if disk_size():
+                subprocess.run(['/usr/lib/systemd/system-generators/zram-generator',
+                                '--reset-device', 'zram0'], check=True)
+            if disk_size():
+                raise RuntimeError(f'/sys/block/zram0/disksize={disk_size()}')
+            subprocess.run(['/usr/bin/systemctl', 'reset-failed', SETUP], check=True)
+
+
+def transaction(operation, repair=False):
+    text = messages()
+    manager = systemd_running()
     command = ['/usr/bin/apt-get', '-y']
     command += ['--no-remove', 'install', TARGET] if operation == 'install' else ['remove', TARGET]
     subprocess.run(command, check=True, env=dict(ENGINE_ENV, DEBIAN_FRONTEND='noninteractive'))

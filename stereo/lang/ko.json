@@ -8,9 +8,9 @@
   "install": "설치",
   "remove": "제거",
   "categories": "SparkyLinux 애플리케이션",
-  "restart": "다시 시작한 후 작동합니다.",
+  "restart": "이 환경에서는 systemd가 실행되고 있지 않습니다. 다시 시작한 후 작동합니다.",
   "description": "스왑된 페이지를 RAM에서 압축합니다. 이 에디션은 기본적으로 이 기능을 끄고 디스크의 Cushion Swap을 사용합니다.",
   "authorization": "zram 패키지를 변경하려면 인증이 필요합니다.",
-  "failure": "zram 패키지 작업에 실패했습니다: %s (종료 코드 %s). 패키지 관리자 출력을 확인하고 다시 시도하세요.",
+  "failure": "zram 변경에 실패했습니다: %s (종료 코드 %s). 출력을 확인한 후 다시 시도하세요.",
   "credit": "Sparky Stereo OS, Daniel Ramos's edition of SparkyLinux (by Paweł \"pavroo\" Pijanowski)"
 }

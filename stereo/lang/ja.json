@@ -8,9 +8,9 @@
   "install": "インストール",
   "remove": "アンインストール",
   "categories": "SparkyLinux のアプリケーション",
-  "restart": "再起動後に開始します。",
+  "restart": "この環境では systemd が動作していません。 再起動後に開始します。",
   "description": "スワップしたページを RAM 内で圧縮します。このエディションでは標準で無効にし、ディスク上の Cushion Swap を使用します。",
   "authorization": "zram パッケージの変更には認証が必要です。",
-  "failure": "zram パッケージの操作に失敗しました：%s（終了コード %s）。パッケージマネージャーの出力を確認して再試行してください。",
+  "failure": "zram の変更に失敗しました: %s（終了コード %s）。出力を確認して、もう一度お試しください。",
   "credit": "Sparky Stereo OS, Daniel Ramos's edition of SparkyLinux (by Paweł \"pavroo\" Pijanowski)"
 }

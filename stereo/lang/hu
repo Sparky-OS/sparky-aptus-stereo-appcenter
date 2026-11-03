@@ -1,2 +1,2 @@
 LOCAL1="Tömörített RAM-csereterület (zram)"
-LOCAL90="A zram csomagművelet sikertelen: %s (kód: %s). Ellenőrizze a csomagkezelő kimenetét, majd próbálja újra."
+LOCAL90="A zram módosítása sikertelen: %s (kilépési kód: %s). Ellenőrizze a kimenetet, majd próbálja újra."

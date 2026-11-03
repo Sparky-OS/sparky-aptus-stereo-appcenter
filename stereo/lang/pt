@@ -1,2 +1,2 @@
 LOCAL1="Swap comprimido na RAM (zram)"
-LOCAL90="A operação do pacote zram falhou: %s (código %s). Verifique a saída do gestor de pacotes e tente novamente."
+LOCAL90="Falha ao alterar o zram: %s (código de saída %s). Confira a saída e tente novamente."

@@ -8,9 +8,9 @@
   "install": "Telepítés",
   "remove": "Eltávolítás",
   "categories": "SparkyLinux-alkalmazások",
-  "restart": "Újraindítás után indul el.",
+  "restart": "A systemd itt nem fut. Újraindítás után indul el.",
   "description": "A RAM-ban tömöríti a kilapozott oldalakat. A kiadás alapértelmezésben kikapcsolva hagyja, és a lemezen lévő Cushion Swapot használja.",
   "authorization": "A zram csomagok módosításához hitelesítés szükséges.",
-  "failure": "A zram csomagművelet sikertelen: %s (kód: %s). Ellenőrizze a csomagkezelő kimenetét, majd próbálja újra.",
+  "failure": "A zram módosítása sikertelen: %s (kilépési kód: %s). Ellenőrizze a kimenetet, majd próbálja újra.",
   "credit": "Sparky Stereo OS, Daniel Ramos's edition of SparkyLinux (by Paweł \"pavroo\" Pijanowski)"
 }

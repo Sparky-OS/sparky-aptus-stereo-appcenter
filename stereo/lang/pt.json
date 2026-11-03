@@ -8,9 +8,9 @@
   "install": "Instalar",
   "remove": "Desinstalar",
   "categories": "Aplicações do SparkyLinux",
-  "restart": "Inicia após reiniciar.",
+  "restart": "O systemd não está em execução neste ambiente. Inicia após reiniciar.",
   "description": "Comprime páginas de swap na RAM. A edição mantém esta função desligada por predefinição e utiliza Cushion Swap no disco.",
   "authorization": "É necessária autorização para alterar os pacotes zram.",
-  "failure": "A operação do pacote zram falhou: %s (código %s). Verifique a saída do gestor de pacotes e tente novamente.",
+  "failure": "Falha ao alterar o zram: %s (código de saída %s). Confira a saída e tente novamente.",
   "credit": "Sparky Stereo OS, Daniel Ramos's edition of SparkyLinux (by Paweł \"pavroo\" Pijanowski)"
 }

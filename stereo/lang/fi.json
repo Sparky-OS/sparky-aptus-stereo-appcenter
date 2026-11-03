@@ -8,9 +8,9 @@
   "install": "Asenna",
   "remove": "Poista",
   "categories": "SparkyLinux-sovellukset",
-  "restart": "Käynnistyy uudelleenkäynnistyksen jälkeen.",
+  "restart": "systemd ei ole käynnissä tässä ympäristössä. Käynnistyy uudelleenkäynnistyksen jälkeen.",
   "description": "Pakkaa sivutettuja sivuja RAM-muistiin. Tämä versio pitää toiminnon oletuksena pois käytöstä ja käyttää levyllä olevaa Cushion Swapia.",
   "authorization": "Zram-pakettien muuttaminen vaatii valtuutuksen.",
-  "failure": "Zram-paketin toiminto epäonnistui: %s (koodi %s). Tarkista paketinhallinnan tuloste ja yritä uudelleen.",
+  "failure": "zram-muutos epäonnistui: %s (paluukoodi %s). Tarkista tuloste ja yritä uudelleen.",
   "credit": "Sparky Stereo OS, Daniel Ramos's edition of SparkyLinux (by Paweł \"pavroo\" Pijanowski)"
 }

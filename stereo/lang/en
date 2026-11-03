@@ -1,2 +1,2 @@
 LOCAL1="Compressed RAM swap (zram)"
-LOCAL90="The zram package operation failed: %s (exit %s). Check the package manager output and try again."
+LOCAL90="Changing zram failed: %s (exit %s). Check the output and try again."

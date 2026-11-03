@@ -1,2 +1,2 @@
 LOCAL1="Mémoire d’échange compressée en RAM (zram)"
-LOCAL90="L’opération sur le paquet zram a échoué : %s (code %s). Vérifiez la sortie du gestionnaire de paquets et réessayez."
+LOCAL90="La modification de zram a échoué : %s (code de sortie %s). Vérifiez la sortie et réessayez."

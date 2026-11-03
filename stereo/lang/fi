@@ -1,2 +1,2 @@
 LOCAL1="Pakattu RAM-sivutustila (zram)"
-LOCAL90="Zram-paketin toiminto epäonnistui: %s (koodi %s). Tarkista paketinhallinnan tuloste ja yritä uudelleen."
+LOCAL90="zram-muutos epäonnistui: %s (paluukoodi %s). Tarkista tuloste ja yritä uudelleen."

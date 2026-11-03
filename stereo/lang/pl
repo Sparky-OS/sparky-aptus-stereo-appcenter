@@ -1,2 +1,2 @@
 LOCAL1="Skompresowana pamięć wymiany w RAM (zram)"
-LOCAL90="Operacja na pakiecie zram nie powiodła się: %s (kod %s). Sprawdź komunikaty menedżera pakietów i spróbuj ponownie."
+LOCAL90="Zmiana zram nie powiodła się: %s (kod wyjścia %s). Sprawdź komunikaty i spróbuj ponownie."

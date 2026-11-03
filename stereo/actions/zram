@@ -18,6 +18,14 @@ ENGINE_ENV = dict(os.environ, PATH='/usr/sbin:/usr/bin:/sbin:/bin')
 ENGINE_ENV.pop('PKEXEC_UID', None)
 
 
+def active():
+    return any(line.split()[0] == '/dev/zram0' for line in Path('/proc/swaps').read_text().splitlines()[1:] if line.split())
+
+
+def systemd_running():
+    return Path('/run/systemd/system').is_dir()
+
+
 def status():
     text = messages()
     query = subprocess.run(['/usr/bin/dpkg-query', '-W', '-f=${db:Status-Status}', TARGET],
@@ -29,7 +37,7 @@ def status():
     if manual.returncode:
         raise RuntimeError(manual.stderr.strip())
     chosen = TARGET in manual.stdout.splitlines()
-    active = any(line.split()[0] == '/dev/zram0' for line in Path('/proc/swaps').read_text().splitlines()[1:] if line.split())
+    running = active()
     problems = subprocess.run([ENGINE, 'list', '--json', PACKAGE], capture_output=True, text=True, env=ENGINE_ENV)
     if problems.returncode:
         raise RuntimeError(problems.stderr.strip())
@@ -39,15 +47,44 @@ def status():
     for record in records:
         if record.get('unreadable') or not record.get('text', record.get('text_en')):
             raise RuntimeError(str(record))
-    errors = '\n\n'.join(record.get('text', record.get('text_en', '')) for record in records)
-    return dict(installed=installed, active=active, title=text['title'],
+    errors = '\n\n'.join('\n'.join(filter(None, [record.get('text', record.get('text_en', '')),
+                                                  record.get('output', '').strip()])) for record in records)
+    return dict(installed=installed, active=running, title=text['title'],
                 description=text['description'], button=text['remove' if installed else 'install'],
-                state=text['installed' if installed else 'absent'] + ' · ' + text['active' if active else 'inactive'],
-                restart=text['restart'] if installed and chosen and not active else '', error=errors)
+                state=text['installed' if installed else 'absent'] + ' · ' + text['active' if running else 'inactive'],
+                restart=text['restart'] if installed and chosen and not running and not systemd_running() else '', error=errors)
+
+
+def change(operation):
+    """Run the entire transaction under the engine's one failure/repair record."""
+    text = messages()
+    manager = systemd_running()
+    if operation == 'remove':
+        if manager:
+            # Do not reset the device or remove its provider if swapoff failed.
+            subprocess.run(['/usr/bin/systemctl', 'stop', 'dev-zram0.swap'], check=True)
+        if active():
+            raise RuntimeError(text['active'])
+        if manager:
+            subprocess.run(['/usr/bin/systemctl', 'stop', 'systemd-zram-setup@zram0.service'], check=True)
+    command = ['/usr/bin/apt-get', '-y']
+    command += ['--no-remove', 'install', TARGET] if operation == 'install' else ['remove', TARGET]
+    subprocess.run(command, check=True, env=dict(ENGINE_ENV, DEBIAN_FRONTEND='noninteractive'))
+    if operation == 'install':
+        if not manager:
+            print(text['restart'])
+            return
+        # An already installed automatic generator still needs a fresh evaluation
+        # after apt marks the person's explicit choice as manual.
+        subprocess.run(['/usr/bin/systemctl', 'daemon-reload'], check=True)
+        subprocess.run(['/usr/bin/systemctl', 'start', 'dev-zram0.swap'], check=True)
+        # A skipped ExecCondition is successful to systemd, but is not active swap.
+        if not active():
+            raise RuntimeError(text['inactive'])
 
 
 def main():
-    if len(sys.argv) != 2 or sys.argv[1] not in ('status', 'install', 'remove'):
+    if len(sys.argv) != 2 or sys.argv[1] not in ('status', 'install', 'remove', '--install', '--remove'):
         return 2
     operation = sys.argv[1]
     if operation == 'status':
@@ -56,24 +93,21 @@ def main():
     if os.geteuid() != 0:
         print(messages()['authorization'], file=sys.stderr)
         return 1
+    if operation.startswith('--'):
+        change(operation[2:])
+        return 0
     # Fixed program and arguments, no shell, configuration path or package supplied by the caller.
-    command = ['/usr/bin/apt-get', '-y']
-    if operation == 'install':
-        command += ['--no-remove', 'install', TARGET]
-    else:
-        command += ['remove', TARGET]
-    env = dict(ENGINE_ENV, DEBIAN_FRONTEND='noninteractive')
     result = subprocess.run([ENGINE, 'run', '--machine', '--repair', json.dumps([ACTION, operation]),
-                             PACKAGE, 'zram', 'LOCAL90', '--', *command], env=env)
-    if result.returncode == 0 and operation == 'install':
-        # Debian's generator sets the device up on the next manager boot.
-        print(messages()['restart'])
+                             PACKAGE, 'zram', 'LOCAL90', '--', ACTION, '--' + operation], env=ENGINE_ENV)
     return result.returncode
 
 
 if __name__ == '__main__':
     try:
         sys.exit(main())
+    except subprocess.CalledProcessError as error:
+        print(str(error), file=sys.stderr)
+        sys.exit(error.returncode if error.returncode > 0 else 1)
     except (OSError, ValueError, RuntimeError) as error:
         print(str(error), file=sys.stderr)
         sys.exit(1)

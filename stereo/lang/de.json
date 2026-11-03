@@ -8,9 +8,9 @@
   "install": "Installieren",
   "remove": "Deinstallieren",
   "categories": "SparkyLinux-Anwendungen",
-  "restart": "Startet nach einem Neustart.",
+  "restart": "systemd läuft hier nicht. Startet nach einem Neustart.",
   "description": "Komprimiert ausgelagerte Seiten im RAM. Die Edition lässt dies standardmäßig ausgeschaltet und verwendet Cushion Swap auf dem Laufwerk.",
   "authorization": "Zum Ändern der zram-Pakete ist eine Autorisierung erforderlich.",
-  "failure": "Der zram-Paketvorgang ist fehlgeschlagen: %s (Status %s). Prüfen Sie die Ausgabe der Paketverwaltung und versuchen Sie es erneut.",
+  "failure": "Die Änderung von zram ist fehlgeschlagen: %s (Exit-Code %s). Prüfen Sie die Ausgabe und versuchen Sie es erneut.",
   "credit": "Sparky Stereo OS, Daniel Ramos's edition of SparkyLinux (by Paweł \"pavroo\" Pijanowski)"
 }

@@ -12,6 +12,10 @@ from common import ACTION, PACKAGE, messages
 
 ENGINE = '/usr/bin/sparky-stereo-problems'
 TARGET = 'systemd-zram-generator'
+# This fixed-purpose helper has its own polkit authorization. The engine's
+# PKEXEC_UID check protects direct invocations of its general-purpose CLI.
+ENGINE_ENV = dict(os.environ, PATH='/usr/sbin:/usr/bin:/sbin:/bin')
+ENGINE_ENV.pop('PKEXEC_UID', None)
 
 
 def status():
@@ -22,7 +26,7 @@ def status():
         raise RuntimeError(query.stderr.strip())
     installed = query.returncode == 0 and query.stdout == 'installed'
     active = any(line.split()[0] == '/dev/zram0' for line in Path('/proc/swaps').read_text().splitlines()[1:] if line.split())
-    problems = subprocess.run([ENGINE, 'list', '--json', PACKAGE], capture_output=True, text=True)
+    problems = subprocess.run([ENGINE, 'list', '--json', PACKAGE], capture_output=True, text=True, env=ENGINE_ENV)
     if problems.returncode:
         raise RuntimeError(problems.stderr.strip())
     records = json.loads(problems.stdout)
@@ -54,7 +58,7 @@ def main():
         command += ['--no-remove', 'install', TARGET]
     else:
         command += ['remove', TARGET]
-    env = dict(os.environ, DEBIAN_FRONTEND='noninteractive', PATH='/usr/sbin:/usr/bin:/sbin:/bin')
+    env = dict(ENGINE_ENV, DEBIAN_FRONTEND='noninteractive')
     result = subprocess.run([ENGINE, 'run', '--machine', '--repair', json.dumps([ACTION, operation]),
                              PACKAGE, 'zram', 'LOCAL90', '--', *command], env=env)
     if result.returncode == 0 and operation == 'install':

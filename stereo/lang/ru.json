@@ -1,0 +1,16 @@
+{
+  "system": "Система",
+  "title": "Сжатая подкачка в ОЗУ (zram)",
+  "installed": "Установлено",
+  "absent": "Не установлено",
+  "active": "zram0 активен",
+  "inactive": "zram0 неактивен",
+  "install": "Установить",
+  "remove": "Удалить",
+  "categories": "Приложения SparkyLinux",
+  "restart": "Начнёт работать после перезагрузки.",
+  "description": "Сжимает страницы подкачки в ОЗУ. В этой редакции функция по умолчанию отключена, используется Cushion Swap на диске.",
+  "authorization": "Для изменения пакетов zram требуется авторизация.",
+  "failure": "Ошибка операции с пакетом zram: %s (код %s). Проверьте вывод менеджера пакетов и повторите попытку.",
+  "credit": "Sparky Stereo OS, Daniel Ramos's edition of SparkyLinux (by Paweł \"pavroo\" Pijanowski)"
+}

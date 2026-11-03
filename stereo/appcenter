@@ -1,0 +1,59 @@
+#!/usr/bin/python3
+# SPDX-FileCopyrightText: 2026 Daniel Ramos (Capitain Jack)
+# SPDX-License-Identifier: GPL-3.0-or-later
+import html
+import json
+import os
+from pathlib import Path
+import re
+import subprocess
+import sys
+import tempfile
+from common import ACTION, BASE, messages, language
+
+
+def render():
+    text = messages()
+    result = subprocess.run([ACTION, 'status'], capture_output=True, text=True)
+    if result.returncode:
+        raise RuntimeError(result.stderr.strip())
+    state = json.loads(result.stdout)
+    original = Path('/usr/lib/sparky-aptus-appcenter')
+    page = (original / 'index.html').read_text()
+    # Read his category links at runtime, so additions and translated names stay his.
+    categories = re.findall(r'<a href="([^"/]+\.html)" class="button">(.*?)</a>', page, re.S)
+    links = ''.join(f'<a class="category" href="{(original / target).as_uri()}">{label}</a>' for target, label in categories)
+    e = html.escape
+    operation = 'remove' if state['installed'] else 'install'
+    return f'''<!doctype html><html lang="{language()}"><meta charset="utf-8">
+<base href="{original.as_uri()}/"><title>Stereo APTus</title>
+<script src="js/lang.js"></script>
+<style>body{{font:18px sans-serif;max-width:900px;margin:32px auto;padding:0 20px;color:#202428;background:#f5f7fa}}section{{background:white;border:1px solid #ccd5df;border-radius:8px;padding:24px;margin-bottom:24px}}a{{color:#124e92}}.category{{display:inline-block;padding:14px;min-width:220px}}.action{{display:inline-block;background:#124e92;color:white;padding:12px 26px;border-radius:5px}}.error{{white-space:pre-wrap;color:#9a1818}}h1{{font-size:28px}}</style>
+<h1>Stereo APTus</h1><section id="stereo-system"><h2>{e(text['system'])}</h2>
+<h3>{e(state['title'])}</h3><p>{e(state['description'])}</p><p id="zram-state">{e(state['state'])}</p>
+<p>{e(state['restart'])}</p><p class="error">{e(state['error'])}</p>
+<a class="action" href="aptus://stereo_zram_{operation}">{e(state['button'])}</a></section>
+<section id="pawel-categories"><h2>{e(text['categories'])}</h2>{links}</section>
+<footer>{e(text['credit'])}</footer></html>'''.replace('\n+', '\n')
+
+
+if __name__ == '__main__':
+    try:
+        page = render()
+        if sys.argv[1:] == ['--render']:
+            print(page)
+            sys.exit(0)
+        with tempfile.TemporaryDirectory(prefix='sparky-aptus-stereo-') as directory:
+            path = Path(directory) / 'index.html'
+            path.write_text(page)
+            # Paweł's pages select translations through YAD's user-agent.
+            code = {'pt_BR': 'pt', 'pt_PT': 'pt', 'es_AR': 'es', 'es_ES': 'es'}.get(language(), language())
+            if not (Path('/usr/lib/sparky-aptus-appcenter/lang/main') / (code + '.js')).exists():
+                code = 'en'
+            subprocess.run(['yad', '--html', '--browser', '--width=1050', '--height=780',
+                            '--title=Stereo APTus', '--uri=' + path.as_uri(),
+                            '--user-agent=' + code, '--uri-handler=' + str(BASE / 'handler')])
+    except (OSError, ValueError, RuntimeError) as error:
+        print(str(error), file=sys.stderr)
+        subprocess.run(['yad', '--error', '--title=Stereo APTus', '--text=' + str(error)])
+        sys.exit(1)

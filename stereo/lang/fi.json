@@ -1,0 +1,16 @@
+{
+  "system": "Järjestelmä",
+  "title": "Pakattu RAM-sivutustila (zram)",
+  "installed": "Asennettu",
+  "absent": "Ei asennettu",
+  "active": "zram0 käytössä",
+  "inactive": "zram0 ei käytössä",
+  "install": "Asenna",
+  "remove": "Poista",
+  "categories": "SparkyLinux-sovellukset",
+  "restart": "Käynnistyy uudelleenkäynnistyksen jälkeen.",
+  "description": "Pakkaa sivutettuja sivuja RAM-muistiin. Tämä versio pitää toiminnon oletuksena pois käytöstä ja käyttää levyllä olevaa Cushion Swapia.",
+  "authorization": "Zram-pakettien muuttaminen vaatii valtuutuksen.",
+  "failure": "Zram-paketin toiminto epäonnistui: %s (koodi %s). Tarkista paketinhallinnan tuloste ja yritä uudelleen.",
+  "credit": "Sparky Stereo OS, Daniel Ramos's edition of SparkyLinux (by Paweł \"pavroo\" Pijanowski)"
+}

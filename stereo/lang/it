@@ -1,0 +1,2 @@
+LOCAL1="Swap compresso nella RAM (zram)"
+LOCAL90="Operazione sul pacchetto zram non riuscita: %s (codice %s). Controllare l’output del gestore pacchetti e riprovare."

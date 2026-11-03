@@ -1,0 +1,71 @@
+#!/usr/bin/python3
+# SPDX-FileCopyrightText: 2026 Daniel Ramos (Capitain Jack)
+# SPDX-License-Identifier: GPL-3.0-or-later
+"""The one zram package action shared by Stereo APTus and the Memory KCM."""
+import json
+import os
+from pathlib import Path
+import subprocess
+import sys
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+from common import ACTION, PACKAGE, messages
+
+ENGINE = '/usr/bin/sparky-stereo-problems'
+TARGET = 'systemd-zram-generator'
+
+
+def status():
+    text = messages()
+    query = subprocess.run(['/usr/bin/dpkg-query', '-W', '-f=${db:Status-Status}', TARGET],
+                           capture_output=True, text=True)
+    if query.returncode not in (0, 1):
+        raise RuntimeError(query.stderr.strip())
+    installed = query.returncode == 0 and query.stdout == 'installed'
+    active = any(line.split()[0] == '/dev/zram0' for line in Path('/proc/swaps').read_text().splitlines()[1:] if line.split())
+    problems = subprocess.run([ENGINE, 'list', '--json', PACKAGE], capture_output=True, text=True)
+    if problems.returncode:
+        raise RuntimeError(problems.stderr.strip())
+    records = json.loads(problems.stdout)
+    if isinstance(records, dict):
+        records = records.get('problems', [])
+    for record in records:
+        if record.get('unreadable') or not record.get('text', record.get('text_en')):
+            raise RuntimeError(str(record))
+    errors = '\n\n'.join(record.get('text', record.get('text_en', '')) for record in records)
+    return dict(installed=installed, active=active, title=text['title'],
+                description=text['description'], button=text['remove' if installed else 'install'],
+                state=text['installed' if installed else 'absent'] + ' · ' + text['active' if active else 'inactive'],
+                restart=text['restart'] if installed and not active else '', error=errors)
+
+
+def main():
+    if len(sys.argv) != 2 or sys.argv[1] not in ('status', 'install', 'remove'):
+        return 2
+    operation = sys.argv[1]
+    if operation == 'status':
+        print(json.dumps(status(), ensure_ascii=False))
+        return 0
+    if os.geteuid() != 0:
+        print(messages()['authorization'], file=sys.stderr)
+        return 1
+    # Fixed program and arguments, no shell, configuration path or package supplied by the caller.
+    command = ['/usr/bin/apt-get', '-y']
+    if operation == 'install':
+        command += ['--no-remove', 'install', TARGET]
+    else:
+        command += ['remove', TARGET]
+    env = dict(os.environ, DEBIAN_FRONTEND='noninteractive', PATH='/usr/sbin:/usr/bin:/sbin:/bin')
+    result = subprocess.run([ENGINE, 'run', '--machine', '--repair', json.dumps([ACTION, operation]),
+                             PACKAGE, 'zram', 'LOCAL90', '--', *command], env=env)
+    if result.returncode == 0 and operation == 'install':
+        # Debian's generator sets the device up on the next manager boot.
+        print(messages()['restart'])
+    return result.returncode
+
+
+if __name__ == '__main__':
+    try:
+        sys.exit(main())
+    except (OSError, ValueError, RuntimeError) as error:
+        print(str(error), file=sys.stderr)
+        sys.exit(1)

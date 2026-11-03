@@ -1,0 +1,16 @@
+{
+  "system": "Sistem",
+  "title": "Swap RAM terkompresi (zram)",
+  "installed": "Terpasang",
+  "absent": "Belum terpasang",
+  "active": "zram0 aktif",
+  "inactive": "zram0 tidak aktif",
+  "install": "Pasang",
+  "remove": "Hapus",
+  "categories": "Aplikasi SparkyLinux",
+  "restart": "Berjalan setelah dimulai ulang.",
+  "description": "Mengompresi halaman swap di RAM. Edisi ini menonaktifkannya secara bawaan dan menggunakan Cushion Swap di disk.",
+  "authorization": "Otorisasi diperlukan untuk mengubah paket zram.",
+  "failure": "Operasi paket zram gagal: %s (kode %s). Periksa keluaran pengelola paket dan coba lagi.",
+  "credit": "Sparky Stereo OS, Daniel Ramos's edition of SparkyLinux (by Paweł \"pavroo\" Pijanowski)"
+}

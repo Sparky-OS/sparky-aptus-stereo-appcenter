@@ -1,0 +1,16 @@
+{
+  "system": "Σύστημα",
+  "title": "Συμπιεσμένη εναλλαγή στη RAM (zram)",
+  "installed": "Εγκατεστημένο",
+  "absent": "Μη εγκατεστημένο",
+  "active": "zram0 ενεργό",
+  "inactive": "zram0 ανενεργό",
+  "install": "Εγκατάσταση",
+  "remove": "Απεγκατάσταση",
+  "categories": "Εφαρμογές SparkyLinux",
+  "restart": "Ξεκινά μετά από επανεκκίνηση.",
+  "description": "Συμπιέζει σελίδες εναλλαγής στη RAM. Η έκδοση το αφήνει απενεργοποιημένο από προεπιλογή και χρησιμοποιεί το Cushion Swap στον δίσκο.",
+  "authorization": "Απαιτείται εξουσιοδότηση για αλλαγή πακέτων zram.",
+  "failure": "Η λειτουργία του πακέτου zram απέτυχε: %s (κωδικός %s). Ελέγξτε την έξοδο του διαχειριστή πακέτων και δοκιμάστε ξανά.",
+  "credit": "Sparky Stereo OS, Daniel Ramos's edition of SparkyLinux (by Paweł \"pavroo\" Pijanowski)"
+}

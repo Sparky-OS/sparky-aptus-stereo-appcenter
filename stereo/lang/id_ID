@@ -1,0 +1,2 @@
+LOCAL1="Swap RAM terkompresi (zram)"
+LOCAL90="Operasi paket zram gagal: %s (kode %s). Periksa keluaran pengelola paket dan coba lagi."

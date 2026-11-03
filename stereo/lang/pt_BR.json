@@ -1,0 +1,16 @@
+{
+  "system": "Sistema",
+  "title": "Swap comprimido na RAM (zram)",
+  "installed": "Instalado",
+  "absent": "Não instalado",
+  "active": "zram0 ativo",
+  "inactive": "zram0 inativo",
+  "install": "Instalar",
+  "remove": "Desinstalar",
+  "categories": "Aplicativos do SparkyLinux",
+  "restart": "Inicia após reiniciar.",
+  "description": "Comprime páginas de swap na RAM. A edição o mantém desligado por padrão e usa Cushion Swap no disco.",
+  "authorization": "É necessária autorização para alterar os pacotes de zram.",
+  "failure": "A operação do pacote zram falhou: %s (código %s). Verifique a saída do gerenciador de pacotes e tente novamente.",
+  "credit": "Sparky Stereo OS, Daniel Ramos's edition of SparkyLinux (by Paweł \"pavroo\" Pijanowski)"
+}

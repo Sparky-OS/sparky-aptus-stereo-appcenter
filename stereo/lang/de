@@ -1,0 +1,2 @@
+LOCAL1="Komprimierter RAM-Auslagerungsspeicher (zram)"
+LOCAL90="Der zram-Paketvorgang ist fehlgeschlagen: %s (Status %s). Prüfen Sie die Ausgabe der Paketverwaltung und versuchen Sie es erneut."

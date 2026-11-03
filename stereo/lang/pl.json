@@ -1,0 +1,16 @@
+{
+  "system": "System",
+  "title": "Skompresowana pamięć wymiany w RAM (zram)",
+  "installed": "Zainstalowano",
+  "absent": "Nie zainstalowano",
+  "active": "zram0 aktywne",
+  "inactive": "zram0 nieaktywne",
+  "install": "Zainstaluj",
+  "remove": "Odinstaluj",
+  "categories": "Programy SparkyLinux",
+  "restart": "Uruchomi się po ponownym uruchomieniu systemu.",
+  "description": "Kompresuje strony pamięci wymiany w RAM. Edycja domyślnie pozostawia tę funkcję wyłączoną i używa Cushion Swap na dysku.",
+  "authorization": "Zmiana pakietów zram wymaga uwierzytelnienia.",
+  "failure": "Operacja na pakiecie zram nie powiodła się: %s (kod %s). Sprawdź komunikaty menedżera pakietów i spróbuj ponownie.",
+  "credit": "Sparky Stereo OS, Daniel Ramos's edition of SparkyLinux (by Paweł \"pavroo\" Pijanowski)"
+}

@@ -1,0 +1,16 @@
+{
+  "system": "Система",
+  "title": "Стиснена підкачка в оперативній пам’яті (zram)",
+  "installed": "Встановлено",
+  "absent": "Не встановлено",
+  "active": "zram0 активний",
+  "inactive": "zram0 неактивний",
+  "install": "Встановити",
+  "remove": "Видалити",
+  "categories": "Програми SparkyLinux",
+  "restart": "Запрацює після перезавантаження.",
+  "description": "Стискає сторінки підкачки в оперативній пам’яті. У цій редакції функцію типово вимкнено, використовується Cushion Swap на диску.",
+  "authorization": "Для зміни пакунків zram потрібна авторизація.",
+  "failure": "Помилка операції з пакунком zram: %s (код %s). Перевірте вивід менеджера пакунків і повторіть спробу.",
+  "credit": "Sparky Stereo OS, Daniel Ramos's edition of SparkyLinux (by Paweł \"pavroo\" Pijanowski)"
+}

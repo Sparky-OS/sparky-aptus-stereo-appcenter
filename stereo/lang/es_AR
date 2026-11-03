@@ -1,0 +1,2 @@
+LOCAL1="Intercambio comprimido en RAM (zram)"
+LOCAL90="Falló la operación del paquete zram: %s (código %s). Revise la salida del gestor de paquetes e inténtelo de nuevo."

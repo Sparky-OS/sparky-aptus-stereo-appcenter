@@ -1,0 +1,16 @@
+{
+  "system": "系统",
+  "title": "RAM 压缩交换空间（zram）",
+  "installed": "已安装",
+  "absent": "未安装",
+  "active": "zram0 已启用",
+  "inactive": "zram0 未启用",
+  "install": "安装",
+  "remove": "卸载",
+  "categories": "SparkyLinux 应用程序",
+  "restart": "重启后开始运行。",
+  "description": "在 RAM 中压缩交换页。本版本默认关闭此功能，使用磁盘上的 Cushion Swap。",
+  "authorization": "更改 zram 软件包需要授权。",
+  "failure": "zram 软件包操作失败：%s（退出代码 %s）。请检查软件包管理器的输出并重试。",
+  "credit": "Sparky Stereo OS, Daniel Ramos's edition of SparkyLinux (by Paweł \"pavroo\" Pijanowski)"
+}

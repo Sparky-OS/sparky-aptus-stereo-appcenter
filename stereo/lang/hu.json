@@ -1,0 +1,16 @@
+{
+  "system": "Rendszer",
+  "title": "Tömörített RAM-csereterület (zram)",
+  "installed": "Telepítve",
+  "absent": "Nincs telepítve",
+  "active": "zram0 aktív",
+  "inactive": "zram0 inaktív",
+  "install": "Telepítés",
+  "remove": "Eltávolítás",
+  "categories": "SparkyLinux-alkalmazások",
+  "restart": "Újraindítás után indul el.",
+  "description": "A RAM-ban tömöríti a kilapozott oldalakat. A kiadás alapértelmezésben kikapcsolva hagyja, és a lemezen lévő Cushion Swapot használja.",
+  "authorization": "A zram csomagok módosításához hitelesítés szükséges.",
+  "failure": "A zram csomagművelet sikertelen: %s (kód: %s). Ellenőrizze a csomagkezelő kimenetét, majd próbálja újra.",
+  "credit": "Sparky Stereo OS, Daniel Ramos's edition of SparkyLinux (by Paweł \"pavroo\" Pijanowski)"
+}

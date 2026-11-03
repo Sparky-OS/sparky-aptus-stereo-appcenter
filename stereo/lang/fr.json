@@ -1,0 +1,16 @@
+{
+  "system": "Système",
+  "title": "Mémoire d’échange compressée en RAM (zram)",
+  "installed": "Installé",
+  "absent": "Non installé",
+  "active": "zram0 actif",
+  "inactive": "zram0 inactif",
+  "install": "Installer",
+  "remove": "Désinstaller",
+  "categories": "Applications SparkyLinux",
+  "restart": "Démarre après un redémarrage.",
+  "description": "Compresse les pages échangées en RAM. L’édition le laisse désactivé par défaut et utilise Cushion Swap sur disque.",
+  "authorization": "Une autorisation est nécessaire pour modifier les paquets zram.",
+  "failure": "L’opération sur le paquet zram a échoué : %s (code %s). Vérifiez la sortie du gestionnaire de paquets et réessayez.",
+  "credit": "Sparky Stereo OS, Daniel Ramos's edition of SparkyLinux (by Paweł \"pavroo\" Pijanowski)"
+}

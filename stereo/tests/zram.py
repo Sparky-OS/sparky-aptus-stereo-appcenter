@@ -24,12 +24,15 @@ class Transaction(unittest.TestCase):
         self.result = "success"
         self.size = 0
         self.hidden_stop_failure = False
+        self.masked = False
+        self.inhibitor_start = False
         self.patches = [
             patch.object(zram, 'messages', return_value={'restart':'No running systemd. Starts after restart.', 'active':'active', 'inactive':'inactive'}),
             patch.object(zram, 'systemd_running', create=True, side_effect=lambda: self.manager),
             patch.object(zram, 'active', create=True, side_effect=lambda: self.swap),
             patch.object(zram, 'disk_size', create=True, side_effect=lambda: self.size),
             patch.object(zram.subprocess, 'run', side_effect=self.run_command),
+            patch.object(zram.os.path, 'lexists', return_value=False),
             patch.object(zram.os, 'geteuid', return_value=0),
         ]
         for p in self.patches: p.start()
@@ -37,6 +40,10 @@ class Transaction(unittest.TestCase):
 
     def run_command(self, command, **kwargs):
         self.commands.append(command)
+        if 'mask' in command: self.masked=True
+        if 'unmask' in command: self.masked=False
+        if command[0].endswith('apt-get') and 'remove' in command and self.inhibitor_start and not self.masked:
+            self.swap=True
         if self.failure and self.failure in command:
             raise subprocess.CalledProcessError(7, command)
         if command[:3] == ['/usr/bin/systemctl','start','dev-zram0.swap'] and not self.skip_start:
@@ -66,13 +73,14 @@ class Transaction(unittest.TestCase):
         self.change('remove')
         self.assertFalse(self.swap)
         self.assertEqual([c for c in self.commands if 'stop' in c], [['/usr/bin/systemctl','stop','dev-zram0.swap'], ['/usr/bin/systemctl','stop','systemd-zram-setup@zram0.service']])
-        self.assertEqual(self.commands[-1], ['/usr/bin/apt-get','-y','remove','systemd-zram-generator'])
+        self.assertIn(['/usr/bin/apt-get','-y','remove','systemd-zram-generator'],self.commands)
 
     def test_failed_swap_stop_preserves_provider_and_setup(self):
         self.swap=True
-        self.failure='dev-zram0.swap'
+        self.failure='stop'
         with self.assertRaises(subprocess.CalledProcessError): self.change('remove')
-        self.assertEqual(len(self.commands),1)
+        self.assertFalse(any(c[0].endswith('apt-get') for c in self.commands))
+        self.assertFalse(self.masked)
 
     def test_failed_setup_stop_preserves_provider(self):
         self.failure='systemd-zram-setup@zram0.service'
@@ -127,6 +135,25 @@ class Transaction(unittest.TestCase):
         self.failure='--reset-device'
         with self.assertRaises(subprocess.CalledProcessError): zram.change('remove',repair=True)
         self.assertFalse(any(c[0].endswith('apt-get') for c in self.commands))
+
+    def test_apt_inhibitor_cannot_reactivate_swap(self):
+        self.inhibitor_start=True
+        self.swap=True
+        self.change('remove')
+        self.assertFalse(self.swap)
+        self.assertFalse(self.masked)
+
+    def test_existing_runtime_mask_is_preserved(self):
+        self.masked=True
+        with patch.object(zram.os.path, 'lexists', return_value=True):
+            self.change('remove')
+        self.assertTrue(self.masked)
+        self.assertFalse(any('unmask' in c for c in self.commands))
+
+    def test_apt_failure_releases_only_our_mask(self):
+        self.failure='remove'
+        with self.assertRaises(subprocess.CalledProcessError): self.change('remove')
+        self.assertFalse(self.masked)
 
     def test_engine_covers_complete_change_and_repairs_public_action(self):
         import json

@@ -62,6 +62,21 @@ def disk_size():
 
 
 def change(operation, repair=False):
+    # APT can activate logind for its inhibitor, pulling swap.target back in.
+    # Keep this unit stopped throughout removal without changing user masks.
+    owned_mask = False
+    try:
+        if operation == 'remove' and systemd_running():
+            existing = os.path.lexists('/run/systemd/system/dev-zram0.swap')
+            subprocess.run(['/usr/bin/systemctl', 'mask', '--runtime', 'dev-zram0.swap'], check=True)
+            owned_mask = not existing
+        transaction(operation, repair)
+    finally:
+        if owned_mask:
+            subprocess.run(['/usr/bin/systemctl', 'unmask', '--runtime', 'dev-zram0.swap'], check=True)
+
+
+def transaction(operation, repair=False):
     """Run the entire transaction under the engine's one failure/repair record."""
     text = messages()
     manager = systemd_running()
@@ -91,6 +106,8 @@ def change(operation, repair=False):
     command = ['/usr/bin/apt-get', '-y']
     command += ['--no-remove', 'install', TARGET] if operation == 'install' else ['remove', TARGET]
     subprocess.run(command, check=True, env=dict(ENGINE_ENV, DEBIAN_FRONTEND='noninteractive'))
+    if operation == 'remove' and active():
+        raise RuntimeError(text['active'])
     if operation == 'install':
         if not manager:
             print(text['restart'])

@@ -48,6 +48,7 @@ def status():
     for record in records:
         if record.get('unreadable') or not record.get('text', record.get('text_en')):
             raise RuntimeError(str(record))
+    records = [record for record in records if record.get('key') == 'zram']
     errors = '\n\n'.join('\n'.join(filter(None, [record.get('text', record.get('text_en', '')),
                                                   record.get('output', '').strip()])) for record in records)
     return dict(installed=installed, active=running, title=text['title'],

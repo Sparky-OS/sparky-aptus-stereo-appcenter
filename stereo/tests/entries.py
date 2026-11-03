@@ -99,6 +99,16 @@ class Transactions(unittest.TestCase):
         sections = ['stereo-emulation','stereo-media','stereo-vr','stereo-drivers','stereo-system','pawel-categories']
         self.assertEqual(sorted(sections,key=lambda name:html.index('id="'+name+'"')),sections)
 
+    def test_zram_does_not_show_another_entry_failure(self):
+        spec = importlib.util.spec_from_loader('zram_status', importlib.machinery.SourceFileLoader('zram_status', str(SOURCE/'actions/zram')))
+        zram = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(zram)
+        records=[dict(key='slimevr-driver',text='checksum failure',output='SHA-256')]
+        results=[subprocess.CompletedProcess([],1,''),subprocess.CompletedProcess([],0,''),
+                 subprocess.CompletedProcess([],0,json.dumps(records))]
+        with patch.object(zram.subprocess,'run',side_effect=results), patch.object(zram,'active',return_value=False):
+            self.assertEqual(zram.status()['error'],'')
+
     def test_catalogues(self):
         english=json.loads((SOURCE/'lang/en.json').read_text())
         import string

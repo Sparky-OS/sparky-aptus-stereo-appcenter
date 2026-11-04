@@ -50,7 +50,9 @@ def render():
                 note += f'<p><a href="{e(row["documentation"])}">{e(text["download_note"])}</a></p>'
                 if selected:
                     note += f'<p>{e("/var/cache/sparky-aptus-stereo-appcenter/" + row["filename"])}</p>'
-            if current.get('download'):
+            if current.get('download') and current['download'].get('error'):
+                note += f'<p class="error">{e(current["download"]["error"])}</p>'
+            elif current.get('download'):
                 # the install-time download this entry brings, with its size and source, before the person installs (apt shows the same words)
                 lines = ''.join(f'<span>{e(line)}</span><br>' for line in current['download']['text'])
                 note += f'<p class="download">{lines}</p>'

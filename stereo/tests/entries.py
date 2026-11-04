@@ -171,8 +171,9 @@ class Transactions(unittest.TestCase):
         self.assertEqual(notes(('yes', 'yes'), changes=[package('flightgear', {})]), {})
         # a package whose installed version declares the same download keeps its data
         self.assertEqual(notes(('yes', 'yes'), changes=[package('flightgear-data-installer', declared, installed=declared, mark='upgrade')]), {})
-        with self.assertRaisesRegex(RuntimeError, 'flightgear-data-installer'):
-            notes(('yes', 'yes'), changes=[package('flightgear-data-installer', {'Install-Download-Size': 'many', 'Install-Download-Source': 'https://x'})])
+        said = notes(('yes', 'yes'), changes=[package('flightgear-data-installer', {'Install-Download-Size': 'many', 'Install-Download-Source': 'https://x'})])
+        self.assertIn('could not be checked', said['flightgear']['error'])
+        self.assertIn('flightgear-data-installer', said['flightgear']['error'])
 
     def test_page_shows_the_note_beside_the_entry(self):
         spec = importlib.util.spec_from_loader('page2', importlib.machinery.SourceFileLoader('page2', str(SOURCE/'appcenter')))

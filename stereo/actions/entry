@@ -122,7 +122,12 @@ def downloads_note(cache, installed_now, rows):
     for row in rows:
         if row['kind'] != 'apt' or installed_now[row['id']] or row['package'] not in cache or mode == 'never':
             continue
-        found = planned_downloads(cache, row['package'])
+        try:
+            found = planned_downloads(cache, row['package'])
+        except RuntimeError as error:
+            # said on the entry, in the person's language; the page and the other entries go on
+            notes[row['id']] = {'error': reader.messages()['unchecked'].format(why=error)}
+            continue
         if not found:
             continue
         if state is None:

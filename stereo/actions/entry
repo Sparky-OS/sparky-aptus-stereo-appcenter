@@ -11,7 +11,7 @@ import subprocess
 import sys
 import tempfile
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
-from common import BASE, PACKAGE, messages
+from common import BASE, PACKAGE, messages, install_downloads
 from catalogue import entries, entry
 
 ENGINE = '/usr/bin/sparky-stereo-problems'
@@ -68,6 +68,71 @@ def installed(row):
     return result.returncode == 0 and result.stdout == 'installed'
 
 
+def planned_downloads(cache, name):
+    """The install-time downloads that installing NAME brings: the declaration of every package apt would install or upgrade for it
+    (the same reading as apt's own notice, install_downloads()), except a package whose installed version declares the same download."""
+    reader = install_downloads()
+    package = cache[name]
+    try:
+        package.mark_install()
+    except Exception as error:
+        raise RuntimeError('%s: %s' % (name, error))
+    found = []
+    try:
+        for changed in cache.get_changes():
+            if not (changed.marked_install or changed.marked_upgrade or changed.marked_downgrade):
+                continue
+            candidate = changed.candidate
+            try:
+                now = reader.declaration(candidate.record)
+            except ValueError as error:
+                raise RuntimeError('%s: %s' % (changed.name, error))
+            if not now:
+                continue
+            if changed.installed:
+                try:
+                    before = reader.declaration(changed.installed.record)
+                except ValueError:
+                    before = None
+                if before == now:
+                    continue
+            found.append({'package': changed.name, 'version': candidate.version, 'size': now['size'], 'source': now['source']})
+    finally:
+        # leave the cache as it was found for the next entry
+        for changed in list(cache.get_changes()):
+            changed.mark_keep()
+    return found
+
+
+def announce_setting(reader):
+    """Sparky::Install-Downloads::Announce of apt's configuration (metered, always or never): the setting apt's own notice follows."""
+    import apt_pkg
+    apt_pkg.init_config()
+    mode, problem = reader.announce_mode(apt_pkg.config.find(reader.OPTION, ''))
+    if problem:
+        raise RuntimeError(problem)
+    return mode
+
+
+def downloads_note(cache, installed_now, rows):
+    """For each entry that is not installed: the notice about its install-time downloads, or None. NetworkManager is asked once."""
+    reader = install_downloads()
+    mode = announce_setting(reader)
+    notes, state = {}, None
+    for row in rows:
+        if row['kind'] != 'apt' or installed_now[row['id']] or row['package'] not in cache or mode == 'never':
+            continue
+        found = planned_downloads(cache, row['package'])
+        if not found:
+            continue
+        if state is None:
+            state = reader.metered() if mode == 'metered' else ('no', 'not asked')
+        result = reader.assess(found, mode, 'asked', state)
+        if result['announce']:
+            notes[row['id']] = {'state': result['state'], 'downloads': result['downloads'], 'text': result['text'][:-1]}
+    return notes
+
+
 def status():
     import apt
     cache, patterns = apt.Cache(), only_ours()
@@ -81,8 +146,12 @@ def status():
         if record.get('unreadable') or not record.get('text', record.get('text_en')):
             raise RuntimeError(str(record))
         errors[record['key']] = '\n'.join(filter(None, [record.get('text', record.get('text_en')), record.get('output')]))
-    return {row['id']: dict(installed=installed(row), error=errors.get(row['id'], ''),
-                           visible=visible(row, cache, patterns)) for row in entries()}
+    rows = entries()
+    present = {row['id']: installed(row) for row in rows}
+    shown = [row for row in rows if visible(row, cache, patterns)]
+    notes = downloads_note(cache, present, shown)
+    return {row['id']: dict(installed=present[row['id']], error=errors.get(row['id'], ''),
+                           visible=visible(row, cache, patterns), download=notes.get(row['id'])) for row in rows}
 
 
 def apt_change(row, operation):

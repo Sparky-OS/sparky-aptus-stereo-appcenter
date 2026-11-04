@@ -70,6 +70,13 @@
     "package": "filmcraft"
   },
   {
+    "id": "flightgear",
+    "name": "FlightGear",
+    "section": "media",
+    "kind": "apt",
+    "package": "flightgear"
+  },
+  {
     "id": "grass",
     "name": "GRASS GIS",
     "section": "media",

@@ -26,3 +26,7 @@ Hardware Setup owns the NVIDIA and AMD choices.
 CODESYS 4 is a store link, with registration and the EULA managed by CODESYS.
 Every recognized changing action runs under the existing problems engine, with a fixed repair command.
 All other URIs and extra arguments pass to Paweł's installed handler unchanged.
+
+An entry that is not installed shows, beside its button, the install-time downloads it brings: the packages apt would install for it (python-apt marks them in memory, nothing changes) whose control file declares Install-Download-Size and Install-Download-Source, with the size and the source, on a metered connection (NetworkManager says yes or guess-yes) and also, said, when NetworkManager cannot be read.
+The declaration, the metered test, the setting Sparky::Install-Downloads::Announce and the words in the nine languages are those of sparky-stereo-apt's reader (/usr/lib/sparky-stereo-apt/sparky_install_downloads.py), the same one apt's own notice uses: one declaration, one reader, two front ends. A package that cannot be read is an error the page shows, never a missing note.
+FlightGear is an entry since 0.1.4: its data downloader, flightgear-data-installer, declares 1.75 GiB from SourceForge.

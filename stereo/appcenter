@@ -50,6 +50,10 @@ def render():
                 note += f'<p><a href="{e(row["documentation"])}">{e(text["download_note"])}</a></p>'
                 if selected:
                     note += f'<p>{e("/var/cache/sparky-aptus-stereo-appcenter/" + row["filename"])}</p>'
+            if current.get('download'):
+                # the install-time download this entry brings, with its size and source, before the person installs (apt shows the same words)
+                lines = ''.join(f'<span>{e(line)}</span><br>' for line in current['download']['text'])
+                note += f'<p class="download">{lines}</p>'
             cards.append(f'<article id="entry-{row["id"]}"><h3>{e(row["name"])}</h3>'
                          f'<p class="state">{e(indicator)}</p>{note}'
                          f'<p class="error">{e(current["error"])}</p>'
@@ -66,7 +70,7 @@ def render():
     return f'''<!doctype html><html lang="{language()}"><meta charset="utf-8">
 <base href="{original.as_uri()}/"><title>Stereo APTus</title>
 <script src="js/lang.js"></script>
-<style>body{{font:18px sans-serif;max-width:900px;margin:32px auto;padding:0 20px;color:#202428;background:#f5f7fa}}section{{background:white;border:1px solid #ccd5df;border-radius:8px;padding:24px;margin-bottom:24px}}a{{color:#124e92}}.category{{display:inline-block;padding:14px;min-width:220px}}.action{{display:inline-block;background:#124e92;color:white;padding:12px 26px;border-radius:5px}}.error{{white-space:pre-wrap;color:#9a1818}}h1{{font-size:28px}}h2{{font-size:22px;margin:0}}summary{{cursor:pointer}}summary h2{{display:inline}}.entries{{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:18px}}article{{border-top:1px solid #ccd5df;padding:12px;overflow-wrap:anywhere}}article h3{{margin:4px 0}}.state{{color:#37566c}}</style>
+<style>body{{font:18px sans-serif;max-width:900px;margin:32px auto;padding:0 20px;color:#202428;background:#f5f7fa}}section{{background:white;border:1px solid #ccd5df;border-radius:8px;padding:24px;margin-bottom:24px}}a{{color:#124e92}}.category{{display:inline-block;padding:14px;min-width:220px}}.action{{display:inline-block;background:#124e92;color:white;padding:12px 26px;border-radius:5px}}.error{{white-space:pre-wrap;color:#9a1818}}.download{{color:#5a3d00;background:#fff4d6;border-radius:5px;padding:8px}}h1{{font-size:28px}}h2{{font-size:22px;margin:0}}summary{{cursor:pointer}}summary h2{{display:inline}}.entries{{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:18px}}article{{border-top:1px solid #ccd5df;padding:12px;overflow-wrap:anywhere}}article h3{{margin:4px 0}}.state{{color:#37566c}}</style>
 <h1>Stereo APTus</h1>{"".join(sections)}<section id="stereo-system"><h2>{e(text['system'])}</h2>
 <h3>{e(state['title'])}</h3><p>{e(state['description'])}</p><p id="zram-state">{e(state['state'])}</p>
 <p>{e(state['restart'])}</p><p class="error">{e(state['error'])}</p>

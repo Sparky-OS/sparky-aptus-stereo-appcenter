@@ -9,11 +9,16 @@ import subprocess
 import sys
 import tempfile
 import types
+import os
 import unittest
 from unittest.mock import patch
 
 SOURCE = Path(sys.argv.pop(1)).resolve() if len(sys.argv) > 1 else Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(SOURCE))
+# the one reader of the install-time download declaration lives in sparky-stereo-apt; the tests use the build tree's copy
+READER = Path(os.environ.get('SPARKY_INSTALL_DOWNLOADS_LIB') or SOURCE.parents[1] / 'packages/sparky-stereo-apt/install-downloads')
+os.environ['SPARKY_INSTALL_DOWNLOADS_LIB'] = str(READER)
+os.environ['SPARKY_INSTALL_DOWNLOADS_LANG'] = str(READER / 'lang')
 import common
 common.BASE = SOURCE
 common.LANGDIR = SOURCE / 'lang'
@@ -132,6 +137,58 @@ class Transactions(unittest.TestCase):
                  subprocess.CompletedProcess([],0,json.dumps(records))]
         with patch.object(zram.subprocess,'run',side_effect=results), patch.object(zram,'active',return_value=False):
             self.assertEqual(zram.status()['error'],'')
+
+
+    def test_install_time_download_notice(self):
+        """A package an entry brings along declares a download: the note has its size and source, on a metered connection only."""
+        reader = common.install_downloads()
+        declared = {'Install-Download-Size': '1883333376', 'Install-Download-Source': 'https://sourceforge.net/x/download'}
+        def package(name, record, installed=None, mark='install'):
+            return types.SimpleNamespace(name=name, marked_install=mark == 'install', marked_upgrade=mark == 'upgrade', marked_downgrade=False,
+                                         candidate=types.SimpleNamespace(version='1', record=record),
+                                         installed=installed and types.SimpleNamespace(version='0', record=installed), mark_keep=lambda: None)
+        class Cache(dict):
+            changes = []
+            def get_changes(self): return self.changes
+        flightgear = types.SimpleNamespace(mark_install=lambda: None)
+        cache = Cache(flightgear=flightgear)
+        row = {'id': 'flightgear', 'kind': 'apt', 'package': 'flightgear'}
+        def notes(state, present=False, changes=None):
+            cache.changes = changes if changes is not None else [package('flightgear', {}), package('flightgear-data-installer', declared)]
+            with patch.object(reader, 'metered', return_value=state), patch.object(action, 'announce_setting', return_value='metered'):
+                return action.downloads_note(cache, {'flightgear': present}, [row])
+        shown = notes(('yes', 'yes'))
+        self.assertEqual(list(shown), ['flightgear'])
+        self.assertEqual(shown['flightgear']['downloads'][0]['size_text'], '1.75 GiB')
+        self.assertEqual(shown['flightgear']['downloads'][0]['source'], 'https://sourceforge.net/x/download')
+        self.assertTrue(any('1.75 GiB from https://sourceforge.net/x/download' in line for line in shown['flightgear']['text']))
+        self.assertFalse(any('Answer n' in line for line in shown['flightgear']['text']))
+        self.assertIn('metered', ' '.join(shown['flightgear']['text']))
+        self.assertEqual(notes(('no', 'no')), {})
+        self.assertIn('Could not tell', ' '.join(notes(('unknown', 'NetworkManager did not answer'))['flightgear']['text']))
+        self.assertEqual(notes(('yes', 'yes'), present=True), {})
+        self.assertEqual(notes(('yes', 'yes'), changes=[package('flightgear', {})]), {})
+        # a package whose installed version declares the same download keeps its data
+        self.assertEqual(notes(('yes', 'yes'), changes=[package('flightgear-data-installer', declared, installed=declared, mark='upgrade')]), {})
+        with self.assertRaisesRegex(RuntimeError, 'flightgear-data-installer'):
+            notes(('yes', 'yes'), changes=[package('flightgear-data-installer', {'Install-Download-Size': 'many', 'Install-Download-Source': 'https://x'})])
+
+    def test_page_shows_the_note_beside_the_entry(self):
+        spec = importlib.util.spec_from_loader('page2', importlib.machinery.SourceFileLoader('page2', str(SOURCE/'appcenter')))
+        page = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(page)
+        zram = dict(installed=False,title='zram',description='',state='absent',restart='',error='',button='Install')
+        states = {row['id']:dict(installed=False,error='',visible=True,download=None) for row in catalogue.entries()}
+        states['flightgear']['download'] = {'state': 'yes', 'downloads': [], 'text': ['This connection is metered (NetworkManager says: yes).',
+            'These packages download more data while they are installed:', '  flightgear-data-installer: 1.75 GiB from https://sourceforge.net/x/download']}
+        results = [subprocess.CompletedProcess([],0,json.dumps(zram)),subprocess.CompletedProcess([],0,json.dumps(states))]
+        with patch.object(page.subprocess,'run',side_effect=results):
+            html = page.render()
+        card = html[html.index('id="entry-flightgear"'):]
+        card = card[:card.index('</article>')]
+        self.assertIn('1.75 GiB from https://sourceforge.net/x/download', card)
+        self.assertIn('class="download"', card)
+        self.assertNotIn('class="download"', html[html.index('id="entry-bino"'):html.index('id="entry-bino"') + 400])
 
     def test_catalogues(self):
         english=json.loads((SOURCE/'lang/en.json').read_text())

@@ -143,7 +143,7 @@ class Transactions(unittest.TestCase):
     def test_install_time_download_notice(self):
         """A package an entry brings along declares a download: the note has its size and source, on a metered connection only."""
         reader = common.install_downloads()
-        declared = {'Install-Download-Size': '1883333376', 'Install-Download-Source': 'https://sourceforge.net/x/download'}
+        declared = {'Sparky-Install-Download-Size': '1883333376', 'Sparky-Install-Download-Source': 'https://sourceforge.net/x/download'}
         def package(name, record, installed=None, mark='install'):
             return types.SimpleNamespace(name=name, marked_install=mark == 'install', marked_upgrade=mark == 'upgrade', marked_downgrade=False,
                                          candidate=types.SimpleNamespace(version='1', record=record),
@@ -171,7 +171,7 @@ class Transactions(unittest.TestCase):
         self.assertEqual(notes(('yes', 'yes'), changes=[package('flightgear', {})]), {})
         # a package whose installed version declares the same download keeps its data
         self.assertEqual(notes(('yes', 'yes'), changes=[package('flightgear-data-installer', declared, installed=declared, mark='upgrade')]), {})
-        said = notes(('yes', 'yes'), changes=[package('flightgear-data-installer', {'Install-Download-Size': 'many', 'Install-Download-Source': 'https://x'})])
+        said = notes(('yes', 'yes'), changes=[package('flightgear-data-installer', {'Sparky-Install-Download-Size': 'many', 'Sparky-Install-Download-Source': 'https://x'})])
         self.assertIn('could not be checked', said['flightgear']['error'])
         self.assertIn('flightgear-data-installer', said['flightgear']['error'])
 

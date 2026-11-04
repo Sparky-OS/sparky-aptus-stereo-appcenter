@@ -68,39 +68,42 @@ def installed(row):
     return result.returncode == 0 and result.stdout == 'installed'
 
 
-def planned_downloads(cache, name):
-    """The install-time downloads that installing NAME brings: the declaration of every package apt would install or upgrade for it
-    (the same reading as apt's own notice, install_downloads()), except a package whose installed version declares the same download."""
-    reader = install_downloads()
-    package = cache[name]
+def new_depcache(cache):
+    import apt_pkg
+    return apt_pkg.DepCache(cache)
+
+
+def brought_in(depcache, cache, names, entry):
+    """Which of NAMES apt would install or upgrade for ENTRY: marked in apt's dependency cache in memory, then undone. apt's own resolver
+    does the work, and a package that cannot be resolved is an error that is said."""
+    import apt_pkg
+    depcache.init()
     try:
-        package.mark_install()
-    except Exception as error:
-        raise RuntimeError('%s: %s' % (name, error))
-    found = []
-    try:
-        for changed in cache.get_changes():
-            if not (changed.marked_install or changed.marked_upgrade or changed.marked_downgrade):
-                continue
-            candidate = changed.candidate
-            try:
-                now = reader.declaration(candidate.record)
-            except ValueError as error:
-                raise RuntimeError('%s: %s' % (changed.name, error))
-            if not now:
-                continue
-            if changed.installed:
-                try:
-                    before = reader.declaration(changed.installed.record)
-                except ValueError:
-                    before = None
-                if before == now:
-                    continue
-            found.append({'package': changed.name, 'version': candidate.version, 'size': now['size'], 'source': now['source']})
+        depcache.mark_install(cache[entry], True, True)
+        if depcache.broken_count:
+            raise RuntimeError('%s: apt cannot resolve its dependencies' % entry)
+        found = []
+        for name in names:
+            package = cache[name]
+            if depcache.marked_install(package) or depcache.marked_upgrade(package) or depcache.marked_downgrade(package):
+                found.append(name)
+        return found
     finally:
-        # leave the cache as it was found for the next entry
-        for changed in list(cache.get_changes()):
-            changed.mark_keep()
+        depcache.init()
+
+
+def planned_downloads(entry, declared, brought, installed_of):
+    """The install-time downloads that installing ENTRY brings: the declaration of every declaring package apt would install or upgrade
+    for it (brought), except a package whose installed version declares the same download (installed_of), which keeps its data."""
+    found = []
+    for name in brought(entry):
+        now = declared[name]
+        if isinstance(now, Exception):
+            raise RuntimeError('%s: %s' % (name, now))
+        before = installed_of(name)
+        if before and (before['size'], before['source']) == (now['size'], now['source']):
+            continue
+        found.append({'package': name, 'version': now['version'], 'size': now['size'], 'source': now['source']})
     return found
 
 
@@ -119,11 +122,22 @@ def downloads_note(cache, installed_now, rows):
     reader = install_downloads()
     mode = announce_setting(reader)
     notes, state = {}, None
+    if mode == 'never':
+        return notes
+    # which packages declare a download is read once; only the entries that can bring one of them in are resolved (resolving every
+    # entry takes minutes, and nothing changes for the rest)
+    declared, apt_cache = reader.declaring()
+    if not declared:
+        return notes
+    depcache = new_depcache(apt_cache)
+    reach = reader.dependants(apt_cache, declared)
     for row in rows:
-        if row['kind'] != 'apt' or installed_now[row['id']] or row['package'] not in cache or mode == 'never':
+        if row['kind'] != 'apt' or installed_now[row['id']] or row['package'] not in cache or row['package'] not in reach:
             continue
         try:
-            found = planned_downloads(cache, row['package'])
+            found = planned_downloads(row['package'], declared,
+                                      lambda entry: brought_in(depcache, apt_cache, list(declared), entry),
+                                      lambda name: reader.installed_declaration(apt_cache, name))
         except RuntimeError as error:
             # said on the entry, in the person's language; the page and the other entries go on
             notes[row['id']] = {'error': reader.messages()['unchecked'].format(why=error)}

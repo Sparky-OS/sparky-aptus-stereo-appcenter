@@ -143,21 +143,17 @@ class Transactions(unittest.TestCase):
     def test_install_time_download_notice(self):
         """A package an entry brings along declares a download: the note has its size and source, on a metered connection only."""
         reader = common.install_downloads()
-        declared = {'Sparky-Install-Download-Size': '1883333376', 'Sparky-Install-Download-Source': 'https://sourceforge.net/x/download'}
-        def package(name, record, installed=None, mark='install'):
-            return types.SimpleNamespace(name=name, marked_install=mark == 'install', marked_upgrade=mark == 'upgrade', marked_downgrade=False,
-                                         candidate=types.SimpleNamespace(version='1', record=record),
-                                         installed=installed and types.SimpleNamespace(version='0', record=installed), mark_keep=lambda: None)
-        class Cache(dict):
-            changes = []
-            def get_changes(self): return self.changes
-        flightgear = types.SimpleNamespace(mark_install=lambda: None)
-        cache = Cache(flightgear=flightgear)
+        declared = {'flightgear-data-installer': {'size': 1883333376, 'source': 'https://sourceforge.net/x/download', 'version': '2024.1.5-1'}}
+        cache = {'flightgear': object(), 'bino': object()}
         row = {'id': 'flightgear', 'kind': 'apt', 'package': 'flightgear'}
-        def notes(state, present=False, changes=None):
-            cache.changes = changes if changes is not None else [package('flightgear', {}), package('flightgear-data-installer', declared)]
-            with patch.object(reader, 'metered', return_value=state), patch.object(action, 'announce_setting', return_value='metered'):
-                return action.downloads_note(cache, {'flightgear': present}, [row])
+        def notes(state, present=False, brings=('flightgear-data-installer',), installed=None, found=None, rows=None):
+            with patch.object(reader, 'metered', return_value=state), patch.object(action, 'announce_setting', return_value='metered'), \
+                 patch.object(reader, 'declaring', return_value=(declared if found is None else found, None)), \
+                 patch.object(reader, 'dependants', return_value={'flightgear', 'flightgear-data-installer'}), \
+                 patch.object(reader, 'installed_declaration', return_value=installed), \
+                 patch.object(action, 'new_depcache', return_value=None), \
+                 patch.object(action, 'brought_in', side_effect=lambda depcache, apt_cache, names, entry: list(brings)):
+                return action.downloads_note(cache, {'flightgear': present, 'bino': False}, rows or [row])
         shown = notes(('yes', 'yes'))
         self.assertEqual(list(shown), ['flightgear'])
         self.assertEqual(shown['flightgear']['downloads'][0]['size_text'], '1.75 GiB')
@@ -168,10 +164,14 @@ class Transactions(unittest.TestCase):
         self.assertEqual(notes(('no', 'no')), {})
         self.assertIn('Could not tell', ' '.join(notes(('unknown', 'NetworkManager did not answer'))['flightgear']['text']))
         self.assertEqual(notes(('yes', 'yes'), present=True), {})
-        self.assertEqual(notes(('yes', 'yes'), changes=[package('flightgear', {})]), {})
+        self.assertEqual(notes(('yes', 'yes'), brings=()), {})
+        self.assertEqual(notes(('yes', 'yes'), found={}), {})
+        # an entry that cannot bring a declaring package in is never resolved
+        self.assertEqual(notes(('yes', 'yes'), rows=[{'id': 'bino', 'kind': 'apt', 'package': 'bino'}]), {})
         # a package whose installed version declares the same download keeps its data
-        self.assertEqual(notes(('yes', 'yes'), changes=[package('flightgear-data-installer', declared, installed=declared, mark='upgrade')]), {})
-        said = notes(('yes', 'yes'), changes=[package('flightgear-data-installer', {'Sparky-Install-Download-Size': 'many', 'Sparky-Install-Download-Source': 'https://x'})])
+        self.assertEqual(notes(('yes', 'yes'), installed={'size': 1883333376, 'source': 'https://sourceforge.net/x/download'}), {})
+        self.assertEqual(list(notes(('yes', 'yes'), installed={'size': 1, 'source': 'https://old'})), ['flightgear'])
+        said = notes(('yes', 'yes'), found={'flightgear-data-installer': ValueError('Sparky-Install-Download-Size is "many", not a number of bytes')})
         self.assertIn('could not be checked', said['flightgear']['error'])
         self.assertIn('flightgear-data-installer', said['flightgear']['error'])
 

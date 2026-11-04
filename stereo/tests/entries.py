@@ -18,7 +18,8 @@ sys.path.insert(0, str(SOURCE))
 # the one reader of the install-time download declaration lives in sparky-stereo-apt; the tests use the build tree's copy
 READER = Path(os.environ.get('SPARKY_INSTALL_DOWNLOADS_LIB') or SOURCE.parents[1] / 'packages/sparky-stereo-apt/install-downloads')
 os.environ['SPARKY_INSTALL_DOWNLOADS_LIB'] = str(READER)
-os.environ['SPARKY_INSTALL_DOWNLOADS_LANG'] = str(READER / 'lang')
+if (READER / 'lang').is_dir():
+    os.environ['SPARKY_INSTALL_DOWNLOADS_LANG'] = str(READER / 'lang')
 import common
 common.BASE = SOURCE
 common.LANGDIR = SOURCE / 'lang'

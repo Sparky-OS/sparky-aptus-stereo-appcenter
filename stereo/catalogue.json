@@ -402,13 +402,6 @@
     "package": "network-manager-pptp"
   },
   {
-    "id": "nm-vpnc",
-    "name": "Cisco VPNC",
-    "section": "vpn",
-    "kind": "apt",
-    "package": "network-manager-vpnc"
-  },
-  {
     "id": "nm-ssh",
     "name": "SSH tunnel",
     "section": "vpn",
@@ -465,12 +458,14 @@
   },
   {
     "id": "rescue",
-    "name": "Rescue tools (TestDisk, ddrescue, chroot)",
+    "name": "Rescue tools (GPart, Partclone, FSArchiver, nwipe, Chrooter)",
     "section": "tools",
     "kind": "apt",
-    "package": "testdisk",
+    "package": "gpart",
     "also": [
-      "gddrescue",
+      "partclone",
+      "fsarchiver",
+      "nwipe",
       "sparky-chrooter"
     ]
   },

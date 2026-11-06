@@ -28,5 +28,7 @@
   "entry_authorization": "Se necesita autorización para cambiar los paquetes Stereo APTus.",
   "entry_failure": "No se pudo cambiar Stereo APTus: %s (salida %s). Revise la salida e inténtelo de nuevo.",
   "download_ready": "Descargado: {path}",
-  "repair": "Reparar"
+  "repair": "Reparar",
+  "vpn": "Complementos VPN para la configuración de red",
+  "tools": "Herramientas y utilidades"
 }

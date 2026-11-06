@@ -29,7 +29,7 @@ def render():
     e = html.escape
     operation = 'remove' if state['installed'] else 'install'
     sections = []
-    for group in ('emulation', 'media', 'vr'):
+    for group in ('emulation', 'media', 'vr', 'vpn', 'tools'):
         cards = []
         for row in entries():
             if row['section'] != group:

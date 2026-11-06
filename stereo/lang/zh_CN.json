@@ -28,5 +28,7 @@
   "entry_authorization": "更改 Stereo APTus 软件包需要授权。",
   "entry_failure": "更改 Stereo APTus 失败：%s（退出码 %s）。请检查输出并重试。",
   "download_ready": "已下载: {path}",
-  "repair": "修复"
+  "repair": "修复",
+  "vpn": "网络设置的 VPN 插件",
+  "tools": "工具和实用程序"
 }

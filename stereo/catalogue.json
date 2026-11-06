@@ -365,5 +365,120 @@
     "sha256": "97e7b2210b5046a7fb4524fb4288ed8a0046dc7930ac8b4aff1143a870760dd7",
     "filename": "slimevr-openvr-driver-v6.0.0-x64-linux.zip",
     "documentation": "https://docs.slimevr.dev/tools/linux-installation.html"
+  },
+  {
+    "id": "nm-openvpn",
+    "name": "OpenVPN",
+    "section": "vpn",
+    "kind": "apt",
+    "package": "network-manager-openvpn"
+  },
+  {
+    "id": "nm-openconnect",
+    "name": "OpenConnect",
+    "section": "vpn",
+    "kind": "apt",
+    "package": "network-manager-openconnect"
+  },
+  {
+    "id": "nm-l2tp",
+    "name": "L2TP/IPsec",
+    "section": "vpn",
+    "kind": "apt",
+    "package": "network-manager-l2tp"
+  },
+  {
+    "id": "nm-strongswan",
+    "name": "strongSwan (IPsec)",
+    "section": "vpn",
+    "kind": "apt",
+    "package": "network-manager-strongswan"
+  },
+  {
+    "id": "nm-pptp",
+    "name": "PPTP",
+    "section": "vpn",
+    "kind": "apt",
+    "package": "network-manager-pptp"
+  },
+  {
+    "id": "nm-vpnc",
+    "name": "Cisco VPNC",
+    "section": "vpn",
+    "kind": "apt",
+    "package": "network-manager-vpnc"
+  },
+  {
+    "id": "nm-ssh",
+    "name": "SSH tunnel",
+    "section": "vpn",
+    "kind": "apt",
+    "package": "network-manager-ssh"
+  },
+  {
+    "id": "syncthing",
+    "name": "Syncthing",
+    "section": "tools",
+    "kind": "apt",
+    "package": "syncthing",
+    "also": [
+      "syncthingtray-kde-plasma"
+    ]
+  },
+  {
+    "id": "vorta",
+    "name": "Vorta (Borg backups)",
+    "section": "tools",
+    "kind": "apt",
+    "package": "vorta",
+    "also": [
+      "borgbackup"
+    ]
+  },
+  {
+    "id": "keepassxc",
+    "name": "KeePassXC",
+    "section": "tools",
+    "kind": "apt",
+    "package": "keepassxc"
+  },
+  {
+    "id": "solaar",
+    "name": "Solaar (Logitech devices)",
+    "section": "tools",
+    "kind": "apt",
+    "package": "solaar"
+  },
+  {
+    "id": "piper",
+    "name": "Piper (gaming mice)",
+    "section": "tools",
+    "kind": "apt",
+    "package": "piper"
+  },
+  {
+    "id": "yakuake",
+    "name": "Yakuake",
+    "section": "tools",
+    "kind": "apt",
+    "package": "yakuake"
+  },
+  {
+    "id": "rescue",
+    "name": "Rescue tools (TestDisk, ddrescue, chroot)",
+    "section": "tools",
+    "kind": "apt",
+    "package": "testdisk",
+    "also": [
+      "gddrescue",
+      "sparky-chrooter"
+    ]
+  },
+  {
+    "id": "hplip",
+    "name": "HPLIP (HP printers)",
+    "section": "tools",
+    "kind": "apt",
+    "package": "hplip"
   }
 ]

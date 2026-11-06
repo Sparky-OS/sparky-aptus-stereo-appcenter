@@ -28,5 +28,7 @@
   "entry_authorization": "Stereo APTus 패키지를 변경하려면 인증이 필요합니다.",
   "entry_failure": "Stereo APTus 변경에 실패했습니다: %s (종료 코드 %s). 출력을 확인한 후 다시 시도하세요.",
   "download_ready": "다운로드됨: {path}",
-  "repair": "복구"
+  "repair": "복구",
+  "vpn": "네트워크 설정용 VPN 플러그인",
+  "tools": "도구 및 유틸리티"
 }

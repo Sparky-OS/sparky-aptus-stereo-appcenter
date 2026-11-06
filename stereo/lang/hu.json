@@ -28,5 +28,7 @@
   "entry_authorization": "A Stereo APTus csomagok módosításához hitelesítés szükséges.",
   "entry_failure": "A Stereo APTus módosítása sikertelen: %s (kilépési kód: %s). Ellenőrizze a kimenetet, majd próbálja újra.",
   "download_ready": "Letöltve: {path}",
-  "repair": "Javítás"
+  "repair": "Javítás",
+  "vpn": "VPN-bővítmények a hálózati beállításokhoz",
+  "tools": "Eszközök és segédprogramok"
 }

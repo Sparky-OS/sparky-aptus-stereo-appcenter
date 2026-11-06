@@ -28,5 +28,7 @@
   "entry_authorization": "Zmiana pakietów Stereo APTus wymaga uwierzytelnienia.",
   "entry_failure": "Zmiana Stereo APTus nie powiodła się: %s (kod wyjścia %s). Sprawdź komunikaty i spróbuj ponownie.",
   "download_ready": "Pobrano: {path}",
-  "repair": "Napraw"
+  "repair": "Napraw",
+  "vpn": "Wtyczki VPN do ustawień sieci",
+  "tools": "Narzędzia i programy pomocnicze"
 }

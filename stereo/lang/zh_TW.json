@@ -28,5 +28,7 @@
   "entry_authorization": "變更 Stereo APTus 套件需要授權。",
   "entry_failure": "變更 Stereo APTus 失敗：%s（結束代碼 %s）。請檢查輸出並重試。",
   "download_ready": "已下載: {path}",
-  "repair": "修復"
+  "repair": "修復",
+  "vpn": "網路設定的 VPN 外掛程式",
+  "tools": "工具與公用程式"
 }

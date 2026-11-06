@@ -126,8 +126,56 @@ class Transactions(unittest.TestCase):
         self.assertIn('SHA-256 mismatch',html)
         self.assertNotIn('entry-openrv',html)
         self.assertNotIn('entry-xstudio',html)
-        sections = ['stereo-emulation','stereo-media','stereo-vr','stereo-drivers','stereo-system','pawel-categories']
+        sections = ['stereo-emulation','stereo-media','stereo-vr','stereo-vpn','stereo-tools','stereo-drivers','stereo-system','pawel-categories']
         self.assertEqual(sorted(sections,key=lambda name:html.index('id="'+name+'"')),sections)
+
+    def test_entry_with_companions_installs_and_removes_them_together(self):
+        row=catalogue.entry('syncthing')
+        self.assertEqual(row['also'],['syncthingtray-kde-plasma'])
+        version=types.SimpleNamespace(version='1.29.5~ds1-5',origins=[types.SimpleNamespace(origin='Debian',trusted=True)])
+        with patch.dict(sys.modules,apt=types.SimpleNamespace(Cache=lambda: {'syncthing':types.SimpleNamespace(candidate=version)})), patch.object(action.subprocess,'run') as run:
+            action.apt_change(row,'install')
+            self.assertEqual(run.call_args.args[0],['/usr/bin/apt-get','-y','--no-remove','--no-allow-unauthenticated','install','syncthing=1.29.5~ds1-5','syncthingtray-kde-plasma'])
+        with patch.object(action.subprocess,'run') as run:
+            action.apt_change(row,'remove')
+            self.assertEqual(run.call_args.args[0],['/usr/bin/apt-get','-y','remove','syncthing','syncthingtray-kde-plasma'])
+        # control: an entry without companions keeps the one-package command
+        with patch.object(action.subprocess,'run') as run:
+            action.apt_change(catalogue.entry('keepassxc'),'remove')
+            self.assertEqual(run.call_args.args[0],['/usr/bin/apt-get','-y','remove','keepassxc'])
+
+    def test_entry_is_visible_only_when_all_its_packages_are_offered(self):
+        ok=types.SimpleNamespace(candidate=types.SimpleNamespace(downloadable=True))
+        no=types.SimpleNamespace(candidate=types.SimpleNamespace(downloadable=False))
+        row=catalogue.entry('syncthing')
+        self.assertTrue(action.visible(row,{'syncthing':ok,'syncthingtray-kde-plasma':ok},set()))
+        self.assertFalse(action.visible(row,{'syncthing':ok,'syncthingtray-kde-plasma':no},set()))
+        self.assertFalse(action.visible(row,{'syncthing':ok},set()))
+        self.assertFalse(action.visible(catalogue.entry('hplip'),{},set()))
+
+    def test_vpn_section_offers_the_plain_plugins_only(self):
+        vpn=[row for row in catalogue.entries() if row['section']=='vpn']
+        self.assertGreaterEqual(len(vpn),6)
+        for row in vpn:
+            self.assertRegex(row['package'],r'^network-manager-[a-z0-9]+$')
+            self.assertNotIn('gnome',row['package'])
+        self.assertNotIn('network-manager-vpnc-gnome',[row.get('package') for row in catalogue.entries()])
+
+    def test_catalogue_shape_and_section_titles_in_every_language(self):
+        rows=catalogue.entries()
+        self.assertEqual(len({row['id'] for row in rows}),len(rows))
+        for row in rows:
+            self.assertIn(row['section'],('emulation','media','vr','vpn','tools'))
+            self.assertIn(row['kind'],('apt','flatpak','download'))
+            if 'also' in row:
+                self.assertEqual(row['kind'],'apt')
+                self.assertTrue(all(isinstance(name,str) and name for name in row['also']))
+        for path in sorted((SOURCE/'lang').glob('*.json')):
+            titles=json.loads(path.read_text())
+            for key in ('vpn','tools'):
+                self.assertTrue(titles.get(key),path.name+' lacks '+key)
+        for code in ('en','pl','pt_BR','fr','de','ja','ko','zh_CN','zh_TW'):
+            self.assertTrue((SOURCE/'lang'/(code+'.json')).is_file(),code)
 
     def test_zram_does_not_show_another_entry_failure(self):
         spec = importlib.util.spec_from_loader('zram_status', importlib.machinery.SourceFileLoader('zram_status', str(SOURCE/'actions/zram')))

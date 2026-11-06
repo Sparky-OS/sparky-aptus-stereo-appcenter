@@ -28,5 +28,7 @@
   "entry_authorization": "Otorisasi diperlukan untuk mengubah paket Stereo APTus.",
   "entry_failure": "Perubahan Stereo APTus gagal: %s (kode keluar %s). Periksa keluaran dan coba lagi.",
   "download_ready": "Diunduh: {path}",
-  "repair": "Perbaiki"
+  "repair": "Perbaiki",
+  "vpn": "Plugin VPN untuk pengaturan jaringan",
+  "tools": "Alat dan utilitas"
 }

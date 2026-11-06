@@ -43,11 +43,19 @@ def requires_edition(name, patterns):
     return any(fnmatchcase(name, pattern) for pattern in patterns)
 
 
+def package_set(row):
+    """The entry's package and the packages it brings together with it ("also": Syncthing and its Plasma widget)."""
+    return [row['package']] + list(row.get('also', []))
+
+
 def visible(row, cache, patterns):
     if row['kind'] != 'apt' or requires_edition(row['package'], patterns):
         return True
-    candidate = cache[row['package']].candidate if row['package'] in cache else None
-    return bool(candidate and candidate.downloadable)
+    for name in package_set(row):
+        candidate = cache[name].candidate if name in cache else None
+        if not (candidate and candidate.downloadable):
+            return False
+    return True
 
 
 def installed(row):
@@ -184,9 +192,9 @@ def apt_change(row, operation):
                 origin.origin == 'Sparky Stereo OS' and origin.trusted for origin in candidate.origins)):
             raise RuntimeError(messages()['edition_missing'].format(name=name))
         command = ['/usr/bin/apt-get', '-y', '--no-remove', '--no-allow-unauthenticated',
-                   'install', name + '=' + candidate.version if candidate else name]
+                   'install', name + '=' + candidate.version if candidate else name, *row.get('also', [])]
     else:
-        command = ['/usr/bin/apt-get', '-y', 'remove', name]
+        command = ['/usr/bin/apt-get', '-y', 'remove', *package_set(row)]
     subprocess.run(command, check=True, env=ENV)
 
 

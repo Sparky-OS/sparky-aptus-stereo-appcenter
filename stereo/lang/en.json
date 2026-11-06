@@ -28,5 +28,7 @@
   "entry_authorization": "Authorization is required to change Stereo APTus packages.",
   "entry_failure": "Changing Stereo APTus failed: %s (exit %s). Check the output and try again.",
   "download_ready": "Downloaded: {path}",
-  "repair": "Repair"
+  "repair": "Repair",
+  "vpn": "VPN plug-ins for the network settings",
+  "tools": "Tools and utilities"
 }

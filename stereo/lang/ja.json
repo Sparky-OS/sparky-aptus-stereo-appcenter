@@ -28,5 +28,7 @@
   "entry_authorization": "Stereo APTus パッケージの変更には認証が必要です。",
   "entry_failure": "Stereo APTus の変更に失敗しました: %s（終了コード %s）。出力を確認して、もう一度お試しください。",
   "download_ready": "ダウンロード済み: {path}",
-  "repair": "修復"
+  "repair": "修復",
+  "vpn": "ネットワーク設定用のVPNプラグイン",
+  "tools": "ツールとユーティリティ"
 }

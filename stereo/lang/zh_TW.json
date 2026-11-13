@@ -33,7 +33,7 @@
   "tools": "工具與公用程式",
   "vinci_note": "在容器中安裝 DaVinci Resolve。請自行從 Blackmagic Design 下載 Resolve 官方安裝程式。作者：Dionatan Simioni；本專案與 Blackmagic Design 無關。",
   "appimage_platform": "Vinci 需要 x86_64 和 glibc 2.39 或更新版本。未變更任何應用程式。",
-  "appimage_requirements": "缺少必要工具：podman、distrobox 和 fuse3。未變更任何應用程式。",
+  "appimage_requirements": "缺少必要工具：bsdextrautils、podman、distrobox 和 fuse3。未變更任何應用程式。",
   "appimage_payload": "應用程式檔案不完整或屬於其他安裝。未變更任何應用程式。",
   "reinstall": "重新安裝"
 }

@@ -59,6 +59,9 @@ def visible(row, cache, patterns):
 
 
 def installed(row):
+    if row['kind'] == 'appimage':
+        import appimage
+        return appimage.installed(row)
     if row['kind'] == 'download':
         path = DOWNLOADS / row['filename']
         if not path.is_file():
@@ -134,6 +137,15 @@ def downloads_note(cache, installed_now, rows):
         return notes
     # which packages declare a download is read once; only the entries that can bring one of them in are resolved (resolving every
     # entry takes minutes, and nothing changes for the rest)
+    for row in rows:
+        if row['kind'] != 'appimage' or installed_now[row['id']]:
+            continue
+        if state is None:
+            state = reader.metered() if mode == 'metered' else ('no', 'not asked')
+        found = [dict(package=row['name'], version=row['version'], size=row['size'], source=row['url'])]
+        result = reader.assess(found, mode, 'asked', state)
+        if result['announce']:
+            notes[row['id']] = {'state': result['state'], 'downloads': result['downloads'], 'text': result['text'][:-1]}
     declared, apt_cache = reader.declaring()
     if not declared:
         return notes
@@ -231,8 +243,18 @@ def download(row, operation):
     print(messages()['download_ready'].format(path=path))
 
 
+def appimage_change(row, operation):
+    import appimage
+    if operation != 'remove':
+        reader = install_downloads()
+        notice = reader.assess([dict(package=row['name'], version=row['version'], size=row['size'], source=row['url'])], announce_setting(reader), 'unattended')
+        for line in notice['text']:
+            print(line, flush=True)
+    appimage.change(row, operation)
+
+
 def change(row, operation):
-    {'apt': apt_change, 'flatpak': flatpak_change, 'download': download}[row['kind']](row, operation)
+    {'apt': apt_change, 'flatpak': flatpak_change, 'download': download, 'appimage': appimage_change}[row['kind']](row, operation)
     if installed(row) != (operation == 'install'):
         raise RuntimeError(row['name'] + ': ' + messages()['installed' if installed(row) else 'absent'])
 
@@ -241,7 +263,7 @@ def main():
     if sys.argv[1:] == ['status']:
         print(json.dumps(status(), ensure_ascii=False))
         return 0
-    if len(sys.argv) != 3 or sys.argv[2] not in ('install', 'remove', 'repair', '--install', '--remove'):
+    if len(sys.argv) != 3 or sys.argv[2] not in ('install', 'remove', 'repair', '--install', '--remove', 'reinstall'):
         return 2
     try:
         row = entry(sys.argv[1])
@@ -251,6 +273,8 @@ def main():
         print(messages()['entry_authorization'], file=sys.stderr)
         return 1
     operation = sys.argv[2]
+    if operation == 'reinstall':
+        operation = 'install'
     if operation == 'repair':
         return subprocess.run([ENGINE, 'repair', '--machine', PACKAGE, row['id']], env=ENV).returncode
     if operation.startswith('--'):

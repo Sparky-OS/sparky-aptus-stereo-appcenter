@@ -42,6 +42,11 @@ def render():
             button = text['remove' if selected else 'install']
             indicator = text['installed' if selected else 'absent']
             note = ''
+            if row['kind'] == 'appimage':
+                note = '<p>' + e(text['vinci_note']) + '</p>'
+                note += '<p>Download-Size: ' + e(str(row['size'])) + ' B</p>'
+                if selected:
+                    note += f'<a class=action href="aptus://stereo_entry_{row["id"]}_reinstall">{e(text["reinstall"])}</a>'
             if current['error']:
                 note = f'<a class="action" href="aptus://stereo_entry_{row["id"]}_repair">{e(text["repair"])}</a>' 
             if row['kind'] == 'download':

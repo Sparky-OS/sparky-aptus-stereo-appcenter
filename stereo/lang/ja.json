@@ -30,5 +30,10 @@
   "download_ready": "ダウンロード済み: {path}",
   "repair": "修復",
   "vpn": "ネットワーク設定用のVPNプラグイン",
-  "tools": "ツールとユーティリティ"
+  "tools": "ツールとユーティリティ",
+  "vinci_note": "DaVinci Resolve をコンテナーにインストールします。Resolve の公式インストーラーは Blackmagic Design からご自身でダウンロードしてください。作者は Dionatan Simioni です。Blackmagic Design とは無関係のプロジェクトです。",
+  "appimage_platform": "Vinci には x86_64 と glibc 2.39 以降が必要です。アプリケーションは変更されていません。",
+  "appimage_requirements": "必要なツールがありません: podman、distrobox、fuse3。アプリケーションは変更されていません。",
+  "appimage_payload": "アプリケーションのファイルが不完全か、別のインストールに属しています。アプリケーションは変更されていません。",
+  "reinstall": "再インストール"
 }

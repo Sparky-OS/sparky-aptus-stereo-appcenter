@@ -26,7 +26,9 @@ def language():
 
 
 def messages():
-    return json.loads((LANGDIR / (language() + '.json')).read_text())
+    text = json.loads((LANGDIR / 'en.json').read_text())
+    text.update(json.loads((LANGDIR / (language() + '.json')).read_text()))
+    return text
 
 
 def install_downloads():

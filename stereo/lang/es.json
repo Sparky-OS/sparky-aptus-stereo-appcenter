@@ -30,5 +30,10 @@
   "download_ready": "Descargado: {path}",
   "repair": "Reparar",
   "vpn": "Complementos VPN para la configuración de red",
-  "tools": "Herramientas y utilidades"
+  "tools": "Herramientas y utilidades",
+  "vinci_note": "Instala DaVinci Resolve en un contenedor. Descargue el instalador oficial de Resolve desde Blackmagic Design. Por Dionatan Simioni; independiente de Blackmagic Design.",
+  "appimage_platform": "Vinci necesita x86_64 y glibc 2.39 o posterior. No se ha modificado ninguna aplicación.",
+  "appimage_requirements": "Faltan herramientas necesarias: podman, distrobox y fuse3. No se ha modificado ninguna aplicación.",
+  "appimage_payload": "Los archivos de la aplicación están incompletos o pertenecen a otra instalación. No se ha modificado ninguna aplicación.",
+  "reinstall": "Reinstalar"
 }

@@ -15,7 +15,7 @@ def entry(identifier):
 
 def route(uri):
     for row in entries():
-        for operation in ('install', 'remove', 'repair'):
+        for operation in ('install', 'remove', 'repair', 'reinstall'):
             if uri == f"aptus://stereo_entry_{row['id']}_{operation}":
                 return [str(BASE / 'actions/entry'), row['id'], operation]
     return None

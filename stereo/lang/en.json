@@ -33,7 +33,7 @@
   "tools": "Tools and utilities",
   "vinci_note": "Installs DaVinci Resolve in a container. Download the official Resolve installer from Blackmagic Design yourself. By Dionatan Simioni; independent of Blackmagic Design.",
   "appimage_platform": "Vinci needs x86_64 and glibc 2.39 or newer. No application was changed.",
-  "appimage_requirements": "Required tools are missing: podman, distrobox and fuse3. No application was changed.",
+  "appimage_requirements": "Required tools are missing: bsdextrautils, podman, distrobox and fuse3. No application was changed.",
   "appimage_payload": "The application files are incomplete or belong to another installation. No application was changed.",
   "reinstall": "Reinstall"
 }

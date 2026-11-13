@@ -33,7 +33,7 @@
   "tools": "도구 및 유틸리티",
   "vinci_note": "DaVinci Resolve를 컨테이너에 설치합니다. Resolve 공식 설치 파일은 Blackmagic Design에서 직접 다운로드하세요. 제작자: Dionatan Simioni. Blackmagic Design과 무관한 프로젝트입니다.",
   "appimage_platform": "Vinci에는 x86_64와 glibc 2.39 이상이 필요합니다. 앱은 변경되지 않았습니다.",
-  "appimage_requirements": "필수 도구가 없습니다: podman, distrobox, fuse3. 앱은 변경되지 않았습니다.",
+  "appimage_requirements": "필수 도구가 없습니다: bsdextrautils, podman, distrobox, fuse3. 앱은 변경되지 않았습니다.",
   "appimage_payload": "앱 파일이 불완전하거나 다른 설치에 속합니다. 앱은 변경되지 않았습니다.",
   "reinstall": "다시 설치"
 }

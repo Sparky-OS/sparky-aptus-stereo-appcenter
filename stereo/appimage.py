@@ -66,7 +66,7 @@ def change(row, operation):
             if not (work / 'squashfs-root' / wanted).is_file():
                 raise RuntimeError(text['appimage_payload'])
         subprocess.run(['apt-get', '-y', '--no-remove', '--no-install-recommends', 'install', *row['dependencies']], check=True)
-        for command in ('podman', 'distrobox', 'fusermount3'):
+        for command in ('podman', 'distrobox', 'fusermount3', 'rev'):
             if shutil.which(command) is None:
                 raise RuntimeError(text['appimage_requirements'])
         base.parent.mkdir(parents=True, exist_ok=True)

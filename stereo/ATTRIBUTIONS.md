@@ -22,3 +22,9 @@ See https://slimevr.dev/ and https://github.com/SlimeVR/SlimeVR-OpenVR-Driver.
 CODESYS 4 and CODESYS Store are provided by CODESYS.
 This entry links to their store; registration, terms and downloads remain with CODESYS.
 See https://store.codesys.com/en/codesys-4.html.
+
+Vinci is by Dionatan Simioni, under GPL-3.0-or-later.
+This entry downloads his unmodified AppImage from https://github.com/dionatansimioni/vinci/releases and checks the release asset's SHA-256 digest.
+DaVinci Resolve is a trademark of Blackmagic Design Pty. Ltd.
+Vinci is an independent project and is not affiliated with Blackmagic Design.
+Resolve itself is not distributed by this package.

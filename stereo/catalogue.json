@@ -487,6 +487,7 @@
     "sha256": "ea4dbf5b82a0594ab3e50ae57ffafada2b5c41babaeef409288fdead9e011891",
     "desktop": "io.github.dionatansimioni.Vinci",
     "dependencies": [
+      "bsdextrautils",
       "distrobox",
       "fuse3",
       "podman"

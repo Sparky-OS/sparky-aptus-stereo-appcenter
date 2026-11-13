@@ -33,7 +33,7 @@
   "tools": "Outils et utilitaires",
   "vinci_note": "Installe DaVinci Resolve dans un conteneur. Téléchargez vous-même le programme officiel de Resolve auprès de Blackmagic Design. Par Dionatan Simioni ; indépendant de Blackmagic Design.",
   "appimage_platform": "Vinci nécessite x86_64 et glibc 2.39 ou ultérieure. Aucune application n’a été modifiée.",
-  "appimage_requirements": "Des outils requis manquent : podman, distrobox et fuse3. Aucune application n’a été modifiée.",
+  "appimage_requirements": "Des outils requis manquent : bsdextrautils, podman, distrobox et fuse3. Aucune application n’a été modifiée.",
   "appimage_payload": "Les fichiers de l’application sont incomplets ou appartiennent à une autre installation. Aucune application n’a été modifiée.",
   "reinstall": "Réinstaller"
 }

@@ -33,7 +33,8 @@ def installed(row):
 def change(row, operation):
     text = messages()
     base, links = paths(row)
-    if base.exists() and not (base / '.aptus-managed').is_file():
+    marker = base / '.aptus-managed'
+    if base.is_symlink() or (base.exists() and (not marker.is_file() or marker.read_text().strip() != row['id'])):
         raise RuntimeError(text['appimage_payload'])
     if operation == 'remove':
         for link, target in links.items():

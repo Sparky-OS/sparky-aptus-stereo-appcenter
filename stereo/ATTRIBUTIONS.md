@@ -2,7 +2,8 @@ Credits
 =======
 
 Sparky APTus AppCenter is by Paweł "pavroo" Pijanowski and Piotr "MoroS" Mrożek.
-The installed original provides its own categories and handler; this package does not copy them.
+The edition keeps a copy of the main pages and scripts in its own package namespace, alongside the stereo tabs.
+The installed original provides shared system helper programs.
 
 The systemd project's zram-generator is by Zbigniew Jędrzejewski-Szmek, Igor Raits and наб, under the MIT license.
 Debian packaging credits Debian Rust Maintainers, Clay Stan, Ben Westover and Arnaud Ferraris.
@@ -28,3 +29,7 @@ This entry downloads his unmodified AppImage from https://github.com/dionatansim
 DaVinci Resolve is a trademark of Blackmagic Design Pty. Ltd.
 Vinci is an independent project and is not affiliated with Blackmagic Design.
 Resolve itself is not distributed by this package.
+
+KamLynk is by Dionatan Simioni, under the MIT licence.
+The AppImage includes Sony Camera Remote SDK libraries under Sony’s licence.
+This entry downloads KamLynk from https://github.com/dionatansimioni/KamLynk/releases and checks the pinned SHA-256 before execution.

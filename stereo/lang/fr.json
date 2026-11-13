@@ -32,8 +32,10 @@
   "vpn": "Modules VPN pour les paramètres réseau",
   "tools": "Outils et utilitaires",
   "vinci_note": "Installe DaVinci Resolve dans un conteneur. Téléchargez vous-même le programme officiel de Resolve auprès de Blackmagic Design. Par Dionatan Simioni ; indépendant de Blackmagic Design.",
-  "appimage_platform": "Vinci nécessite x86_64 et glibc 2.39 ou ultérieure. Aucune application n’a été modifiée.",
-  "appimage_requirements": "Des outils requis manquent : bsdextrautils, podman, distrobox et fuse3. Aucune application n’a été modifiée.",
+  "appimage_platform": "Cette application nécessite x86_64 et glibc {version} ou une version plus récente. Aucune application n’a été modifiée.",
+  "appimage_requirements": "Un outil requis est absent : {command}. Aucune application n’a été modifiée.",
   "appimage_payload": "Les fichiers de l’application sont incomplets ou appartiennent à une autre installation. Aucune application n’a été modifiée.",
-  "reinstall": "Réinstaller"
+  "reinstall": "Réinstaller",
+  "kamlynk_note": "Prise en charge des appareils Sony sur PC : moniteur et télécommande. Utilise le Sony Camera Remote SDK.",
+  "download_size": "Taille du téléchargement"
 }

@@ -32,8 +32,10 @@
   "vpn": "Wtyczki VPN do ustawień sieci",
   "tools": "Narzędzia i programy pomocnicze",
   "vinci_note": "Instaluje DaVinci Resolve w kontenerze. Pobierz samodzielnie oficjalny instalator Resolve ze strony Blackmagic Design. Autor: Dionatan Simioni; projekt niezależny od Blackmagic Design.",
-  "appimage_platform": "Vinci wymaga x86_64 i glibc 2.39 lub nowszej. Nie zmieniono żadnej aplikacji.",
-  "appimage_requirements": "Brakuje wymaganych narzędzi: bsdextrautils, podman, distrobox i fuse3. Nie zmieniono żadnej aplikacji.",
+  "appimage_platform": "Ta aplikacja wymaga x86_64 i glibc {version} lub nowszej. Nie zmieniono żadnej aplikacji.",
+  "appimage_requirements": "Brakuje wymaganego narzędzia: {command}. Nie zmieniono żadnej aplikacji.",
   "appimage_payload": "Pliki aplikacji są niekompletne lub należą do innej instalacji. Nie zmieniono żadnej aplikacji.",
-  "reinstall": "Zainstaluj ponownie"
+  "reinstall": "Zainstaluj ponownie",
+  "kamlynk_note": "Obsługa aparatów Sony z komputera: monitor i zdalne sterowanie. Korzysta z Sony Camera Remote SDK.",
+  "download_size": "Rozmiar pobierania"
 }

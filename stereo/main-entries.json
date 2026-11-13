@@ -1,0 +1,51 @@
+[
+  {
+    "id": "vinci",
+    "name": "Vinci",
+    "section": "main",
+    "kind": "appimage",
+    "version": "0.4.7",
+    "size": 38341112,
+    "url": "https://github.com/dionatansimioni/vinci/releases/download/v0.4.7/Vinci-0.4.7-x86_64.AppImage",
+    "sha256": "ea4dbf5b82a0594ab3e50ae57ffafada2b5c41babaeef409288fdead9e011891",
+    "desktop": "io.github.dionatansimioni.Vinci",
+    "dependencies": [
+      "bsdextrautils",
+      "distrobox",
+      "fuse3",
+      "podman"
+    ],
+    "page": "media-videotools.html",
+    "key": "videdi",
+    "min_glibc": "2.39",
+    "commands": [
+      "podman",
+      "distrobox",
+      "fusermount3",
+      "rev"
+    ]
+  },
+  {
+    "id": "kamlynk",
+    "name": "KamLynk",
+    "section": "main",
+    "page": "accessories-devices.html",
+    "key": "accdev",
+    "kind": "appimage",
+    "version": "0.8",
+    "size": 54561272,
+    "url": "https://github.com/dionatansimioni/KamLynk/releases/download/v0.8/KamLynk-0.8-x86_64.AppImage",
+    "sha256": "3c8a742ad43e5b8dd46bc7ebac9ca6aa0b7feea06cbb3e733f132fe83a735344",
+    "desktop": "kamlynk",
+    "dependencies": [
+      "fuse3"
+    ],
+    "commands": [
+      "fusermount3"
+    ],
+    "min_glibc": "2.34",
+    "remove_files": [
+      "/etc/udev/rules.d/99-kamlynk-sony-camera.rules"
+    ]
+  }
+]

@@ -6,7 +6,11 @@ from common import BASE
 
 
 def entries():
-    return json.loads((BASE / 'catalogue.json').read_text())
+    return json.loads((BASE / 'catalogue.json').read_text()) + main_entries()
+
+
+def main_entries():
+    return json.loads((BASE / 'main-entries.json').read_text())
 
 
 def entry(identifier):

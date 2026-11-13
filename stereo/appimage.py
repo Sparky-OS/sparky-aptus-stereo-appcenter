@@ -42,12 +42,15 @@ def change(row, operation):
                 link.unlink()
         if base.exists():
             shutil.rmtree(base)
+        for filename in row.get('remove_files', []):
+            Path(filename).unlink(missing_ok=True)
         return
+    minimum = row.get('min_glibc', '2.39')
     if platform.machine() != 'x86_64':
-        raise RuntimeError(text['appimage_platform'])
+        raise RuntimeError(text['appimage_platform'].format(version=minimum))
     version = os.confstr('CS_GNU_LIBC_VERSION').split()[-1]
-    if tuple(map(int, version.split('.'))) < (2, 39):
-        raise RuntimeError(text['appimage_platform'])
+    if tuple(map(int, version.split('.'))) < tuple(map(int, minimum.split('.'))):
+        raise RuntimeError(text['appimage_platform'].format(version=minimum))
     for link, target in links.items():
         if (link.exists() or link.is_symlink()) and not (link.is_symlink() and os.readlink(link) == str(target)):
             raise RuntimeError(text['appimage_payload'])
@@ -67,9 +70,9 @@ def change(row, operation):
             if not (work / 'squashfs-root' / wanted).is_file():
                 raise RuntimeError(text['appimage_payload'])
         subprocess.run(['apt-get', '-y', '--no-remove', '--no-install-recommends', 'install', *row['dependencies']], check=True)
-        for command in ('podman', 'distrobox', 'fusermount3', 'rev'):
+        for command in row['commands']:
             if shutil.which(command) is None:
-                raise RuntimeError(text['appimage_requirements'])
+                raise RuntimeError(text['appimage_requirements'].format(command=command))
         base.parent.mkdir(parents=True, exist_ok=True)
         with tempfile.TemporaryDirectory(prefix='.' + row['id'] + '-', dir=base.parent) as staging:
             new = Path(staging) / 'new'

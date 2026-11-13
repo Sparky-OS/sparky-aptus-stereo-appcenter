@@ -21,7 +21,7 @@ def render():
     state = json.loads(result.stdout)
     result = subprocess.run([str(BASE / 'actions/entry'), 'status'], capture_output=True, text=True, check=True)
     states = json.loads(result.stdout)
-    original = Path('/usr/lib/sparky-aptus-appcenter')
+    original = BASE / 'main'
     page = (original / 'index.html').read_text()
     # Read his category links at runtime, so additions and translated names stay his.
     categories = re.findall(r'<a href="([^"/]+\.html)" class="button">(.*?)</a>', page, re.S)
@@ -42,11 +42,6 @@ def render():
             button = text['remove' if selected else 'install']
             indicator = text['installed' if selected else 'absent']
             note = ''
-            if row['kind'] == 'appimage':
-                note = '<p>' + e(text['vinci_note']) + '</p>'
-                note += '<p>Download-Size: ' + e(str(row['size'])) + ' B</p>'
-                if selected:
-                    note += f'<a class=action href="aptus://stereo_entry_{row["id"]}_reinstall">{e(text["reinstall"])}</a>'
             if current['error']:
                 note = f'<a class="action" href="aptus://stereo_entry_{row["id"]}_repair">{e(text["repair"])}</a>' 
             if row['kind'] == 'download':

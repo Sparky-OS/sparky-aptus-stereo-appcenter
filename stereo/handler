@@ -8,8 +8,17 @@ import subprocess
 import sys
 from common import ACTION
 from catalogue import route
+import mainpages
 
 uri = sys.argv[1] if len(sys.argv) > 1 else ''
+main_request = mainpages.request(uri)
+if main_request:
+    try:
+        mainpages.handle(*main_request)
+    except (OSError, ValueError, RuntimeError, subprocess.CalledProcessError) as error:
+        subprocess.run(['yad', '--error', '--title=APTus AppCenter', '--text=' + str(error)])
+    sys.exit(1)
+
 operation = {'aptus://stereo_zram_install': 'install',
              'aptus://stereo_zram_remove': 'remove'}.get(uri)
 command = [ACTION, operation] if operation else route(uri)
@@ -25,5 +34,5 @@ if command:
     sys.exit(1)  # YAD must not navigate to the handled URI.
 
 # Paweł's protocol and its arguments stay his. His scripts use relative paths.
-os.chdir('/usr/lib/sparky-aptus-appcenter')
-os.execv('./handler', ['./handler', *sys.argv[1:]])
+os.chdir('/usr/lib/sparky-aptus-stereo-appcenter/main')
+os.execv('./handler.stock', ['./handler.stock', *sys.argv[1:]])

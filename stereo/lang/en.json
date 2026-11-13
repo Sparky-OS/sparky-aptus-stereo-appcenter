@@ -32,8 +32,10 @@
   "vpn": "VPN plug-ins for the network settings",
   "tools": "Tools and utilities",
   "vinci_note": "Installs DaVinci Resolve in a container. Download the official Resolve installer from Blackmagic Design yourself. By Dionatan Simioni; independent of Blackmagic Design.",
-  "appimage_platform": "Vinci needs x86_64 and glibc 2.39 or newer. No application was changed.",
-  "appimage_requirements": "Required tools are missing: bsdextrautils, podman, distrobox and fuse3. No application was changed.",
+  "appimage_platform": "This application needs x86_64 and glibc {version} or newer. No application was changed.",
+  "appimage_requirements": "A required tool is missing: {command}. No application was changed.",
   "appimage_payload": "The application files are incomplete or belong to another installation. No application was changed.",
-  "reinstall": "Reinstall"
+  "reinstall": "Reinstall",
+  "kamlynk_note": "PC support for Sony cameras: monitor and remote. Uses Sony's Camera Remote SDK.",
+  "download_size": "Download size"
 }

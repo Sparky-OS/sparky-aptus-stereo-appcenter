@@ -32,8 +32,10 @@
   "vpn": "网络设置的 VPN 插件",
   "tools": "工具和实用程序",
   "vinci_note": "在容器中安装 DaVinci Resolve。请自行从 Blackmagic Design 下载 Resolve 官方安装程序。作者：Dionatan Simioni；本项目与 Blackmagic Design 无关。",
-  "appimage_platform": "Vinci 需要 x86_64 和 glibc 2.39 或更新版本。未更改任何应用程序。",
-  "appimage_requirements": "缺少必需工具：bsdextrautils、podman、distrobox 和 fuse3。未更改任何应用程序。",
+  "appimage_platform": "此应用需要 x86_64 和 glibc {version} 或更新版本。未更改任何应用程序。",
+  "appimage_requirements": "缺少必需工具：{command}。未更改任何应用程序。",
   "appimage_payload": "应用程序文件不完整或属于其他安装。未更改任何应用程序。",
-  "reinstall": "重新安装"
+  "reinstall": "重新安装",
+  "kamlynk_note": "在 PC 上支持 Sony 相机：监看和遥控。使用 Sony Camera Remote SDK。",
+  "download_size": "下载大小"
 }

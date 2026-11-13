@@ -83,6 +83,10 @@ elif [ "$PACKAGE" = "vinci" ]; then
 	# the AppImage, its menu entry and icon, only; Resolve containers, projects and user settings stay with their users
 	$SPARKYXTERM "rm -rfv /opt/vinci /usr/bin/vinci /usr/share/applications/io.github.dionatansimioni.Vinci.desktop /usr/share/pixmaps/io.github.dionatansimioni.Vinci.svg  && echo 'Done, press <ENTER> to exit...' && read"
 
+elif [ "$PACKAGE" = "kamlynk" ]; then
+	# the AppImage, its menu entry and icon, and the USB rule KamLynk installs when it is asked for USB access
+	$SPARKYXTERM "rm -rfv /opt/kamlynk /usr/bin/kamlynk /usr/share/applications/kamlynk.desktop /usr/share/pixmaps/kamlynk.svg /etc/udev/rules.d/99-kamlynk-sony-camera.rules && echo 'Done, press <ENTER> to exit...' && read"
+
 else
 	#kill -USR1 $YAD_PID
 	$SPARKYXTERM "$UNINSTALL $PACKAGE && echo 'Done, press <ENTER> to exit...' && read"
@@ -95,6 +99,9 @@ fi
 CHECKPACKAGE0=`apt-cache policy $PACKAGE | head -n2 | tail -n1 | grep [0-9]`
 if [ "$PACKAGE" = "vinci" ] && [ -f /usr/bin/vinci ]; then
 	CHECKPACKAGE0="vinci"
+fi
+if [ "$PACKAGE" = "kamlynk" ] && [ -f /usr/bin/kamlynk ]; then
+	CHECKPACKAGE0="kamlynk"
 fi
 if [ "$CHECKPACKAGE0" = "" ]; then
 	DIALOGTEXT="$LOCAL031"

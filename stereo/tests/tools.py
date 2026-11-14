@@ -188,6 +188,22 @@ class Ensure(unittest.TestCase):
             self.assertEqual(calls, [])
             self.assertFalse((Path(tmp) / 'tools').exists())
 
+    def test_a_tool_two_entries_need_goes_back_to_automatic_with_the_last_of_them(self):
+        with tempfile.TemporaryDirectory() as tmp, patch.object(tools, 'RECORDS', Path(tmp) / 'tools'), \
+             patch.object(tools.subprocess, 'run', return_value=done()) as run, patch.object(tools, 'present', return_value=True):
+            with patch.object(tools, 'automatic', side_effect=lambda name: name == 'fuse3'):
+                tools.ensure(self.row, None)                       # Vinci marks the automatic fuse3 manual
+            with patch.object(tools, 'automatic', return_value=False):
+                tools.ensure(catalogue.entry('kamlynk'), None)     # KamLynk finds it manual, and shares it
+            self.assertEqual(tools.brought('kamlynk'), ['fuse3'])
+            run.reset_mock()
+            out = io.StringIO()
+            with contextlib.redirect_stdout(out):
+                tools.release(self.row, {'fuse3'})                 # Vinci goes: KamLynk still needs it
+                run.assert_not_called()
+                tools.release(catalogue.entry('kamlynk'), set())   # KamLynk goes: automatic again
+            self.assertEqual(run.call_args.args[0], ['/usr/bin/apt-mark', 'auto', 'fuse3'])
+
     def test_apt_exit_0_with_a_tool_still_absent_is_a_failure(self):
         _, error, recorded = self.run_with([done(), done()], after=False)
         self.assertIn('failed', error)

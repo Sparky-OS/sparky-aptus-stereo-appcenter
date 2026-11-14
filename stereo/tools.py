@@ -136,6 +136,13 @@ def brought(identifier):
     return json.loads(path.read_text()) if path.is_file() else []
 
 
+def answered_elsewhere(name, identifier):
+    """Another entry's record names this tool: that entry marked or brought it, and this one needs it too."""
+    if not RECORDS.is_dir():
+        return False
+    return any(name in json.loads(path.read_text()) for path in RECORDS.glob('*.json') if path.stem != identifier)
+
+
 def ensure(row, found):
     """Install the missing tools: every archive is downloaded first, so a failed download changes nothing. Then record
     what this entry answers for: the tools it installed, and the ones that were there but only as automatic packages."""
@@ -152,9 +159,11 @@ def ensure(row, found):
     held = [name for name in declared(row) if name not in names and automatic(name)]
     if held:
         subprocess.run(['/usr/bin/apt-mark', 'manual', *held], check=True, env=ENV, stdout=subprocess.DEVNULL)
-    if names or held:
+    # a tool another entry already answers for is shared: whichever of the two is removed last gives the mark back
+    shared = [name for name in declared(row) if name not in names + held and answered_elsewhere(name, row['id'])]
+    if names or held or shared:
         RECORDS.mkdir(mode=0o755, parents=True, exist_ok=True)
-        record(row['id']).write_text(json.dumps(sorted(set(brought(row['id'])) | set(names) | set(held))) + '\n')
+        record(row['id']).write_text(json.dumps(sorted(set(brought(row['id'])) | set(names) | set(held) | set(shared))) + '\n')
 
 
 def release(row, needed_elsewhere):

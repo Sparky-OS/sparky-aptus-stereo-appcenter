@@ -53,12 +53,12 @@ def render(row):
         raise RuntimeError(text['appimage_payload'])
     before = page[:table.start()]
     after = page[page.index('</table>', table.end()) + len('</table>'):]
-    card = f'''<h3>{e(row['name'])}</h3><p>{e(text[row['id'] + '_note'])}</p>
+    card = f'''<p><b>{e(row['name'])}</b></p><p>{e(text[row['id'] + '_note'])}</p>
 <p>Dionatan Simioni · {e(row['version'])}</p>
 <p>{e(text['download_size'])}: {row['size']:,} B</p>
 <p>{e(text['installed' if selected else 'absent'])}</p>
 <div style="color:#9a1818;white-space:pre-wrap">{e(errors)}</div>{lines}<p>{buttons}</p>'''
-    return before.replace('<head>', '<head><base href="' + main.as_uri() + '/">') + card + after
+    return before.replace('<head>', '<head><meta charset="utf-8"><base href="' + main.as_uri() + '/">') + card + after
 
 
 def handle(row, operation):

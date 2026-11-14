@@ -36,4 +36,6 @@ def install_downloads():
     apt's own notice. Its absence is an error the page shows, never a silently missing note."""
     sys.path.insert(0, os.environ.get('SPARKY_INSTALL_DOWNLOADS_LIB', '/usr/lib/sparky-stereo-apt'))
     import sparky_install_downloads
+    if 'SPARKY_INSTALL_DOWNLOADS_LANG' not in os.environ:
+        sparky_install_downloads.LANGDIR = str(LANGDIR / 'install-downloads')
     return sparky_install_downloads

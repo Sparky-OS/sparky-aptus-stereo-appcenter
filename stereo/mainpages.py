@@ -77,14 +77,18 @@ def handle(row, operation):
                 raise RuntimeError(result.stderr.strip() or result.stdout.strip() or
                                    str(subprocess.CalledProcessError(result.returncode, command)))
     if os.environ.get('YAD_PID', '').isdigit():
-        child_env = dict(os.environ)
-        child_env.pop('YAD_PID', None)
-        subprocess.Popen([str(BASE / 'main-entry'), row['id']], env=child_env,
-                         stdin=subprocess.DEVNULL, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL,
-                         start_new_session=True)
-        os.kill(int(os.environ['YAD_PID']), signal.SIGUSR1)
+        replace_window([str(BASE / 'main-entry'), row['id']])
         return
     show(row)
+
+
+def replace_window(command):
+    child_env = dict(os.environ)
+    child_env.pop('YAD_PID', None)
+    subprocess.Popen(command, env=child_env, stdin=subprocess.DEVNULL,
+                     stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, start_new_session=True)
+    if os.environ.get('YAD_PID', '').isdigit():
+        os.kill(int(os.environ['YAD_PID']), signal.SIGUSR1)
 
 
 def show(row):

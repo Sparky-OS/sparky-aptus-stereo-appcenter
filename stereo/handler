@@ -6,11 +6,15 @@ from pathlib import Path
 import signal
 import subprocess
 import sys
-from common import ACTION
+from common import ACTION, BASE
 from catalogue import route
 import mainpages
 
 uri = sys.argv[1] if len(sys.argv) > 1 else ''
+if uri == (BASE / 'main/index.html').as_uri():
+    mainpages.replace_window(['/usr/bin/sparky-aptus-stereo-appcenter'])
+    sys.exit(1)
+
 main_request = mainpages.request(uri)
 if main_request:
     try:

@@ -66,7 +66,16 @@ def handle(row, operation):
         command = [str(BASE / 'actions/entry'), row['id'], operation]
         if os.geteuid() != 0:
             command.insert(0, '/usr/bin/pkexec')
-        subprocess.run(command)
+        result = subprocess.run(command, capture_output=True, text=True)
+        if result.returncode:
+            saved = subprocess.run(['/usr/bin/sparky-stereo-problems', 'list', '--json', PACKAGE],
+                                   capture_output=True, text=True, check=True)
+            records = json.loads(saved.stdout)
+            if isinstance(records, dict):
+                records = records.get('problems', [])
+            if not any(record.get('key') == row['id'] for record in records):
+                raise RuntimeError(result.stderr.strip() or result.stdout.strip() or
+                                   str(subprocess.CalledProcessError(result.returncode, command)))
     if os.environ.get('YAD_PID', '').isdigit():
         os.kill(int(os.environ['YAD_PID']), signal.SIGUSR1)
     with tempfile.TemporaryDirectory(prefix='aptus-main-entry-') as directory:

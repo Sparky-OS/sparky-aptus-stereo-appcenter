@@ -117,7 +117,7 @@ class Plan(unittest.TestCase):
             with self.assertRaises(tools.Refused) as refused:
                 tools.plan(self.row)
         text = str(refused.exception)
-        for part in ('Vinci', 'podman', 'Unable to locate package podman', 'apt update', 'Nothing was changed'):
+        for part in ('Vinci', 'podman', 'apt says: Unable to locate package podman. Update the package lists (apt update)', 'Nothing was changed'):
             self.assertIn(part, text)
 
     def test_a_tool_the_simulation_does_not_install_is_refused(self):

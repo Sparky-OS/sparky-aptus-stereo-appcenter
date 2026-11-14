@@ -87,9 +87,9 @@ def plan(row):
         return None
     result = subprocess.run([APT, '-s', *OPTIONS, 'install', *names], capture_output=True, text=True, env=ENV)
     if result.returncode:
-        said = [line[3:].strip() for line in (result.stderr + result.stdout).splitlines() if line.startswith('E: ')]
+        said = [line[3:].strip().rstrip('.') for line in (result.stderr + result.stdout).splitlines() if line.startswith('E: ')]
         raise Refused(messages()['tools_unavailable'].format(name=row['name'], tools=', '.join(names),
-                                                             why=' '.join(said) or 'apt-get: %d' % result.returncode))
+                                                             why=('; '.join(said) or 'apt-get: %d' % result.returncode) + '.'))
     packages, sources = [], []
     for line in result.stdout.splitlines():
         found = INST.match(line)
@@ -103,7 +103,7 @@ def plan(row):
     absent = [name for name in names if name not in [package.split(':')[0] for package, _ in packages]]
     if absent:
         raise Refused(messages()['tools_unavailable'].format(name=row['name'], tools=', '.join(absent),
-                                                             why='apt-get -s: ' + ' '.join(result.stdout.split()[-12:])))
+                                                             why='apt-get -s: ' + ' '.join(result.stdout.split()[-12:]) + '.'))
     download, disk = sizes(packages)
     return {'tools': names, 'packages': packages, 'download': download, 'disk': disk, 'sources': sources}
 

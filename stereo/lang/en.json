@@ -37,5 +37,13 @@
   "appimage_payload": "The application files are incomplete or belong to another installation. No application was changed.",
   "reinstall": "Reinstall",
   "kamlynk_note": "PC support for Sony cameras: monitor and remote. Uses Sony's Camera Remote SDK.",
-  "download_size": "Download size"
+  "download_size": "Download size",
+  "tools_needed": "{name} needs these tools, which are installed with it: {tools}.",
+  "tools_sizes": "They bring {count} packages from {source}: {download} to download, {disk} more disk space.",
+  "tools_total": "Total download with {name}: {size}.",
+  "tools_unavailable": "The tools {name} needs cannot be installed: {tools}. apt says: {why} Update the package lists (apt update) and try again. Nothing was changed.",
+  "tools_download_failed": "The tools {name} needs could not be downloaded: {tools} (apt exit {code}). Check the internet connection and try again. Nothing was installed.",
+  "tools_failed": "Installing the tools {name} needs failed: {tools} (apt exit {code}). {name} was not installed. Read apt's lines above, then try again.",
+  "download_failed": "{name} could not be downloaded from {host} (curl exit {code}). Check the internet connection and try again. No application was changed.",
+  "tools_kept": "These tools came with {name} and stay installed: {tools}. They are now marked as automatically installed, so apt offers to remove them only when nothing else needs them."
 }

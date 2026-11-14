@@ -37,5 +37,13 @@
   "appimage_payload": "Die Anwendungsdateien sind unvollständig oder gehören zu einer anderen Installation. Keine Anwendung wurde geändert.",
   "reinstall": "Neu installieren",
   "kamlynk_note": "Sony-Kameras am PC: Monitor und Fernsteuerung. Verwendet das Sony Camera Remote SDK.",
-  "download_size": "Downloadgröße"
+  "download_size": "Downloadgröße",
+  "tools_needed": "{name} benötigt diese Werkzeuge, die mitinstalliert werden: {tools}.",
+  "tools_sizes": "Sie bringen {count} Pakete von {source} mit: {download} Download, {disk} zusätzlicher Speicherplatz.",
+  "tools_total": "Gesamter Download mit {name}: {size}.",
+  "tools_unavailable": "Die Werkzeuge, die {name} benötigt, können nicht installiert werden: {tools}. apt meldet: {why} Aktualisieren Sie die Paketlisten (apt update) und versuchen Sie es erneut. Es wurde nichts geändert.",
+  "tools_download_failed": "Die Werkzeuge, die {name} benötigt, konnten nicht heruntergeladen werden: {tools} (apt-Exitcode {code}). Prüfen Sie die Internetverbindung und versuchen Sie es erneut. Es wurde nichts installiert.",
+  "tools_failed": "Die Installation der Werkzeuge, die {name} benötigt, ist fehlgeschlagen: {tools} (apt-Exitcode {code}). {name} wurde nicht installiert. Lesen Sie die Zeilen von apt weiter oben und versuchen Sie es dann erneut.",
+  "download_failed": "{name} konnte nicht von {host} heruntergeladen werden (curl-Exitcode {code}). Prüfen Sie die Internetverbindung und versuchen Sie es erneut. Keine Anwendung wurde geändert.",
+  "tools_kept": "Diese Werkzeuge kamen mit {name} und bleiben installiert: {tools}. Sie sind jetzt als automatisch installiert markiert; apt bietet ihre Entfernung erst an, wenn nichts anderes sie mehr benötigt."
 }

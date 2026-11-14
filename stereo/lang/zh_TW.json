@@ -37,5 +37,13 @@
   "appimage_payload": "應用程式檔案不完整或屬於其他安裝。未變更任何應用程式。",
   "reinstall": "重新安裝",
   "kamlynk_note": "在 PC 上支援 Sony 相機：監看和遙控。使用 Sony Camera Remote SDK。",
-  "download_size": "下載大小"
+  "download_size": "下載大小",
+  "tools_needed": "{name} 需要下列工具，會一併安裝：{tools}。",
+  "tools_sizes": "它們會從 {source} 帶來 {count} 個套件：需下載 {download}，額外占用磁碟空間 {disk}。",
+  "tools_total": "連同 {name} 的下載總量：{size}。",
+  "tools_unavailable": "無法安裝 {name} 所需的工具：{tools}。apt 訊息：{why} 請更新套件清單（apt update）後重試。未變更任何內容。",
+  "tools_download_failed": "無法下載 {name} 所需的工具：{tools}（apt 結束代碼 {code}）。請檢查網路連線後重試。未安裝任何內容。",
+  "tools_failed": "安裝 {name} 所需的工具失敗：{tools}（apt 結束代碼 {code}）。{name} 未安裝。請查看上方 apt 的輸出後重試。",
+  "download_failed": "無法從 {host} 下載 {name}（curl 結束代碼 {code}）。請檢查網路連線後重試。未變更任何應用程式。",
+  "tools_kept": "下列工具隨 {name} 安裝，現予以保留：{tools}。它們已標記為自動安裝，只有在沒有其他軟體需要時，apt 才會提示移除。"
 }

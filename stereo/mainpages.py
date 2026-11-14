@@ -12,6 +12,7 @@ import tempfile
 from common import BASE, PACKAGE, messages, language, install_downloads
 from catalogue import main_entries
 import appimage
+import tools
 
 
 def request(uri):
@@ -40,7 +41,17 @@ def render(row):
     mode, problem = reader.announce_mode(apt_pkg.config.find(reader.OPTION, ''))
     if problem:
         raise RuntimeError(problem)
-    notice = reader.assess([dict(package=row['name'], version=row['version'], size=row['size'], source=row['url'])], mode, 'asked')
+    # the tools this entry brings, with apt's sizes, said before the person installs; a tool that cannot be installed is said too
+    downloads, needs = [dict(package=row['name'], version=row['version'], size=row['size'], source=row['url'])], ''
+    if not selected:
+        try:
+            found = tools.plan(row)
+        except tools.Refused as error:
+            found, errors = None, '\n'.join(filter(None, [errors, str(error)]))
+        if found:
+            downloads.append(tools.download(found))
+            needs = ''.join('<p class="tools">' + e(line) + '</p>' for line in tools.lines(row, found))
+    notice = reader.assess(downloads, mode, 'asked')
     lines = ''.join('<p>' + e(line) + '</p>' for line in notice['text'][:-1]) if notice['announce'] else ''
     operation, label = ('debremo', 'remove') if selected else ('debinst', 'install')
     buttons = f'<a class="buttonmenu" href="aptus://{operation}_{row["id"]}">{e(text[label])}</a>'
@@ -55,7 +66,7 @@ def render(row):
     after = page[page.index('</table>', table.end()) + len('</table>'):]
     card = f'''<p><b>{e(row['name'])}</b></p><p>{e(text[row['id'] + '_note'])}</p>
 <p>Dionatan Simioni · {e(row['version'])}</p>
-<p>{e(text['download_size'])}: {row['size']:,} B</p>
+<p>{e(text['download_size'])}: {row['size']:,} B</p>{needs}
 <p>{e(text['installed' if selected else 'absent'])}</p>
 <div style="color:#9a1818;white-space:pre-wrap">{e(errors)}</div>{lines}<p>{buttons}</p>'''
     return before.replace('<head>', '<head><meta charset="utf-8"><base href="' + main.as_uri() + '/">') + card + after

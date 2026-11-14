@@ -37,5 +37,13 @@
   "appimage_payload": "앱 파일이 불완전하거나 다른 설치에 속합니다. 앱은 변경되지 않았습니다.",
   "reinstall": "다시 설치",
   "kamlynk_note": "PC에서 Sony 카메라의 화면을 보고 원격으로 제어합니다. Sony Camera Remote SDK를 사용합니다.",
-  "download_size": "다운로드 크기"
+  "download_size": "다운로드 크기",
+  "tools_needed": "{name} 항목에는 다음 도구가 필요하며 함께 설치됩니다: {tools}.",
+  "tools_sizes": "{source} 저장소에서 패키지 {count}개가 함께 설치됩니다: 다운로드 {download}, 추가 디스크 공간 {disk}.",
+  "tools_total": "{name} 항목을 포함한 전체 다운로드: {size}.",
+  "tools_unavailable": "{name} 항목에 필요한 도구를 설치할 수 없습니다: {tools}. apt 메시지: {why} 패키지 목록을 업데이트(apt update)한 후 다시 시도하세요. 변경된 것은 없습니다.",
+  "tools_download_failed": "{name} 항목에 필요한 도구를 다운로드하지 못했습니다: {tools} (apt 종료 코드 {code}). 인터넷 연결을 확인한 후 다시 시도하세요. 설치된 것은 없습니다.",
+  "tools_failed": "{name} 항목에 필요한 도구 설치에 실패했습니다: {tools} (apt 종료 코드 {code}). {name} 항목은 설치되지 않았습니다. 위의 apt 출력을 확인한 후 다시 시도하세요.",
+  "download_failed": "{name} 파일을 {host} 서버에서 다운로드하지 못했습니다 (curl 종료 코드 {code}). 인터넷 연결을 확인한 후 다시 시도하세요. 앱은 변경되지 않았습니다.",
+  "tools_kept": "다음 도구는 {name} 항목과 함께 설치되었으며 그대로 남습니다: {tools}. 이제 자동 설치로 표시되므로, 다른 곳에서 필요하지 않을 때에만 apt가 제거를 제안합니다."
 }

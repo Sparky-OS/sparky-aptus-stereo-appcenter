@@ -37,5 +37,13 @@
   "appimage_payload": "Pliki aplikacji są niekompletne lub należą do innej instalacji. Nie zmieniono żadnej aplikacji.",
   "reinstall": "Zainstaluj ponownie",
   "kamlynk_note": "Obsługa aparatów Sony z komputera: monitor i zdalne sterowanie. Korzysta z Sony Camera Remote SDK.",
-  "download_size": "Rozmiar pobierania"
+  "download_size": "Rozmiar pobierania",
+  "tools_needed": "{name} wymaga tych narzędzi, instalowanych razem z nim: {tools}.",
+  "tools_sizes": "Wraz z nimi instalowanych jest {count} pakietów z {source}: {download} do pobrania, {disk} dodatkowego miejsca na dysku.",
+  "tools_total": "Łączny rozmiar pobierania z {name}: {size}.",
+  "tools_unavailable": "Nie można zainstalować narzędzi, których wymaga {name}: {tools}. Komunikat apt: {why} Zaktualizuj listy pakietów (apt update) i spróbuj ponownie. Niczego nie zmieniono.",
+  "tools_download_failed": "Nie udało się pobrać narzędzi, których wymaga {name}: {tools} (kod wyjścia apt: {code}). Sprawdź połączenie z internetem i spróbuj ponownie. Niczego nie zainstalowano.",
+  "tools_failed": "Instalacja narzędzi, których wymaga {name}, nie powiodła się: {tools} (kod wyjścia apt: {code}). {name} nie został zainstalowany. Przeczytaj powyższe komunikaty apt i spróbuj ponownie.",
+  "download_failed": "Nie udało się pobrać {name} z {host} (kod wyjścia curl: {code}). Sprawdź połączenie z internetem i spróbuj ponownie. Nie zmieniono żadnej aplikacji.",
+  "tools_kept": "Te narzędzia zostały zainstalowane razem z {name} i pozostają w systemie: {tools}. Są teraz oznaczone jako zainstalowane automatycznie, więc apt zaproponuje ich usunięcie dopiero wtedy, gdy nic innego nie będzie ich wymagać."
 }

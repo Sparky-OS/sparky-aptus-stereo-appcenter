@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 # SPDX-FileCopyrightText: 2026 Daniel Ramos (Capitain Jack)
 # SPDX-License-Identifier: GPL-3.0-or-later
-"""Allowlisted edition packages, SlimeVR Flatpak and checked vendor downloads."""
+"""Allowlisted edition packages, SlimeVR Flatpak and checked vendor downloads; each entry brings the tools its program needs."""
 import hashlib
 from fnmatch import fnmatchcase
 import json
@@ -13,6 +13,7 @@ import tempfile
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 from common import BASE, PACKAGE, messages, install_downloads
 from catalogue import entries, entry
+import tools
 
 ENGINE = '/usr/bin/sparky-stereo-problems'
 ACTION = str(BASE / 'actions/entry')
@@ -69,6 +70,9 @@ def installed(row):
         with path.open('rb') as stream:
             return hashlib.file_digest(stream, 'sha256').hexdigest() == row['sha256']
     if row['kind'] == 'flatpak':
+        if not Path('/usr/bin/flatpak').exists():
+            # flatpak is this entry's tool, installed with it: without it nothing of the entry is installed
+            return False
         result = subprocess.run(['/usr/bin/flatpak', 'list', '--system', '--app', '--columns=application'],
                                 capture_output=True, text=True, check=True)
         return row['package'] in result.stdout.splitlines()
@@ -172,6 +176,24 @@ def downloads_note(cache, installed_now, rows):
     return notes
 
 
+def tools_note(rows, installed_now):
+    """For each entry of the stereo page that is not installed and needs tools the system lacks: the sentences that say which,
+    how many packages and apt's sizes, or why they cannot be installed. One simulation for each set of missing tools."""
+    notes, plans = {}, {}
+    for row in rows:
+        if installed_now[row['id']] or row['section'] == 'main' or not tools.declared(row):
+            continue
+        try:
+            names = tuple(tools.missing(row))
+            if names not in plans:
+                plans[names] = tools.plan(row)
+            if plans[names]:
+                notes[row['id']] = {'text': tools.lines(row, plans[names])}
+        except tools.Refused as error:
+            notes[row['id']] = {'error': str(error)}
+    return notes
+
+
 def status():
     import apt
     cache, patterns = apt.Cache(), only_ours()
@@ -189,11 +211,13 @@ def status():
     present = {row['id']: installed(row) for row in rows}
     shown = [row for row in rows if visible(row, cache, patterns)]
     notes = downloads_note(cache, present, shown)
+    needs = tools_note(shown, present)
     return {row['id']: dict(installed=present[row['id']], error=errors.get(row['id'], ''),
-                           visible=visible(row, cache, patterns), download=notes.get(row['id'])) for row in rows}
+                           visible=visible(row, cache, patterns), download=notes.get(row['id']),
+                           tools=needs.get(row['id'])) for row in rows}
 
 
-def apt_change(row, operation):
+def apt_change(row, operation, found=None):
     name = row['package']
     if operation == 'install':
         import apt
@@ -210,8 +234,9 @@ def apt_change(row, operation):
     subprocess.run(command, check=True, env=ENV)
 
 
-def flatpak_change(row, operation):
+def flatpak_change(row, operation, found=None):
     if operation == 'install':
+        tools.ensure(row, found)
         remotes = subprocess.run(['/usr/bin/flatpak', 'remotes', '--system', '--columns=name'],
                                  capture_output=True, text=True, check=True).stdout.splitlines()
         if 'flathub' not in remotes:
@@ -222,7 +247,7 @@ def flatpak_change(row, operation):
     subprocess.run(command, check=True, env=ENV)
 
 
-def download(row, operation):
+def download(row, operation, found=None):
     path = DOWNLOADS / row['filename']
     if operation == 'remove':
         path.unlink(missing_ok=True)
@@ -243,20 +268,44 @@ def download(row, operation):
     print(messages()['download_ready'].format(path=path))
 
 
-def appimage_change(row, operation):
+def appimage_change(row, operation, found=None):
     import appimage
-    if operation != 'remove':
+    appimage.change(row, operation, lambda: tools.ensure(row, found))
+
+
+def announce(row, found):
+    """Said before anything is fetched: the tools the entry brings with apt's sizes, then, on a metered connection (or when
+    NetworkManager cannot be read), the install-time download notice for the program's own download and the tools' together."""
+    for line in tools.lines(row, found):
+        print(line, flush=True)
+    downloads = []
+    if row['kind'] == 'appimage':
+        downloads.append(dict(package=row['name'], version=row['version'], size=row['size'], source=row['url']))
+    if found:
+        downloads.append(tools.download(found))
+    if downloads:
         reader = install_downloads()
-        notice = reader.assess([dict(package=row['name'], version=row['version'], size=row['size'], source=row['url'])], announce_setting(reader), 'unattended')
-        for line in notice['text']:
+        for line in reader.assess(downloads, announce_setting(reader), 'unattended')['text']:
             print(line, flush=True)
-    appimage.change(row, operation)
+
+
+def needed_elsewhere(row):
+    """The tools that another installed entry declares: removing ROW leaves their marks alone."""
+    return {name for other in entries() if other['id'] != row['id'] and tools.declared(other) and installed(other)
+            for name in tools.declared(other)}
 
 
 def change(row, operation):
-    {'apt': apt_change, 'flatpak': flatpak_change, 'download': download, 'appimage': appimage_change}[row['kind']](row, operation)
+    found = None
+    if operation == 'install':
+        # refused here, with apt's reason, when a tool cannot be installed: before any download and any change
+        found = tools.plan(row)
+        announce(row, found)
+    {'apt': apt_change, 'flatpak': flatpak_change, 'download': download, 'appimage': appimage_change}[row['kind']](row, operation, found)
     if installed(row) != (operation == 'install'):
         raise RuntimeError(row['name'] + ': ' + messages()['installed' if installed(row) else 'absent'])
+    if operation == 'remove':
+        tools.release(row, needed_elsewhere(row))
 
 
 def main():

@@ -56,6 +56,12 @@ def render():
                 # the install-time download this entry brings, with its size and source, before the person installs (apt shows the same words)
                 lines = ''.join(f'<span>{e(line)}</span><br>' for line in current['download']['text'])
                 note += f'<p class="download">{lines}</p>'
+            if current.get('tools') and current['tools'].get('error'):
+                note += f'<p class="error">{e(current["tools"]["error"])}</p>'
+            elif current.get('tools'):
+                # the tools this entry installs with it, with apt's sizes, before the person installs
+                lines = ''.join(f'<span>{e(line)}</span><br>' for line in current['tools']['text'])
+                note += f'<p class="download tools">{lines}</p>'
             cards.append(f'<article id="entry-{row["id"]}"><h3>{e(row["name"])}</h3>'
                          f'<p class="state">{e(indicator)}</p>{note}'
                          f'<p class="error">{e(current["error"])}</p>'

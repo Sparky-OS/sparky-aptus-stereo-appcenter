@@ -37,5 +37,13 @@
   "appimage_payload": "Los archivos de la aplicación están incompletos o pertenecen a otra instalación. No se ha modificado ninguna aplicación.",
   "reinstall": "Reinstalar",
   "kamlynk_note": "Soporte para cámaras Sony en el PC: monitor y control remoto. Usa Sony Camera Remote SDK.",
-  "download_size": "Tamaño de la descarga"
+  "download_size": "Tamaño de la descarga",
+  "tools_needed": "{name} necesita estas herramientas, que se instalan a la vez: {tools}.",
+  "tools_sizes": "Traen {count} paquetes de {source}: {download} de descarga, {disk} más de espacio en disco.",
+  "tools_total": "Descarga total con {name}: {size}.",
+  "tools_unavailable": "Las herramientas que {name} necesita no se pueden instalar: {tools}. apt dice: {why} Actualiza las listas de paquetes (apt update) e inténtalo de nuevo. No se ha cambiado nada.",
+  "tools_download_failed": "No se pudieron descargar las herramientas que {name} necesita: {tools} (código de salida {code} de apt). Revisa la conexión a internet e inténtalo de nuevo. No se ha instalado nada.",
+  "tools_failed": "La instalación de las herramientas que {name} necesita ha fallado: {tools} (código de salida {code} de apt). {name} no se ha instalado. Lee las líneas de apt de arriba e inténtalo de nuevo.",
+  "download_failed": "No se pudo descargar {name} desde {host} (código de salida {code} de curl). Revisa la conexión a internet e inténtalo de nuevo. No se ha modificado ninguna aplicación.",
+  "tools_kept": "Estas herramientas llegaron con {name} y siguen instaladas: {tools}. Ahora están marcadas como instaladas automáticamente, así que apt solo ofrece quitarlas cuando nada más las necesite."
 }

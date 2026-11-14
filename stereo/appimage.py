@@ -8,6 +8,7 @@ import platform
 import shutil
 import subprocess
 import tempfile
+from urllib.parse import urlsplit
 from common import messages
 
 
@@ -30,7 +31,7 @@ def installed(row):
         return marker.read_text().strip() == row['id'] and hashlib.file_digest(stream, 'sha256').hexdigest() == row['sha256']
 
 
-def change(row, operation):
+def change(row, operation, ensure_tools=None):
     text = messages()
     base, links = paths(row)
     marker = base / '.aptus-managed'
@@ -57,8 +58,11 @@ def change(row, operation):
     with tempfile.TemporaryDirectory(prefix='aptus-appimage-') as directory:
         work = Path(directory)
         image = work / 'application.AppImage'
-        subprocess.run(['curl', '--fail', '--location', '--proto', '=https', '--proto-redir', '=https',
-                        '--connect-timeout', '30', '--max-time', '600', '--output', str(image), row['url']], check=True)
+        fetched = subprocess.run(['curl', '--fail', '--location', '--proto', '=https', '--proto-redir', '=https',
+                                  '--connect-timeout', '30', '--max-time', '600', '--output', str(image), row['url']])
+        if fetched.returncode:
+            raise RuntimeError(text['download_failed'].format(name=row['name'], host=urlsplit(row['url']).hostname,
+                                                              code=fetched.returncode))
         with image.open('rb') as stream:
             if hashlib.file_digest(stream, 'sha256').hexdigest() != row['sha256']:
                 raise RuntimeError(text['checksum_failed'])
@@ -69,7 +73,9 @@ def change(row, operation):
             subprocess.run([str(image), '--appimage-extract', wanted], cwd=work, check=True, stdout=subprocess.DEVNULL)
             if not (work / 'squashfs-root' / wanted).is_file():
                 raise RuntimeError(text['appimage_payload'])
-        subprocess.run(['apt-get', '-y', '--no-remove', '--no-install-recommends', 'install', *row['dependencies']], check=True)
+        # the program is here and verified; now the tools it needs, which the entry declares (tools.py)
+        if ensure_tools:
+            ensure_tools()
         for command in row['commands']:
             if shutil.which(command) is None:
                 raise RuntimeError(text['appimage_requirements'].format(command=command))

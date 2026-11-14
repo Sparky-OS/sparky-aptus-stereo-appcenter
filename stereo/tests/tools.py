@@ -103,9 +103,7 @@ class Plan(unittest.TestCase):
         said = tools.lines(self.row, found)
         self.assertIn('bsdextrautils, distrobox, podman', said[0])
         self.assertNotIn('fuse3', said[0])
-        self.assertIn('6 packages', said[1])
-        self.assertIn('31.0 MiB to download', said[1])
-        self.assertIn('120.0 MiB', said[1])
+        self.assertEqual(said[1], 'Packages apt installs for this: 6, from Debian, Debian-Security. Download: 31.0 MiB. More disk space: 120.0 MiB.')
         # the program's own download and the tools' together
         self.assertIn(tools.human(31 * 1024 * 1024 + self.row['size']), said[2])
         self.assertEqual(tools.download(found), {'package': 'bsdextrautils, distrobox, podman', 'version': '',
@@ -260,7 +258,7 @@ class Action(unittest.TestCase):
             action.announce(row, found)
         said = out.getvalue().splitlines()
         self.assertIn('podman', said[0])
-        self.assertIn('35 packages from Debian: 30.0 MiB to download', said[1])
+        self.assertIn('Packages apt installs for this: 35, from Debian. Download: 30.0 MiB.', said[1])
         self.assertIn('metered', said[3])
         self.assertTrue(any('Vinci: 36.6 MiB from https://github.com/' in line for line in said))
         self.assertTrue(any('podman: 30.0 MiB from Debian' in line for line in said))

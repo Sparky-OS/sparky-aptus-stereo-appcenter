@@ -39,7 +39,7 @@
   "kamlynk_note": "PC에서 Sony 카메라의 화면을 보고 원격으로 제어합니다. Sony Camera Remote SDK를 사용합니다.",
   "download_size": "다운로드 크기",
   "tools_needed": "{name} 항목에는 다음 도구가 필요하며 함께 설치됩니다: {tools}.",
-  "tools_sizes": "{source} 저장소에서 패키지 {count}개가 함께 설치됩니다: 다운로드 {download}, 추가 디스크 공간 {disk}.",
+  "tools_sizes": "이를 위해 apt가 설치하는 패키지: {count}개 ({source} 저장소). 다운로드: {download}. 추가 디스크 공간: {disk}.",
   "tools_total": "{name} 항목을 포함한 전체 다운로드: {size}.",
   "tools_unavailable": "{name} 항목에 필요한 도구를 설치할 수 없습니다: {tools}. apt 메시지: {why} 패키지 목록을 업데이트(apt update)한 후 다시 시도하세요. 변경된 것은 없습니다.",
   "tools_download_failed": "{name} 항목에 필요한 도구를 다운로드하지 못했습니다: {tools} (apt 종료 코드 {code}). 인터넷 연결을 확인한 후 다시 시도하세요. 설치된 것은 없습니다.",

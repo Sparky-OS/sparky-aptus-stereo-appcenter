@@ -39,7 +39,7 @@
   "kamlynk_note": "Suporte a câmeras Sony no PC: monitor e controle remoto. Usa o Sony Camera Remote SDK.",
   "download_size": "Tamanho do download",
   "tools_needed": "{name} precisa destas ferramentas, que são instaladas junto: {tools}.",
-  "tools_sizes": "Elas trazem {count} pacotes de {source}: {download} para baixar, {disk} a mais de espaço em disco.",
+  "tools_sizes": "Pacotes que o apt instala para isso: {count}, de {source}. Download: {download}. Espaço em disco a mais: {disk}.",
   "tools_total": "Download total com {name}: {size}.",
   "tools_unavailable": "As ferramentas de que {name} precisa não podem ser instaladas: {tools}. O apt diz: {why} Atualize as listas de pacotes (apt update) e tente novamente. Nada foi alterado.",
   "tools_download_failed": "Não foi possível baixar as ferramentas de que {name} precisa: {tools} (código de saída {code} do apt). Confira a conexão com a internet e tente novamente. Nada foi instalado.",

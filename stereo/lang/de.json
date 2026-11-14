@@ -39,7 +39,7 @@
   "kamlynk_note": "Sony-Kameras am PC: Monitor und Fernsteuerung. Verwendet das Sony Camera Remote SDK.",
   "download_size": "Downloadgröße",
   "tools_needed": "{name} benötigt diese Werkzeuge, die mitinstalliert werden: {tools}.",
-  "tools_sizes": "Sie bringen {count} Pakete von {source} mit: {download} Download, {disk} zusätzlicher Speicherplatz.",
+  "tools_sizes": "Pakete, die apt dafür installiert: {count}, von {source}. Download: {download}. Zusätzlicher Speicherplatz: {disk}.",
   "tools_total": "Gesamter Download mit {name}: {size}.",
   "tools_unavailable": "Die Werkzeuge, die {name} benötigt, können nicht installiert werden: {tools}. apt meldet: {why} Aktualisieren Sie die Paketlisten (apt update) und versuchen Sie es erneut. Es wurde nichts geändert.",
   "tools_download_failed": "Die Werkzeuge, die {name} benötigt, konnten nicht heruntergeladen werden: {tools} (apt-Exitcode {code}). Prüfen Sie die Internetverbindung und versuchen Sie es erneut. Es wurde nichts installiert.",

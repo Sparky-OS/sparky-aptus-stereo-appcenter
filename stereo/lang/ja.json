@@ -39,7 +39,7 @@
   "kamlynk_note": "PC で Sony カメラのモニター表示とリモート操作を行います。Sony Camera Remote SDK を使用します。",
   "download_size": "ダウンロードサイズ",
   "tools_needed": "{name} には次のツールが必要で、一緒にインストールされます: {tools}。",
-  "tools_sizes": "{source} から {count} 個のパッケージが追加されます。ダウンロード {download}、追加のディスク使用量 {disk}。",
+  "tools_sizes": "そのために apt がインストールするパッケージ: {count} 個（{source} から）。ダウンロード: {download}。追加のディスク使用量: {disk}。",
   "tools_total": "{name} を含むダウンロードの合計: {size}。",
   "tools_unavailable": "{name} に必要なツールをインストールできません: {tools}。apt のメッセージ: {why} パッケージ一覧を更新（apt update）してから再試行してください。何も変更されていません。",
   "tools_download_failed": "{name} に必要なツールをダウンロードできませんでした: {tools}（apt の終了コード {code}）。インターネット接続を確認して再試行してください。何もインストールされていません。",

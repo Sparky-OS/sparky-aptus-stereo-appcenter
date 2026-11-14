@@ -39,7 +39,7 @@
   "kamlynk_note": "在 PC 上支持 Sony 相机：监看和遥控。使用 Sony Camera Remote SDK。",
   "download_size": "下载大小",
   "tools_needed": "{name} 需要以下工具，它们会一并安装：{tools}。",
-  "tools_sizes": "它们会从 {source} 带来 {count} 个软件包：需下载 {download}，额外占用磁盘空间 {disk}。",
+  "tools_sizes": "apt 为此安装的软件包：{count} 个（来自 {source}）。下载：{download}。额外磁盘空间：{disk}。",
   "tools_total": "连同 {name} 的下载总量：{size}。",
   "tools_unavailable": "无法安装 {name} 所需的工具：{tools}。apt 提示：{why} 请更新软件包列表（apt update）后重试。未做任何更改。",
   "tools_download_failed": "无法下载 {name} 所需的工具：{tools}（apt 退出码 {code}）。请检查网络连接后重试。未安装任何内容。",

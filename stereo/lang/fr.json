@@ -39,7 +39,7 @@
   "kamlynk_note": "Prise en charge des appareils Sony sur PC : moniteur et télécommande. Utilise le Sony Camera Remote SDK.",
   "download_size": "Taille du téléchargement",
   "tools_needed": "{name} a besoin de ces outils, installés en même temps : {tools}.",
-  "tools_sizes": "Ils apportent {count} paquets depuis {source} : {download} à télécharger, {disk} d’espace disque en plus.",
+  "tools_sizes": "Paquets qu’apt installe pour cela : {count}, depuis {source}. Téléchargement : {download}. Espace disque en plus : {disk}.",
   "tools_total": "Téléchargement total avec {name} : {size}.",
   "tools_unavailable": "Les outils dont {name} a besoin ne peuvent pas être installés : {tools}. apt indique : {why} Mettez à jour les listes de paquets (apt update) et réessayez. Rien n’a été modifié.",
   "tools_download_failed": "Les outils dont {name} a besoin n’ont pas pu être téléchargés : {tools} (code de sortie {code} d’apt). Vérifiez la connexion à Internet et réessayez. Rien n’a été installé.",

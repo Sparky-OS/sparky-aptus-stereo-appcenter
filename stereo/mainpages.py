@@ -77,7 +77,17 @@ def handle(row, operation):
                 raise RuntimeError(result.stderr.strip() or result.stdout.strip() or
                                    str(subprocess.CalledProcessError(result.returncode, command)))
     if os.environ.get('YAD_PID', '').isdigit():
+        child_env = dict(os.environ)
+        child_env.pop('YAD_PID', None)
+        subprocess.Popen([str(BASE / 'main-entry'), row['id']], env=child_env,
+                         stdin=subprocess.DEVNULL, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL,
+                         start_new_session=True)
         os.kill(int(os.environ['YAD_PID']), signal.SIGUSR1)
+        return
+    show(row)
+
+
+def show(row):
     with tempfile.TemporaryDirectory(prefix='aptus-main-entry-') as directory:
         page = Path(directory) / 'index.html'
         page.write_text(render(row))

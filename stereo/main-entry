@@ -3,6 +3,7 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 """Entry page shared by the main protocol handler and its command-line backend."""
 import sys
+import subprocess
 from catalogue import main_entries
 import mainpages
 
@@ -14,4 +15,8 @@ if row is None:
 if sys.argv[2:] == ['--render']:
     print(mainpages.render(row))
 else:
-    mainpages.handle(row, None)
+    try:
+        mainpages.handle(row, None)
+    except (OSError, ValueError, RuntimeError, subprocess.CalledProcessError) as error:
+        subprocess.run(['yad', '--error', '--title=APTus AppCenter', '--text=' + str(error)])
+        sys.exit(1)

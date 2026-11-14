@@ -86,8 +86,6 @@ class Plan(unittest.TestCase):
             self.assertIsNone(tools.plan(self.row))
             run.assert_not_called()
             self.assertEqual(tools.lines(self.row, None), [])
-            tools.ensure(self.row, None)
-            run.assert_not_called()
 
     def test_only_the_missing_tools_are_simulated_and_apt_gives_the_sizes(self):
         have = {'fuse3'}
@@ -133,6 +131,7 @@ class Ensure(unittest.TestCase):
     row = catalogue.entry('vinci')
     found = {'tools': ['distrobox', 'podman'], 'packages': [('podman', '5'), ('distrobox', '1')], 'download': 1, 'disk': 1,
              'sources': ['Debian']}
+    auto = ()
 
     def run_with(self, results, after=True):
         calls = []
@@ -141,7 +140,8 @@ class Ensure(unittest.TestCase):
             calls.append(command)
             return results.pop(0)
         with tempfile.TemporaryDirectory() as tmp, patch.object(tools, 'RECORDS', Path(tmp) / 'tools'), \
-             patch.object(tools.subprocess, 'run', side_effect=run), patch.object(tools, 'present', return_value=after):
+             patch.object(tools.subprocess, 'run', side_effect=run), patch.object(tools, 'present', return_value=after), \
+             patch.object(tools, 'automatic', side_effect=lambda name: name in self.auto):
             try:
                 tools.ensure(self.row, self.found)
                 error = None
@@ -170,6 +170,23 @@ class Ensure(unittest.TestCase):
         for part in ('Installing the tools Vinci needs failed', 'apt exit 100', 'Vinci was not installed'):
             self.assertIn(part, error)
         self.assertEqual(recorded, [])
+
+    def test_a_present_tool_is_only_kept_from_autoremove(self):
+        """Nothing is installed; a tool apt had marked automatic is marked manual and recorded, a manual one is not touched."""
+        calls = []
+        with tempfile.TemporaryDirectory() as tmp, patch.object(tools, 'RECORDS', Path(tmp) / 'tools'), \
+             patch.object(tools.subprocess, 'run', side_effect=lambda command, **k: calls.append(command) or done()), \
+             patch.object(tools, 'automatic', side_effect=lambda name: name in ('distrobox', 'fuse3')):
+            tools.ensure(self.row, None)
+            self.assertEqual(calls, [['/usr/bin/apt-mark', 'manual', 'distrobox', 'fuse3']])
+            self.assertEqual(tools.brought('vinci'), ['distrobox', 'fuse3'])
+        calls = []
+        with tempfile.TemporaryDirectory() as tmp, patch.object(tools, 'RECORDS', Path(tmp) / 'tools'), \
+             patch.object(tools.subprocess, 'run', side_effect=lambda command, **k: calls.append(command) or done()), \
+             patch.object(tools, 'automatic', return_value=False):
+            tools.ensure(self.row, None)
+            self.assertEqual(calls, [])
+            self.assertFalse((Path(tmp) / 'tools').exists())
 
     def test_apt_exit_0_with_a_tool_still_absent_is_a_failure(self):
         _, error, recorded = self.run_with([done(), done()], after=False)

@@ -83,6 +83,10 @@ class Transactions(unittest.TestCase):
             self.assertEqual(run.call_args.args[0],['/usr/bin/apt-get','-y','remove','bino'])
 
     def test_flatpak_never_creates_remote(self):
+        # the entry's own tool (flatpak) is the subject of tests/tools.py; here it is present
+        tools_present = patch.object(action.tools,'ensure')
+        tools_present.start()
+        self.addCleanup(tools_present.stop)
         with patch.object(action.subprocess,'run',return_value=subprocess.CompletedProcess([],0,'','')) as run:
             with self.assertRaisesRegex(RuntimeError,'Flathub'): action.flatpak_change(catalogue.entry('slimevr'),'install')
             self.assertEqual(run.call_count,1)

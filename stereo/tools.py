@@ -9,9 +9,11 @@ The app center package never depends on them: a system that never installs the e
              it refuses, with apt's reason, when a tool cannot be installed
     lines    the sentences that say it, for the entry's page and the action's output
     download the same plan as a row of the install-time download notice (the metered notice of sparky-stereo-apt's reader)
-    ensure   downloads, then installs, the missing tools; a failure is said and stops the entry
-    release  when the entry is removed: the tools it brought stay, marked as automatically installed unless another
-             installed entry needs them, so apt's own rule decides when they go
+    ensure   downloads, then installs, the missing tools; a failure is said and stops the entry. A tool that is there
+             already is left as it is, except its mark: one apt installed automatically is marked manual while the entry
+             is installed, or apt's autoremove could take it from under the program
+    release  when the entry is removed: the tools it brought or marked stay, marked as automatically installed again unless
+             another installed entry needs them, so apt's own rule decides when they go
 """
 import json
 import os
@@ -47,6 +49,11 @@ def present(name):
 
 def missing(row):
     return [name for name in declared(row) if not present(name)]
+
+
+def automatic(name):
+    result = subprocess.run(['/usr/bin/apt-mark', 'showauto', name], capture_output=True, text=True, check=True, env=ENV)
+    return name in result.stdout.split()
 
 
 def human(count):
@@ -130,24 +137,28 @@ def brought(identifier):
 
 
 def ensure(row, found):
-    """Install the missing tools: every archive is downloaded first, so a failed download changes nothing."""
-    if not found:
-        return
-    names, text = found['tools'], messages()
-    said = dict(name=row['name'], tools=', '.join(names))
-    fetched = subprocess.run([APT, '-y', '--download-only', *OPTIONS, 'install', *names], env=ENV)
-    if fetched.returncode:
-        raise Refused(text['tools_download_failed'].format(code=fetched.returncode, **said))
-    installed = subprocess.run([APT, '-y', *OPTIONS, 'install', *names], env=ENV)
-    still = [name for name in names if not present(name)]
-    if installed.returncode or still:
-        raise Refused(text['tools_failed'].format(code=installed.returncode, **dict(said, tools=', '.join(still or names))))
-    RECORDS.mkdir(mode=0o755, parents=True, exist_ok=True)
-    record(row['id']).write_text(json.dumps(sorted(set(brought(row['id'])) | set(names))) + '\n')
+    """Install the missing tools: every archive is downloaded first, so a failed download changes nothing. Then record
+    what this entry answers for: the tools it installed, and the ones that were there but only as automatic packages."""
+    names, text = (found['tools'] if found else []), messages()
+    if names:
+        said = dict(name=row['name'], tools=', '.join(names))
+        fetched = subprocess.run([APT, '-y', '--download-only', *OPTIONS, 'install', *names], env=ENV)
+        if fetched.returncode:
+            raise Refused(text['tools_download_failed'].format(code=fetched.returncode, **said))
+        installed = subprocess.run([APT, '-y', *OPTIONS, 'install', *names], env=ENV)
+        still = [name for name in names if not present(name)]
+        if installed.returncode or still:
+            raise Refused(text['tools_failed'].format(code=installed.returncode, **dict(said, tools=', '.join(still or names))))
+    held = [name for name in declared(row) if name not in names and automatic(name)]
+    if held:
+        subprocess.run(['/usr/bin/apt-mark', 'manual', *held], check=True, env=ENV, stdout=subprocess.DEVNULL)
+    if names or held:
+        RECORDS.mkdir(mode=0o755, parents=True, exist_ok=True)
+        record(row['id']).write_text(json.dumps(sorted(set(brought(row['id'])) | set(names) | set(held))) + '\n')
 
 
 def release(row, needed_elsewhere):
-    """The entry is gone. The tools it brought stay installed; those no other installed entry needs are marked as
+    """The entry is gone. The tools it brought or marked stay installed; those no other installed entry needs are marked as
     automatically installed, so apt offers to remove them only when nothing else needs them. Nothing is removed here."""
     path = record(row['id'])
     names = [name for name in brought(row['id']) if present(name) and name not in needed_elsewhere]

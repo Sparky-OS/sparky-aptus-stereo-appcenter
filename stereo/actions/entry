@@ -301,9 +301,18 @@ def change(row, operation):
         # refused here, with apt's reason, when a tool cannot be installed: before any download and any change
         found = tools.plan(row)
         announce(row, found)
-    {'apt': apt_change, 'flatpak': flatpak_change, 'download': download, 'appimage': appimage_change}[row['kind']](row, operation, found)
-    if installed(row) != (operation == 'install'):
-        raise RuntimeError(row['name'] + ': ' + messages()['installed' if installed(row) else 'absent'])
+    try:
+        {'apt': apt_change, 'flatpak': flatpak_change, 'download': download, 'appimage': appimage_change}[row['kind']](row, operation, found)
+        if installed(row) != (operation == 'install'):
+            raise RuntimeError(row['name'] + ': ' + messages()['installed' if installed(row) else 'absent'])
+    except Exception:
+        # the tools arrived and the entry did not: they stay, and apt's own rule decides, as after a removal
+        if operation == 'install' and not installed(row):
+            try:
+                tools.release(row, needed_elsewhere(row))
+            except (OSError, subprocess.CalledProcessError) as second:
+                print(str(second), file=sys.stderr)
+        raise
     if operation == 'remove':
         tools.release(row, needed_elsewhere(row))
 

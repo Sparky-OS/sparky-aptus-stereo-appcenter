@@ -38,4 +38,5 @@ tools.py is the one mechanism: `plan` reads `apt-get -s` for the tools that are 
 The order of an AppImage entry is: plan and say, download the program and verify it, the tools, then the placement; a failure at any step is said and leaves no application.
 Tools that are already installed are left alone: no reinstall, no upgrade, no notice.
 Only a mark changes: a declared tool that apt had installed automatically is marked manual while the entry is installed, because apt's autoremove could otherwise take it from under the program.
-Removing an entry removes no tool: the ones the entry brought or marked (recorded in /var/lib/sparky-aptus-stereo-appcenter/tools) are marked as automatically installed unless another installed entry declares them, and apt's own rule decides from there.
+Removing an entry removes no tool: the ones the entry brought or marked (recorded in /var/lib/sparky-aptus-stereo-appcenter/tools) are marked as automatically installed unless another installed entry declares them, and apt's own rule decides from there; the entry names the ones it brought.
+An installation that fails after its tools arrived does the same.

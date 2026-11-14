@@ -131,16 +131,25 @@ def record(identifier):
     return RECORDS / (identifier + '.json')
 
 
-def brought(identifier):
+def answers_for(identifier):
+    """What an installed entry answers for: {'brought': tools its action installed, 'held': tools that were there as
+    automatic packages and that it marked manual}."""
     path = record(identifier)
-    return json.loads(path.read_text()) if path.is_file() else []
+    found = json.loads(path.read_text()) if path.is_file() else {}
+    return {kind: list(found.get(kind, [])) for kind in ('brought', 'held')}
 
 
 def answered_elsewhere(name, identifier):
-    """Another entry's record names this tool: that entry marked or brought it, and this one needs it too."""
+    """'brought' or 'held' when another entry's record names this tool (that entry installed or marked it, and this one
+    needs it too), else None."""
     if not RECORDS.is_dir():
-        return False
-    return any(name in json.loads(path.read_text()) for path in RECORDS.glob('*.json') if path.stem != identifier)
+        return None
+    for path in sorted(RECORDS.glob('*.json')):
+        if path.stem != identifier:
+            for kind, names in answers_for(path.stem).items():
+                if name in names:
+                    return kind
+    return None
 
 
 def ensure(row, found):
@@ -159,19 +168,30 @@ def ensure(row, found):
     held = [name for name in declared(row) if name not in names and automatic(name)]
     if held:
         subprocess.run(['/usr/bin/apt-mark', 'manual', *held], check=True, env=ENV, stdout=subprocess.DEVNULL)
+    mine = answers_for(row['id'])
+    mine['brought'] += names
+    mine['held'] += held
     # a tool another entry already answers for is shared: whichever of the two is removed last gives the mark back
-    shared = [name for name in declared(row) if name not in names + held and answered_elsewhere(name, row['id'])]
-    if names or held or shared:
+    for name in declared(row):
+        kind = None if name in names + held else answered_elsewhere(name, row['id'])
+        if kind:
+            mine[kind].append(name)
+    mine['held'] = sorted(set(mine['held']) - set(mine['brought']))
+    mine['brought'] = sorted(set(mine['brought']))
+    if mine['brought'] or mine['held']:
         RECORDS.mkdir(mode=0o755, parents=True, exist_ok=True)
-        record(row['id']).write_text(json.dumps(sorted(set(brought(row['id'])) | set(names) | set(held) | set(shared))) + '\n')
+        record(row['id']).write_text(json.dumps(mine) + '\n')
 
 
 def release(row, needed_elsewhere):
-    """The entry is gone. The tools it brought or marked stay installed; those no other installed entry needs are marked as
-    automatically installed, so apt offers to remove them only when nothing else needs them. Nothing is removed here."""
-    path = record(row['id'])
-    names = [name for name in brought(row['id']) if present(name) and name not in needed_elsewhere]
-    if names:
-        subprocess.run(['/usr/bin/apt-mark', 'auto', *names], check=True, env=ENV, stdout=subprocess.DEVNULL)
-        print(messages()['tools_kept'].format(name=row['name'], tools=', '.join(names)), flush=True)
-    path.unlink(missing_ok=True)
+    """The entry is gone, or its installation failed after its tools arrived. The tools it brought or marked stay installed;
+    those no other installed entry needs are marked as automatically installed, so apt offers to remove them only when
+    nothing else needs them. Nothing is removed here. Only the tools the entry itself brought are named to the person:
+    the others are simply back as they were."""
+    mine = answers_for(row['id'])
+    free = {kind: [name for name in names if present(name) and name not in needed_elsewhere] for kind, names in mine.items()}
+    if free['brought'] or free['held']:
+        subprocess.run(['/usr/bin/apt-mark', 'auto', *free['brought'], *free['held']], check=True, env=ENV, stdout=subprocess.DEVNULL)
+    if free['brought']:
+        print(messages()['tools_kept'].format(name=row['name'], tools=', '.join(free['brought'])), flush=True)
+    record(row['id']).unlink(missing_ok=True)

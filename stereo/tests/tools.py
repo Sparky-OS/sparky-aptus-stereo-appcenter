@@ -147,7 +147,7 @@ class Ensure(unittest.TestCase):
                 error = None
             except tools.Refused as refused:
                 error = str(refused)
-            recorded = tools.brought('vinci')
+            recorded = tools.answers_for('vinci')
         return calls, error, recorded
 
     def test_archives_first_then_the_install_and_the_record(self):
@@ -155,21 +155,21 @@ class Ensure(unittest.TestCase):
         self.assertIsNone(error)
         options = ['--no-remove', '--no-install-recommends', '--no-allow-unauthenticated', 'install', 'distrobox', 'podman']
         self.assertEqual(calls, [['/usr/bin/apt-get', '-y', '--download-only', *options], ['/usr/bin/apt-get', '-y', *options]])
-        self.assertEqual(recorded, ['distrobox', 'podman'])
+        self.assertEqual(recorded, {'brought': ['distrobox', 'podman'], 'held': []})
 
     def test_a_failed_download_stops_before_any_install(self):
         calls, error, recorded = self.run_with([done(100)])
         self.assertEqual(len(calls), 1)
         for part in ('Vinci', 'distrobox, podman', 'apt exit 100', 'internet connection', 'Nothing was installed'):
             self.assertIn(part, error)
-        self.assertEqual(recorded, [])
+        self.assertEqual(recorded, {'brought': [], 'held': []})
 
     def test_a_failed_install_is_said_and_never_recorded(self):
         calls, error, recorded = self.run_with([done(), done(100)], after=False)
         self.assertEqual(len(calls), 2)
         for part in ('Installing the tools Vinci needs failed', 'apt exit 100', 'Vinci was not installed'):
             self.assertIn(part, error)
-        self.assertEqual(recorded, [])
+        self.assertEqual(recorded, {'brought': [], 'held': []})
 
     def test_a_present_tool_is_only_kept_from_autoremove(self):
         """Nothing is installed; a tool apt had marked automatic is marked manual and recorded, a manual one is not touched."""
@@ -179,7 +179,7 @@ class Ensure(unittest.TestCase):
              patch.object(tools, 'automatic', side_effect=lambda name: name in ('distrobox', 'fuse3')):
             tools.ensure(self.row, None)
             self.assertEqual(calls, [['/usr/bin/apt-mark', 'manual', 'distrobox', 'fuse3']])
-            self.assertEqual(tools.brought('vinci'), ['distrobox', 'fuse3'])
+            self.assertEqual(tools.answers_for('vinci'), {'brought': [], 'held': ['distrobox', 'fuse3']})
         calls = []
         with tempfile.TemporaryDirectory() as tmp, patch.object(tools, 'RECORDS', Path(tmp) / 'tools'), \
              patch.object(tools.subprocess, 'run', side_effect=lambda command, **k: calls.append(command) or done()), \
@@ -195,7 +195,7 @@ class Ensure(unittest.TestCase):
                 tools.ensure(self.row, None)                       # Vinci marks the automatic fuse3 manual
             with patch.object(tools, 'automatic', return_value=False):
                 tools.ensure(catalogue.entry('kamlynk'), None)     # KamLynk finds it manual, and shares it
-            self.assertEqual(tools.brought('kamlynk'), ['fuse3'])
+            self.assertEqual(tools.answers_for('kamlynk'), {'brought': [], 'held': ['fuse3']})
             run.reset_mock()
             out = io.StringIO()
             with contextlib.redirect_stdout(out):
@@ -203,26 +203,30 @@ class Ensure(unittest.TestCase):
                 run.assert_not_called()
                 tools.release(catalogue.entry('kamlynk'), set())   # KamLynk goes: automatic again
             self.assertEqual(run.call_args.args[0], ['/usr/bin/apt-mark', 'auto', 'fuse3'])
+            # fuse3 was there before both: it goes back as it was, and nothing is said about it
+            self.assertEqual(out.getvalue(), '')
 
     def test_apt_exit_0_with_a_tool_still_absent_is_a_failure(self):
         _, error, recorded = self.run_with([done(), done()], after=False)
         self.assertIn('failed', error)
-        self.assertEqual(recorded, [])
+        self.assertEqual(recorded, {'brought': [], 'held': []})
 
 
 class Release(unittest.TestCase):
     def test_brought_tools_stay_and_are_marked_automatic_unless_another_entry_needs_them(self):
         row = catalogue.entry('vinci')
         with tempfile.TemporaryDirectory() as tmp, patch.object(tools, 'RECORDS', Path(tmp)):
-            tools.record('vinci').write_text(json.dumps(['bsdextrautils', 'distrobox', 'fuse3', 'podman']))
+            tools.record('vinci').write_text(json.dumps({'brought': ['bsdextrautils', 'distrobox', 'podman'], 'held': ['fuse3', 'uidmap']}))
             out = io.StringIO()
             with patch.object(tools, 'present', side_effect=lambda name: name != 'bsdextrautils'), \
                  patch.object(tools.subprocess, 'run', return_value=done()) as run, contextlib.redirect_stdout(out):
                 tools.release(row, {'fuse3'})
-            # never a removal; fuse3 is another installed entry's, bsdextrautils is already gone
-            self.assertEqual(run.call_args.args[0], ['/usr/bin/apt-mark', 'auto', 'distrobox', 'podman'])
+            # never a removal; fuse3 is another installed entry's, bsdextrautils is already gone; uidmap, which was there
+            # before as an automatic package, goes back to automatic and is not named
+            self.assertEqual(run.call_args.args[0], ['/usr/bin/apt-mark', 'auto', 'distrobox', 'podman', 'uidmap'])
             self.assertEqual(run.call_count, 1)
-            self.assertIn('distrobox, podman', out.getvalue())
+            self.assertIn('stay installed: distrobox, podman.', out.getvalue())
+            self.assertNotIn('uidmap', out.getvalue())
             self.assertIn('stay installed', out.getvalue())
             self.assertFalse(tools.record('vinci').exists())
 
@@ -274,6 +278,22 @@ class Action(unittest.TestCase):
         self.assertNotIn('podman', out.getvalue())
         self.assertNotIn('tools', out.getvalue())
         self.assertIn('Vinci: 36.6 MiB', out.getvalue())
+
+    def test_an_install_that_fails_after_its_tools_arrived_gives_them_back_to_apt(self):
+        row = catalogue.entry('slimevr')
+        with patch.object(tools, 'plan', return_value=None), patch.object(action, 'announce'), \
+             patch.object(action, 'flatpak_change', side_effect=RuntimeError('no Flathub remote')), \
+             patch.object(action, 'installed', return_value=False), patch.object(tools, 'release') as release:
+            with self.assertRaisesRegex(RuntimeError, 'no Flathub remote'):
+                action.change(row, 'install')
+        release.assert_called_once()
+        # a reinstall that fails keeps the installed entry's tools as they are
+        with patch.object(tools, 'plan', return_value=None), patch.object(action, 'announce'), \
+             patch.object(action, 'flatpak_change', side_effect=RuntimeError('refused')), \
+             patch.object(action, 'installed', return_value=True), patch.object(tools, 'release') as release:
+            with self.assertRaisesRegex(RuntimeError, 'refused'):
+                action.change(row, 'install')
+        release.assert_not_called()
 
     def test_removal_releases_the_tools_and_names_those_needed_elsewhere(self):
         row = catalogue.entry('vinci')

@@ -252,14 +252,21 @@ def apt_change(row, operation, found=None):
         subprocess.run(command, check=True, env=ENV)
 
 
-# the locks apt and dpkg take: dpkg's frontend and database, apt's lists and archives
-LOCKS = ('/var/lib/dpkg/lock-frontend', '/var/lib/dpkg/lock', '/var/lib/apt/lists/lock', '/var/cache/apt/archives/lock')
+def lock_files():
+    """The locks apt and dpkg take, where apt's own configuration puts them (dpkg's frontend and database beside its status file,
+    apt's lists and archives): a system with other directories is tried in its own."""
+    import apt_pkg
+    apt_pkg.init_config()
+    state = os.path.dirname(apt_pkg.config.find_file('Dir::State::status'))
+    return (os.path.join(state, 'lock-frontend'), os.path.join(state, 'lock'),
+            os.path.join(apt_pkg.config.find_dir('Dir::State::lists'), 'lock'),
+            os.path.join(apt_pkg.config.find_dir('Dir::Cache::archives'), 'lock'))
 
 
 def held(row, locks=None):
     """Another program holds apt's or dpkg's lock: tried the way apt tries it (a non-blocking fcntl lock), then let go."""
     import fcntl
-    for path in (LOCKS if locks is None else locks):
+    for path in (lock_files() if locks is None else locks):
         try:
             stream = open(path, 'a+')
         except FileNotFoundError:

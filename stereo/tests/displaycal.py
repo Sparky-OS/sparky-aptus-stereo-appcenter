@@ -11,6 +11,7 @@ import os
 from pathlib import Path
 import subprocess
 import sys
+import types
 import unittest
 from unittest.mock import patch
 
@@ -96,7 +97,10 @@ class Entry(unittest.TestCase):
 
 
 class Failures(unittest.TestCase):
-    def failing(self, lines, code=100):
+    """The reason of a failure never comes from apt's own wording, which follows the session's language: a lock is found by
+    trying it, a failed download-only step is the network, anything later is apt's exit status."""
+
+    def popen(self, lines, code):
         class Process:
             returncode = code
             stdout = io.StringIO(lines)
@@ -105,32 +109,78 @@ class Failures(unittest.TestCase):
                 return code
         return Process()
 
-    def say(self, lines, code=100):
-        with patch.object(action.subprocess, 'Popen', return_value=self.failing(lines, code)), contextlib.redirect_stdout(io.StringIO()):
-            with self.assertRaises(RuntimeError) as caught:
-                action.run_said(ROW, ['apt-get'])
-        return str(caught.exception)
+    def install(self, steps, language='en_US.UTF-8'):
+        """apt_change for DisplayCAL with each step's (output, exit status); returns the commands run and the sentence raised."""
+        ran = []
 
-    def test_busy(self):
-        self.assertIn('another program is using apt', self.say('E: Could not get lock /var/lib/dpkg/lock-frontend. It is held by process 42\n'))
+        def popen(command, **kwargs):
+            ran.append(command)
+            return self.popen(*steps[len(ran) - 1])
+        apt = types.SimpleNamespace(Cache=lambda: {'displaycal': types.SimpleNamespace(candidate=types.SimpleNamespace(
+            version='3.9.19-3', origins=[types.SimpleNamespace(origin='Debian', trusted=True)]))})
+        saved = {key: os.environ.get(key) for key in ('LANG', 'LANGUAGE', 'LC_ALL')}
+        os.environ.update(LANG=language, LANGUAGE=language.split('.')[0])
+        os.environ.pop('LC_ALL', None)
+        try:
+            with patch.dict(sys.modules, apt=apt), patch.object(action, 'only_ours', return_value=set()), \
+                    patch.object(action, 'held'), patch.object(action.subprocess, 'Popen', side_effect=popen), \
+                    contextlib.redirect_stdout(io.StringIO()):
+                try:
+                    action.apt_change(ROW, 'install')
+                    raised = None
+                except RuntimeError as error:
+                    raised = str(error)
+        finally:
+            for key, value in saved.items():
+                if value is None:
+                    os.environ.pop(key, None)
+                else:
+                    os.environ[key] = value
+        return ran, raised
 
-    def test_no_network(self):
-        self.assertIn('could not be downloaded', self.say('E: Failed to fetch https://deb.debian.org/x  Temporary failure resolving\n'))
+    def test_a_held_lock_is_busy_in_every_language(self):
+        import tempfile
+        with tempfile.TemporaryDirectory() as tmp:
+            path = str(Path(tmp) / 'lock')
+            holder = subprocess.Popen([sys.executable, '-c', 'import fcntl,sys,time;f=open(sys.argv[1],"a+");fcntl.lockf(f,fcntl.LOCK_EX);print("held",flush=True);time.sleep(30)', path],
+                                      stdout=subprocess.PIPE, text=True)
+            try:
+                self.assertEqual(holder.stdout.readline().strip(), 'held')
+                for language, words in (('en_US.UTF-8', 'another program is using apt'), ('pt_BR.UTF-8', 'outro programa est'),
+                                        ('de_DE.UTF-8', 'Ein anderes Programm verwendet apt')):
+                    os.environ.update(LANG=language, LANGUAGE=language.split('.')[0])
+                    with self.assertRaises(RuntimeError) as caught:
+                        action.held(ROW, [str(Path(tmp) / 'absent'), path])
+                    self.assertIn(words, str(caught.exception))
+            finally:
+                holder.kill()
+                holder.wait()
+                os.environ.update(LANG='en_US.UTF-8', LANGUAGE='en_US')
+            action.held(ROW, [path])   # let go: the same lock is free now
 
-    def test_anything_else_has_a_code(self):
-        self.assertIn('apt exit 100', self.say('E: dpkg was interrupted\n'))
+    def test_a_free_lock_and_a_missing_file_raise_nothing(self):
+        import tempfile
+        with tempfile.TemporaryDirectory() as tmp:
+            action.held(ROW, [str(Path(tmp) / 'absent'), str(Path(tmp) / 'free')])
 
-    def test_success_prints_apts_lines_and_raises_nothing(self):
-        class Good:
-            returncode = 0
-            stdout = io.StringIO('Setting up displaycal\n')
+    def test_the_download_comes_first_and_its_failure_is_the_network_in_any_language(self):
+        portuguese = 'E: Falha ao buscar https://deb.debian.org/x  Falha temporária na resolução de nomes\n'
+        for language, words in (('pt_BR.UTF-8', 'não foi possível baixar os pacotes'), ('de_DE.UTF-8', 'konnten nicht heruntergeladen werden'),
+                                ('en_US.UTF-8', 'could not be downloaded')):
+            ran, raised = self.install([(portuguese, 100)], language)
+            self.assertEqual(len(ran), 1, 'the install step must not run after a failed download')
+            self.assertIn('--download-only', ran[0])
+            self.assertIn(words, raised)
 
-            def wait(self):
-                return 0
-        out = io.StringIO()
-        with patch.object(action.subprocess, 'Popen', return_value=Good()), contextlib.redirect_stdout(out):
-            action.run_said(ROW, ['apt-get'])
-        self.assertIn('Setting up displaycal', out.getvalue())
+    def test_an_install_failure_has_apts_exit_status_not_a_guess(self):
+        ran, raised = self.install([('', 0), ('E: dpkg wurde unterbrochen\n', 100)], 'de_DE.UTF-8')
+        self.assertEqual(len(ran), 2)
+        self.assertNotIn('--download-only', ran[1])
+        self.assertIn('apt-Exitcode 100', raised)
+
+    def test_success_runs_both_steps_and_prints_apts_lines(self):
+        ran, raised = self.install([('Fetched\n', 0), ('Setting up displaycal\n', 0)])
+        self.assertEqual((len(ran), raised), (2, None))
 
 
 class Status(unittest.TestCase):

@@ -243,28 +243,44 @@ def apt_change(row, operation, found=None):
     else:
         command = ['/usr/bin/apt-get', '-y', 'remove', *package_set(row)]
     if row.get('sizes'):
-        run_said(row, command)
+        # no sentence depends on apt's own wording, which follows the session's language: a lock that is held is found by trying
+        # it, and a failure of the download-only step is the network (the plan was already made, so the package is offered)
+        held(row)
+        run_said(row, command[:1] + ['--download-only'] + command[1:], 'apt_network')
+        run_said(row, command, 'apt_failed')
     else:
         subprocess.run(command, check=True, env=ENV)
 
 
-def run_said(row, command):
-    """apt's own lines go through as they come; a failure then says what failed, why and what to do (nothing is installed
-    when the lock is held or the archives cannot be fetched), instead of a command line and an exit status."""
-    text = messages()
-    shown = []
+# the locks apt and dpkg take: dpkg's frontend and database, apt's lists and archives
+LOCKS = ('/var/lib/dpkg/lock-frontend', '/var/lib/dpkg/lock', '/var/lib/apt/lists/lock', '/var/cache/apt/archives/lock')
+
+
+def held(row, locks=None):
+    """Another program holds apt's or dpkg's lock: tried the way apt tries it (a non-blocking fcntl lock), then let go."""
+    import fcntl
+    for path in (LOCKS if locks is None else locks):
+        try:
+            stream = open(path, 'a+')
+        except FileNotFoundError:
+            continue
+        try:
+            fcntl.lockf(stream, fcntl.LOCK_EX | fcntl.LOCK_NB)
+        except OSError:
+            raise RuntimeError(messages()['apt_busy'].format(name=row['name']))
+        finally:
+            stream.close()
+
+
+def run_said(row, command, failure):
+    """apt's own lines go through as they come, in the person's language. A failure is the sentence FAILURE names (apt_network for
+    the download-only step, apt_failed with apt's exit status for the install), never a guess from apt's words."""
     process = subprocess.Popen(command, env=ENV, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True, errors='replace')
     for line in process.stdout:
         print(line, end='', flush=True)
-        shown.append(line)
     if process.wait() == 0:
         return
-    seen = ''.join(shown)
-    if 'Could not get lock' in seen or 'Unable to acquire the dpkg' in seen or 'is held by process' in seen:
-        raise RuntimeError(text['apt_busy'].format(name=row['name']))
-    if 'Failed to fetch' in seen or 'Could not resolve' in seen or 'Temporary failure resolving' in seen or 'Unable to connect' in seen:
-        raise RuntimeError(text['apt_network'].format(name=row['name']))
-    raise RuntimeError(text['apt_failed'].format(name=row['name'], code=process.returncode))
+    raise RuntimeError(messages()[failure].format(name=row['name'], code=process.returncode))
 
 
 def flatpak_change(row, operation, found=None):

@@ -158,6 +158,13 @@ class Failures(unittest.TestCase):
                 os.environ.update(LANG='en_US.UTF-8', LANGUAGE='en_US')
             action.held(ROW, [path])   # let go: the same lock is free now
 
+    def test_the_lock_files_follow_apts_own_configuration(self):
+        config = types.SimpleNamespace(find_file=lambda key: {'Dir::State::status': '/srv/x/dpkg/status'}[key],
+                                       find_dir=lambda key: {'Dir::State::lists': '/srv/x/lists/', 'Dir::Cache::archives': '/srv/x/archives/'}[key])
+        fake = types.SimpleNamespace(init_config=lambda: None, config=config)
+        with patch.dict(sys.modules, apt_pkg=fake):
+            self.assertEqual(action.lock_files(), ('/srv/x/dpkg/lock-frontend', '/srv/x/dpkg/lock', '/srv/x/lists/lock', '/srv/x/archives/lock'))
+
     def test_a_free_lock_and_a_missing_file_raise_nothing(self):
         import tempfile
         with tempfile.TemporaryDirectory() as tmp:

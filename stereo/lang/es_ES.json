@@ -30,5 +30,10 @@
   "download_ready": "Descargado: {path}",
   "repair": "Reparar",
   "vpn": "Complementos VPN para la configuración de red",
-  "tools": "Herramientas y utilidades"
+  "tools": "Herramientas y utilidades",
+  "displaycal_note": "DisplayCAL requiere un equipo de calibración: un colorímetro o un espectrofotómetro para medir la pantalla.",
+  "program_unavailable": "No se puede instalar {name}. apt dice: {why} Actualice las listas de paquetes (apt update) e inténtelo de nuevo. No se cambió nada.",
+  "apt_busy": "No se instaló {name}: otro programa está usando apt (el bloqueo del gestor de paquetes está ocupado). Espere a que termine e inténtelo de nuevo. No se cambió nada.",
+  "apt_network": "No se instaló {name}: no se pudieron descargar los paquetes. Compruebe la conexión a Internet e inténtelo de nuevo. No se cambió nada.",
+  "apt_failed": "Falló la instalación de {name} (código de salida de apt: {code}). {name} no se instaló. Lea las líneas de apt anteriores e inténtelo de nuevo."
 }

@@ -181,7 +181,7 @@ def tools_note(rows, installed_now):
     how many packages and apt's sizes, or why they cannot be installed. One simulation for each set of missing tools."""
     notes, plans = {}, {}
     for row in rows:
-        if installed_now[row['id']] or row['section'] == 'main' or not tools.declared(row):
+        if installed_now[row['id']] or row['section'] == 'main' or not tools.announced(row):
             continue
         try:
             names = tuple(tools.missing(row))
@@ -192,6 +192,17 @@ def tools_note(rows, installed_now):
         except tools.Refused as error:
             notes[row['id']] = {'error': str(error)}
     return notes
+
+
+def status_one(identifier):
+    """The state of one entry, with its sizes: what the Info Centre's page asks (unprivileged, nothing changes)."""
+    import apt
+    row = entry(identifier)
+    cache, patterns = apt.Cache(), only_ours()
+    now = installed(row)
+    shown = visible(row, cache, patterns)
+    needs = tools_note([row], {row['id']: now}) if shown else {}
+    return dict(installed=now, visible=shown, tools=needs.get(row['id']))
 
 
 def status():
@@ -231,7 +242,29 @@ def apt_change(row, operation, found=None):
                    'install', name + '=' + candidate.version if candidate else name, *row.get('also', [])]
     else:
         command = ['/usr/bin/apt-get', '-y', 'remove', *package_set(row)]
-    subprocess.run(command, check=True, env=ENV)
+    if row.get('sizes'):
+        run_said(row, command)
+    else:
+        subprocess.run(command, check=True, env=ENV)
+
+
+def run_said(row, command):
+    """apt's own lines go through as they come; a failure then says what failed, why and what to do (nothing is installed
+    when the lock is held or the archives cannot be fetched), instead of a command line and an exit status."""
+    text = messages()
+    shown = []
+    process = subprocess.Popen(command, env=ENV, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True, errors='replace')
+    for line in process.stdout:
+        print(line, end='', flush=True)
+        shown.append(line)
+    if process.wait() == 0:
+        return
+    seen = ''.join(shown)
+    if 'Could not get lock' in seen or 'Unable to acquire the dpkg' in seen or 'is held by process' in seen:
+        raise RuntimeError(text['apt_busy'].format(name=row['name']))
+    if 'Failed to fetch' in seen or 'Could not resolve' in seen or 'Temporary failure resolving' in seen or 'Unable to connect' in seen:
+        raise RuntimeError(text['apt_network'].format(name=row['name']))
+    raise RuntimeError(text['apt_failed'].format(name=row['name'], code=process.returncode))
 
 
 def flatpak_change(row, operation, found=None):
@@ -320,6 +353,12 @@ def change(row, operation):
 def main():
     if sys.argv[1:] == ['status']:
         print(json.dumps(status(), ensure_ascii=False))
+        return 0
+    if len(sys.argv) == 3 and sys.argv[1] == 'status':
+        try:
+            print(json.dumps(status_one(sys.argv[2]), ensure_ascii=False))
+        except StopIteration:
+            return 2
         return 0
     if len(sys.argv) != 3 or sys.argv[2] not in ('install', 'remove', 'repair', '--install', '--remove', 'reinstall'):
         return 2

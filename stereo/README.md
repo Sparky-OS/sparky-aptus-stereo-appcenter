@@ -40,3 +40,9 @@ Tools that are already installed are left alone: no reinstall, no upgrade, no no
 Only a mark changes: a declared tool that apt had installed automatically is marked manual while the entry is installed, because apt's autoremove could otherwise take it from under the program.
 Removing an entry removes no tool: the ones the entry brought or marked (recorded in /var/lib/sparky-aptus-stereo-appcenter/tools) are marked as automatically installed unless another installed entry declares them, and apt's own rule decides from there; the entry names the ones it brought.
 An installation that fails after its tools arrived does the same.
+
+DisplayCAL is an entry of the Tools and utilities section since 0.1.10 (ORDER 575).
+It is offered and not installed: nothing on the image depends on it, because its colour measuring needs calibrator hardware (a colorimeter or a spectrophotometer), which the card says beside the button.
+The row is `"sizes": true`: tools.py simulates the entry's own program the way the action installs it (Debian's displaycal with its Recommends, and what it depends on, ArgyllCMS among it) and the card and the action say apt's sizes first.
+`actions/entry status ID` answers for one entry without the cost of the whole page; the Info Centre's Stereo 3D and Deep Colour page asks it for DisplayCAL and runs `pkexec actions/entry displaycal install` from its button.
+An install that fails says why in the person's language: apt busy (the lock is held), no network, a package the sources do not offer, or apt's exit status with its own lines above.

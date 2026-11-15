@@ -475,5 +475,14 @@
     "section": "tools",
     "kind": "apt",
     "package": "hplip"
+  },
+  {
+    "id": "displaycal",
+    "name": "DisplayCAL",
+    "section": "tools",
+    "kind": "apt",
+    "package": "displaycal",
+    "sizes": true,
+    "note": "displaycal_note"
   }
 ]

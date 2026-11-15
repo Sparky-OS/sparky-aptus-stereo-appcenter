@@ -45,5 +45,10 @@
   "tools_download_failed": "无法下载 {name} 所需的工具：{tools}（apt 退出码 {code}）。请检查网络连接后重试。未安装任何内容。",
   "tools_failed": "安装 {name} 所需的工具失败：{tools}（apt 退出码 {code}）。{name} 未安装。请查看上方 apt 的输出后重试。",
   "download_failed": "无法从 {host} 下载 {name}（curl 退出码 {code}）。请检查网络连接后重试。未更改任何应用程序。",
-  "tools_kept": "以下工具随 {name} 安装，现予以保留：{tools}。它们已标记为自动安装，只有在没有其他软件需要时，apt 才会提示移除。"
+  "tools_kept": "以下工具随 {name} 安装，现予以保留：{tools}。它们已标记为自动安装，只有在没有其他软件需要时，apt 才会提示移除。",
+  "displaycal_note": "DisplayCAL 需要校色硬件：用于测量显示器的色度计或分光光度计。",
+  "program_unavailable": "无法安装 {name}。apt 提示：{why} 请更新软件包列表（apt update）后重试。未做任何更改。",
+  "apt_busy": "未安装 {name}：另一个程序正在使用 apt（软件包管理器的锁已被占用）。请等待其完成后重试。未做任何更改。",
+  "apt_network": "未安装 {name}：无法下载软件包。请检查网络连接后重试。未做任何更改。",
+  "apt_failed": "安装 {name} 失败（apt 退出码 {code}）。{name} 未安装。请阅读上面的 apt 输出后重试。"
 }

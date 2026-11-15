@@ -45,5 +45,10 @@
   "tools_download_failed": "Les outils dont {name} a besoin n’ont pas pu être téléchargés : {tools} (code de sortie {code} d’apt). Vérifiez la connexion à Internet et réessayez. Rien n’a été installé.",
   "tools_failed": "L’installation des outils dont {name} a besoin a échoué : {tools} (code de sortie {code} d’apt). {name} n’a pas été installé. Lisez les lignes d’apt ci-dessus, puis réessayez.",
   "download_failed": "{name} n’a pas pu être téléchargé depuis {host} (code de sortie {code} de curl). Vérifiez la connexion à Internet et réessayez. Aucune application n’a été modifiée.",
-  "tools_kept": "Ces outils sont arrivés avec {name} et restent installés : {tools}. Ils sont désormais marqués comme installés automatiquement : apt ne propose de les supprimer que lorsque plus rien n’en a besoin."
+  "tools_kept": "Ces outils sont arrivés avec {name} et restent installés : {tools}. Ils sont désormais marqués comme installés automatiquement : apt ne propose de les supprimer que lorsque plus rien n’en a besoin.",
+  "displaycal_note": "DisplayCAL nécessite un matériel de calibrage : une sonde colorimétrique (colorimètre) ou un spectrophotomètre pour mesurer l'écran.",
+  "program_unavailable": "{name} ne peut pas être installé. apt indique : {why} Mettez à jour les listes de paquets (apt update) et réessayez. Rien n'a été modifié.",
+  "apt_busy": "{name} n'a pas été installé : un autre programme utilise apt (le verrou du gestionnaire de paquets est pris). Attendez qu'il termine, puis réessayez. Rien n'a été modifié.",
+  "apt_network": "{name} n'a pas été installé : les paquets n'ont pas pu être téléchargés. Vérifiez la connexion à Internet et réessayez. Rien n'a été modifié.",
+  "apt_failed": "L'installation de {name} a échoué (code de sortie d'apt : {code}). {name} n'a pas été installé. Lisez les lignes d'apt ci-dessus, puis réessayez."
 }

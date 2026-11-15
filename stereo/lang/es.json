@@ -45,5 +45,10 @@
   "tools_download_failed": "No se pudieron descargar las herramientas que {name} necesita: {tools} (código de salida {code} de apt). Revisa la conexión a internet e inténtalo de nuevo. No se ha instalado nada.",
   "tools_failed": "La instalación de las herramientas que {name} necesita ha fallado: {tools} (código de salida {code} de apt). {name} no se ha instalado. Lee las líneas de apt de arriba e inténtalo de nuevo.",
   "download_failed": "No se pudo descargar {name} desde {host} (código de salida {code} de curl). Revisa la conexión a internet e inténtalo de nuevo. No se ha modificado ninguna aplicación.",
-  "tools_kept": "Estas herramientas llegaron con {name} y siguen instaladas: {tools}. Ahora están marcadas como instaladas automáticamente, así que apt solo ofrece quitarlas cuando nada más las necesite."
+  "tools_kept": "Estas herramientas llegaron con {name} y siguen instaladas: {tools}. Ahora están marcadas como instaladas automáticamente, así que apt solo ofrece quitarlas cuando nada más las necesite.",
+  "displaycal_note": "DisplayCAL requiere un equipo de calibración: un colorímetro o un espectrofotómetro para medir la pantalla.",
+  "program_unavailable": "No se puede instalar {name}. apt dice: {why} Actualice las listas de paquetes (apt update) e inténtelo de nuevo. No se cambió nada.",
+  "apt_busy": "No se instaló {name}: otro programa está usando apt (el bloqueo del gestor de paquetes está ocupado). Espere a que termine e inténtelo de nuevo. No se cambió nada.",
+  "apt_network": "No se instaló {name}: no se pudieron descargar los paquetes. Compruebe la conexión a Internet e inténtelo de nuevo. No se cambió nada.",
+  "apt_failed": "Falló la instalación de {name} (código de salida de apt: {code}). {name} no se instaló. Lea las líneas de apt anteriores e inténtelo de nuevo."
 }

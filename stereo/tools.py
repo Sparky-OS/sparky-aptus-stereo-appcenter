@@ -40,6 +40,14 @@ def declared(row):
     return list(row.get('tools', KIND_TOOLS.get(row['kind'], [])))
 
 
+def announced(row):
+    """What the entry's page and action say apt's sizes for: its declared tools, or, for an entry whose own program brings
+    packages (row["sizes"], DisplayCAL: Debian's package and what it depends on), the program's own packages."""
+    if declared(row):
+        return declared(row)
+    return [row['package']] + list(row.get('also', [])) if row.get('sizes') else []
+
+
 def present(name):
     result = subprocess.run(['/usr/bin/dpkg-query', '-W', '-f=${db:Status-Status}', name], capture_output=True, text=True)
     if result.returncode not in (0, 1):
@@ -48,7 +56,7 @@ def present(name):
 
 
 def missing(row):
-    return [name for name in declared(row) if not present(name)]
+    return [name for name in announced(row) if not present(name)]
 
 
 def automatic(name):
@@ -85,11 +93,14 @@ def plan(row):
     names = missing(row)
     if not names:
         return None
-    result = subprocess.run([APT, '-s', *OPTIONS, 'install', *names], capture_output=True, text=True, env=ENV)
+    # the entry's own program is simulated as its action installs it (with its Recommends); a declared tool without them
+    options = [option for option in OPTIONS if option != '--no-install-recommends'] if not declared(row) else OPTIONS
+    result = subprocess.run([APT, '-s', *options, 'install', *names], capture_output=True, text=True, env=ENV)
+    unavailable = 'tools_unavailable' if declared(row) else 'program_unavailable'
     if result.returncode:
         said = [line[3:].strip().rstrip('.') for line in (result.stderr + result.stdout).splitlines() if line.startswith('E: ')]
-        raise Refused(messages()['tools_unavailable'].format(name=row['name'], tools=', '.join(names),
-                                                             why=('; '.join(said) or 'apt-get: %d' % result.returncode) + '.'))
+        raise Refused(messages()[unavailable].format(name=row['name'], tools=', '.join(names),
+                                                     why=('; '.join(said) or 'apt-get: %d' % result.returncode) + '.'))
     packages, sources = [], []
     for line in result.stdout.splitlines():
         found = INST.match(line)
@@ -102,8 +113,8 @@ def plan(row):
                 sources.append(origin)
     absent = [name for name in names if name not in [package.split(':')[0] for package, _ in packages]]
     if absent:
-        raise Refused(messages()['tools_unavailable'].format(name=row['name'], tools=', '.join(absent),
-                                                             why='apt-get -s: ' + ' '.join(result.stdout.split()[-12:]) + '.'))
+        raise Refused(messages()[unavailable].format(name=row['name'], tools=', '.join(absent),
+                                                     why='apt-get -s: ' + ' '.join(result.stdout.split()[-12:]) + '.'))
     download, disk = sizes(packages)
     return {'tools': names, 'packages': packages, 'download': download, 'disk': disk, 'sources': sources}
 
@@ -113,8 +124,8 @@ def lines(row, found):
     if not found:
         return []
     text = messages()
-    said = [text['tools_needed'].format(name=row['name'], tools=', '.join(found['tools'])),
-            text['tools_sizes'].format(count=len(found['packages']), source=', '.join(found['sources']) or 'apt',
+    said = [] if not declared(row) else [text['tools_needed'].format(name=row['name'], tools=', '.join(found['tools']))]
+    said += [text['tools_sizes'].format(count=len(found['packages']), source=', '.join(found['sources']) or 'apt',
                                        download=human(found['download']), disk=human(max(found['disk'], 0)))]
     if row.get('size'):
         said.append(text['tools_total'].format(name=row['name'], size=human(found['download'] + row['size'])))

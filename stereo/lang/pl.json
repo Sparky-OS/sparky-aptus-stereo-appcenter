@@ -45,5 +45,10 @@
   "tools_download_failed": "Nie udało się pobrać narzędzi, których wymaga {name}: {tools} (kod wyjścia apt: {code}). Sprawdź połączenie z internetem i spróbuj ponownie. Niczego nie zainstalowano.",
   "tools_failed": "Instalacja narzędzi, których wymaga {name}, nie powiodła się: {tools} (kod wyjścia apt: {code}). {name} nie został zainstalowany. Przeczytaj powyższe komunikaty apt i spróbuj ponownie.",
   "download_failed": "Nie udało się pobrać {name} z {host} (kod wyjścia curl: {code}). Sprawdź połączenie z internetem i spróbuj ponownie. Nie zmieniono żadnej aplikacji.",
-  "tools_kept": "Te narzędzia zostały zainstalowane razem z {name} i pozostają w systemie: {tools}. Są teraz oznaczone jako zainstalowane automatycznie, więc apt zaproponuje ich usunięcie dopiero wtedy, gdy nic innego nie będzie ich wymagać."
+  "tools_kept": "Te narzędzia zostały zainstalowane razem z {name} i pozostają w systemie: {tools}. Są teraz oznaczone jako zainstalowane automatycznie, więc apt zaproponuje ich usunięcie dopiero wtedy, gdy nic innego nie będzie ich wymagać.",
+  "displaycal_note": "DisplayCAL wymaga sprzętu do kalibracji: kolorymetru lub spektrofotometru do pomiaru ekranu.",
+  "program_unavailable": "Nie można zainstalować programu {name}. apt mówi: {why} Zaktualizuj listy pakietów (apt update) i spróbuj ponownie. Nic nie zostało zmienione.",
+  "apt_busy": "Nie zainstalowano programu {name}: inny program używa apt (blokada menedżera pakietów jest zajęta). Poczekaj, aż skończy, i spróbuj ponownie. Nic nie zostało zmienione.",
+  "apt_network": "Nie zainstalowano programu {name}: nie udało się pobrać pakietów. Sprawdź połączenie z internetem i spróbuj ponownie. Nic nie zostało zmienione.",
+  "apt_failed": "Instalacja programu {name} nie powiodła się (kod wyjścia apt: {code}). Program {name} nie został zainstalowany. Przeczytaj powyższe wiersze apt i spróbuj ponownie."
 }

@@ -45,5 +45,10 @@
   "tools_download_failed": "The tools {name} needs could not be downloaded: {tools} (apt exit {code}). Check the internet connection and try again. Nothing was installed.",
   "tools_failed": "Installing the tools {name} needs failed: {tools} (apt exit {code}). {name} was not installed. Read apt's lines above, then try again.",
   "download_failed": "{name} could not be downloaded from {host} (curl exit {code}). Check the internet connection and try again. No application was changed.",
-  "tools_kept": "These tools came with {name} and stay installed: {tools}. They are now marked as automatically installed, so apt offers to remove them only when nothing else needs them."
+  "tools_kept": "These tools came with {name} and stay installed: {tools}. They are now marked as automatically installed, so apt offers to remove them only when nothing else needs them.",
+  "displaycal_note": "DisplayCAL requires calibrator hardware: a colorimeter or a spectrophotometer to measure the display.",
+  "program_unavailable": "{name} cannot be installed. apt says: {why} Update the package lists (apt update) and try again. Nothing was changed.",
+  "apt_busy": "{name} was not installed: another program is using apt (the package manager's lock is held). Wait until it finishes, then try again. Nothing was changed.",
+  "apt_network": "{name} was not installed: the packages could not be downloaded. Check the internet connection and try again. Nothing was changed.",
+  "apt_failed": "Installing {name} failed (apt exit {code}). {name} was not installed. Read apt's lines above, then try again."
 }

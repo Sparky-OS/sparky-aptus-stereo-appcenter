@@ -33,3 +33,9 @@ Resolve itself is not distributed by this package.
 KamLynk is by Dionatan Simioni, under the MIT licence.
 The AppImage includes Sony Camera Remote SDK libraries under Sony’s licence.
 This entry downloads KamLynk from https://github.com/dionatansimioni/KamLynk/releases and checks the pinned SHA-256 before execution.
+
+DisplayCAL is offered, never installed by default: this entry installs Debian's displaycal package (source displaycal-py3, https://github.com/eoyilmaz/displaycal-py3).
+The names come from that package's /usr/share/doc/displaycal/copyright (3.9.19-3): Florian Höch (DisplayCAL, 2008-2018), Erkan Ozgur Yilmaz (the Python 3 continuation, 2022-2026) and Patrick Zwerschke, under GPL-3.
+It drives ArgyllCMS by Graeme W. Gill (https://www.argyllcms.com/; Debian's argyll package), which Debian's package depends on.
+DisplayCAL requires calibrator hardware, a colorimeter or a spectrophotometer; this entry says so beside its button.
+The install action in the Info Centre's Stereo 3D and Deep Colour page is this entry's own action; the tools mechanism it reports sizes with is ORDER 565's.

@@ -45,5 +45,10 @@
   "tools_download_failed": "無法下載 {name} 所需的工具：{tools}（apt 結束代碼 {code}）。請檢查網路連線後重試。未安裝任何內容。",
   "tools_failed": "安裝 {name} 所需的工具失敗：{tools}（apt 結束代碼 {code}）。{name} 未安裝。請查看上方 apt 的輸出後重試。",
   "download_failed": "無法從 {host} 下載 {name}（curl 結束代碼 {code}）。請檢查網路連線後重試。未變更任何應用程式。",
-  "tools_kept": "下列工具隨 {name} 安裝，現予以保留：{tools}。它們已標記為自動安裝，只有在沒有其他軟體需要時，apt 才會提示移除。"
+  "tools_kept": "下列工具隨 {name} 安裝，現予以保留：{tools}。它們已標記為自動安裝，只有在沒有其他軟體需要時，apt 才會提示移除。",
+  "displaycal_note": "DisplayCAL 需要校色硬體：用於測量螢幕的色度計或分光光度計。",
+  "program_unavailable": "無法安裝 {name}。apt 回報：{why} 請更新套件清單（apt update）後再試一次。未做任何變更。",
+  "apt_busy": "未安裝 {name}：另一個程式正在使用 apt（套件管理員的鎖定已被占用）。請等它完成後再試一次。未做任何變更。",
+  "apt_network": "未安裝 {name}：無法下載套件。請檢查網路連線後再試一次。未做任何變更。",
+  "apt_failed": "安裝 {name} 失敗（apt 結束碼 {code}）。{name} 未安裝。請閱讀上方的 apt 輸出後再試一次。"
 }

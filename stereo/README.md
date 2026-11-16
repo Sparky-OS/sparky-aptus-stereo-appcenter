@@ -46,3 +46,10 @@ It is offered and not installed: nothing on the image depends on it, because its
 The row is `"sizes": true`: tools.py simulates the entry's own program the way the action installs it (Debian's displaycal with its Recommends, and what it depends on, ArgyllCMS among it) and the card and the action say apt's sizes first.
 `actions/entry status ID` answers for one entry without the cost of the whole page; the Info Centre's Stereo 3D and Deep Colour page asks it for DisplayCAL and runs `pkexec actions/entry displaycal install` from its button.
 An install that fails says why in the person's language: apt busy (the lock is held), no network, a package the sources do not offer, or apt's exit status with its own lines above.
+
+## Tests
+
+`python3 tests/entries.py`, `tools.py`, `displaycal.py` and `zram.py` run with no package manager and no network; run them where python3-apt is installed (a container).
+What the package gets from elsewhere is found by `tests/layout.py`: the reader of the install-time download declaration (sparky-stereo-apt) from `SPARKY_INSTALL_DOWNLOADS_LIB`, the edition's build tree beside this folder, or the installed package, and Paweł's pages (`main/`), which it lays down from the tracked tree `9/` with `package_main.py` into a folder removed at exit.
+When one of them is missing the test stops and names it.
+The ten required languages hold every key of English; the eleven older page languages hold the sentences of the older versions and read the rest in English.

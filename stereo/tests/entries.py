@@ -15,12 +15,13 @@ from unittest.mock import patch
 
 SOURCE = Path(sys.argv.pop(1)).resolve() if len(sys.argv) > 1 else Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(SOURCE))
-# the one reader of the install-time download declaration lives in sparky-stereo-apt; the tests use the build tree's copy
-READER = Path(os.environ.get('SPARKY_INSTALL_DOWNLOADS_LIB') or SOURCE.parents[1] / 'packages/sparky-stereo-apt/install-downloads')
-os.environ['SPARKY_INSTALL_DOWNLOADS_LIB'] = str(READER)
-if (READER / 'lang').is_dir():
-    os.environ['SPARKY_INSTALL_DOWNLOADS_LANG'] = str(READER / 'lang')
+# the one reader of the install-time download declaration lives in sparky-stereo-apt: layout.py finds it
+sys.path.append(str(Path(__file__).resolve().parent))
+import layout
+READER = layout.reader(SOURCE)
 import common
+SOURCE = layout.assembled(SOURCE)
+sys.path.insert(0, str(SOURCE))
 common.BASE = SOURCE
 common.LANGDIR = SOURCE / 'lang'
 import catalogue
@@ -169,8 +170,9 @@ class Transactions(unittest.TestCase):
         rows=catalogue.entries()
         self.assertEqual(len({row['id'] for row in rows}),len(rows))
         for row in rows:
-            self.assertIn(row['section'],('emulation','media','vr','vpn','tools'))
-            self.assertIn(row['kind'],('apt','flatpak','download'))
+            # the five sections of the stereo page, and 'main': Paweł's pages' own entries (Vinci, KamLynk), ORDER 553 (0.1.8)
+            self.assertIn(row['section'],('emulation','media','vr','vpn','tools','main'))
+            self.assertIn(row['kind'],('apt','flatpak','download','appimage'))   # appimage: Vinci and KamLynk, 0.1.7 (ORDER 553)
             if 'also' in row:
                 self.assertEqual(row['kind'],'apt')
                 self.assertTrue(all(isinstance(name,str) and name for name in row['also']))
@@ -248,17 +250,28 @@ class Transactions(unittest.TestCase):
         english=json.loads((SOURCE/'lang/en.json').read_text())
         import string
         def fields(s): return sorted(x[1] for x in string.Formatter().parse(s) if x[1])
+        # The ten languages the edition requires hold every key of English. The eleven older page languages (Paweł's list) hold
+        # the sentences of the older versions; a key they lack is read in English (common.messages), and none holds a key English lacks.
+        # ORDER 565 and 575 added sentences "in the ten languages" (CHANGELOG 0.1.9, 0.1.10).
+        required={'en','pl','pt_BR','fr','de','es','ja','ko','zh_CN','zh_TW'}
+        self.assertEqual(required-{path.stem for path in (SOURCE/'lang').glob('*.json')},set())
         for path in (SOURCE/'lang').glob('*.json'):
             texts=json.loads(path.read_text())
-            self.assertEqual(set(texts),set(english),path.name)
-            for key in english:
+            if path.stem in required:
+                self.assertEqual(set(texts),set(english),path.name)
+            else:
+                self.assertEqual(set(texts)-set(english),set(),path.name)
+            for key in texts:
                 self.assertEqual(fields(texts[key]),fields(english[key]),(path.name,key))
                 self.assertEqual(texts[key].count('%s'),english[key].count('%s'),(path.name,key))
             self.assertIn('LOCAL91=',path.with_suffix('').read_text())
 
 class GeneratedPolicy(unittest.TestCase):
     def test_installed_pin_records_and_architectures(self):
-        import apt_pkg
+        try:
+            import apt_pkg
+        except ImportError:
+            self.fail('python3-apt is not installed: the package Depends on it, run these tests where it is (a container)')
         apt_pkg.init_config()
         native=apt_pkg.config.find('APT::Architecture')
         other='arm64' if native!='arm64' else 'amd64'

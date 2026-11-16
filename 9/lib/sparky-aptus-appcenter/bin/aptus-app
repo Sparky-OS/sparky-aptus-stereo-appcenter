@@ -1115,7 +1115,7 @@ fi
 
 # vinci is not a deb package, so tell here what will be downloaded
 if [ "$1" = "vinci" ]; then
-	VERSION="Version: 0.4.7"
+	VERSION="Version: 0.4.9"
 	SECTION="Section: video"
 	MAINTAINER="Author: Dionatan Simioni"
 	DOWNSIZE="Download-Size: 38.3 MB"

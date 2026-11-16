@@ -18,10 +18,9 @@ from unittest.mock import patch
 
 SOURCE = Path(sys.argv.pop(1)).resolve() if len(sys.argv) > 1 else Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(SOURCE))
-READER = Path(os.environ.get('SPARKY_INSTALL_DOWNLOADS_LIB') or SOURCE.parents[1] / 'packages/sparky-stereo-apt/install-downloads')
-os.environ['SPARKY_INSTALL_DOWNLOADS_LIB'] = str(READER)
-if (READER / 'lang').is_dir():
-    os.environ['SPARKY_INSTALL_DOWNLOADS_LANG'] = str(READER / 'lang')
+sys.path.append(str(Path(__file__).resolve().parent))
+import layout
+READER = layout.reader(SOURCE)
 os.environ['LANG'] = 'en_US.UTF-8'
 os.environ.pop('LANGUAGE', None)
 os.environ.pop('LC_ALL', None)

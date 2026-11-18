@@ -41,6 +41,11 @@ Only a mark changes: a declared tool that apt had installed automatically is mar
 Removing an entry removes no tool: the ones the entry brought or marked (recorded in /var/lib/sparky-aptus-stereo-appcenter/tools) are marked as automatically installed unless another installed entry declares them, and apt's own rule decides from there; the entry names the ones it brought.
 An installation that fails after its tools arrived does the same.
 
+PJeOffice Pro is an entry of Office, Documents since 0.1.13 (ORDER 18), the first package entry of a main page (`kind: apt`, `section: main`, `sizes: true`, `problem_key: install`).
+It installs sparky-pjeoffice, whose setup fetches CNJ's program from CNJ's own address; the package declares that download (`Sparky-Install-Download-Size`, `Sparky-Install-Download-Source`), so the card says before the button, whatever the metered setting is, its size and address (`declared_lines`), then apt's sizes for the package and what it depends on and recommends (OpenSC, pcscd and libccid come with it as the package's Recommends: the app center package depends on none of them), then the shared metered notice when the setting asks for it.
+`actions/entry status ID` answers for it (installed, tools, download, declared) and the page reads that. A failed setup shows the engine's own sentence for the package (`kept_problem`, the row's `problem_key`) after apt's exit status.
+Paweł's page carries the link (`aptus://offdoc_pjeoffice`) in both trees.
+
 DisplayCAL is an entry of the Tools and utilities section since 0.1.10 (ORDER 575).
 It is offered and not installed: nothing on the image depends on it, because its colour measuring needs calibrator hardware (a colorimeter or a spectrophotometer), which the card says beside the button.
 The row is `"sizes": true`: tools.py simulates the entry's own program the way the action installs it (Debian's displaycal with its Recommends, and what it depends on, ArgyllCMS among it) and the card and the action say apt's sizes first.

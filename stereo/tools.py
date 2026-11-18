@@ -165,12 +165,11 @@ def answered_elsewhere(name, identifier):
     return None
 
 
-def fetch(row, found, archives=None):
+def fetch(row, found):
     """Fetch the plan through apt's authenticated download-only path without changing package state."""
     if not found:
         return
-    options = ['-o', 'Dir::Cache::archives=' + str(archives)] if archives else []
-    fetched = subprocess.run([APT, '-y', '--download-only', *options, *OPTIONS, 'install', *found['tools']], env=ENV)
+    fetched = subprocess.run([APT, '-y', '--download-only', *OPTIONS, 'install', *found['tools']], env=ENV)
     if fetched.returncode:
         raise Refused(messages()['tools_download_failed'].format(name=row['name'], tools=', '.join(found['tools']),
                                                                  code=fetched.returncode))
@@ -184,17 +183,28 @@ def staged_command(row, command):
         yield str(existing), ENV
         return
     found = plan(row)
+    if found is None:
+        raise Refused(messages()['appimage_requirements'].format(command=command))
+    fetch(row, found)
+    import apt_pkg
+    apt_pkg.init_config()
+    archives = Path(apt_pkg.config.find_dir('Dir::Cache::archives'))
+    native = subprocess.run(['/usr/bin/dpkg', '--print-architecture'], capture_output=True,
+                            text=True, check=True, env=ENV).stdout.strip()
+    wanted = {(name.partition(':')[0], version): name.partition(':')[2] or native
+              for name, version in found['packages']}
     with tempfile.TemporaryDirectory(prefix='aptus-verifier-') as folder:
-        work = Path(folder)
-        work.chmod(0o755)
-        archives, root = work / 'archives', work / 'root'
-        archives.mkdir()
-        fetch(row, found, archives)
+        root = Path(folder) / 'root'
         for archive in sorted(archives.glob('*.deb')):
-            subprocess.run(['/usr/bin/dpkg-deb', '--extract', str(archive), str(root)], check=True, env=ENV)
+            record = subprocess.run(['/usr/bin/dpkg-deb', '--field', str(archive), 'Package', 'Version', 'Architecture'],
+                                    capture_output=True, text=True, check=True, env=ENV)
+            fields = dict(line.split(': ', 1) for line in record.stdout.splitlines())
+            architecture = wanted.get((fields['Package'], fields['Version']))
+            if architecture and fields['Architecture'] in (architecture, 'all'):
+                subprocess.run(['/usr/bin/dpkg-deb', '--extract', str(archive), str(root)], check=True, env=ENV)
         verifier = root / 'usr/bin' / command
         if not verifier.is_file():
-            raise Refused(messages()['tools_failed'].format(name=row['name'], tools=command, code=1))
+            raise Refused(messages()['appimage_requirements'].format(command=command))
         libraries = [root / 'usr/lib', root / 'lib']
         libraries += sorted(root.glob('usr/lib/*-linux-gnu')) + sorted(root.glob('lib/*-linux-gnu'))
         environment = dict(ENV, LD_LIBRARY_PATH=':'.join(str(path) for path in libraries))

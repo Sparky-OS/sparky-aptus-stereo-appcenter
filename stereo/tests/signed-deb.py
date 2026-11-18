@@ -85,7 +85,7 @@ class SignedDeb(unittest.TestCase):
         for arch in ROW['assets']:
             row=signeddeb.selected(ROW,arch)
             file=FIXTURES/Path(row['url']).name
-            self.assertEqual(file.stat().st_size,row['size'])
+            self.assertEqual(file.stat().st_size,row['payload_size'])
             with file.open('rb') as stream:
                 self.assertEqual(hashlib.file_digest(stream,'sha256').hexdigest(),row['sha256'])
         for code in ('en','pl','pt_BR','fr','de','es','ja','ko','zh_CN','zh_TW'):
@@ -109,9 +109,9 @@ class Page(unittest.TestCase):
         reader.assess.return_value={'announce':True,'text':['Metered connection: OpenLogi download','Continue?']}
         with patch.object(self.page.signeddeb,'installed',return_value=False), patch.object(self.page,'problem_text',return_value=''), patch.object(self.page.tools,'plan',return_value=None), patch.object(self.page,'install_downloads',return_value=reader):
             rendered=self.page.render(ROW)
-        self.assertLess(rendered.index('21,742,764 B'),rendered.index('debinst_openlogi'))
+        self.assertLess(rendered.index('21,743,090 B'),rendered.index('debinst_openlogi'))
         self.assertLess(rendered.index('Metered connection'),rendered.index('debinst_openlogi'))
-        self.assertEqual(reader.assess.call_args.args[0][0]['size'],21742764)
+        self.assertEqual(reader.assess.call_args.args[0][0]['size'],21743090)
         self.assertIn('Solaar',rendered)
 
     def test_unsupported_architecture_has_a_sentence_and_no_install_button(self):

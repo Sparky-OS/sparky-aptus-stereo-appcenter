@@ -16,7 +16,11 @@ def selected(row, architecture=None):
                                       capture_output=True, text=True, check=True).stdout.strip()
     if architecture not in row['assets']:
         raise RuntimeError(messages()['vendor_architecture'].format(name=row['name'], architecture=architecture))
-    return dict(row, **row['assets'][architecture])
+    asset = row['assets'][architecture]
+    chosen = dict(row, **asset)
+    chosen['payload_size'] = asset['size']
+    chosen['size'] += asset['signature_size']
+    return chosen
 
 
 def installed(row):
@@ -41,7 +45,7 @@ def change(row, operation, ensure_tools, run_apt):
                                                                   code=result.returncode))
         with package.open('rb') as stream:
             digest = hashlib.file_digest(stream, 'sha256').hexdigest()
-        if package.stat().st_size != row['size'] or digest != row['sha256']:
+        if package.stat().st_size != row['payload_size'] or digest != row['sha256']:
             raise RuntimeError(text['checksum_failed'])
         # An absent verifier is extracted from authenticated apt archives, never installed before trust is checked.
         with tools.staged_command(row, 'minisign') as (verifier, environment):

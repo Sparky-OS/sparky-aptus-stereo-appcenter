@@ -80,6 +80,25 @@ class SignedDeb(unittest.TestCase):
                 signeddeb.selected(ROW,'riscv64')
             run.assert_not_called()
 
+    def test_native_dpkg_frontend_lock_is_detected_in_a_fresh_process(self):
+        import fcntl
+        script = """import importlib.util,importlib.machinery,sys
+from pathlib import Path
+source=Path(sys.argv[1]);sys.path.insert(0,str(source))
+import common
+common.LANGDIR=source/'lang'
+spec=importlib.util.spec_from_loader('entry_action',importlib.machinery.SourceFileLoader('entry_action',str(source/'actions/entry')))
+action=importlib.util.module_from_spec(spec);spec.loader.exec_module(action)
+try:action.held({'name':'OpenLogi'})
+except RuntimeError as e:print(e)
+else:raise SystemExit('native frontend lock was missed')
+"""
+        with open('/var/lib/dpkg/lock-frontend','a+') as lock:
+            fcntl.lockf(lock,fcntl.LOCK_EX|fcntl.LOCK_NB)
+            result=REAL_RUN([sys.executable,'-c',script,str(SOURCE)],capture_output=True,text=True)
+        self.assertEqual(result.returncode,0,result.stdout+result.stderr)
+        self.assertIn('apt',result.stdout.lower())
+
     def test_both_architectures_and_ten_translations(self):
         self.assertEqual(set(ROW['assets']),{'amd64','arm64'})
         for arch in ROW['assets']:

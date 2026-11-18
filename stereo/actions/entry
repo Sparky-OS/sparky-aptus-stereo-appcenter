@@ -340,6 +340,7 @@ def lock_files():
     apt's lists and archives): a system with other directories is tried in its own."""
     import apt_pkg
     apt_pkg.init_config()
+    apt_pkg.init_system()
     state = os.path.dirname(apt_pkg.config.find_file('Dir::State::status'))
     return (os.path.join(state, 'lock-frontend'), os.path.join(state, 'lock'),
             os.path.join(apt_pkg.config.find_dir('Dir::State::lists'), 'lock'),

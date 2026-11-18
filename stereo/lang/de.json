@@ -50,5 +50,6 @@
   "program_unavailable": "{name} kann nicht installiert werden. apt meldet: {why} Aktualisieren Sie die Paketlisten (apt update) und versuchen Sie es erneut. Es wurde nichts geändert.",
   "apt_busy": "{name} wurde nicht installiert: Ein anderes Programm verwendet apt (die Sperre der Paketverwaltung ist belegt). Warten Sie, bis es fertig ist, und versuchen Sie es erneut. Es wurde nichts geändert.",
   "apt_network": "{name} wurde nicht installiert: Die Pakete konnten nicht heruntergeladen werden. Prüfen Sie die Internetverbindung und versuchen Sie es erneut. Es wurde nichts geändert.",
-  "apt_failed": "Die Installation von {name} ist fehlgeschlagen (apt-Exitcode {code}). {name} wurde nicht installiert. Lesen Sie die apt-Zeilen oben und versuchen Sie es erneut."
+  "apt_failed": "Die Installation von {name} ist fehlgeschlagen (apt-Exitcode {code}). {name} wurde nicht installiert. Lesen Sie die apt-Zeilen oben und versuchen Sie es erneut.",
+  "pjeoffice_note": "Der Signierer des CNJ für das elektronische Gerichtsverfahren Brasiliens (PJe). Das offizielle Programm wird bei der Installation von der Adresse des CNJ geladen und mit einer geprüften Größe und einem geprüften SHA-256 verglichen. Dieser Eintrag ergänzt einen Menüeintrag, ein Symbol im Systemabschnitt, eine Einstellungsseite und eine Dolphin-Aktion für PDFs. Zertifikate, Token-Treiber und PINs bleiben im eigenen Fenster des Programms."
 }

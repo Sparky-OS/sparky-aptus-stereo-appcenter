@@ -50,5 +50,6 @@
   "program_unavailable": "Nie można zainstalować programu {name}. apt mówi: {why} Zaktualizuj listy pakietów (apt update) i spróbuj ponownie. Nic nie zostało zmienione.",
   "apt_busy": "Nie zainstalowano programu {name}: inny program używa apt (blokada menedżera pakietów jest zajęta). Poczekaj, aż skończy, i spróbuj ponownie. Nic nie zostało zmienione.",
   "apt_network": "Nie zainstalowano programu {name}: nie udało się pobrać pakietów. Sprawdź połączenie z internetem i spróbuj ponownie. Nic nie zostało zmienione.",
-  "apt_failed": "Instalacja programu {name} nie powiodła się (kod wyjścia apt: {code}). Program {name} nie został zainstalowany. Przeczytaj powyższe wiersze apt i spróbuj ponownie."
+  "apt_failed": "Instalacja programu {name} nie powiodła się (kod wyjścia apt: {code}). Program {name} nie został zainstalowany. Przeczytaj powyższe wiersze apt i spróbuj ponownie.",
+  "pjeoffice_note": "Program CNJ do podpisywania w brazylijskim systemie e-postępowań sądowych (PJe). Oficjalny program jest pobierany z adresu CNJ podczas instalacji i sprawdzany względem sprawdzonego rozmiaru i SHA-256. Ten wpis dodaje pozycję menu, ikonę zasobnika, stronę ustawień i akcję Dolphina dla plików PDF. Certyfikaty, sterowniki tokenów i PIN-y pozostają w oknie samego programu."
 }

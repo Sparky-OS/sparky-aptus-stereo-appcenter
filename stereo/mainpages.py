@@ -25,16 +25,32 @@ def request(uri):
     return None
 
 
-def render(row):
-    text, main, e = messages(), BASE / 'main', html.escape
-    selected = appimage.installed(row)
-    problems = subprocess.run(['/usr/bin/sparky-stereo-problems', 'list', '--json', PACKAGE],
+def problem_text(owner, key):
+    """The sentences the one engine keeps for OWNER's problem KEY (all of OWNER's when KEY is None), in the person's language."""
+    problems = subprocess.run(['/usr/bin/sparky-stereo-problems', 'list', '--json', owner],
                               capture_output=True, text=True, check=True)
     records = json.loads(problems.stdout)
     if isinstance(records, dict):
         records = records.get('problems', [])
-    errors = '\n'.join(record.get('text', record.get('text_en', '')) + '\n' + record.get('output', '')
-                       for record in records if record['key'] == row['id'])
+    return '\n'.join(record.get('text', record.get('text_en', '')) + '\n' + record.get('output', '')
+                     for record in records if key is None or record['key'] == key)
+
+
+def apt_state(row):
+    """What the action says about an apt entry without the cost of the whole page: installed, the tools and the install-time
+    download of its package (sizes said first), or the reason they cannot be read."""
+    result = subprocess.run([str(BASE / 'actions/entry'), 'status', row['id']], capture_output=True, text=True)
+    if result.returncode:
+        raise RuntimeError((result.stderr or result.stdout).strip() or 'actions/entry status: %d' % result.returncode)
+    return json.loads(result.stdout)
+
+
+def render(row):
+    text, main, e = messages(), BASE / 'main', html.escape
+    if row['kind'] == 'apt':
+        return render_apt(row, text, main, e)
+    selected = appimage.installed(row)
+    errors = problem_text(PACKAGE, row['id'])
     reader = install_downloads()
     import apt_pkg
     apt_pkg.init_config()
@@ -57,18 +73,21 @@ def render(row):
     buttons = f'<a class="buttonmenu" href="aptus://{operation}_{row["id"]}">{e(text[label])}</a>'
     if selected:
         buttons += f' <a class="buttonmenu" href="aptus://debrein_{row["id"]}">{e(text["reinstall"])}</a>'
-    # Retain the main page's header, navigation, language script, style and footer.
+    return in_page(row, text, main, e, f'''<p><b>{e(row['name'])}</b></p><p>{e(text[row['id'] + '_note'])}</p>
+<p>{e(row.get('author', 'Dionatan Simioni'))} · {e(row['version'])}</p>
+<p>{e(text['download_size'])}: {row['size']:,} B</p>{needs}
+<p>{e(text['installed' if selected else 'absent'])}</p>
+<div style="color:#9a1818;white-space:pre-wrap">{e(errors)}</div>{lines}<p>{buttons}</p>''')
+
+
+def in_page(row, text, main, e, card):
+    """Retain the main page's header, navigation, language script, style and footer around the entry's card."""
     page = (main / row['page']).read_text()
     table = re.search(r'<table\b[^>]*>', page)
     if table is None or '</table>' not in page[table.end():]:
         raise RuntimeError(text['appimage_payload'])
     before = page[:table.start()]
     after = page[page.index('</table>', table.end()) + len('</table>'):]
-    card = f'''<p><b>{e(row['name'])}</b></p><p>{e(text[row['id'] + '_note'])}</p>
-<p>Dionatan Simioni · {e(row['version'])}</p>
-<p>{e(text['download_size'])}: {row['size']:,} B</p>{needs}
-<p>{e(text['installed' if selected else 'absent'])}</p>
-<div style="color:#9a1818;white-space:pre-wrap">{e(errors)}</div>{lines}<p>{buttons}</p>'''
     return before.replace('<head>', '<head><meta charset="utf-8"><base href="' + main.as_uri() + '/">') + card + after
 
 
@@ -112,3 +131,30 @@ def show(row):
         subprocess.run(['yad', '--html', '--browser', '--width=900', '--height=780',
                         '--title=APTus AppCenter', '--uri=' + page.as_uri(), '--user-agent=' + code,
                         '--uri-handler=' + str(BASE / 'handler')])
+
+
+def render_apt(row, text, main, e):
+    """An entry that installs a package of the edition: what it brings is said before the button, with apt's sizes and the
+    package's own install-time download (its size and where it comes from), then the metered notice when the setting asks for it."""
+    state = apt_state(row)
+    selected = state['installed']
+    errors = '\n'.join(filter(None, [problem_text(PACKAGE, row['id']), problem_text(row['package'], None)]))
+    lines = ''
+    if not selected:
+        if state.get('tools') and state['tools'].get('error'):
+            errors = '\n'.join(filter(None, [errors, state['tools']['error']]))
+        elif state.get('tools'):
+            lines += ''.join('<p class="tools">' + e(line) + '</p>' for line in state['tools']['text'])
+        note = state.get('download')
+        if note and note.get('error'):
+            errors = '\n'.join(filter(None, [errors, note['error']]))
+        elif note:
+            lines += ''.join('<p>' + e(line) + '</p>' for line in note['text'])
+        elif state.get('declared'):
+            lines += ''.join('<p>' + e(line) + '</p>' for line in state['declared'])
+    operation, label = ('debremo', 'remove') if selected else ('debinst', 'install')
+    buttons = f'<a class="buttonmenu" href="aptus://{operation}_{row["id"]}">{e(text[label])}</a>'
+    return in_page(row, text, main, e, f'''<p><b>{e(row['name'])}</b></p><p>{e(text[row['id'] + '_note'])}</p>
+<p>{e(row.get('author', ''))}</p>{lines}
+<p>{e(text['installed' if selected else 'absent'])}</p>
+<div style="color:#9a1818;white-space:pre-wrap">{e(errors)}</div><p>{buttons}</p>''')

@@ -50,5 +50,6 @@
   "program_unavailable": "Não é possível instalar {name}. O apt diz: {why} Atualize as listas de pacotes (apt update) e tente de novo. Nada foi alterado.",
   "apt_busy": "{name} não foi instalado: outro programa está usando o apt (o bloqueio do gerenciador de pacotes está em uso). Aguarde até terminar e tente de novo. Nada foi alterado.",
   "apt_network": "{name} não foi instalado: não foi possível baixar os pacotes. Verifique a conexão com a internet e tente de novo. Nada foi alterado.",
-  "apt_failed": "A instalação de {name} falhou (saída do apt: {code}). {name} não foi instalado. Leia as linhas do apt acima e tente de novo."
+  "apt_failed": "A instalação de {name} falhou (saída do apt: {code}). {name} não foi instalado. Leia as linhas do apt acima e tente de novo.",
+  "pjeoffice_note": "O assinador do CNJ para o sistema de processo judicial eletrônico do Brasil (PJe). O programa oficial é baixado do endereço do CNJ na instalação e conferido com um tamanho e um SHA-256 revisados. Esta entrada acrescenta uma entrada de menu, uma entrada de bandeja, uma página de configurações e uma ação do Dolphin para PDFs. Certificados, drivers de token e PINs ficam na própria janela do programa."
 }

@@ -50,5 +50,6 @@
   "program_unavailable": "無法安裝 {name}。apt 回報：{why} 請更新套件清單（apt update）後再試一次。未做任何變更。",
   "apt_busy": "未安裝 {name}：另一個程式正在使用 apt（套件管理員的鎖定已被占用）。請等它完成後再試一次。未做任何變更。",
   "apt_network": "未安裝 {name}：無法下載套件。請檢查網路連線後再試一次。未做任何變更。",
-  "apt_failed": "安裝 {name} 失敗（apt 結束碼 {code}）。{name} 未安裝。請閱讀上方的 apt 輸出後再試一次。"
+  "apt_failed": "安裝 {name} 失敗（apt 結束碼 {code}）。{name} 未安裝。請閱讀上方的 apt 輸出後再試一次。",
+  "pjeoffice_note": "CNJ 為巴西法院電子訴訟系統（PJe）提供的簽署程式。安裝時會從 CNJ 的位址下載官方程式，並依已審核的大小與 SHA-256 檢查。此項目會新增選單項目、系統匣項目、設定頁面和用於 PDF 的 Dolphin 動作。憑證、權杖驅動程式和 PIN 仍留在程式自己的視窗中。"
 }

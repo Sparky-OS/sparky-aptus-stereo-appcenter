@@ -50,5 +50,6 @@
   "program_unavailable": "{name} ne peut pas être installé. apt indique : {why} Mettez à jour les listes de paquets (apt update) et réessayez. Rien n'a été modifié.",
   "apt_busy": "{name} n'a pas été installé : un autre programme utilise apt (le verrou du gestionnaire de paquets est pris). Attendez qu'il termine, puis réessayez. Rien n'a été modifié.",
   "apt_network": "{name} n'a pas été installé : les paquets n'ont pas pu être téléchargés. Vérifiez la connexion à Internet et réessayez. Rien n'a été modifié.",
-  "apt_failed": "L'installation de {name} a échoué (code de sortie d'apt : {code}). {name} n'a pas été installé. Lisez les lignes d'apt ci-dessus, puis réessayez."
+  "apt_failed": "L'installation de {name} a échoué (code de sortie d'apt : {code}). {name} n'a pas été installé. Lisez les lignes d'apt ci-dessus, puis réessayez.",
+  "pjeoffice_note": "Le signataire du CNJ pour le système brésilien de dépôt électronique des procédures judiciaires (PJe). Le programme officiel est téléchargé depuis l’adresse du CNJ à l’installation et vérifié d’après une taille et un SHA-256 examinés. Cette entrée ajoute une entrée de menu, une icône de zone de notification, une page de configuration et une action Dolphin pour les PDF. Les certificats, les pilotes de jeton et les codes PIN restent dans la fenêtre du programme."
 }

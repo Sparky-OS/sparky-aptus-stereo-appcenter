@@ -50,5 +50,6 @@
   "program_unavailable": "No se puede instalar {name}. apt dice: {why} Actualice las listas de paquetes (apt update) e inténtelo de nuevo. No se cambió nada.",
   "apt_busy": "No se instaló {name}: otro programa está usando apt (el bloqueo del gestor de paquetes está ocupado). Espere a que termine e inténtelo de nuevo. No se cambió nada.",
   "apt_network": "No se instaló {name}: no se pudieron descargar los paquetes. Compruebe la conexión a Internet e inténtelo de nuevo. No se cambió nada.",
-  "apt_failed": "Falló la instalación de {name} (código de salida de apt: {code}). {name} no se instaló. Lea las líneas de apt anteriores e inténtelo de nuevo."
+  "apt_failed": "Falló la instalación de {name} (código de salida de apt: {code}). {name} no se instaló. Lea las líneas de apt anteriores e inténtelo de nuevo.",
+  "pjeoffice_note": "El firmador del CNJ para el sistema de procesos judiciales electrónicos de Brasil (PJe). El programa oficial se descarga de la dirección del CNJ al instalar y se comprueba con un tamaño y un SHA-256 revisados. Esta entrada añade una entrada de menú, una entrada de bandeja, una página de ajustes y una acción de Dolphin para PDF. Los certificados, los controladores de token y los PIN permanecen en la propia ventana del programa."
 }

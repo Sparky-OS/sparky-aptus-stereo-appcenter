@@ -50,5 +50,6 @@
   "program_unavailable": "{name} cannot be installed. apt says: {why} Update the package lists (apt update) and try again. Nothing was changed.",
   "apt_busy": "{name} was not installed: another program is using apt (the package manager's lock is held). Wait until it finishes, then try again. Nothing was changed.",
   "apt_network": "{name} was not installed: the packages could not be downloaded. Check the internet connection and try again. Nothing was changed.",
-  "apt_failed": "Installing {name} failed (apt exit {code}). {name} was not installed. Read apt's lines above, then try again."
+  "apt_failed": "Installing {name} failed (apt exit {code}). {name} was not installed. Read apt's lines above, then try again.",
+  "pjeoffice_note": "CNJ's signer for Brazil's court e-filing system (PJe). The official program is downloaded from CNJ's own address when you install, and checked against a reviewed size and SHA-256. This entry adds a menu entry, a tray entry, a settings page and a Dolphin action for PDFs. Certificates, token drivers and PINs stay in the program's own window."
 }

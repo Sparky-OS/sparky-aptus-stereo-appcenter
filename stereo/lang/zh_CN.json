@@ -51,5 +51,15 @@
   "apt_busy": "未安装 {name}：另一个程序正在使用 apt（软件包管理器的锁已被占用）。请等待其完成后重试。未做任何更改。",
   "apt_network": "未安装 {name}：无法下载软件包。请检查网络连接后重试。未做任何更改。",
   "apt_failed": "安装 {name} 失败（apt 退出码 {code}）。{name} 未安装。请阅读上面的 apt 输出后重试。",
-  "pjeoffice_note": "CNJ 为巴西法院电子诉讼系统（PJe）提供的签名程序。安装时会从 CNJ 的地址下载官方程序，并按已审核的大小和 SHA-256 进行检查。此条目会添加菜单项、托盘项、设置页面和用于 PDF 的 Dolphin 操作。证书、令牌驱动程序和 PIN 仍留在程序自己的窗口中。"
+  "pjeoffice_note": "CNJ 为巴西法院电子诉讼系统（PJe）提供的签名程序。安装时会从 CNJ 的地址下载官方程序，并按已审核的大小和 SHA-256 进行检查。此条目会添加菜单项、托盘项、设置页面和用于 PDF 的 Dolphin 操作。证书、令牌驱动程序和 PIN 仍留在程序自己的窗口中。",
+  "codesys4_note": "面向工业控制器和自动化的基于网页的 IEC 61131-3 开发环境。CODESYS 列出的平台有 Windows x64、Linux x64 和 Linux ARM64（Linux 下载为 .deb 文件），使用时在网页浏览器中操作。",
+  "store_maker": "制造商：{vendor}。名称和商标归 {vendor} 所有，此处仅用于指称该程序。",
+  "store_how": "按钮会在您的网页浏览器中打开 {store}。如果商店要求，请在那里注册，并按照 {vendor} 的许可协议下载。Stereo APTus 不会为此条目安装或下载任何内容。",
+  "store_address": "地址：{url}",
+  "store_button": "打开 {store}",
+  "store_no_opener": "无法打开 {store}：此系统没有 xdg-open，即在浏览器中打开网址的程序。请自行在网页浏览器中打开 {url}。未安装任何内容。",
+  "store_failed": "无法在网页浏览器中打开 {store}：{why} 请自行在网页浏览器中打开 {url}。未安装任何内容。",
+  "store_no_user": "未打开 {store}：此窗口以管理员权限运行，无法确定应使用哪位用户的浏览器。请自行在网页浏览器中打开 {url}。未安装任何内容。",
+  "store_bad_address": "为 {name} 保存的地址不是 {domain} 的 https 地址，因此未打开。未安装任何内容。",
+  "store_unchangeable": "{name} 是指向 {vendor} 商店页面的链接。Stereo APTus 不会为它安装或删除任何内容。"
 }

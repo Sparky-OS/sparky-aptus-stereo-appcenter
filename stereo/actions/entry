@@ -60,6 +60,8 @@ def visible(row, cache, patterns):
 
 
 def installed(row):
+    if row['kind'] == 'store':
+        return False
     if row['kind'] == 'appimage':
         import appimage
         return appimage.installed(row)
@@ -466,6 +468,9 @@ def main():
     try:
         row = entry(sys.argv[1])
     except StopIteration:
+        return 2
+    if row['kind'] == 'store':
+        print(messages()['store_unchangeable'].format(name=row['name'], vendor=row['vendor']), file=sys.stderr)
         return 2
     if os.geteuid() != 0:
         print(messages()['entry_authorization'], file=sys.stderr)

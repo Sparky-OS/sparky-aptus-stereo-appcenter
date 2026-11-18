@@ -51,5 +51,15 @@
   "apt_busy": "No se instaló {name}: otro programa está usando apt (el bloqueo del gestor de paquetes está ocupado). Espere a que termine e inténtelo de nuevo. No se cambió nada.",
   "apt_network": "No se instaló {name}: no se pudieron descargar los paquetes. Compruebe la conexión a Internet e inténtelo de nuevo. No se cambió nada.",
   "apt_failed": "Falló la instalación de {name} (código de salida de apt: {code}). {name} no se instaló. Lea las líneas de apt anteriores e inténtelo de nuevo.",
-  "pjeoffice_note": "El firmador del CNJ para el sistema de procesos judiciales electrónicos de Brasil (PJe). El programa oficial se descarga de la dirección del CNJ al instalar y se comprueba con un tamaño y un SHA-256 revisados. Esta entrada añade una entrada de menú, una entrada de bandeja, una página de ajustes y una acción de Dolphin para PDF. Los certificados, los controladores de token y los PIN permanecen en la propia ventana del programa."
+  "pjeoffice_note": "El firmador del CNJ para el sistema de procesos judiciales electrónicos de Brasil (PJe). El programa oficial se descarga de la dirección del CNJ al instalar y se comprueba con un tamaño y un SHA-256 revisados. Esta entrada añade una entrada de menú, una entrada de bandeja, una página de ajustes y una acción de Dolphin para PDF. Los certificados, los controladores de token y los PIN permanecen en la propia ventana del programa.",
+  "codesys4_note": "Un entorno de desarrollo IEC 61131-3 basado en la web, para controladores industriales y automatización. CODESYS lo ofrece para Windows x64, Linux x64 y Linux ARM64 (las descargas para Linux son paquetes .deb) y se usa en un navegador web.",
+  "store_maker": "Creado por {vendor}. Sus nombres y marcas pertenecen a {vendor} y se usan aquí solo para nombrar el programa.",
+  "store_how": "El botón abre la {store} en su navegador web. Allí se registra si se lo piden y descarga el programa con el contrato de licencia de {vendor}. Stereo APTus no instala ni descarga nada para esta entrada.",
+  "store_address": "Dirección: {url}",
+  "store_button": "Abrir la {store}",
+  "store_no_opener": "No se pudo abrir la {store}: este sistema no tiene xdg-open, el programa que abre una dirección web en el navegador. Abra {url} usted mismo en un navegador web. No se instaló nada.",
+  "store_failed": "No se pudo abrir la {store} en un navegador web: {why} Abra {url} usted mismo en un navegador web. No se instaló nada.",
+  "store_no_user": "No se abrió la {store}: esta ventana se ejecuta con derechos de administrador y no sabe qué navegador de qué persona usar. Abra {url} usted mismo en un navegador web. No se instaló nada.",
+  "store_bad_address": "La dirección guardada para {name} no es una dirección https de {domain}, por eso no se abrió. No se instaló nada.",
+  "store_unchangeable": "{name} es un enlace a la página de la tienda de {vendor}. Stereo APTus no instala ni elimina nada para él."
 }

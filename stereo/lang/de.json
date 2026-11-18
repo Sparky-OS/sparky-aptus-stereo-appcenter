@@ -51,5 +51,15 @@
   "apt_busy": "{name} wurde nicht installiert: Ein anderes Programm verwendet apt (die Sperre der Paketverwaltung ist belegt). Warten Sie, bis es fertig ist, und versuchen Sie es erneut. Es wurde nichts geändert.",
   "apt_network": "{name} wurde nicht installiert: Die Pakete konnten nicht heruntergeladen werden. Prüfen Sie die Internetverbindung und versuchen Sie es erneut. Es wurde nichts geändert.",
   "apt_failed": "Die Installation von {name} ist fehlgeschlagen (apt-Exitcode {code}). {name} wurde nicht installiert. Lesen Sie die apt-Zeilen oben und versuchen Sie es erneut.",
-  "pjeoffice_note": "Der Signierer des CNJ für das elektronische Gerichtsverfahren Brasiliens (PJe). Das offizielle Programm wird bei der Installation von der Adresse des CNJ geladen und mit einer geprüften Größe und einem geprüften SHA-256 verglichen. Dieser Eintrag ergänzt einen Menüeintrag, ein Symbol im Systemabschnitt, eine Einstellungsseite und eine Dolphin-Aktion für PDFs. Zertifikate, Token-Treiber und PINs bleiben im eigenen Fenster des Programms."
+  "pjeoffice_note": "Der Signierer des CNJ für das elektronische Gerichtsverfahren Brasiliens (PJe). Das offizielle Programm wird bei der Installation von der Adresse des CNJ geladen und mit einer geprüften Größe und einem geprüften SHA-256 verglichen. Dieser Eintrag ergänzt einen Menüeintrag, ein Symbol im Systemabschnitt, eine Einstellungsseite und eine Dolphin-Aktion für PDFs. Zertifikate, Token-Treiber und PINs bleiben im eigenen Fenster des Programms.",
+  "codesys4_note": "Eine webbasierte Entwicklungsumgebung nach IEC 61131-3 für industrielle Steuerungen und Automatisierung. CODESYS führt sie für Windows x64, Linux x64 und Linux ARM64 auf (die Linux-Downloads sind .deb-Pakete); man arbeitet damit in einem Webbrowser.",
+  "store_maker": "Hersteller: {vendor}. Die Namen und Marken gehören {vendor} und werden hier nur verwendet, um das Programm zu benennen.",
+  "store_how": "Die Schaltfläche öffnet den {store} in Ihrem Webbrowser. Dort registrieren Sie sich, falls er das verlangt, und laden das Programm unter der Lizenzvereinbarung von {vendor} herunter. Stereo APTus installiert und lädt für diesen Eintrag nichts herunter.",
+  "store_address": "Adresse: {url}",
+  "store_button": "{store} öffnen",
+  "store_no_opener": "Der {store} konnte nicht geöffnet werden: Auf diesem System fehlt xdg-open, das Programm, das eine Webadresse im Browser öffnet. Öffnen Sie {url} selbst in einem Webbrowser. Es wurde nichts installiert.",
+  "store_failed": "Der {store} konnte nicht in einem Webbrowser geöffnet werden: {why} Öffnen Sie {url} selbst in einem Webbrowser. Es wurde nichts installiert.",
+  "store_no_user": "Der {store} wurde nicht geöffnet: Dieses Fenster läuft mit Administratorrechten und kann nicht wissen, welcher Browser welcher Person zu verwenden ist. Öffnen Sie {url} selbst in einem Webbrowser. Es wurde nichts installiert.",
+  "store_bad_address": "Die für {name} gespeicherte Adresse ist keine https-Adresse von {domain} und wurde deshalb nicht geöffnet. Es wurde nichts installiert.",
+  "store_unchangeable": "{name} ist ein Link zur Store-Seite von {vendor}. Stereo APTus installiert und entfernt dafür nichts."
 }

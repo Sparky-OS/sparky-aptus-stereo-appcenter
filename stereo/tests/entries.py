@@ -39,8 +39,9 @@ class Transactions(unittest.TestCase):
     def test_exact_routes_only(self):
         for row in catalogue.entries():
             for operation in ('install', 'remove', 'repair'):
+                # a store link changes nothing on the system: no route, no pkexec (tests/store.py)
                 self.assertEqual(catalogue.route(f"aptus://stereo_entry_{row['id']}_{operation}"),
-                                 [str(SOURCE/'actions/entry'),row['id'],operation])
+                                 None if row['kind']=='store' else [str(SOURCE/'actions/entry'),row['id'],operation])
         for uri in ('aptus://stereo_other','aptus://stereo_entry_bino_install?x=1',
                     'aptus://sysoth_bleachbit','file:///usr/lib/sparky-aptus-appcenter/system.html'):
             self.assertIsNone(catalogue.route(uri))
@@ -198,7 +199,7 @@ class Transactions(unittest.TestCase):
         for row in rows:
             # the five sections of the stereo page, and 'main': Paweł's pages' own entries (Vinci, KamLynk), ORDER 553 (0.1.8)
             self.assertIn(row['section'],('emulation','media','vr','vpn','tools','main'))
-            self.assertIn(row['kind'],('apt','flatpak','download','appimage'))   # appimage: Vinci and KamLynk, 0.1.7 (ORDER 553)
+            self.assertIn(row['kind'],('apt','flatpak','download','appimage','store'))   # appimage: Vinci and KamLynk, 0.1.7 (ORDER 553); store: a link to a vendor's store page, 0.1.15 (ORDER 10)
             if 'also' in row:
                 self.assertEqual(row['kind'],'apt')
                 self.assertTrue(all(isinstance(name,str) and name for name in row['also']))

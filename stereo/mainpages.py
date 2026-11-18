@@ -13,6 +13,7 @@ from common import BASE, PACKAGE, messages, language, install_downloads
 from catalogue import main_entries
 import appimage
 import tools
+import storelink
 
 
 def request(uri):
@@ -49,6 +50,8 @@ def render(row):
     text, main, e = messages(), BASE / 'main', html.escape
     if row['kind'] == 'apt':
         return render_apt(row, text, main, e)
+    if row['kind'] == 'store':
+        return render_store(row, text, main, e)
     selected = appimage.installed(row)
     errors = problem_text(PACKAGE, row['id'])
     reader = install_downloads()
@@ -158,3 +161,11 @@ def render_apt(row, text, main, e):
 <p>{e(row.get('author', ''))}</p>{lines}
 <p>{e(text['installed' if selected else 'absent'])}</p>
 <div style="color:#9a1818;white-space:pre-wrap">{e(errors)}</div><p>{buttons}</p>''')
+
+
+def render_store(row, text, main, e):
+    """An entry that is a link to the vendor's store page: what the program is, who makes it, what the button does and what it does not, the
+    address as text; the button is an aptus:// address that the handler opens with the person's browser. The page reads nothing from the network."""
+    lines = ''.join('<p>' + e(line) + '</p>' for line in storelink.sentences(row, text))
+    button = f'<a class="buttonmenu" href="aptus://storeopen_{row["id"]}">{e(text["store_button"].format(store=row["store"]))}</a>'
+    return in_page(row, text, main, e, f'''<p><b>{e(row['name'])}</b></p>{lines}<p>{button}</p>''')

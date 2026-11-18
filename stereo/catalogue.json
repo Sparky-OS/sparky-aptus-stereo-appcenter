@@ -357,6 +357,17 @@
     "package": "xstudio"
   },
   {
+    "id": "codesys4",
+    "name": "CODESYS 4",
+    "section": "media",
+    "kind": "store",
+    "vendor": "CODESYS GmbH",
+    "store": "CODESYS Store",
+    "domain": "codesys.com",
+    "url": "https://store.codesys.com/en/codesys-4.html",
+    "note": "codesys4_note"
+  },
+  {
     "id": "steam-installer",
     "name": "Steam",
     "section": "vr",

@@ -49,6 +49,13 @@
     "package": "blender"
   },
   {
+    "id": "cloudcompare",
+    "name": "CloudCompare",
+    "section": "media",
+    "kind": "apt",
+    "package": "cloudcompare"
+  },
+  {
     "id": "digikam",
     "name": "digiKam",
     "section": "media",

@@ -65,6 +65,19 @@ class Transactions(unittest.TestCase):
             action.apt_change(row,'install')
             self.assertEqual(run.call_args.args[0],['/usr/bin/apt-get','-y','--no-remove','--no-allow-unauthenticated','install','simple-scan=50.0-2'])
 
+    def test_cloudcompare_is_an_apt_entry_of_the_stereo_players_editors_and_tools(self):
+        row=catalogue.entry('cloudcompare')
+        self.assertEqual((row['section'],row['kind'],row['package']),('media','apt','cloudcompare'))
+        self.assertEqual(row['name'],'CloudCompare')
+        version=types.SimpleNamespace(version='2.13.2+git20240821+ds-7+stereo3d1+lc1',origins=[types.SimpleNamespace(origin='Sparky Stereo OS',trusted=True)],downloadable=True)
+        cache={'cloudcompare':types.SimpleNamespace(candidate=version)}
+        self.assertTrue(action.visible(row,cache,{'bino'}))
+        self.assertFalse(action.visible(row,{},{'bino'}))
+        with patch.dict(sys.modules,apt=types.SimpleNamespace(Cache=lambda: cache)), patch.object(action.subprocess,'run') as run:
+            run.return_value.returncode=0
+            action.apt_change(row,'install')
+            self.assertEqual(run.call_args.args[0],['/usr/bin/apt-get','-y','--no-remove','--no-allow-unauthenticated','install','cloudcompare=2.13.2+git20240821+ds-7+stereo3d1+lc1'])
+
     def test_visibility_follows_archive_and_edition_policy(self):
         cache={'simple-scan':types.SimpleNamespace(candidate=types.SimpleNamespace(downloadable=True))}
         self.assertTrue(action.visible(catalogue.entry('simple-scan'),cache,{'bino'}))

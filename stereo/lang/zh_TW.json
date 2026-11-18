@@ -51,5 +51,17 @@
   "apt_busy": "未安裝 {name}：另一個程式正在使用 apt（套件管理員的鎖定已被占用）。請等它完成後再試一次。未做任何變更。",
   "apt_network": "未安裝 {name}：無法下載套件。請檢查網路連線後再試一次。未做任何變更。",
   "apt_failed": "安裝 {name} 失敗（apt 結束碼 {code}）。{name} 未安裝。請閱讀上方的 apt 輸出後再試一次。",
+  "pjeoffice_note": "CNJ 為巴西法院電子訴訟系統（PJe）提供的簽署程式。安裝時會從 CNJ 的位址下載官方程式，並依已審核的大小與 SHA-256 檢查。此項目會新增選單項目、系統匣項目、設定頁面和用於 PDF 的 Dolphin 動作。憑證、權杖驅動程式和 PIN 仍留在程式自己的視窗中。",
+  "codesys4_note": "適用於工業控制器與自動化的網頁式 IEC 61131-3 開發環境。CODESYS 列出的平台有 Windows x64、Linux x64 與 Linux ARM64（Linux 下載為 .deb 檔案），使用時在網頁瀏覽器中操作。",
+  "store_maker": "製造商：{vendor}。名稱與商標屬於 {vendor} 所有，此處僅用於指稱該程式。",
+  "store_how": "按鈕會在您的網頁瀏覽器中開啟 {store}。若商店要求，請在那裡註冊，並依照 {vendor} 的授權合約下載。Stereo APTus 不會為此項目安裝或下載任何內容。",
+  "store_address": "位址：{url}",
+  "store_button": "開啟 {store}",
+  "store_no_opener": "無法開啟 {store}：此系統沒有 xdg-open，也就是在瀏覽器中開啟網址的程式。請自行在網頁瀏覽器中開啟 {url}。未安裝任何內容。",
+  "store_failed": "無法在網頁瀏覽器中開啟 {store}：{why} 請自行在網頁瀏覽器中開啟 {url}。未安裝任何內容。",
+  "store_no_user": "未開啟 {store}：此視窗以系統管理員權限執行，無法確定應使用哪位使用者的瀏覽器。請自行在網頁瀏覽器中開啟 {url}。未安裝任何內容。",
+  "store_bad_address": "為 {name} 儲存的位址不是 {domain} 的 https 位址，因此未開啟。未安裝任何內容。",
+  "store_unchangeable": "{name} 是指向 {vendor} 商店頁面的連結。Stereo APTus 不會為它安裝或移除任何內容。",
+  "phonecamera_note": "把手機的攝影機當作這台電腦的攝影機。DroidCam：從手機自己的應用程式商店安裝 DroidCam 應用程式（該應用程式屬於 Dev47Apps），然後透過 Wi-Fi 或 USB 連線。scrcpy，完全開放的方式：手機上不需要應用程式，只需 USB 偵錯，Android 12 或更新；scrcpy 的套件會從專案的發行頁面下載在手機上執行的小型伺服端，並核對其 SHA-256。手機會以名為「Phone camera」的攝影機出現在您的程式和「系統設定」的「攝影機」中。不需要 KDE Connect。",
   "spirula_note": "從照片或影片建立 3D 模型。選用處理設定檔會在安裝前顯示大小與授權條款。完整移除也會刪除已下載的設定檔。"
 }

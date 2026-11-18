@@ -51,5 +51,17 @@
   "apt_busy": "{name} was not installed: another program is using apt (the package manager's lock is held). Wait until it finishes, then try again. Nothing was changed.",
   "apt_network": "{name} was not installed: the packages could not be downloaded. Check the internet connection and try again. Nothing was changed.",
   "apt_failed": "Installing {name} failed (apt exit {code}). {name} was not installed. Read apt's lines above, then try again.",
+  "pjeoffice_note": "CNJ's signer for Brazil's court e-filing system (PJe). The official program is downloaded from CNJ's own address when you install, and checked against a reviewed size and SHA-256. This entry adds a menu entry, a tray entry, a settings page and a Dolphin action for PDFs. Certificates, token drivers and PINs stay in the program's own window.",
+  "codesys4_note": "A web-based IEC 61131-3 development environment for industrial controllers and automation. CODESYS lists it for Windows x64, Linux x64 and Linux ARM64 (the Linux downloads are .deb files), and you use it in a web browser.",
+  "store_maker": "Made by {vendor}. Its names and trademarks belong to {vendor} and are used here only to name the program.",
+  "store_how": "The button opens the {store} in your web browser. You register there if it asks you to, and download under {vendor}'s own licence agreement. Stereo APTus installs nothing and downloads nothing for this entry.",
+  "store_address": "Address: {url}",
+  "store_button": "Open the {store}",
+  "store_no_opener": "The {store} could not be opened: this system has no xdg-open, the program that opens a web address in your web browser. Open {url} in a web browser yourself. Nothing was installed.",
+  "store_failed": "The {store} could not be opened in a web browser: {why} Open {url} in a web browser yourself. Nothing was installed.",
+  "store_no_user": "The {store} was not opened: this window runs with administrator rights and cannot tell which person's web browser to use. Open {url} in a web browser yourself. Nothing was installed.",
+  "store_bad_address": "The address stored for {name} is not an https address of {domain}, so it was not opened. Nothing was installed.",
+  "store_unchangeable": "{name} is a link to the store page of {vendor}. Stereo APTus installs and removes nothing for it.",
+  "phonecamera_note": "Use a phone's camera as this computer's camera. DroidCam: install the DroidCam app on the phone from its own store (the app is Dev47Apps' own), then connect by Wi-Fi or USB. scrcpy, the fully open way: no app on the phone, only USB debugging, Android 12 or newer; scrcpy's package fetches the small server it runs on the phone from the project's release page and checks its SHA-256. The phone shows up as the camera \"Phone camera\" in your programs and in System Settings, Camera. KDE Connect is not needed.",
   "spirula_note": "Create a 3D model from your photos or video. Optional processing profiles show their size and licence before installation. Purge also deletes downloaded profiles."
 }

@@ -60,6 +60,8 @@ def visible(row, cache, patterns):
 
 
 def installed(row):
+    if row['kind'] == 'store':
+        return False
     if row['kind'] == 'appimage':
         import appimage
         return appimage.installed(row)
@@ -176,12 +178,12 @@ def downloads_note(cache, installed_now, rows):
     return notes
 
 
-def tools_note(rows, installed_now):
+def tools_note(rows, installed_now, with_main=False):
     """For each entry of the stereo page that is not installed and needs tools the system lacks: the sentences that say which,
     how many packages and apt's sizes, or why they cannot be installed. One simulation for each set of missing tools."""
     notes, plans = {}, {}
     for row in rows:
-        if installed_now[row['id']] or row['section'] == 'main' or not tools.announced(row):
+        if installed_now[row['id']] or (row['section'] == 'main' and not with_main) or not tools.announced(row):
             continue
         try:
             names = tuple(tools.missing(row))
@@ -194,15 +196,77 @@ def tools_note(rows, installed_now):
     return notes
 
 
+def entry_downloads(row):
+    """The install-time downloads that installing a package entry brings: the declaration of every package apt would install or upgrade for it
+    (apt's own resolver marks them in memory, nothing changes) that declares one, except one whose installed version declares the same
+    download. Only those packages' records are read: the pass over every package's record (reader.declaring) takes minutes and is for the
+    start page's many entries, not for one entry's own page (measured: no result after 6 minutes in a container with the edition's archives)."""
+    import apt_pkg
+    reader = install_downloads()
+    apt_pkg.init()
+    cache = apt_pkg.Cache(None)
+    if row['package'] not in cache:
+        return []
+    policy, depcache, records = apt_pkg.Policy(cache), apt_pkg.DepCache(cache), apt_pkg.PackageRecords(cache)
+    depcache.init()
+    depcache.mark_install(cache[row['package']], True, True)
+    if depcache.broken_count:
+        raise RuntimeError('%s: apt cannot resolve its dependencies' % row['package'])
+    declared = {}
+    for package in cache.packages:
+        if not (depcache.marked_install(package) or depcache.marked_upgrade(package)):
+            continue
+        version = policy.get_candidate_ver(package)
+        if version is None or not version.file_list:
+            continue
+        records.lookup(version.file_list[0])
+        text = records.record
+        if reader.FIELD_SIZE not in text and reader.FIELD_SOURCE not in text:
+            continue
+        try:
+            wanted = reader.declaration(apt_pkg.TagSection(text))
+        except ValueError as error:
+            raise RuntimeError('%s: %s' % (package.name, error))
+        if wanted:
+            wanted['version'] = version.ver_str
+            declared[package.name] = wanted
+    return planned_downloads(row['package'], declared, lambda name: list(declared),
+                             lambda name: reader.installed_declaration(cache, name))
+
+
+def entry_notes(row):
+    """(the sentences of the install-time download said first, whatever the metered setting is; the shared metered notice or an error, as
+    downloads_note makes it) for a package entry that is not installed, from one reading of apt's records."""
+    reader = install_downloads()
+    try:
+        found = entry_downloads(row)
+        if not found:
+            return [], None
+        first = reader.assess(found, 'always', 'not-asked', ('no', 'not asked'))['text'][:-1]
+        mode = announce_setting(reader)
+        if mode == 'never':
+            return first, None
+        state = reader.metered() if mode == 'metered' else ('no', 'not asked')
+        result = reader.assess(found, mode, 'asked', state)
+        return first, ({'state': result['state'], 'downloads': result['downloads'], 'text': result['text'][:-1]} if result['announce'] else None)
+    except (RuntimeError, ValueError) as error:
+        return [], {'error': reader.messages()['unchecked'].format(why=error)}
+
+
 def status_one(identifier):
-    """The state of one entry, with its sizes: what the Info Centre's page asks (unprivileged, nothing changes)."""
+    """The state of one entry, with its sizes: what the Info Centre's page asks and what a package entry's page shows (unprivileged,
+    nothing changes). For a package entry of a main page that is not installed: the tools and the packages' sizes, the install-time
+    download said first, and the metered notice when the setting asks for it."""
     import apt
     row = entry(identifier)
     cache, patterns = apt.Cache(), only_ours()
     now = installed(row)
     shown = visible(row, cache, patterns)
-    needs = tools_note([row], {row['id']: now}) if shown else {}
-    return dict(installed=now, visible=shown, tools=needs.get(row['id']))
+    needs = tools_note([row], {row['id']: now}, with_main=row['kind'] == 'apt') if shown else {}
+    note, declared = None, []
+    if shown and row['kind'] == 'apt' and row['section'] == 'main' and not now:
+        declared, note = entry_notes(row)
+    return dict(installed=now, visible=shown, tools=needs.get(row['id']), download=note, declared=declared)
 
 
 def status():
@@ -250,9 +314,25 @@ def apt_change(row, operation, found=None):
         # it, and a failure of the download-only step is the network (the plan was already made, so the package is offered)
         held(row)
         run_said(row, command[:1] + ['--download-only'] + command[1:], 'apt_network')
-        run_said(row, command, 'apt_failed')
+        try:
+            run_said(row, command, 'apt_failed')
+        except RuntimeError as error:
+            # a package that fetches its program in its own setup (sparky-pjeoffice) keeps the reason in the one engine: said here too
+            raise RuntimeError('\n'.join(filter(None, [str(error), kept_problem(row)])))
     else:
         subprocess.run(command, check=True, env=ENV)
+
+
+def kept_problem(row):
+    """The sentence the engine keeps for the entry's package after a failed installation, in the person's language, or nothing. Only a
+    package that keeps its own problem says so in its row ("problem_key"): sparky-pjeoffice fetches its program in its own setup."""
+    if not row.get('problem_key'):
+        return ''
+    try:
+        result = subprocess.run([ENGINE, 'text', '--machine', row['package'], row['problem_key']], capture_output=True, text=True, env=ENV)
+    except OSError:
+        return ''   # the sentence is an addition to apt's own failure, which is raised either way
+    return result.stdout.strip() if result.returncode == 0 else ''
 
 
 def lock_files():
@@ -391,6 +471,9 @@ def main():
     try:
         row = entry(sys.argv[1])
     except StopIteration:
+        return 2
+    if row['kind'] == 'store':
+        print(messages()['store_unchangeable'].format(name=row['name'], vendor=row['vendor']), file=sys.stderr)
         return 2
     if os.geteuid() != 0:
         print(messages()['entry_authorization'], file=sys.stderr)

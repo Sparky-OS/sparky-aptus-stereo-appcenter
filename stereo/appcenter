@@ -11,6 +11,7 @@ import sys
 import tempfile
 from common import ACTION, BASE, messages, language
 from catalogue import entries
+import storelink
 
 
 def render():
@@ -36,6 +37,12 @@ def render():
                 continue
             current = states[row['id']]
             if not current['visible']:
+                continue
+            if row['kind'] == 'store':
+                # a link to the vendor's store page: what it is, who makes it, what the button does and does not do; the address is text
+                lines = ''.join(f'<p>{e(line)}</p>' for line in storelink.sentences(row, text))
+                cards.append(f'<article id="entry-{row["id"]}"><h3>{e(row["name"])}</h3>{lines}'
+                             f'<a class="action" href="aptus://stereo_entry_{row["id"]}_open">{e(text["store_button"].format(store=row["store"]))}</a></article>')
                 continue
             selected = current['installed']
             action = 'remove' if selected else 'install'
@@ -69,9 +76,6 @@ def render():
                          f'<p class="state">{e(indicator)}</p>{note}'
                          f'<p class="error">{e(current["error"])}</p>'
                          f'<a class="action" href="aptus://stereo_entry_{row["id"]}_{action}">{e(button)}</a></article>')
-        if group == 'media':
-            cards.append(f'<article id="codesys"><h3>CODESYS 4</h3><p>{e(text["codesys_note"])}</p>'
-                         '<a class="action" href="https://store.codesys.com/en/codesys-4.html">CODESYS Store</a></article>')
         if group == 'vr':
             cards.append('<article><h3>SteamVR</h3><a href="https://store.steampowered.com/app/250820/SteamVR/">SteamVR</a></article>')
         sections.append(f'<section id="stereo-{group}"><details><summary><h2>{e(text[group])}</h2></summary>'

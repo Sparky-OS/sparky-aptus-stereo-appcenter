@@ -41,12 +41,12 @@ def install_downloads():
     return sparky_install_downloads
 
 
-def problem_records():
+def problem_records(owner=PACKAGE):
     """Read the store as this authorized package caller."""
     import subprocess
     env=dict(os.environ,PATH='/usr/sbin:/usr/bin:/sbin:/bin')
     env.pop('PKEXEC_UID',None)
-    result=subprocess.run(['/usr/bin/sparky-stereo-problems','list','--json',PACKAGE],capture_output=True,text=True,check=True,env=env)
+    result=subprocess.run(['/usr/bin/sparky-stereo-problems','list','--json',owner],capture_output=True,text=True,check=True,env=env)
     records=json.loads(result.stdout)
     if isinstance(records,dict):records=records.get('problems',[])
     return records

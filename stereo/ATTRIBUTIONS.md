@@ -20,8 +20,9 @@ The server is offered through its Flathub application dev.slimevr.SlimeVR.
 The Linux driver archive is downloaded from SlimeVR's GitHub release, with its published SHA-256 digest checked before it is exposed to the person.
 See https://slimevr.dev/ and https://github.com/SlimeVR/SlimeVR-OpenVR-Driver.
 
-CODESYS 4 and CODESYS Store are provided by CODESYS.
-This entry links to their store; registration, terms and downloads remain with CODESYS.
+CODESYS 4 and the CODESYS Store are provided by CODESYS GmbH, who allowed the edition to list CODESYS 4 as a link to their store.
+This entry only opens their store page; registration, terms and downloads remain with CODESYS, and nothing of theirs is hosted or installed here.
+Their names and trademarks are theirs and are used only to name the program.
 See https://store.codesys.com/en/codesys-4.html.
 
 Vinci is by Dionatan Simioni, under GPL-3.0-or-later.

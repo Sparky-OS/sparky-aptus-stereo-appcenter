@@ -23,7 +23,7 @@ The SlimeVR OpenVR Driver ZIP is offered as a verified download in /var/cache/sp
 It is marked Downloaded, not Installed: SlimeVR's linked instructions explain registration in the person's SteamVR installation.
 The checksum is pinned to the v6.0.0 release asset digest from GitHub's release API.
 Hardware Setup owns the NVIDIA and AMD choices.
-CODESYS 4 is a store link, with registration and the EULA managed by CODESYS.
+CODESYS 4 is a store link, of the kind `store` since 0.1.15 (ORDER 10): a link to the vendor's own store page and nothing else.
 Every recognized changing action runs under the existing problems engine, with a fixed repair command.
 All other URIs and extra arguments pass to Paweł's installed handler unchanged.
 
@@ -41,15 +41,35 @@ Only a mark changes: a declared tool that apt had installed automatically is mar
 Removing an entry removes no tool: the ones the entry brought or marked (recorded in /var/lib/sparky-aptus-stereo-appcenter/tools) are marked as automatically installed unless another installed entry declares them, and apt's own rule decides from there; the entry names the ones it brought.
 An installation that fails after its tools arrived does the same.
 
+PJeOffice Pro is an entry of Office, Documents since 0.1.13 (ORDER 18), the first package entry of a main page (`kind: apt`, `section: main`, `sizes: true`, `problem_key: install`).
+It installs sparky-pjeoffice, whose setup fetches CNJ's program from CNJ's own address; the package declares that download (`Sparky-Install-Download-Size`, `Sparky-Install-Download-Source`), so the card says before the button, whatever the metered setting is, its size and address (`declared_lines`), then apt's sizes for the package and what it depends on and recommends (OpenSC, pcscd and libccid come with it as the package's Recommends: the app center package depends on none of them), then the shared metered notice when the setting asks for it.
+`actions/entry status ID` answers for it (installed, tools, download, declared) and the page reads that. A failed setup shows the engine's own sentence for the package (`kept_problem`, the row's `problem_key`) after apt's exit status.
+Paweł's page carries the link (`aptus://offdoc_pjeoffice`) in both trees.
+
 DisplayCAL is an entry of the Tools and utilities section since 0.1.10 (ORDER 575).
 It is offered and not installed: nothing on the image depends on it, because its colour measuring needs calibrator hardware (a colorimeter or a spectrophotometer), which the card says beside the button.
 The row is `"sizes": true`: tools.py simulates the entry's own program the way the action installs it (Debian's displaycal with its Recommends, and what it depends on, ArgyllCMS among it) and the card and the action say apt's sizes first.
 `actions/entry status ID` answers for one entry without the cost of the whole page; the Info Centre's Stereo 3D and Deep Colour page asks it for DisplayCAL and runs `pkexec actions/entry displaycal install` from its button.
 An install that fails says why in the person's language: apt busy (the lock is held), no network, a package the sources do not offer, or apt's exit status with its own lines above.
 
+## The store-link kind (`kind: store`, 0.1.15, ORDER 10)
+
+For a vendor who allows exactly a link: nothing of theirs is fetched, installed, mirrored or hosted, and the app center's Depends do not change.
+A row carries `vendor`, `store` (the store's name), `domain` (the vendor's own domain), `url` (https, on that domain or a subdomain, no credentials, no port) and `note` (the key of one plain sentence on what the program is); storelink.py checks the address at the click and tests/store.py checks it in the data.
+The card says, before the button and in the ten languages: what the program is, who makes it and that the names are theirs, that the button opens the store in the person's web browser, that the person registers there if it asks and downloads under the vendor's own licence agreement, that Stereo APTus installs and downloads nothing, and the address as text.
+The button is `aptus://stereo_entry_ID_open` (a stereo section) or `aptus://storeopen_ID` (a main page's entry); the handler opens the address with `xdg-open`, as the person: run as administrator (the app center starts through pkexec), it drops to the user named by PKEXEC_UID with setpriv and never opens a browser as root. A failure, or a system without xdg-open, is said in a window with the address to open by hand.
+The page makes no request of its own: the address is text, never a link.
+To place the entry on another page, change the row's `section` (one of the five stereo sections); to put it on one of Paweł's pages, move the row to `main-entries.json` with `"section": "main"`, `page` and `key`, and add the link `aptus://KEY_ID` to his page in both trees, as PJeOffice Pro's.
+The next vendor is one row and one sentence in the ten languages.
+
 ## Tests
 
-`python3 tests/entries.py`, `tools.py`, `displaycal.py` and `zram.py` run with no package manager and no network; run them where python3-apt is installed (a container).
+`python3 tests/entries.py`, `tools.py`, `displaycal.py`, `zram.py`, `pjeoffice.py` and `store.py` run with no package manager and no network; run them where python3-apt is installed (a container).
 What the package gets from elsewhere is found by `tests/layout.py`: the reader of the install-time download declaration (sparky-stereo-apt) from `SPARKY_INSTALL_DOWNLOADS_LIB`, the edition's build tree beside this folder, or the installed package, and Paweł's pages (`main/`), which it lays down from the tracked tree `9/` with `package_main.py` into a folder removed at exit.
 When one of them is missing the test stops and names it.
 The ten required languages hold every key of English; the eleven older page languages hold the sentences of the older versions and read the rest in English.
+
+Phone as a camera is an entry of Graphics, Others since 0.1.16 (ORDER 25), beside Kamoso and Webcamoid (`kind: apt`, `section: main`, `sizes: true`).
+It installs sparky-stereo-phone-camera, which brings DroidCam's client, scrcpy (its camera mode, the fully open way), adb and the virtual camera module (v4l2loopback-dkms) as its own Depends; the app center depends on none of them.
+The card says in the ten languages what each program is and what the phone needs (the DroidCam app from the phone's own store, or USB debugging and Android 12 or newer for scrcpy), that scrcpy's package fetches its small phone-side server from the project's release page and checks its SHA-256, and that the phone appears as the camera "Phone camera".
+The page is the row's `page` and `key` and Paweł's link in both trees: moving the entry to another page is those two fields and the two link lines.

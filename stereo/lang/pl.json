@@ -51,5 +51,17 @@
   "apt_busy": "Nie zainstalowano programu {name}: inny program używa apt (blokada menedżera pakietów jest zajęta). Poczekaj, aż skończy, i spróbuj ponownie. Nic nie zostało zmienione.",
   "apt_network": "Nie zainstalowano programu {name}: nie udało się pobrać pakietów. Sprawdź połączenie z internetem i spróbuj ponownie. Nic nie zostało zmienione.",
   "apt_failed": "Instalacja programu {name} nie powiodła się (kod wyjścia apt: {code}). Program {name} nie został zainstalowany. Przeczytaj powyższe wiersze apt i spróbuj ponownie.",
+  "pjeoffice_note": "Program CNJ do podpisywania w brazylijskim systemie e-postępowań sądowych (PJe). Oficjalny program jest pobierany z adresu CNJ podczas instalacji i sprawdzany względem sprawdzonego rozmiaru i SHA-256. Ten wpis dodaje pozycję menu, ikonę zasobnika, stronę ustawień i akcję Dolphina dla plików PDF. Certyfikaty, sterowniki tokenów i PIN-y pozostają w oknie samego programu.",
+  "codesys4_note": "Internetowe środowisko programistyczne IEC 61131-3 dla sterowników przemysłowych i automatyki. CODESYS podaje je dla Windows x64, Linux x64 i Linux ARM64 (pliki dla Linuksa to pakiety .deb), a używa się go w przeglądarce internetowej.",
+  "store_maker": "Autor: {vendor}. Nazwy i znaki towarowe należą do {vendor} i są tu użyte wyłącznie do nazwania programu.",
+  "store_how": "Przycisk otwiera {store} w Twojej przeglądarce internetowej. Rejestrujesz się tam, jeśli sklep o to poprosi, i pobierasz program na warunkach umowy licencyjnej {vendor}. Stereo APTus nie instaluje ani nie pobiera niczego w tej pozycji.",
+  "store_address": "Adres: {url}",
+  "store_button": "Otwórz {store}",
+  "store_no_opener": "Nie można otworzyć {store}: w tym systemie nie ma xdg-open, programu otwierającego adres internetowy w przeglądarce. Otwórz {url} samodzielnie w przeglądarce internetowej. Nic nie zostało zainstalowane.",
+  "store_failed": "Nie można otworzyć {store} w przeglądarce internetowej: {why} Otwórz {url} samodzielnie w przeglądarce internetowej. Nic nie zostało zainstalowane.",
+  "store_no_user": "Nie otwarto {store}: to okno działa z uprawnieniami administratora i nie wie, której osoby przeglądarki użyć. Otwórz {url} samodzielnie w przeglądarce internetowej. Nic nie zostało zainstalowane.",
+  "store_bad_address": "Adres zapisany dla {name} nie jest adresem https w domenie {domain}, więc go nie otwarto. Nic nie zostało zainstalowane.",
+  "store_unchangeable": "{name} to odnośnik do strony sklepu {vendor}. Stereo APTus niczego dla niego nie instaluje ani nie usuwa.",
+  "phonecamera_note": "Użyj kamery telefonu jako kamery tego komputera. DroidCam: zainstaluj na telefonie aplikację DroidCam z jego własnego sklepu (aplikacja należy do Dev47Apps), a potem połącz się przez Wi-Fi lub USB. scrcpy, droga w pełni otwarta: bez aplikacji na telefonie, tylko debugowanie USB, Android 12 lub nowszy; pakiet scrcpy pobiera z podstrony wydań projektu mały serwer uruchamiany na telefonie i sprawdza jego SHA-256. Telefon pojawia się jako kamera \"Phone camera\" w programach i w Ustawieniach systemowych, Kamera. KDE Connect nie jest potrzebny.",
   "spirula_note": "Utwórz model 3D ze zdjęć lub filmu. Opcjonalne profile przetwarzania pokazują rozmiar i licencję przed instalacją. Całkowite usunięcie programu usuwa też pobrane profile."
 }

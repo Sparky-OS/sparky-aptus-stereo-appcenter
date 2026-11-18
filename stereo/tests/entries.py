@@ -39,8 +39,9 @@ class Transactions(unittest.TestCase):
     def test_exact_routes_only(self):
         for row in catalogue.entries():
             for operation in ('install', 'remove', 'repair'):
+                # a store link changes nothing on the system: no route, no pkexec (tests/store.py)
                 self.assertEqual(catalogue.route(f"aptus://stereo_entry_{row['id']}_{operation}"),
-                                 [str(SOURCE/'actions/entry'),row['id'],operation])
+                                 None if row['kind']=='store' else [str(SOURCE/'actions/entry'),row['id'],operation])
         for uri in ('aptus://stereo_other','aptus://stereo_entry_bino_install?x=1',
                     'aptus://sysoth_bleachbit','file:///usr/lib/sparky-aptus-appcenter/system.html'):
             self.assertIsNone(catalogue.route(uri))
@@ -96,6 +97,19 @@ class Transactions(unittest.TestCase):
             run.return_value.returncode=0
             action.apt_change(row,'install')
             self.assertEqual(run.call_args.args[0],['/usr/bin/apt-get','-y','--no-remove','--no-allow-unauthenticated','install','cloudcompare=2.13.2+git20240821+ds-7+stereo3d1+lc1'])
+
+    def test_model_viewer_is_an_apt_entry_of_the_stereo_players_editors_and_tools(self):
+        row=catalogue.entry('stereo-model-viewer')
+        self.assertEqual((row['section'],row['kind'],row['package']),('media','apt','sparky-stereo-model-viewer'))
+        self.assertEqual(row['name'],'Stereo Model Viewer')
+        version=types.SimpleNamespace(version='0.1.0+lc1',origins=[types.SimpleNamespace(origin='Sparky Stereo OS',trusted=True)],downloadable=True)
+        cache={'sparky-stereo-model-viewer':types.SimpleNamespace(candidate=version)}
+        self.assertTrue(action.visible(row,cache,{'bino'}))
+        self.assertFalse(action.visible(row,{},{'bino'}))
+        with patch.dict(sys.modules,apt=types.SimpleNamespace(Cache=lambda: cache)), patch.object(action.subprocess,'run') as run:
+            run.return_value.returncode=0
+            action.apt_change(row,'install')
+            self.assertEqual(run.call_args.args[0],['/usr/bin/apt-get','-y','--no-remove','--no-allow-unauthenticated','install','sparky-stereo-model-viewer=0.1.0+lc1'])
 
     def test_visibility_follows_archive_and_edition_policy(self):
         cache={'simple-scan':types.SimpleNamespace(candidate=types.SimpleNamespace(downloadable=True))}
@@ -204,7 +218,7 @@ class Transactions(unittest.TestCase):
         for row in rows:
             # the five sections of the stereo page, and 'main': Paweł's pages' own entries (Vinci, KamLynk), ORDER 553 (0.1.8)
             self.assertIn(row['section'],('emulation','media','vr','vpn','tools','main'))
-            self.assertIn(row['kind'],('apt','flatpak','download','appimage'))   # appimage: Vinci and KamLynk, 0.1.7 (ORDER 553)
+            self.assertIn(row['kind'],('apt','flatpak','download','appimage','store'))   # appimage: Vinci and KamLynk, 0.1.7 (ORDER 553); store: a link to a vendor's store page, 0.1.15 (ORDER 10)
             if 'also' in row:
                 self.assertEqual(row['kind'],'apt')
                 self.assertTrue(all(isinstance(name,str) and name for name in row['also']))

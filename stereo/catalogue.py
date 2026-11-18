@@ -22,7 +22,17 @@ def entry(identifier):
 
 def route(uri):
     for row in entries():
+        if row['kind'] == 'store':
+            continue
         for operation in ('install', 'remove', 'repair', 'reinstall'):
             if uri == f"aptus://stereo_entry_{row['id']}_{operation}":
                 return [str(BASE / 'actions/entry'), row['id'], operation]
+    return None
+
+
+def store_request(uri):
+    """The store-link entry that URI opens (the stereo page's button or a main page's), or None. It changes nothing on the system, so it has no route."""
+    for row in entries():
+        if row['kind'] == 'store' and uri in (f"aptus://stereo_entry_{row['id']}_open", f"aptus://storeopen_{row['id']}"):
+            return row
     return None

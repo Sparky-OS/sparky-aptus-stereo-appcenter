@@ -7,7 +7,7 @@ import signal
 import subprocess
 import sys
 from common import ACTION, BASE
-from catalogue import route
+from catalogue import route, store_request
 import mainpages
 
 uri = sys.argv[1] if len(sys.argv) > 1 else ''
@@ -22,6 +22,16 @@ if main_request:
     except (OSError, ValueError, RuntimeError, subprocess.CalledProcessError) as error:
         subprocess.run(['yad', '--error', '--title=APTus AppCenter', '--text=' + str(error)])
     sys.exit(1)
+
+store = store_request(uri)
+if store:
+    from common import messages
+    import storelink
+    try:
+        storelink.open_page(store, messages())
+    except (OSError, ValueError, RuntimeError) as error:
+        subprocess.run(['yad', '--error', '--title=APTus AppCenter', '--text=' + str(error)])
+    sys.exit(1)  # the page stays; nothing was installed or changed
 
 operation = {'aptus://stereo_zram_install': 'install',
              'aptus://stereo_zram_remove': 'remove'}.get(uri)

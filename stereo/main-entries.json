@@ -60,5 +60,18 @@
   "key": "offdoc",
   "author": "CNJ, TRF3",
   "note": "pjeoffice_note"
+ },
+ {
+  "id": "phonecamera",
+  "name": "Phone as a camera",
+  "section": "main",
+  "kind": "apt",
+  "package": "sparky-stereo-phone-camera",
+  "sizes": true,
+  "problem_key": "install",
+  "page": "graphics-others.html",
+  "key": "graoth",
+  "author": "Dev47Apps, Genymobile",
+  "note": "phonecamera_note"
  }
 ]

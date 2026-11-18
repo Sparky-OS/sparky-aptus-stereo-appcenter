@@ -10,7 +10,7 @@ import re
 import subprocess
 import tempfile
 from common import BASE, PACKAGE, messages, language, install_downloads
-from catalogue import main_entries
+from catalogue import main_entries, entry
 import appimage
 import tools
 
@@ -22,10 +22,19 @@ def request(uri):
         for prefix, action in (('debinst', 'install'), ('debrein', 'reinstall'), ('debremo', 'remove')):
             if uri == f'aptus://{prefix}_{row["id"]}':
                 return row, action
+    match=re.fullmatch(r'aptus://(graedi|debinst|debrein|debremo)_([a-z0-9][a-z0-9-]*)',uri)
+    if match:
+        try:row=entry(match[2])
+        except StopIteration:return None
+        if row.get('model_profile') or row['id']=='spirula-studio':
+            return row,dict(graedi=None,debinst='install',debrein='reinstall',debremo='remove')[match[1]]
     return None
 
 
 def render(row):
+    if row['kind']=='apt':
+        from packagepages import render as native_render
+        return native_render(row)
     text, main, e = messages(), BASE / 'main', html.escape
     selected = appimage.installed(row)
     problems = subprocess.run(['/usr/bin/sparky-stereo-problems', 'list', '--json', PACKAGE],

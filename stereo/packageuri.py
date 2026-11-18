@@ -19,5 +19,5 @@ def open_page(uri):
     name = package(uri)
     if os.geteuid() != 0:
         os.execv('/usr/bin/pkexec',['/usr/bin/pkexec',LAUNCHER,'--open-package',uri])
-    program = BASE + '/main/bin/aptus-app'
+    program = BASE + '/main-entry'
     os.execv(program,[program,name])

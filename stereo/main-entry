@@ -4,13 +4,14 @@
 """Entry page shared by the main protocol handler and its command-line backend."""
 import sys
 import subprocess
-from catalogue import main_entries
+from catalogue import entry
 import mainpages
 
 if len(sys.argv) not in (2, 3) or (len(sys.argv) == 3 and sys.argv[2] != '--render'):
     sys.exit(2)
-row = next((row for row in main_entries() if row['id'] == sys.argv[1]), None)
-if row is None:
+try:
+    row=entry(sys.argv[1])
+except StopIteration:
     sys.exit(2)
 if sys.argv[2:] == ['--render']:
     print(mainpages.render(row))

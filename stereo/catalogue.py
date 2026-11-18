@@ -14,7 +14,10 @@ def main_entries():
 
 
 def entry(identifier):
-    return next(row for row in entries() if row['id'] == identifier)
+    for row in entries():
+        if row['id']==identifier:return row
+    from packagepages import profile_entry
+    return profile_entry(identifier)
 
 
 def route(uri):

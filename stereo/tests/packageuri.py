@@ -21,5 +21,5 @@ class Uri(unittest.TestCase):
     def test_authorized_route_only_opens_the_package_page(self):
         with patch.object(route.os,'geteuid',return_value=0),patch.object(route.os,'execv',side_effect=SystemExit) as run:
             with self.assertRaises(SystemExit):route.open_page('aptus://graedi_spirula-studio-model-aliked-n16rot')
-            self.assertEqual(run.call_args.args[1],[route.BASE+'/main/bin/aptus-app','spirula-studio-model-aliked-n16rot'])
+            self.assertEqual(run.call_args.args[1],[route.BASE+'/main-entry','spirula-studio-model-aliked-n16rot'])
 if __name__=='__main__':unittest.main(verbosity=2)

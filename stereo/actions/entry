@@ -242,6 +242,9 @@ def apt_change(row, operation, found=None):
                    'install', name + '=' + candidate.version if candidate else name, *row.get('also', [])]
     else:
         command = ['/usr/bin/apt-get', '-y', 'remove', *package_set(row)]
+    if row.get('model_profile') and operation=='install':
+        subprocess.run(['/usr/lib/sparky-stereo-apt/model-install-gui',name+'='+candidate.version],check=True,env=ENV)
+        return
     if row.get('sizes'):
         # no sentence depends on apt's own wording, which follows the session's language: a lock that is held is found by trying
         # it, and a failure of the download-only step is the network (the plan was already made, so the package is offered)

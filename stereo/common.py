@@ -41,10 +41,18 @@ def install_downloads():
     return sparky_install_downloads
 
 
-def problem_text(identifier):
-    """The shared problems engine is the source of an entry's failure text."""
+def problem_records():
+    """Read the store as this authorized package caller."""
     import subprocess
-    result=subprocess.run(['/usr/bin/sparky-stereo-problems','list','--json',PACKAGE],capture_output=True,text=True,check=True)
+    env=dict(os.environ,PATH='/usr/sbin:/usr/bin:/sbin:/bin')
+    env.pop('PKEXEC_UID',None)
+    result=subprocess.run(['/usr/bin/sparky-stereo-problems','list','--json',PACKAGE],capture_output=True,text=True,check=True,env=env)
     records=json.loads(result.stdout)
     if isinstance(records,dict):records=records.get('problems',[])
+    return records
+
+
+def problem_text(identifier):
+    """The shared problems engine is the source of an entry's failure text."""
+    records=problem_records()
     return '\n'.join(record.get('text',record.get('text_en',''))+'\n'+record.get('output','') for record in records if record['key']==identifier)

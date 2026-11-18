@@ -9,7 +9,7 @@ import signal
 import re
 import subprocess
 import tempfile
-from common import BASE, PACKAGE, messages, language, install_downloads, problem_text
+from common import BASE, PACKAGE, messages, language, install_downloads, problem_text, problem_records
 from catalogue import main_entries, entry
 import appimage
 import tools
@@ -82,11 +82,7 @@ def handle(row, operation):
             command.insert(0, '/usr/bin/pkexec')
         result = subprocess.run(command, capture_output=True, text=True)
         if result.returncode:
-            saved = subprocess.run(['/usr/bin/sparky-stereo-problems', 'list', '--json', PACKAGE],
-                                   capture_output=True, text=True, check=True)
-            records = json.loads(saved.stdout)
-            if isinstance(records, dict):
-                records = records.get('problems', [])
+            records = problem_records()
             if not any(record.get('key') == row['id'] for record in records):
                 raise RuntimeError(result.stderr.strip() or result.stdout.strip() or
                                    str(subprocess.CalledProcessError(result.returncode, command)))

@@ -63,7 +63,7 @@
   "store_bad_address": "为 {name} 保存的地址不是 {domain} 的 https 地址，因此未打开。未安装任何内容。",
   "store_unchangeable": "{name} 是指向 {vendor} 商店页面的链接。Stereo APTus 不会为它安装或删除任何内容。",
   "phonecamera_note": "把手机的摄像头当作这台电脑的摄像头。DroidCam：从手机自己的应用商店安装 DroidCam 应用（该应用属于 Dev47Apps），然后通过 Wi-Fi 或 USB 连接。scrcpy，完全开放的方式：手机上不需要应用，只需 USB 调试，Android 12 或更新；scrcpy 的软件包会从项目的发布页面下载在手机上运行的小型服务端，并核对其 SHA-256。手机会以名为“Phone camera”的摄像头出现在您的程序和“系统设置”的“摄像头”中。不需要 KDE Connect。",
-  "openlogi_note": "无需账户即可设置Logitech鼠标、键盘、摄像头和Litra灯光。下载开发者的Debian软件包，验证固定的SHA-256和minisign签名后通过apt安装。可用常规软件包管理器卸载。Solaar仍可安装；更改同一设备的设置时，请一次只使用一个程序。",
+  "openlogi_note": "无需账户即可设置Logitech鼠标、键盘、摄像头和Litra灯光。下载开发者的Debian软件包，验证固定的SHA-256和minisign签名后通过apt安装。可用常规软件包管理器卸载。Solaar仍可安装。由于两个程序会访问同一接收器，请按照开发者的建议，在启动OpenLogi前退出Solaar。",
   "signature_failed": "{name}：签名验证失败。未安装任何软件。请从此条目重试；如果问题持续，请报告。",
   "vendor_architecture": "{name}没有适用于{architecture}的已签名Debian软件包。未安装任何软件。"
 }

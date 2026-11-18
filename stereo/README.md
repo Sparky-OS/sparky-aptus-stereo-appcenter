@@ -79,4 +79,4 @@ Its architecture-specific release, size, SHA-256 and public key source are in ma
 The shared tools machinery stages an absent minisign from authenticated apt archives before verification, so rejected signatures install no package.
 Only after verification are the declared tool and the application installed through apt.
 The shared install-downloads reader supplies size and metered notices.
-Solaar stays available; changing the same device from two programs needs care.
+Solaar stays available. OpenLogi’s Linux installation guide asks the person to quit Solaar before starting OpenLogi; the entry says so.

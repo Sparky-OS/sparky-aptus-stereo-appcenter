@@ -73,3 +73,10 @@ Phone as a camera is an entry of Graphics, Others since 0.1.16 (ORDER 25), besid
 It installs sparky-stereo-phone-camera, which brings DroidCam's client, scrcpy (its camera mode, the fully open way), adb and the virtual camera module (v4l2loopback-dkms) as its own Depends; the app center depends on none of them.
 The card says in the ten languages what each program is and what the phone needs (the DroidCam app from the phone's own store, or USB debugging and Android 12 or newer for scrcpy), that scrcpy's package fetches its small phone-side server from the project's release page and checks its SHA-256, and that the phone appears as the camera "Phone camera".
 The page is the row's `page` and `key` and Paweł's link in both trees: moving the entry to another page is those two fields and the two link lines.
+
+OpenLogi is a signed vendor Debian package entry of Accessories, Devices (0.1.18, ORDER 27).
+Its architecture-specific release, size, SHA-256 and public key source are in main-entries.json.
+The shared tools machinery stages an absent minisign from authenticated apt archives before verification, so rejected signatures install no package.
+Only after verification are the declared tool and the application installed through apt.
+The shared install-downloads reader supplies size and metered notices.
+Solaar stays available; changing the same device from two programs needs care.

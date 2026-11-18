@@ -73,5 +73,33 @@
   "key": "graoth",
   "author": "Dev47Apps, Genymobile",
   "note": "phonecamera_note"
- }
+ },
+{
+  "id": "openlogi",
+  "name": "OpenLogi",
+  "section": "main",
+  "kind": "signed-deb",
+  "package": "openlogi",
+  "version": "0.9.0",
+  "page": "accessories-devices.html",
+  "key": "accdev",
+  "author": "AprilNEA",
+  "tools": [
+    "minisign"
+  ],
+  "public_key": "RWRRkFtw+rqkvTlCTGKUszSE5dX9CK1teaQD45jO4P9rYlWLO4/nHVUF",
+  "key_source": "https://github.com/AprilNEA/OpenLogi/blob/a5b507ec8802e0ecb7ef3de61ce7868609c9b533/packaging/linux/install.sh#L12",
+  "assets": {
+    "amd64": {
+      "url": "https://github.com/AprilNEA/OpenLogi/releases/download/v0.9.0/openlogi-v0.9.0-linux-amd64.deb",
+      "size": 21742764,
+      "sha256": "a53d485ba25db1dc71c3d49f82eee0ce9ba8b449f05a50f110895b310ef2cefb"
+    },
+    "arm64": {
+      "url": "https://github.com/AprilNEA/OpenLogi/releases/download/v0.9.0/openlogi-v0.9.0-linux-arm64.deb",
+      "size": 19002416,
+      "sha256": "5cc68f026bcf7791dc459399212017b1769c3b5e681f96561a6450d9f217248c"
+    }
+  }
+}
 ]

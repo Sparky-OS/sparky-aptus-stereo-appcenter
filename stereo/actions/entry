@@ -60,6 +60,9 @@ def visible(row, cache, patterns):
 
 
 def installed(row):
+    if row['kind'] == 'signed-deb':
+        import signeddeb
+        return signeddeb.installed(row)
     if row['kind'] == 'store':
         return False
     if row['kind'] == 'appimage':
@@ -409,13 +412,20 @@ def appimage_change(row, operation, found=None):
     appimage.change(row, operation, lambda: tools.ensure(row, found))
 
 
+def signed_deb_change(row, operation, found=None):
+    import signeddeb
+    held(row)
+    signeddeb.change(row, operation, lambda: tools.ensure(row, found),
+                     lambda command: run_said(row, command, 'apt_failed'))
+
+
 def announce(row, found):
     """Said before anything is fetched: the tools the entry brings with apt's sizes, then, on a metered connection (or when
     NetworkManager cannot be read), the install-time download notice for the program's own download and the tools' together."""
     for line in tools.lines(row, found):
         print(line, flush=True)
     downloads = []
-    if row['kind'] == 'appimage':
+    if row['kind'] in ('appimage', 'signed-deb'):
         downloads.append(dict(package=row['name'], version=row['version'], size=row['size'], source=row['url']))
     if found:
         downloads.append(tools.download(found))
@@ -432,13 +442,17 @@ def needed_elsewhere(row):
 
 
 def change(row, operation):
+    if row['kind'] == 'signed-deb' and operation == 'install':
+        import signeddeb
+        row = signeddeb.selected(row)
     found = None
     if operation == 'install':
         # refused here, with apt's reason, when a tool cannot be installed: before any download and any change
         found = tools.plan(row)
         announce(row, found)
     try:
-        {'apt': apt_change, 'flatpak': flatpak_change, 'download': download, 'appimage': appimage_change}[row['kind']](row, operation, found)
+        {'apt': apt_change, 'flatpak': flatpak_change, 'download': download, 'appimage': appimage_change,
+         'signed-deb': signed_deb_change}[row['kind']](row, operation, found)
         if installed(row) != (operation == 'install'):
             raise RuntimeError(row['name'] + ': ' + messages()['installed' if installed(row) else 'absent'])
     except Exception:

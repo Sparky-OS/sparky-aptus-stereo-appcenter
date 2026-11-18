@@ -40,3 +40,9 @@ The names come from that package's /usr/share/doc/displaycal/copyright (3.9.19-3
 It drives ArgyllCMS by Graeme W. Gill (https://www.argyllcms.com/; Debian's argyll package), which Debian's package depends on.
 DisplayCAL requires calibrator hardware, a colorimeter or a spectrophotometer; this entry says so beside its button.
 The install action in the Info Centre's Stereo 3D and Deep Colour page is this entry's own action; the tools mechanism it reports sizes with is ORDER 565's.
+
+OpenLogi is by AprilNEA and its contributors, under MIT OR Apache-2.0; its brand artwork is separately reserved.
+This entry downloads the unmodified release from https://github.com/AprilNEA/OpenLogi/releases and includes no vendor binary or artwork.
+The pinned public key is from the release commit's packaging/linux/install.sh.
+Solaar is by Daniel Pavel and contributors, maintained also by Peter F. Patel-Schneider; its Debian packaging credits Stephen Kitt.
+minisign is by Frank Denis.

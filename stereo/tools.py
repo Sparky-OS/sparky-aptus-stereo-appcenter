@@ -16,10 +16,12 @@ The app center package never depends on them: a system that never installs the e
              another installed entry needs them, so apt's own rule decides when they go
 """
 import json
+import contextlib
 import os
 from pathlib import Path
 import re
 import subprocess
+import tempfile
 from common import PACKAGE, messages
 
 APT = '/usr/bin/apt-get'
@@ -163,15 +165,49 @@ def answered_elsewhere(name, identifier):
     return None
 
 
+def fetch(row, found, archives=None):
+    """Fetch the plan through apt's authenticated download-only path without changing package state."""
+    if not found:
+        return
+    options = ['-o', 'Dir::Cache::archives=' + str(archives)] if archives else []
+    fetched = subprocess.run([APT, '-y', '--download-only', *options, *OPTIONS, 'install', *found['tools']], env=ENV)
+    if fetched.returncode:
+        raise Refused(messages()['tools_download_failed'].format(name=row['name'], tools=', '.join(found['tools']),
+                                                                 code=fetched.returncode))
+
+
+@contextlib.contextmanager
+def staged_command(row, command):
+    """A verifier can authenticate the vendor before its tool is installed: stage apt's own archives and libraries."""
+    existing = Path('/usr/bin') / command
+    if existing.is_file():
+        yield str(existing), ENV
+        return
+    found = plan(row)
+    with tempfile.TemporaryDirectory(prefix='aptus-verifier-') as folder:
+        work = Path(folder)
+        work.chmod(0o755)
+        archives, root = work / 'archives', work / 'root'
+        archives.mkdir()
+        fetch(row, found, archives)
+        for archive in sorted(archives.glob('*.deb')):
+            subprocess.run(['/usr/bin/dpkg-deb', '--extract', str(archive), str(root)], check=True, env=ENV)
+        verifier = root / 'usr/bin' / command
+        if not verifier.is_file():
+            raise Refused(messages()['tools_failed'].format(name=row['name'], tools=command, code=1))
+        libraries = [root / 'usr/lib', root / 'lib']
+        libraries += sorted(root.glob('usr/lib/*-linux-gnu')) + sorted(root.glob('lib/*-linux-gnu'))
+        environment = dict(ENV, LD_LIBRARY_PATH=':'.join(str(path) for path in libraries))
+        yield str(verifier), environment
+
+
 def ensure(row, found):
     """Install the missing tools: every archive is downloaded first, so a failed download changes nothing. Then record
     what this entry answers for: the tools it installed, and the ones that were there but only as automatic packages."""
     names, text = (found['tools'] if found else []), messages()
     if names:
         said = dict(name=row['name'], tools=', '.join(names))
-        fetched = subprocess.run([APT, '-y', '--download-only', *OPTIONS, 'install', *names], env=ENV)
-        if fetched.returncode:
-            raise Refused(text['tools_download_failed'].format(code=fetched.returncode, **said))
+        fetch(row, found)
         installed = subprocess.run([APT, '-y', *OPTIONS, 'install', *names], env=ENV)
         still = [name for name in names if not present(name)]
         if installed.returncode or still:

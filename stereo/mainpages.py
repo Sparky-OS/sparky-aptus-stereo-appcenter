@@ -14,6 +14,7 @@ from catalogue import main_entries
 import appimage
 import tools
 import storelink
+import signeddeb
 
 
 def request(uri):
@@ -52,7 +53,12 @@ def render(row):
         return render_apt(row, text, main, e)
     if row['kind'] == 'store':
         return render_store(row, text, main, e)
-    selected = appimage.installed(row)
+    if row['kind'] == 'signed-deb':
+        try:
+            row = signeddeb.selected(row)
+        except RuntimeError as error:
+            return in_page(row, text, main, e, '<p>' + e(str(error)) + '</p>')
+    selected = signeddeb.installed(row) if row['kind'] == 'signed-deb' else appimage.installed(row)
     errors = problem_text(PACKAGE, row['id'])
     reader = install_downloads()
     import apt_pkg

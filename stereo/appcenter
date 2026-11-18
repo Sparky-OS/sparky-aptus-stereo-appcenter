@@ -92,6 +92,12 @@ def render():
 
 if __name__ == '__main__':
     try:
+        if sys.argv[1:2] == ['--open-package']:
+            if len(sys.argv) != 3:
+                raise ValueError('--open-package')
+            import packageuri
+            packageuri.open_page(sys.argv[2])
+            sys.exit(0)
         page = render()
         if sys.argv[1:] == ['--render']:
             print(page)

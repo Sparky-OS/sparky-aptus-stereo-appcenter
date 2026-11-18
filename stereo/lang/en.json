@@ -50,5 +50,6 @@
   "program_unavailable": "{name} cannot be installed. apt says: {why} Update the package lists (apt update) and try again. Nothing was changed.",
   "apt_busy": "{name} was not installed: another program is using apt (the package manager's lock is held). Wait until it finishes, then try again. Nothing was changed.",
   "apt_network": "{name} was not installed: the packages could not be downloaded. Check the internet connection and try again. Nothing was changed.",
-  "apt_failed": "Installing {name} failed (apt exit {code}). {name} was not installed. Read apt's lines above, then try again."
+  "apt_failed": "Installing {name} failed (apt exit {code}). {name} was not installed. Read apt's lines above, then try again.",
+  "spirula_note": "Create a 3D model from your photos or video. Optional processing profiles show their size and licence before installation. Purge also deletes downloaded profiles."
 }

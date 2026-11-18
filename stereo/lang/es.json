@@ -50,5 +50,6 @@
   "program_unavailable": "No se puede instalar {name}. apt dice: {why} Actualice las listas de paquetes (apt update) e inténtelo de nuevo. No se cambió nada.",
   "apt_busy": "No se instaló {name}: otro programa está usando apt (el bloqueo del gestor de paquetes está ocupado). Espere a que termine e inténtelo de nuevo. No se cambió nada.",
   "apt_network": "No se instaló {name}: no se pudieron descargar los paquetes. Compruebe la conexión a Internet e inténtelo de nuevo. No se cambió nada.",
-  "apt_failed": "Falló la instalación de {name} (código de salida de apt: {code}). {name} no se instaló. Lea las líneas de apt anteriores e inténtelo de nuevo."
+  "apt_failed": "Falló la instalación de {name} (código de salida de apt: {code}). {name} no se instaló. Lea las líneas de apt anteriores e inténtelo de nuevo.",
+  "spirula_note": "Cree un modelo 3D a partir de fotos o vídeo. Los perfiles opcionales muestran su tamaño y licencia antes de instalarse. La purga también elimina los perfiles descargados."
 }

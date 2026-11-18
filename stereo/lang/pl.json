@@ -50,5 +50,6 @@
   "program_unavailable": "Nie można zainstalować programu {name}. apt mówi: {why} Zaktualizuj listy pakietów (apt update) i spróbuj ponownie. Nic nie zostało zmienione.",
   "apt_busy": "Nie zainstalowano programu {name}: inny program używa apt (blokada menedżera pakietów jest zajęta). Poczekaj, aż skończy, i spróbuj ponownie. Nic nie zostało zmienione.",
   "apt_network": "Nie zainstalowano programu {name}: nie udało się pobrać pakietów. Sprawdź połączenie z internetem i spróbuj ponownie. Nic nie zostało zmienione.",
-  "apt_failed": "Instalacja programu {name} nie powiodła się (kod wyjścia apt: {code}). Program {name} nie został zainstalowany. Przeczytaj powyższe wiersze apt i spróbuj ponownie."
+  "apt_failed": "Instalacja programu {name} nie powiodła się (kod wyjścia apt: {code}). Program {name} nie został zainstalowany. Przeczytaj powyższe wiersze apt i spróbuj ponownie.",
+  "spirula_note": "Utwórz model 3D ze zdjęć lub filmu. Opcjonalne profile przetwarzania pokazują rozmiar i licencję przed instalacją. Całkowite usunięcie programu usuwa też pobrane profile."
 }

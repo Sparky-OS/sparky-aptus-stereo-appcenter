@@ -9,7 +9,7 @@ import signal
 import re
 import subprocess
 import tempfile
-from common import BASE, PACKAGE, messages, language, install_downloads
+from common import BASE, PACKAGE, messages, language, install_downloads, problem_text
 from catalogue import main_entries, entry
 import appimage
 import tools
@@ -37,13 +37,7 @@ def render(row):
         return native_render(row)
     text, main, e = messages(), BASE / 'main', html.escape
     selected = appimage.installed(row)
-    problems = subprocess.run(['/usr/bin/sparky-stereo-problems', 'list', '--json', PACKAGE],
-                              capture_output=True, text=True, check=True)
-    records = json.loads(problems.stdout)
-    if isinstance(records, dict):
-        records = records.get('problems', [])
-    errors = '\n'.join(record.get('text', record.get('text_en', '')) + '\n' + record.get('output', '')
-                       for record in records if record['key'] == row['id'])
+    errors = problem_text(row['id'])
     reader = install_downloads()
     import apt_pkg
     apt_pkg.init_config()

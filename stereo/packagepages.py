@@ -5,7 +5,7 @@ import html
 import json
 import re
 from pathlib import Path
-from common import BASE, messages, language, install_downloads
+from common import BASE, messages, language, install_downloads, problem_text
 
 PROFILES=Path('/usr/share/sparky-install-models/profiles')
 MODEL_MESSAGES=Path('/usr/share/sparky-install-models/messages.json')
@@ -29,7 +29,7 @@ def render(row):
     cache=apt.Cache();name=row['package'];package=cache[name] if name in cache else None
     candidate=package.candidate if package else None
     installed=bool(package and package.is_installed)
-    errors=[]
+    errors=[problem_text(row['id'])]
     if not candidate:errors.append(text['edition_missing'].format(name=name))
     notice='';details=''
     if candidate:

@@ -32,11 +32,12 @@ class Profiles(unittest.TestCase):
         row=dict(id='spirula-studio-model-fixture',package='spirula-studio-model-fixture',name='Fixture',model_profile=True)
         with tempfile.TemporaryDirectory() as work:
             words=Path(work)/'words.json';words.write_text(json.dumps({'en':{'purge':'Purge deletes {package} models.'}}))
-            with patch.dict(sys.modules,apt=types.SimpleNamespace(Cache=lambda:{row['package']:types.SimpleNamespace(candidate=candidate,is_installed=False)})),patch.object(packagepages,'MODEL_MESSAGES',words),patch.object(reader,'metered',return_value=('yes','fixture')):
+            with patch.dict(sys.modules,apt=types.SimpleNamespace(Cache=lambda:{row['package']:types.SimpleNamespace(candidate=candidate,is_installed=False)})),patch.object(packagepages,'MODEL_MESSAGES',words),patch.object(packagepages,'problem_text',return_value='Fixture licence was declined'),patch.object(reader,'metered',return_value=('yes','fixture')):
                 page=packagepages.render(row)
             self.assertIn('2.9 MiB',page)
             self.assertIn('https://example.invalid/publisher-model',page)
             self.assertIn('Purge deletes spirula-studio-model-fixture models.',page)
+            self.assertIn('Fixture licence was declined',page)
             self.assertIn('aptus://debinst_spirula-studio-model-fixture',page)
             self.assertNotIn('--consented',page)
 if __name__=='__main__':unittest.main(verbosity=2)

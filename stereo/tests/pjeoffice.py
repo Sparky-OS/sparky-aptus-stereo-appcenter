@@ -119,26 +119,40 @@ class Page(unittest.TestCase):
 
 
 class Status(unittest.TestCase):
-    def reader_with(self, size):
+    FOUND = [{'package': 'sparky-pjeoffice', 'version': '0.1.0', 'size': SIZE, 'source': SOURCE_URL}]
+
+    def notes(self, mode, metered):
         reader = action.install_downloads()
-        found = {'sparky-pjeoffice': {'size': size, 'source': SOURCE_URL, 'version': '0.1.0'}}
-        return reader, found
+        with patch.object(action, 'entry_downloads', return_value=self.FOUND), patch.object(action, 'announce_setting', return_value=mode), \
+                patch.object(reader, 'metered', return_value=metered):
+            return action.entry_notes(ROW)
 
     def test_the_declared_download_is_said_whatever_the_metered_setting_is(self):
-        reader, found = self.reader_with(SIZE)
-        with patch.object(reader, 'declaring', return_value=(found, {'sparky-pjeoffice': object()})), patch.object(action, 'new_depcache'), \
-                patch.object(action, 'brought_in', return_value=['sparky-pjeoffice']), patch.object(reader, 'installed_declaration', return_value=None):
-            lines = action.declared_lines(ROW)
-        self.assertEqual(lines[0], reader.messages()['intro'])
-        self.assertEqual(lines[1], '  sparky-pjeoffice: 159.7 MiB from ' + SOURCE_URL)
-        self.assertEqual(len(lines), 2, 'no question line: apt asks its own')
+        reader = action.install_downloads()
+        first, note = self.notes('metered', ('no', 'no'))
+        self.assertEqual(first[0], reader.messages()['intro'])
+        self.assertEqual(first[1], '  sparky-pjeoffice: 159.7 MiB from ' + SOURCE_URL)
+        self.assertEqual(len(first), 2, 'no question line: apt asks its own')
+        self.assertIsNone(note, 'the shared notice is for the connections the setting names')
+
+    def test_the_shared_notice_follows_the_setting(self):
+        first, note = self.notes('metered', ('yes', 'yes'))
+        self.assertIn('metered', note['text'][0])
+        first, note = self.notes('always', ('no', 'no'))
+        self.assertIsNotNone(note)
+        first, note = self.notes('never', ('yes', 'yes'))
+        self.assertEqual(first[1], '  sparky-pjeoffice: 159.7 MiB from ' + SOURCE_URL)
+        self.assertIsNone(note)
 
     def test_an_installed_version_with_the_same_download_says_nothing(self):
-        reader, found = self.reader_with(SIZE)
-        with patch.object(reader, 'declaring', return_value=(found, {'sparky-pjeoffice': object()})), patch.object(action, 'new_depcache'), \
-                patch.object(action, 'brought_in', return_value=['sparky-pjeoffice']), \
-                patch.object(reader, 'installed_declaration', return_value={'size': SIZE, 'source': SOURCE_URL}):
-            self.assertEqual(action.declared_lines(ROW), [])
+        with patch.object(action, 'entry_downloads', return_value=[]):
+            self.assertEqual(action.entry_notes(ROW), ([], None))
+
+    def test_a_download_that_cannot_be_read_is_an_error_said_not_a_missing_line(self):
+        with patch.object(action, 'entry_downloads', side_effect=RuntimeError('sparky-pjeoffice: both Sparky-Install-Download-Size and Sparky-Install-Download-Source are needed')):
+            first, note = action.entry_notes(ROW)
+        self.assertEqual(first, [])
+        self.assertIn('could not be checked', note['error'])
 
     def test_one_entry_answers_with_sizes_and_the_download(self):
         found = {'tools': ['sparky-pjeoffice'], 'packages': [('sparky-pjeoffice', '0.1.0')], 'download': 1 << 20, 'disk': 2 << 20, 'sources': ['Sparky Stereo OS']}
@@ -146,8 +160,7 @@ class Status(unittest.TestCase):
         apt.Cache = lambda: {'sparky-pjeoffice': type('P', (), {'candidate': type('V', (), {'downloadable': True})()})()}
         with patch.dict(sys.modules, apt=apt), patch.object(action, 'only_ours', return_value=set()), \
                 patch.object(action, 'installed', return_value=False), patch.object(tools, 'missing', return_value=['sparky-pjeoffice']), \
-                patch.object(tools, 'plan', return_value=found), patch.object(action, 'downloads_note', return_value={}), \
-                patch.object(action, 'declared_lines', return_value=['a line']):
+                patch.object(tools, 'plan', return_value=found), patch.object(action, 'entry_notes', return_value=(['a line'], None)):
             state = action.status_one('pjeoffice')
         self.assertEqual((state['installed'], state['visible'], state['declared']), (False, True, ['a line']))
         self.assertIn('Packages apt installs for this: 1', state['tools']['text'][0])

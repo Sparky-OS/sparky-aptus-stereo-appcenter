@@ -194,27 +194,67 @@ def tools_note(rows, installed_now, with_main=False):
     return notes
 
 
-def declared_lines(row):
-    """The install-time download that installing a package entry brings, said whatever the metered setting is (the size is said first,
-    Daniel 2026-11-04: "warn the user with current size"): the sentences of sparky-stereo-apt's reader for the packages apt would
-    install for this entry that declare one. The metered notice itself (downloads_note) follows the setting."""
+def entry_downloads(row):
+    """The install-time downloads that installing a package entry brings: the declaration of every package apt would install or upgrade for it
+    (apt's own resolver marks them in memory, nothing changes) that declares one, except one whose installed version declares the same
+    download. Only those packages' records are read: the pass over every package's record (reader.declaring) takes minutes and is for the
+    start page's many entries, not for one entry's own page (measured: no result after 6 minutes in a container with the edition's archives)."""
+    import apt_pkg
     reader = install_downloads()
-    declared, apt_cache = reader.declaring()
-    if not declared or row['package'] not in apt_cache:
+    apt_pkg.init()
+    cache = apt_pkg.Cache(None)
+    if row['package'] not in cache:
         return []
-    depcache = new_depcache(apt_cache)
-    found = planned_downloads(row['package'], declared,
-                              lambda name: brought_in(depcache, apt_cache, list(declared), name),
-                              lambda name: reader.installed_declaration(apt_cache, name))
-    if not found:
-        return []
-    return reader.assess(found, 'always', 'not-asked', ('no', 'not asked'))['text'][:-1]
+    policy, depcache, records = apt_pkg.Policy(cache), apt_pkg.DepCache(cache), apt_pkg.PackageRecords(cache)
+    depcache.init()
+    depcache.mark_install(cache[row['package']], True, True)
+    if depcache.broken_count:
+        raise RuntimeError('%s: apt cannot resolve its dependencies' % row['package'])
+    declared = {}
+    for package in cache.packages:
+        if not (depcache.marked_install(package) or depcache.marked_upgrade(package)):
+            continue
+        version = policy.get_candidate_ver(package)
+        if version is None or not version.file_list:
+            continue
+        records.lookup(version.file_list[0])
+        text = records.record
+        if reader.FIELD_SIZE not in text and reader.FIELD_SOURCE not in text:
+            continue
+        try:
+            wanted = reader.declaration(apt_pkg.TagSection(text))
+        except ValueError as error:
+            raise RuntimeError('%s: %s' % (package.name, error))
+        if wanted:
+            wanted['version'] = version.ver_str
+            declared[package.name] = wanted
+    return planned_downloads(row['package'], declared, lambda name: list(declared),
+                             lambda name: reader.installed_declaration(cache, name))
+
+
+def entry_notes(row):
+    """(the sentences of the install-time download said first, whatever the metered setting is; the shared metered notice or an error, as
+    downloads_note makes it) for a package entry that is not installed, from one reading of apt's records."""
+    reader = install_downloads()
+    try:
+        found = entry_downloads(row)
+        if not found:
+            return [], None
+        first = reader.assess(found, 'always', 'not-asked', ('no', 'not asked'))['text'][:-1]
+        mode = announce_setting(reader)
+        if mode == 'never':
+            return first, None
+        state = reader.metered() if mode == 'metered' else ('no', 'not asked')
+        result = reader.assess(found, mode, 'asked', state)
+        return first, ({'state': result['state'], 'downloads': result['downloads'], 'text': result['text'][:-1]} if result['announce'] else None)
+    except (RuntimeError, ValueError) as error:
+        return [], {'error': reader.messages()['unchecked'].format(why=error)}
 
 
 def status_one(identifier):
     """The state of one entry, with its sizes: what the Info Centre's page asks and what a package entry's page shows (unprivileged,
-    nothing changes). For a package entry that is not installed: the tools and the packages' sizes, the install-time download said
-    first, and the metered notice when the setting asks for it."""
+    nothing changes). For a package entry of a main page that is not installed: the tools and the packages' sizes, the install-time
+    download said first, and the metered notice when the setting asks for it."""
     import apt
     row = entry(identifier)
     cache, patterns = apt.Cache(), only_ours()
@@ -223,11 +263,7 @@ def status_one(identifier):
     needs = tools_note([row], {row['id']: now}, with_main=row['kind'] == 'apt') if shown else {}
     note, declared = None, []
     if shown and row['kind'] == 'apt' and row['section'] == 'main' and not now:
-        try:
-            note = downloads_note(cache, {row['id']: now}, [row]).get(row['id'])
-            declared = declared_lines(row)
-        except (RuntimeError, ValueError) as error:
-            note = {'error': install_downloads().messages()['unchecked'].format(why=error)}
+        declared, note = entry_notes(row)
     return dict(installed=now, visible=shown, tools=needs.get(row['id']), download=note, declared=declared)
 
 

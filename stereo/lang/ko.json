@@ -68,5 +68,16 @@
   "midi_opl3_font": "샘플 신시사이저용 OPL3 스타일 SoundFont입니다. FM 칩을 에뮬레이션하지 않습니다.",
   "midi_mt32": "Munt의 ROM 설정에서 본인 소유의 MT-32 제어 ROM과 PCM ROM을 지정하세요. ROM은 제공되거나 다운로드되지 않습니다.",
   "midi_fm_bank": "호환 프로그램용 FM 합성 라이브러리입니다. 본인 소유의 WOPL 또는 WOPN 악기 뱅크를 제공하세요. 뱅크는 포함되어 있지 않습니다.",
-  "midi_dosbox": "원래 DOSBox 프로젝트와 독립적인 DOS 에뮬레이터입니다. General MIDI는 설치된 기본 SoundFont를 사용합니다. MT-32에는 본인 소유의 제어 ROM과 PCM ROM이 필요합니다."
+  "midi_dosbox": "원래 DOSBox 프로젝트와 독립적인 DOS 에뮬레이터입니다. General MIDI는 설치된 기본 SoundFont를 사용합니다. MT-32에는 본인 소유의 제어 ROM과 PCM ROM이 필요합니다.",
+  "tree_facts": "다운로드: {size}, 제조사 자체 주소인 {host}에서. 커밋 {commit}에 고정, 파일 목록 SHA-256 {manifest}…이며, 설치하기 전에 모든 파일을 검증합니다. 라이선스: {licence}, {holder}.",
+  "tree_checksum_failed": "{name}: 파일 {file}이(가) 고정된 SHA-256과 일치하지 않습니다. 다운로드를 거부했으며 아무것도 설치하지 않았습니다.",
+  "tree_manifest_failed": "{name}의 고정된 파일 목록이 손상되었거나 변경되었습니다. 아무것도 다운로드하거나 설치하지 않았습니다.",
+  "tree_licence_title": "{name}의 라이선스({licence}), 제조사가 공개한 그대로:",
+  "tree_no_bluetooth": "이 컴퓨터에는 블루투스 어댑터가 없어서 {name}이(가) 여기서 장갑을 찾을 수 없습니다.",
+  "tree_removed": "{name}을(를) 제거했습니다. 홈 폴더에 있는 사용자 설정은 그대로 두었습니다.",
+  "tree_installed": "{name}이(가) {path}에 설치되었습니다. 응용 프로그램 메뉴에서 실행하세요.",
+  "download_note_tree": "제조사의 안내",
+  "sensecom_note": "SenseGlove가 직접 만든, 자사의 햅틱 장갑을 찾고 연결하는 프로그램입니다. SenseGlove의 주소에서 공개된 그대로 내려받습니다. 연결된 장갑이 없으면 목록이 비어 있습니다. 창은 영어입니다. 제조사의 Linux 안내에 따르면 아직 Nova 장갑과 호환되지 않습니다.",
+  "sensecom_comment": "SenseGlove 햅틱 장갑을 찾아 연결합니다",
+  "senseglove_api_note": "SenseGlove C++ SDK의 라이브러리 두 개(SGCore, SGConnect)입니다. SenseGlove의 주소에서 공개된 그대로 내려받으며, senseglove-api-dev 패키지로 빌드하는 프로그램용입니다. 소스 코드는 공개되어 있지 않습니다."
 }

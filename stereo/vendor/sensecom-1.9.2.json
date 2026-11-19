@@ -1,0 +1,2508 @@
+{
+ "format": 1,
+ "id": "sensecom",
+ "version": "1.9.2",
+ "commit": "dbfd4266f04057ace64eea2c0c9e907c74eb196b",
+ "base": "https://raw.githubusercontent.com/Adjuvo/SenseCom/dbfd4266f04057ace64eea2c0c9e907c74eb196b/",
+ "files": [
+  {
+   "src": "LICENSE",
+   "dest": "LICENSE",
+   "size": 1067,
+   "sha256": "1fec2e1c1a1c9f354437f13067864fe564b0445d853b0627166518ecef7c550f",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/SenseCom.x86_64",
+   "dest": "SenseCom.x86_64",
+   "size": 14720,
+   "sha256": "0bfe51325720c950b4ad75ce7c3b65595fd7e939908520ec33600919919327a8",
+   "mode": "0755"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/SenseCom_Data/Managed/Assembly-CSharp.dll",
+   "dest": "SenseCom_Data/Managed/Assembly-CSharp.dll",
+   "size": 587264,
+   "sha256": "035abd0b36f86c1b7e0fda56d75d2264c771712d46f88ad409ed01a54745cc06",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/SenseCom_Data/Managed/Mono.Security.dll",
+   "dest": "SenseCom_Data/Managed/Mono.Security.dll",
+   "size": 241152,
+   "sha256": "997fbe6782d758b61ccf9f2ccee20cde2286e06c497d6aee1167252e54ec94aa",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/SenseCom_Data/Managed/Newtonsoft.Json.dll",
+   "dest": "SenseCom_Data/Managed/Newtonsoft.Json.dll",
+   "size": 691712,
+   "sha256": "a56146202232958f46bd6a28b5a7da166aea123ee0d646735a46e5c341dfbf1f",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/SenseCom_Data/Managed/Purchasing.Common.dll",
+   "dest": "SenseCom_Data/Managed/Purchasing.Common.dll",
+   "size": 13824,
+   "sha256": "286a8a864668b6b31a5dfd94229db5c39f3a5ca42c931c91b321269bca9653e0",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/SenseCom_Data/Managed/SGCoreCs.dll",
+   "dest": "SenseCom_Data/Managed/SGCoreCs.dll",
+   "size": 158720,
+   "sha256": "241af1f191985eefb07b3e8843c8fe9d1f60a2ac412b571c9504837da95accd5",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/SenseCom_Data/Managed/System.ComponentModel.Composition.dll",
+   "dest": "SenseCom_Data/Managed/System.ComponentModel.Composition.dll",
+   "size": 257024,
+   "sha256": "3c820f5f0f17dabf7b0ae810f5f8416747d4e941333c29ba7101383026ed297a",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/SenseCom_Data/Managed/System.Configuration.dll",
+   "dest": "SenseCom_Data/Managed/System.Configuration.dll",
+   "size": 124928,
+   "sha256": "74715e695d8b3fb9b812b613da1c58f2016534d51e732a7e31987621314a92ab",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/SenseCom_Data/Managed/System.Core.dll",
+   "dest": "SenseCom_Data/Managed/System.Core.dll",
+   "size": 1115136,
+   "sha256": "8595625ec9846fc28cfc35c7920afd1ca7633b4d655babafaf240426320b91f1",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/SenseCom_Data/Managed/System.Data.DataSetExtensions.dll",
+   "dest": "SenseCom_Data/Managed/System.Data.DataSetExtensions.dll",
+   "size": 29696,
+   "sha256": "b66d0f739c5aa4c07d58c5df8443818110b634c59555012f3723171d81d8de09",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/SenseCom_Data/Managed/System.Data.dll",
+   "dest": "SenseCom_Data/Managed/System.Data.dll",
+   "size": 2104320,
+   "sha256": "6f7d1111a74e6d18037de6417bea995124ee1720fd7e50cfbc28a5cbff0bf927",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/SenseCom_Data/Managed/System.Drawing.dll",
+   "dest": "SenseCom_Data/Managed/System.Drawing.dll",
+   "size": 489984,
+   "sha256": "0b45091f7f2d6c68bd9b82bc2c60b03e3fbdd4244be8014f9df0267ec3c84546",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/SenseCom_Data/Managed/System.EnterpriseServices.dll",
+   "dest": "SenseCom_Data/Managed/System.EnterpriseServices.dll",
+   "size": 44544,
+   "sha256": "1edfd12a96315f198fb48854790b34e33368b79e34fbd03987d7a571720b9725",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/SenseCom_Data/Managed/System.IO.Compression.FileSystem.dll",
+   "dest": "SenseCom_Data/Managed/System.IO.Compression.FileSystem.dll",
+   "size": 18432,
+   "sha256": "8001293d1ec63b788360c7f9d4925a3c46ed5436196bbd2a95d940647c3ac9fa",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/SenseCom_Data/Managed/System.IO.Compression.dll",
+   "dest": "SenseCom_Data/Managed/System.IO.Compression.dll",
+   "size": 114688,
+   "sha256": "f47391c93479d8a540999b7ccd84aae1223e3f6e5a52a4c0d5e903aa14a8b2cc",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/SenseCom_Data/Managed/System.Net.Http.dll",
+   "dest": "SenseCom_Data/Managed/System.Net.Http.dll",
+   "size": 281600,
+   "sha256": "3321969722a1861520ea69adde58147ca0912429611d8e1113622ea1f7f83759",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/SenseCom_Data/Managed/System.Numerics.dll",
+   "dest": "SenseCom_Data/Managed/System.Numerics.dll",
+   "size": 119296,
+   "sha256": "ddbcc1f65468de4fbb92abb88bf53cb766b8398e88e11eca4d0444404f2e5910",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/SenseCom_Data/Managed/System.Runtime.Serialization.dll",
+   "dest": "SenseCom_Data/Managed/System.Runtime.Serialization.dll",
+   "size": 934400,
+   "sha256": "db71672507e174f2b0f476a7a16f58c23c0b005f5290d54e9e85fbe41304508a",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/SenseCom_Data/Managed/System.Security.dll",
+   "dest": "SenseCom_Data/Managed/System.Security.dll",
+   "size": 314880,
+   "sha256": "327930877b87f38768bc19994b23025c966047907cb90c3bbeef734791c73bbb",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/SenseCom_Data/Managed/System.ServiceModel.Internals.dll",
+   "dest": "SenseCom_Data/Managed/System.ServiceModel.Internals.dll",
+   "size": 215040,
+   "sha256": "3769d417ff5ad79c51a3a73c1b3bae8dd65d2fa755e8432b7bd62665dc8adf14",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/SenseCom_Data/Managed/System.Transactions.dll",
+   "dest": "SenseCom_Data/Managed/System.Transactions.dll",
+   "size": 35328,
+   "sha256": "d18802b621dd1d040a4b84caa986602291ae943f741e400643f8ffec94f012eb",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/SenseCom_Data/Managed/System.Xml.Linq.dll",
+   "dest": "SenseCom_Data/Managed/System.Xml.Linq.dll",
+   "size": 136704,
+   "sha256": "80198e85a2cf6cd36d8d6a782bd049db919cb6466268ffa409e76c55a452e490",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/SenseCom_Data/Managed/System.Xml.dll",
+   "dest": "SenseCom_Data/Managed/System.Xml.dll",
+   "size": 3160064,
+   "sha256": "6dbdb8e2f50c368f5614a2d93375f9a181240fc31d32a35f834fb8f61d5f76e9",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/SenseCom_Data/Managed/System.dll",
+   "dest": "SenseCom_Data/Managed/System.dll",
+   "size": 2653696,
+   "sha256": "2d60482f1cf7a1f23a75252b1dd2acaf55ae4137c65436b021314a50c6b63943",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/SenseCom_Data/Managed/Unity.AI.Navigation.dll",
+   "dest": "SenseCom_Data/Managed/Unity.AI.Navigation.dll",
+   "size": 20480,
+   "sha256": "5159ba4f37ed071535dcfb849b5a9a8ecbb337e053fb5825f46918c7efe16ec1",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/SenseCom_Data/Managed/Unity.Analytics.DataPrivacy.dll",
+   "dest": "SenseCom_Data/Managed/Unity.Analytics.DataPrivacy.dll",
+   "size": 8704,
+   "sha256": "d6b10e6b3b0c1f6b123f120d8c481af606b9f96c2a73c0afaa0b860610df9689",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/SenseCom_Data/Managed/Unity.Services.Analytics.dll",
+   "dest": "SenseCom_Data/Managed/Unity.Services.Analytics.dll",
+   "size": 73728,
+   "sha256": "b2e9e871403c5d4feb3216f678128c4bda9293cd413a5ac99a5f2680dd0bf5a4",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/SenseCom_Data/Managed/Unity.Services.Core.Analytics.dll",
+   "dest": "SenseCom_Data/Managed/Unity.Services.Core.Analytics.dll",
+   "size": 5632,
+   "sha256": "ad3d15ab4bb88d76cd06f4352420e1e5e575d90f2e6bbeef84021657b9182184",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/SenseCom_Data/Managed/Unity.Services.Core.Components.dll",
+   "dest": "SenseCom_Data/Managed/Unity.Services.Core.Components.dll",
+   "size": 10752,
+   "sha256": "95384b9c36bb45ebbb0151438579b7c87f9ae9fdc6dd89e4ff7a2397e1d49d3f",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/SenseCom_Data/Managed/Unity.Services.Core.Configuration.dll",
+   "dest": "SenseCom_Data/Managed/Unity.Services.Core.Configuration.dll",
+   "size": 14336,
+   "sha256": "14b09d9023b44c5422923e97a8a388c6b45049151969d0f2f869a7d8ffaf17b6",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/SenseCom_Data/Managed/Unity.Services.Core.Device.dll",
+   "dest": "SenseCom_Data/Managed/Unity.Services.Core.Device.dll",
+   "size": 6656,
+   "sha256": "e5c346093c9d4d06a4defcc08ef819cb89e5ce2c3b899127086d7c321f567847",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/SenseCom_Data/Managed/Unity.Services.Core.Environments.Internal.dll",
+   "dest": "SenseCom_Data/Managed/Unity.Services.Core.Environments.Internal.dll",
+   "size": 5120,
+   "sha256": "32bf2d9b0c01435020f163c66ed399cef405e4d1efa4136e94bd1a70e2450c58",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/SenseCom_Data/Managed/Unity.Services.Core.Environments.dll",
+   "dest": "SenseCom_Data/Managed/Unity.Services.Core.Environments.dll",
+   "size": 5632,
+   "sha256": "76c73e169589c2d9a5e697d6ae8da47a31753d10b1edb00d7cf395214ce6ff64",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/SenseCom_Data/Managed/Unity.Services.Core.Internal.dll",
+   "dest": "SenseCom_Data/Managed/Unity.Services.Core.Internal.dll",
+   "size": 74240,
+   "sha256": "cdb28f55fcfab52f030a0cb8ee39ddf1c1569eed3da10396ec0f649b5a488848",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/SenseCom_Data/Managed/Unity.Services.Core.Networking.dll",
+   "dest": "SenseCom_Data/Managed/Unity.Services.Core.Networking.dll",
+   "size": 8192,
+   "sha256": "48a449092df1ce96eb538d5a7bafada9cbfe5ef65dfa80f87106f4248f3f1f80",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/SenseCom_Data/Managed/Unity.Services.Core.Registration.dll",
+   "dest": "SenseCom_Data/Managed/Unity.Services.Core.Registration.dll",
+   "size": 18432,
+   "sha256": "e79ded3f9b3a77c6ed64b9bd1a46e6fc370e046b7088d07ab5d8a7a23e860076",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/SenseCom_Data/Managed/Unity.Services.Core.Scheduler.dll",
+   "dest": "SenseCom_Data/Managed/Unity.Services.Core.Scheduler.dll",
+   "size": 12800,
+   "sha256": "9c3f58f76626c082a683a5ee5fab0b4a10b348e0fc8048a2ff47d1f0b6e2febe",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/SenseCom_Data/Managed/Unity.Services.Core.Telemetry.dll",
+   "dest": "SenseCom_Data/Managed/Unity.Services.Core.Telemetry.dll",
+   "size": 8704,
+   "sha256": "ede3cb242c4696ce17878b0dc2fa61177fe5d0b3d000092515dc1a0f6f441602",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/SenseCom_Data/Managed/Unity.Services.Core.Threading.dll",
+   "dest": "SenseCom_Data/Managed/Unity.Services.Core.Threading.dll",
+   "size": 7168,
+   "sha256": "756f1b90f2fcd902abd3d480cb1683f3e5bc8239a9c42a7f71a3c09b9fbd7d26",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/SenseCom_Data/Managed/Unity.Services.Core.dll",
+   "dest": "SenseCom_Data/Managed/Unity.Services.Core.dll",
+   "size": 16384,
+   "sha256": "c55c6e7adf4304da9893f66a014503708b35007a2630551a920c129cc43d87e8",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/SenseCom_Data/Managed/Unity.Timeline.dll",
+   "dest": "SenseCom_Data/Managed/Unity.Timeline.dll",
+   "size": 127488,
+   "sha256": "d38d361b3af958144e00398626a1e5455bd07a03496ae28082452efdb74c0265",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/SenseCom_Data/Managed/UnityEngine.AIModule.dll",
+   "dest": "SenseCom_Data/Managed/UnityEngine.AIModule.dll",
+   "size": 48128,
+   "sha256": "436644f9a9f4768e1af7fff65abea880fc812481ef822adf1fbebbeedc6ad907",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/SenseCom_Data/Managed/UnityEngine.AccessibilityModule.dll",
+   "dest": "SenseCom_Data/Managed/UnityEngine.AccessibilityModule.dll",
+   "size": 12800,
+   "sha256": "258e5a58a21bdf7de07227da1228b3c8c5bcc36fa80f1f479f1bad9c57e4858a",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/SenseCom_Data/Managed/UnityEngine.Advertisements.dll",
+   "dest": "SenseCom_Data/Managed/UnityEngine.Advertisements.dll",
+   "size": 38400,
+   "sha256": "c7a42a6f009ced342dd3f3e1beab5f6ed616e3ead7c6371b195342a7f12edb94",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/SenseCom_Data/Managed/UnityEngine.AndroidJNIModule.dll",
+   "dest": "SenseCom_Data/Managed/UnityEngine.AndroidJNIModule.dll",
+   "size": 84480,
+   "sha256": "8558107ef109aa9d4c1d70409ac5e9267cbd77645a0b67972738055811dff235",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/SenseCom_Data/Managed/UnityEngine.AnimationModule.dll",
+   "dest": "SenseCom_Data/Managed/UnityEngine.AnimationModule.dll",
+   "size": 153600,
+   "sha256": "f9a425a255d803ca742d2c8203c576e1e8e9c2cd84ac93d5c47c68e0985480ec",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/SenseCom_Data/Managed/UnityEngine.AssetBundleModule.dll",
+   "dest": "SenseCom_Data/Managed/UnityEngine.AssetBundleModule.dll",
+   "size": 22528,
+   "sha256": "4a2e01fc5d6fd79476dbd5077dd62a856880edd80c30ca76ae29a4c8209b0540",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/SenseCom_Data/Managed/UnityEngine.AudioModule.dll",
+   "dest": "SenseCom_Data/Managed/UnityEngine.AudioModule.dll",
+   "size": 60928,
+   "sha256": "23603679297d0dceae52bf92d159212721ac3c414003de087b7eaf8cf308b556",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/SenseCom_Data/Managed/UnityEngine.ClothModule.dll",
+   "dest": "SenseCom_Data/Managed/UnityEngine.ClothModule.dll",
+   "size": 15872,
+   "sha256": "4f94825dfd17d99c642e44e81adcf741be050910a6fe56e82449c4ee784b9fb6",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/SenseCom_Data/Managed/UnityEngine.ClusterInputModule.dll",
+   "dest": "SenseCom_Data/Managed/UnityEngine.ClusterInputModule.dll",
+   "size": 11264,
+   "sha256": "1f20213660c5f876d7cb5943e148132e1307d9fedc69ded4dad34ae50b52f13c",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/SenseCom_Data/Managed/UnityEngine.ClusterRendererModule.dll",
+   "dest": "SenseCom_Data/Managed/UnityEngine.ClusterRendererModule.dll",
+   "size": 11776,
+   "sha256": "d07b964fb4ef3a57376c8ec9c6cfb78293faa8cbba5ad4294a9e69def476d8c0",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/SenseCom_Data/Managed/UnityEngine.ContentLoadModule.dll",
+   "dest": "SenseCom_Data/Managed/UnityEngine.ContentLoadModule.dll",
+   "size": 16896,
+   "sha256": "d107e6a7a0185e06024de95cbdddc7ad758a66443a2cd34388a6c797fcbd897d",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/SenseCom_Data/Managed/UnityEngine.CoreModule.dll",
+   "dest": "SenseCom_Data/Managed/UnityEngine.CoreModule.dll",
+   "size": 1381888,
+   "sha256": "44d613b2996334c7fc7afadbdd2020d769e70fee1f7e7060db9d51eb5e545e07",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/SenseCom_Data/Managed/UnityEngine.CrashReportingModule.dll",
+   "dest": "SenseCom_Data/Managed/UnityEngine.CrashReportingModule.dll",
+   "size": 10752,
+   "sha256": "7335502a07cb5b587becf8e6f70201ad0b087d1594f02da020b41bebba17deae",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/SenseCom_Data/Managed/UnityEngine.DSPGraphModule.dll",
+   "dest": "SenseCom_Data/Managed/UnityEngine.DSPGraphModule.dll",
+   "size": 18944,
+   "sha256": "24e9fa116550e315bb2824f54796ea6906ba916d43f835435bf65438773ec630",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/SenseCom_Data/Managed/UnityEngine.DirectorModule.dll",
+   "dest": "SenseCom_Data/Managed/UnityEngine.DirectorModule.dll",
+   "size": 14336,
+   "sha256": "ddbabcb2fdaa340d53fde8c024e06a2a000f2f2d90c950a82cb5e9aa42a47068",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/SenseCom_Data/Managed/UnityEngine.GIModule.dll",
+   "dest": "SenseCom_Data/Managed/UnityEngine.GIModule.dll",
+   "size": 9728,
+   "sha256": "9703570d65d3172aa905402fadeca880bce0d9f828acd50c5aea06a240105e5a",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/SenseCom_Data/Managed/UnityEngine.GameCenterModule.dll",
+   "dest": "SenseCom_Data/Managed/UnityEngine.GameCenterModule.dll",
+   "size": 29696,
+   "sha256": "3b6149b334ca3f73db3614717ff1e224490c805e63af7c0f84fa9728ca7fdb07",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/SenseCom_Data/Managed/UnityEngine.GridModule.dll",
+   "dest": "SenseCom_Data/Managed/UnityEngine.GridModule.dll",
+   "size": 14848,
+   "sha256": "98f5d803522928bc94f3dd1b18cb7de82471405fa48b2cf558bd7eeb6a831537",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/SenseCom_Data/Managed/UnityEngine.HotReloadModule.dll",
+   "dest": "SenseCom_Data/Managed/UnityEngine.HotReloadModule.dll",
+   "size": 9728,
+   "sha256": "030f75bd4ab90fd3c7bf949b24eb3b9f9b91b63766370675487c7e2d56ab2b93",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/SenseCom_Data/Managed/UnityEngine.IMGUIModule.dll",
+   "dest": "SenseCom_Data/Managed/UnityEngine.IMGUIModule.dll",
+   "size": 180736,
+   "sha256": "6d676cacf828379ede54428494dc6743ec2cef36b728ccde0c514347ce972189",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/SenseCom_Data/Managed/UnityEngine.ImageConversionModule.dll",
+   "dest": "SenseCom_Data/Managed/UnityEngine.ImageConversionModule.dll",
+   "size": 13824,
+   "sha256": "5e92af092a382fa4de48635368798912ad5ca38a4a744079442c17c33f32dbaf",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/SenseCom_Data/Managed/UnityEngine.InputLegacyModule.dll",
+   "dest": "SenseCom_Data/Managed/UnityEngine.InputLegacyModule.dll",
+   "size": 28672,
+   "sha256": "c13f4843fe67f8a78f27c8185cb9ebac1e377495144a1707c4fc9403734dfee7",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/SenseCom_Data/Managed/UnityEngine.InputModule.dll",
+   "dest": "SenseCom_Data/Managed/UnityEngine.InputModule.dll",
+   "size": 13312,
+   "sha256": "5178a355deb1fb7ec1d0b0d07e4cb16c1a0ae2213c21f87b33cc9dae00e9554c",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/SenseCom_Data/Managed/UnityEngine.JSONSerializeModule.dll",
+   "dest": "SenseCom_Data/Managed/UnityEngine.JSONSerializeModule.dll",
+   "size": 11776,
+   "sha256": "de4795a2e27d1ad8ec4bab415571f20bf818add7354beca23cd07798a99aee4e",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/SenseCom_Data/Managed/UnityEngine.LocalizationModule.dll",
+   "dest": "SenseCom_Data/Managed/UnityEngine.LocalizationModule.dll",
+   "size": 10752,
+   "sha256": "86935f9854bd9459d3fb23bd565383b8bee3380fff98373ba2002aadf96da44f",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/SenseCom_Data/Managed/UnityEngine.ParticleSystemModule.dll",
+   "dest": "SenseCom_Data/Managed/UnityEngine.ParticleSystemModule.dll",
+   "size": 151040,
+   "sha256": "50957fc418ea6ec75b9b4f40d6e987aa507d8785830a5a21dc3ecba16f718d1f",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/SenseCom_Data/Managed/UnityEngine.PerformanceReportingModule.dll",
+   "dest": "SenseCom_Data/Managed/UnityEngine.PerformanceReportingModule.dll",
+   "size": 10240,
+   "sha256": "5cf2f99dcc094cd295a4fccf3e7f6524f8677ad0bd6d770fdaee92d302022cff",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/SenseCom_Data/Managed/UnityEngine.Physics2DModule.dll",
+   "dest": "SenseCom_Data/Managed/UnityEngine.Physics2DModule.dll",
+   "size": 131072,
+   "sha256": "d084a2257dba938a67e2137fe392fa4da9249dbbe456d4348caa7280dc59a083",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/SenseCom_Data/Managed/UnityEngine.PhysicsModule.dll",
+   "dest": "SenseCom_Data/Managed/UnityEngine.PhysicsModule.dll",
+   "size": 128000,
+   "sha256": "b751d25946d651012d2f0839af6b6e102f44c3aa15276913a34c63d7df28791a",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/SenseCom_Data/Managed/UnityEngine.ProfilerModule.dll",
+   "dest": "SenseCom_Data/Managed/UnityEngine.ProfilerModule.dll",
+   "size": 9728,
+   "sha256": "e9a55d1a6ac9878ca6374c336fd65dc294437f4f1039e56abe21a950fbc212b9",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/SenseCom_Data/Managed/UnityEngine.PropertiesModule.dll",
+   "dest": "SenseCom_Data/Managed/UnityEngine.PropertiesModule.dll",
+   "size": 144896,
+   "sha256": "8763681ad2c57a6e72268c46360bc3cd5f5dbcb6ec0aa3e68fec5ce0aefae914",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/SenseCom_Data/Managed/UnityEngine.Purchasing.AppleCore.dll",
+   "dest": "SenseCom_Data/Managed/UnityEngine.Purchasing.AppleCore.dll",
+   "size": 6144,
+   "sha256": "a69a98cad8539ec01eeb68119d3f79edf38846b5c1f3412b66deb337d7b9d7a6",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/SenseCom_Data/Managed/UnityEngine.Purchasing.AppleMacosStub.dll",
+   "dest": "SenseCom_Data/Managed/UnityEngine.Purchasing.AppleMacosStub.dll",
+   "size": 6144,
+   "sha256": "0bf163c1315e19d7bd3706525293fad9eb26bd0c1960a4a40a47c53682bc3473",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/SenseCom_Data/Managed/UnityEngine.Purchasing.AppleStub.dll",
+   "dest": "SenseCom_Data/Managed/UnityEngine.Purchasing.AppleStub.dll",
+   "size": 6144,
+   "sha256": "ec9fd9255e7546773d73f1e8a2402fc800b3a1dcd01927dc0c9262af330eb60d",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/SenseCom_Data/Managed/UnityEngine.Purchasing.Codeless.dll",
+   "dest": "SenseCom_Data/Managed/UnityEngine.Purchasing.Codeless.dll",
+   "size": 23040,
+   "sha256": "e2324f1f37bdb3e07bc8d9bb963b895f9d23ec8ed8616924c56c13e554942052",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/SenseCom_Data/Managed/UnityEngine.Purchasing.SecurityCore.dll",
+   "dest": "SenseCom_Data/Managed/UnityEngine.Purchasing.SecurityCore.dll",
+   "size": 8704,
+   "sha256": "8c088ca130240c0b0e8285c652c2458140dede2c18d26c99f656fae34487e1e9",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/SenseCom_Data/Managed/UnityEngine.Purchasing.SecurityStub.dll",
+   "dest": "SenseCom_Data/Managed/UnityEngine.Purchasing.SecurityStub.dll",
+   "size": 7168,
+   "sha256": "0ff1e6ed4b54ee7258d42945d086f6019e9374f99275bacf5868f6cb9e885ac4",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/SenseCom_Data/Managed/UnityEngine.Purchasing.Stores.dll",
+   "dest": "SenseCom_Data/Managed/UnityEngine.Purchasing.Stores.dll",
+   "size": 199680,
+   "sha256": "2183ebcac97cf1e6fd95dbcfe659cd108d9ef45086239cb2c254669204ebdcb0",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/SenseCom_Data/Managed/UnityEngine.Purchasing.WinRTCore.dll",
+   "dest": "SenseCom_Data/Managed/UnityEngine.Purchasing.WinRTCore.dll",
+   "size": 7168,
+   "sha256": "ea6970159c7e7c7cb211eae9b2f8d9ba004552187e3368163f9183979b14e3c5",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/SenseCom_Data/Managed/UnityEngine.Purchasing.WinRTStub.dll",
+   "dest": "SenseCom_Data/Managed/UnityEngine.Purchasing.WinRTStub.dll",
+   "size": 5120,
+   "sha256": "bddcf17c895462519cade12ce090d12cd776ac4f154311a0b106b13c6c2eb40e",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/SenseCom_Data/Managed/UnityEngine.Purchasing.dll",
+   "dest": "SenseCom_Data/Managed/UnityEngine.Purchasing.dll",
+   "size": 62976,
+   "sha256": "60d24c20e88cff79fe6553bcf88d169a48e61b705773a8a2a17f73395f2ea39d",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/SenseCom_Data/Managed/UnityEngine.RuntimeInitializeOnLoadManagerInitializerModule.dll",
+   "dest": "SenseCom_Data/Managed/UnityEngine.RuntimeInitializeOnLoadManagerInitializerModule.dll",
+   "size": 9728,
+   "sha256": "a4adeebc59eed78ae00313bfd3ed1aa5373d1a69ef4fa6a03d93473ad157c998",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/SenseCom_Data/Managed/UnityEngine.ScreenCaptureModule.dll",
+   "dest": "SenseCom_Data/Managed/UnityEngine.ScreenCaptureModule.dll",
+   "size": 10752,
+   "sha256": "a1a68a09c6f4d50d5581dd9e4e77188588c44ffaeb69c7b121c6bd2c5e55f486",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/SenseCom_Data/Managed/UnityEngine.SharedInternalsModule.dll",
+   "dest": "SenseCom_Data/Managed/UnityEngine.SharedInternalsModule.dll",
+   "size": 22528,
+   "sha256": "5998e2afc5aa8e20e39316829b18df329b7a27ca5ffd4e602c456f13de906774",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/SenseCom_Data/Managed/UnityEngine.SpatialTracking.dll",
+   "dest": "SenseCom_Data/Managed/UnityEngine.SpatialTracking.dll",
+   "size": 11776,
+   "sha256": "b1fb996339c8cd3a8fd93f914b9d5f4a1aba168db5ccdc2065dc93fb44cb3f3e",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/SenseCom_Data/Managed/UnityEngine.SpriteMaskModule.dll",
+   "dest": "SenseCom_Data/Managed/UnityEngine.SpriteMaskModule.dll",
+   "size": 11264,
+   "sha256": "4963e748b69aa75b5812c76a4d411a6aac890410dc4e5331ff2e5851e7933ad3",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/SenseCom_Data/Managed/UnityEngine.SpriteShapeModule.dll",
+   "dest": "SenseCom_Data/Managed/UnityEngine.SpriteShapeModule.dll",
+   "size": 15872,
+   "sha256": "e7ee0af321047ac552290d4c47a114581810ab1b4bce7517f461d9be5692d6e8",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/SenseCom_Data/Managed/UnityEngine.StreamingModule.dll",
+   "dest": "SenseCom_Data/Managed/UnityEngine.StreamingModule.dll",
+   "size": 10240,
+   "sha256": "27dda6918487354c0cddd44140ff72eadc4c07dfd57dfc0740fdfd8c2dff83c3",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/SenseCom_Data/Managed/UnityEngine.SubstanceModule.dll",
+   "dest": "SenseCom_Data/Managed/UnityEngine.SubstanceModule.dll",
+   "size": 14336,
+   "sha256": "8b963a8897d650bf9d13234e1421b27e91a996ed4fc0cbf16d3234ce155eb07a",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/SenseCom_Data/Managed/UnityEngine.SubsystemsModule.dll",
+   "dest": "SenseCom_Data/Managed/UnityEngine.SubsystemsModule.dll",
+   "size": 24576,
+   "sha256": "7c7ddbc7caf863f658bd8866952e2a0fad1a77f3c7904011ab939b2e6bd687b3",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/SenseCom_Data/Managed/UnityEngine.TLSModule.dll",
+   "dest": "SenseCom_Data/Managed/UnityEngine.TLSModule.dll",
+   "size": 16384,
+   "sha256": "231c6c6fc2f38d42bdb4ab09675236395272caf0ece558741eeb5f33979f6766",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/SenseCom_Data/Managed/UnityEngine.TerrainModule.dll",
+   "dest": "SenseCom_Data/Managed/UnityEngine.TerrainModule.dll",
+   "size": 90624,
+   "sha256": "d58763fefbe594652d71a14c94dafa01790e3c548a7cacef65a57663bbbd46f9",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/SenseCom_Data/Managed/UnityEngine.TerrainPhysicsModule.dll",
+   "dest": "SenseCom_Data/Managed/UnityEngine.TerrainPhysicsModule.dll",
+   "size": 10752,
+   "sha256": "cd087e3621d5daa903d8adb9e2b7b93ead2f609018a966782006e1bdd64b228e",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/SenseCom_Data/Managed/UnityEngine.TextCoreFontEngineModule.dll",
+   "dest": "SenseCom_Data/Managed/UnityEngine.TextCoreFontEngineModule.dll",
+   "size": 62464,
+   "sha256": "4c71d37b3d59d57be67c213aaa15adf287544c52e3e7714456e5ff56135744e5",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/SenseCom_Data/Managed/UnityEngine.TextCoreTextEngineModule.dll",
+   "dest": "SenseCom_Data/Managed/UnityEngine.TextCoreTextEngineModule.dll",
+   "size": 239104,
+   "sha256": "c901c43a13f33cbd3292e248de70a20f8328043148e94d54f988e22eb38224d2",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/SenseCom_Data/Managed/UnityEngine.TextRenderingModule.dll",
+   "dest": "SenseCom_Data/Managed/UnityEngine.TextRenderingModule.dll",
+   "size": 28672,
+   "sha256": "ad92196a2427055694720b64d50b595de689302d81ce94fbae72ca62fba53af0",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/SenseCom_Data/Managed/UnityEngine.TilemapModule.dll",
+   "dest": "SenseCom_Data/Managed/UnityEngine.TilemapModule.dll",
+   "size": 36352,
+   "sha256": "8e0a5252365336d887619be082785ca5089af4a79fb782cc453b9d3dff3df26e",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/SenseCom_Data/Managed/UnityEngine.UI.dll",
+   "dest": "SenseCom_Data/Managed/UnityEngine.UI.dll",
+   "size": 264704,
+   "sha256": "b65491ded8dde11470f19e4be7dd1bc30348811c1fc9a35832ed0ec324b11fb9",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/SenseCom_Data/Managed/UnityEngine.UIElementsModule.dll",
+   "dest": "SenseCom_Data/Managed/UnityEngine.UIElementsModule.dll",
+   "size": 1526784,
+   "sha256": "01630a3b11c901a3bb406be1abe732754fae6a8699220f7b28935394c99c5f09",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/SenseCom_Data/Managed/UnityEngine.UIModule.dll",
+   "dest": "SenseCom_Data/Managed/UnityEngine.UIModule.dll",
+   "size": 26112,
+   "sha256": "9d7a87544ba02ce15e145e23038eab78a52253867dfaae6b90df2e9c05cc476e",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/SenseCom_Data/Managed/UnityEngine.UmbraModule.dll",
+   "dest": "SenseCom_Data/Managed/UnityEngine.UmbraModule.dll",
+   "size": 9728,
+   "sha256": "eb9eda25cb2264c4369fae4c4f2c68097d1b7df8a6e8dff8a73ef595a601baba",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/SenseCom_Data/Managed/UnityEngine.UnityAnalyticsCommonModule.dll",
+   "dest": "SenseCom_Data/Managed/UnityEngine.UnityAnalyticsCommonModule.dll",
+   "size": 10752,
+   "sha256": "2f7d95eda482665175329b15235018f7275e6d7add8e96257197c8267c1be4f2",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/SenseCom_Data/Managed/UnityEngine.UnityAnalyticsModule.dll",
+   "dest": "SenseCom_Data/Managed/UnityEngine.UnityAnalyticsModule.dll",
+   "size": 34304,
+   "sha256": "4c5feb1b0aa87c00f5d5ab770dad8bf7be1090141a0ee5e5a5525c8030b207c4",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/SenseCom_Data/Managed/UnityEngine.UnityConnectModule.dll",
+   "dest": "SenseCom_Data/Managed/UnityEngine.UnityConnectModule.dll",
+   "size": 11264,
+   "sha256": "05957877318fbd1367d414698bb3d0a53c80a587a918abdaba096645b3c5142b",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/SenseCom_Data/Managed/UnityEngine.UnityCurlModule.dll",
+   "dest": "SenseCom_Data/Managed/UnityEngine.UnityCurlModule.dll",
+   "size": 11264,
+   "sha256": "0fb91f98072a141a65c374105e26fb4778747d8ac54bca207a950fccfd5cac54",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/SenseCom_Data/Managed/UnityEngine.UnityTestProtocolModule.dll",
+   "dest": "SenseCom_Data/Managed/UnityEngine.UnityTestProtocolModule.dll",
+   "size": 9728,
+   "sha256": "341ace435326f810e8cbea225e194bff5e16ba2dfc79de8c95d82f63fc6c16e0",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/SenseCom_Data/Managed/UnityEngine.UnityWebRequestAssetBundleModule.dll",
+   "dest": "SenseCom_Data/Managed/UnityEngine.UnityWebRequestAssetBundleModule.dll",
+   "size": 12800,
+   "sha256": "4b927daa140f4a3ae143d2475deda795da0a62c7ce5e212cdfa470940d7547e5",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/SenseCom_Data/Managed/UnityEngine.UnityWebRequestAudioModule.dll",
+   "dest": "SenseCom_Data/Managed/UnityEngine.UnityWebRequestAudioModule.dll",
+   "size": 12288,
+   "sha256": "f9244788f8f0e60262f1f159043ce468d535bf4b713908d3173360be2782edb3",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/SenseCom_Data/Managed/UnityEngine.UnityWebRequestModule.dll",
+   "dest": "SenseCom_Data/Managed/UnityEngine.UnityWebRequestModule.dll",
+   "size": 47616,
+   "sha256": "61c5d06e129bcbf066b5ed9d6d5ee2e852108460ad10e5cbfcfa33af061cc66f",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/SenseCom_Data/Managed/UnityEngine.UnityWebRequestTextureModule.dll",
+   "dest": "SenseCom_Data/Managed/UnityEngine.UnityWebRequestTextureModule.dll",
+   "size": 11264,
+   "sha256": "c6b9e39f9ee2a35aa1e34b4fefc2ff84e8e202e76a73760792064c31d106637d",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/SenseCom_Data/Managed/UnityEngine.UnityWebRequestWWWModule.dll",
+   "dest": "SenseCom_Data/Managed/UnityEngine.UnityWebRequestWWWModule.dll",
+   "size": 20992,
+   "sha256": "7494a5d474c2697fe59e860091f2796388b0d1066daa9ef78aae97e8039b7030",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/SenseCom_Data/Managed/UnityEngine.VFXModule.dll",
+   "dest": "SenseCom_Data/Managed/UnityEngine.VFXModule.dll",
+   "size": 48128,
+   "sha256": "c2f5ff923b736c7e5a1a43365baa7b8a8169b022ea3b8b4950ab3a856a9dba99",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/SenseCom_Data/Managed/UnityEngine.VRModule.dll",
+   "dest": "SenseCom_Data/Managed/UnityEngine.VRModule.dll",
+   "size": 16384,
+   "sha256": "a4116fe6ccb056d98bb499682f0776dc4d572db48093b648aabc111666af0bbf",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/SenseCom_Data/Managed/UnityEngine.VehiclesModule.dll",
+   "dest": "SenseCom_Data/Managed/UnityEngine.VehiclesModule.dll",
+   "size": 13824,
+   "sha256": "08c5844d506bc3c716af74b8de5f1516a87f6d0cf05ad8abae71a77930656442",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/SenseCom_Data/Managed/UnityEngine.VideoModule.dll",
+   "dest": "SenseCom_Data/Managed/UnityEngine.VideoModule.dll",
+   "size": 30720,
+   "sha256": "3a746352f34e4555c4846ec7eeeb5ca0edb58cce81f8830c134b7cab6cf6257d",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/SenseCom_Data/Managed/UnityEngine.VirtualTexturingModule.dll",
+   "dest": "SenseCom_Data/Managed/UnityEngine.VirtualTexturingModule.dll",
+   "size": 25600,
+   "sha256": "3d5e11149bf187cf85dabbf1620484657484d40c3f40bd428f0db772d737dcfd",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/SenseCom_Data/Managed/UnityEngine.WindModule.dll",
+   "dest": "SenseCom_Data/Managed/UnityEngine.WindModule.dll",
+   "size": 10752,
+   "sha256": "56033c4b6e17433c880bdcbf4a13a7e4010a6589401bfd5a619471db5088af79",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/SenseCom_Data/Managed/UnityEngine.XR.LegacyInputHelpers.dll",
+   "dest": "SenseCom_Data/Managed/UnityEngine.XR.LegacyInputHelpers.dll",
+   "size": 23552,
+   "sha256": "914a7e74a49a1210b449ae05c194379fc7cc005ed449d9dbf391dc8f544699bd",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/SenseCom_Data/Managed/UnityEngine.XRModule.dll",
+   "dest": "SenseCom_Data/Managed/UnityEngine.XRModule.dll",
+   "size": 60416,
+   "sha256": "9d92202330d52e752647113a995c2edafe0308ada84bb4ecb6718e58fd7cb4c3",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/SenseCom_Data/Managed/UnityEngine.dll",
+   "dest": "SenseCom_Data/Managed/UnityEngine.dll",
+   "size": 115712,
+   "sha256": "c8c7fcb038611eeb6b6293601d1fffef72bffebc317256f16cfbc33a333b10fa",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/SenseCom_Data/Managed/mscorlib.dll",
+   "dest": "SenseCom_Data/Managed/mscorlib.dll",
+   "size": 4622848,
+   "sha256": "44670e7fd323ad5e4ec0fd0614e73e685e0a546aa59b9b9112f09e381689df79",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/SenseCom_Data/Managed/netstandard.dll",
+   "dest": "SenseCom_Data/Managed/netstandard.dll",
+   "size": 90624,
+   "sha256": "bf0b7eac9010b75413e4ec1a07a3453bc6a68eeb8e916fbed7c1f2777841f7c7",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/SenseCom_Data/MonoBleedingEdge/etc/config",
+   "dest": "SenseCom_Data/MonoBleedingEdge/etc/config",
+   "size": 3764,
+   "sha256": "b12f4e32436f1b417451eb5f69433433ae1f732b0c9e80b039073e1b6daa24da",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/SenseCom_Data/MonoBleedingEdge/etc/mono/2.0/Browsers/Compat.browser",
+   "dest": "SenseCom_Data/MonoBleedingEdge/etc/mono/2.0/Browsers/Compat.browser",
+   "size": 1586,
+   "sha256": "608f6314528124253dcdba16db71967eca61d5d62d9bf3ae3e2f4926c5891bc3",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/SenseCom_Data/MonoBleedingEdge/etc/mono/2.0/DefaultWsdlHelpGenerator.aspx",
+   "dest": "SenseCom_Data/MonoBleedingEdge/etc/mono/2.0/DefaultWsdlHelpGenerator.aspx",
+   "size": 60575,
+   "sha256": "751861040b69ea63a3827507b7c8da9c7f549dc181c1c8af4b7ca78cc97d710a",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/SenseCom_Data/MonoBleedingEdge/etc/mono/2.0/machine.config",
+   "dest": "SenseCom_Data/MonoBleedingEdge/etc/mono/2.0/machine.config",
+   "size": 29066,
+   "sha256": "e91782a27fa39fc6c1d6ee8b08529f5d35052310d0006034b878eb04b8f2af30",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/SenseCom_Data/MonoBleedingEdge/etc/mono/2.0/settings.map",
+   "dest": "SenseCom_Data/MonoBleedingEdge/etc/mono/2.0/settings.map",
+   "size": 2622,
+   "sha256": "49c6160f9d54af4270a3b4e997fc4a8301f79b9e2070118fa46ddbcbbc44f9a2",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/SenseCom_Data/MonoBleedingEdge/etc/mono/2.0/web.config",
+   "dest": "SenseCom_Data/MonoBleedingEdge/etc/mono/2.0/web.config",
+   "size": 11635,
+   "sha256": "cf2b54339e069b9e42f7d6795eecbf562c50c1011f4ca8f65f578fe52d97ff92",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/SenseCom_Data/MonoBleedingEdge/etc/mono/4.0/Browsers/Compat.browser",
+   "dest": "SenseCom_Data/MonoBleedingEdge/etc/mono/4.0/Browsers/Compat.browser",
+   "size": 1586,
+   "sha256": "608f6314528124253dcdba16db71967eca61d5d62d9bf3ae3e2f4926c5891bc3",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/SenseCom_Data/MonoBleedingEdge/etc/mono/4.0/DefaultWsdlHelpGenerator.aspx",
+   "dest": "SenseCom_Data/MonoBleedingEdge/etc/mono/4.0/DefaultWsdlHelpGenerator.aspx",
+   "size": 60575,
+   "sha256": "751861040b69ea63a3827507b7c8da9c7f549dc181c1c8af4b7ca78cc97d710a",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/SenseCom_Data/MonoBleedingEdge/etc/mono/4.0/machine.config",
+   "dest": "SenseCom_Data/MonoBleedingEdge/etc/mono/4.0/machine.config",
+   "size": 33598,
+   "sha256": "e60aec2c5115d65b3acb3c55ea21576dbd770f579166c017125571e46ae560ed",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/SenseCom_Data/MonoBleedingEdge/etc/mono/4.0/settings.map",
+   "dest": "SenseCom_Data/MonoBleedingEdge/etc/mono/4.0/settings.map",
+   "size": 2622,
+   "sha256": "ce1db1ad8a9512073164e3eccdc193f7eda036e1a9733caec4635de21b2865c8",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/SenseCom_Data/MonoBleedingEdge/etc/mono/4.0/web.config",
+   "dest": "SenseCom_Data/MonoBleedingEdge/etc/mono/4.0/web.config",
+   "size": 18802,
+   "sha256": "e38bb8cc68fe5b4edecdfd288d094b9e8ced7629039b2a347682aba0d8bd7492",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/SenseCom_Data/MonoBleedingEdge/etc/mono/4.5/Browsers/Compat.browser",
+   "dest": "SenseCom_Data/MonoBleedingEdge/etc/mono/4.5/Browsers/Compat.browser",
+   "size": 1586,
+   "sha256": "608f6314528124253dcdba16db71967eca61d5d62d9bf3ae3e2f4926c5891bc3",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/SenseCom_Data/MonoBleedingEdge/etc/mono/4.5/DefaultWsdlHelpGenerator.aspx",
+   "dest": "SenseCom_Data/MonoBleedingEdge/etc/mono/4.5/DefaultWsdlHelpGenerator.aspx",
+   "size": 60575,
+   "sha256": "751861040b69ea63a3827507b7c8da9c7f549dc181c1c8af4b7ca78cc97d710a",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/SenseCom_Data/MonoBleedingEdge/etc/mono/4.5/machine.config",
+   "dest": "SenseCom_Data/MonoBleedingEdge/etc/mono/4.5/machine.config",
+   "size": 34056,
+   "sha256": "ee950004b576fb28dc85f4b0435ed04bf96612de2e8b53be84d07afe85a0de6c",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/SenseCom_Data/MonoBleedingEdge/etc/mono/4.5/settings.map",
+   "dest": "SenseCom_Data/MonoBleedingEdge/etc/mono/4.5/settings.map",
+   "size": 2622,
+   "sha256": "ce1db1ad8a9512073164e3eccdc193f7eda036e1a9733caec4635de21b2865c8",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/SenseCom_Data/MonoBleedingEdge/etc/mono/4.5/web.config",
+   "dest": "SenseCom_Data/MonoBleedingEdge/etc/mono/4.5/web.config",
+   "size": 18811,
+   "sha256": "c4cbddd4fd9347b58cc5a72b36dc4ba1ad2bb699e65869d05cd3fb9865f0d824",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/SenseCom_Data/MonoBleedingEdge/etc/mono/browscap.ini",
+   "dest": "SenseCom_Data/MonoBleedingEdge/etc/mono/browscap.ini",
+   "size": 311984,
+   "sha256": "4ddd50f31fb968f30bedefc253a46dc3f2890192d05cdaa9e0a64a056eee807e",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/SenseCom_Data/MonoBleedingEdge/etc/mono/config",
+   "dest": "SenseCom_Data/MonoBleedingEdge/etc/mono/config",
+   "size": 3764,
+   "sha256": "b12f4e32436f1b417451eb5f69433433ae1f732b0c9e80b039073e1b6daa24da",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/SenseCom_Data/MonoBleedingEdge/etc/mono/mconfig/config.xml",
+   "dest": "SenseCom_Data/MonoBleedingEdge/etc/mono/mconfig/config.xml",
+   "size": 25817,
+   "sha256": "0c56e34c69124510fa8c19e7b4c2ca6c1c4ff460ae19f798dd0ca035809e396d",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/SenseCom_Data/MonoBleedingEdge/x86_64/libMonoPosixHelper.so",
+   "dest": "SenseCom_Data/MonoBleedingEdge/x86_64/libMonoPosixHelper.so",
+   "size": 264160,
+   "sha256": "f7cf05a21d6db5ee7c639956b9464f76d345ccc00d1f16649e9b3db9fa7e19fd",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/SenseCom_Data/MonoBleedingEdge/x86_64/libmono-native.so",
+   "dest": "SenseCom_Data/MonoBleedingEdge/x86_64/libmono-native.so",
+   "size": 2303896,
+   "sha256": "7eaefbab0125d09af57f2f6d6d91aac73c77a1561888fa82c716b57e418e5275",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/SenseCom_Data/MonoBleedingEdge/x86_64/libmonobdwgc-2.0.so",
+   "dest": "SenseCom_Data/MonoBleedingEdge/x86_64/libmonobdwgc-2.0.so",
+   "size": 3872688,
+   "sha256": "4b4cb5bff9a6326b5423bcd0c4511f1b523f9f3323f90b5d57bf27323d8b6152",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/SenseCom_Data/Plugins/libSGConnect.so",
+   "dest": "SenseCom_Data/Plugins/libSGConnect.so",
+   "size": 8656808,
+   "sha256": "b811d4d72d0bc72c1d3a97266388a4ab8ed4f9143df9501f27196673b597cb77",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/SenseCom_Data/Resources/UnityPlayer.png",
+   "dest": "SenseCom_Data/Resources/UnityPlayer.png",
+   "size": 11558,
+   "sha256": "ba0cc2ef71ed2da5452c339e531efdeea2c9bc8b81ab17eec8d31765cfb9269f",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/SenseCom_Data/Resources/unity default resources",
+   "dest": "SenseCom_Data/Resources/unity default resources",
+   "size": 1564240,
+   "sha256": "a11e3e24520676183b3750564b4d9f5a90e8f41fd3523cbfb0c49f3989453da2",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/SenseCom_Data/Resources/unity_builtin_extra",
+   "dest": "SenseCom_Data/Resources/unity_builtin_extra",
+   "size": 568780,
+   "sha256": "a8f9189c5358ad60a9ef34a60e838532a1751c9611ae92a06e981dd6024d6d61",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/SenseCom_Data/RuntimeInitializeOnLoads.json",
+   "dest": "SenseCom_Data/RuntimeInitializeOnLoads.json",
+   "size": 1553,
+   "sha256": "5327d70249fc685ab1a4518ce117170ea8129b27589aa3d345bf1f1bec616c8b",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/SenseCom_Data/ScriptingAssemblies.json",
+   "dest": "SenseCom_Data/ScriptingAssemblies.json",
+   "size": 3798,
+   "sha256": "43cc6672748558543bf7c3415d602b5b2c58c3c56eabb4405805cd2cc6985e86",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/SenseCom_Data/StreamingAssets/UnityServicesProjectConfiguration.json",
+   "dest": "SenseCom_Data/StreamingAssets/UnityServicesProjectConfiguration.json",
+   "size": 1410,
+   "sha256": "a3c1c178541299d189aa1c79bcbbadaf03a86f3a39cf93d3cd2b548ec47f996f",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/SenseCom_Data/app.info",
+   "dest": "SenseCom_Data/app.info",
+   "size": 25,
+   "sha256": "8e6205d2ec382cd579df97f882e39a9e25b1929a5438034baaba426b529f99a2",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/SenseCom_Data/boot.config",
+   "dest": "SenseCom_Data/boot.config",
+   "size": 113,
+   "sha256": "1ce25b0294b82d2a6df634c6a72433f3e118ecee84cfe80f4442233f6a2ab7e2",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/SenseCom_Data/globalgamemanagers",
+   "dest": "SenseCom_Data/globalgamemanagers",
+   "size": 63828,
+   "sha256": "3cb24abbfda0275e3df915d17a7f517c542ecfff64c7edfc2e8b65d23d148553",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/SenseCom_Data/globalgamemanagers.assets",
+   "dest": "SenseCom_Data/globalgamemanagers.assets",
+   "size": 133392,
+   "sha256": "fbff5ad651eae1680ae4ed39abd136e4ff49b2c9bbffa357479cbc9bb4935b9a",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/SenseCom_Data/globalgamemanagers.assets.resS",
+   "dest": "SenseCom_Data/globalgamemanagers.assets.resS",
+   "size": 2796240,
+   "sha256": "39dd38fcd8dd95d41d6d55fe16a448d29fe2c31d9a162c825c24c6d99a893d7a",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/SenseCom_Data/level0",
+   "dest": "SenseCom_Data/level0",
+   "size": 124768,
+   "sha256": "f1dc24dc5ab1da561fc8813efdecfb5df5f5245868c9f1a1089771fae9c1601f",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/SenseCom_Data/level0.resS",
+   "dest": "SenseCom_Data/level0.resS",
+   "size": 131232,
+   "sha256": "8e298dbadd8f34930733bf6bdfe57177b9345fb465e8dd3c0aaefe6362827bc4",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/SenseCom_Data/level1",
+   "dest": "SenseCom_Data/level1",
+   "size": 118832,
+   "sha256": "a35b58f78714572bbf97d67afeb3667ddb7767dd8dab9c9be416ea1124a586eb",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/SenseCom_Data/level2",
+   "dest": "SenseCom_Data/level2",
+   "size": 17192,
+   "sha256": "37002afbfcef0e0cb0b388d58806e3d74ae7546d64a3c17b469d7612cc5accd0",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/SenseCom_Data/level2.resS",
+   "dest": "SenseCom_Data/level2.resS",
+   "size": 131232,
+   "sha256": "8e298dbadd8f34930733bf6bdfe57177b9345fb465e8dd3c0aaefe6362827bc4",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/SenseCom_Data/level3",
+   "dest": "SenseCom_Data/level3",
+   "size": 383016,
+   "sha256": "087c3132483a71fccc46991f4afd71fbb17c4aed0dbd1698ac955492344352a3",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/SenseCom_Data/level4",
+   "dest": "SenseCom_Data/level4",
+   "size": 284616,
+   "sha256": "9f979e0d4d0c386d8278ec5f1c7f2cca5dfaa886d3cf582e042f24a84f5c2c71",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/SenseCom_Data/level5",
+   "dest": "SenseCom_Data/level5",
+   "size": 403952,
+   "sha256": "8643361d2037018f8253697bdace02b7e0a064f4c5183017ad6d977e966bc9aa",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/SenseCom_Data/level6",
+   "dest": "SenseCom_Data/level6",
+   "size": 21040,
+   "sha256": "5ad01f52f5197bae9b173abfd12d926749e8e6fa5622fc254571fff527191fd0",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/SenseCom_Data/level6.resS",
+   "dest": "SenseCom_Data/level6.resS",
+   "size": 131232,
+   "sha256": "8e298dbadd8f34930733bf6bdfe57177b9345fb465e8dd3c0aaefe6362827bc4",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/SenseCom_Data/level7",
+   "dest": "SenseCom_Data/level7",
+   "size": 62944,
+   "sha256": "8fa608a1ac611590aca68e54737e1a6510ca094186a22c6173021bae37d1c770",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/SenseCom_Data/level7.resS",
+   "dest": "SenseCom_Data/level7.resS",
+   "size": 131232,
+   "sha256": "8e298dbadd8f34930733bf6bdfe57177b9345fb465e8dd3c0aaefe6362827bc4",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/SenseCom_Data/level8",
+   "dest": "SenseCom_Data/level8",
+   "size": 33896,
+   "sha256": "c2988bcdcb29b656dccf612124cd1c3c3164a19d2780d07e58d483378e66de21",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/SenseCom_Data/level8.resS",
+   "dest": "SenseCom_Data/level8.resS",
+   "size": 131232,
+   "sha256": "8e298dbadd8f34930733bf6bdfe57177b9345fb465e8dd3c0aaefe6362827bc4",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/SenseCom_Data/level9",
+   "dest": "SenseCom_Data/level9",
+   "size": 117808,
+   "sha256": "cadd5e9cb97749aaf24d12f48e3fb2b5d9c0fa403ac251db05870ecf87c1dbd2",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/SenseCom_Data/resources.assets",
+   "dest": "SenseCom_Data/resources.assets",
+   "size": 24628,
+   "sha256": "f478fb8b2febbb764e78a98bb5c7b6beaa01a4825d94f6216a25be18919bd90f",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/SenseCom_Data/resources.assets.resS",
+   "dest": "SenseCom_Data/resources.assets.resS",
+   "size": 4414768,
+   "sha256": "e30ef3163dbd2c7c82d98c69d93fef4ce40b6d858a751d78f0024761381f353e",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/SenseCom_Data/sharedassets0.assets",
+   "dest": "SenseCom_Data/sharedassets0.assets",
+   "size": 4265680,
+   "sha256": "1585951046b86a5f8c7b6eedfb4ec33a89dc5d873d0e5415ba2d20e0c132146f",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/SenseCom_Data/sharedassets0.assets.resS",
+   "dest": "SenseCom_Data/sharedassets0.assets.resS",
+   "size": 808880,
+   "sha256": "b5f24923d9ac870f45de8906698cec14e3efc7ba9ebcd813052ef7237d348815",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/SenseCom_Data/sharedassets1.assets",
+   "dest": "SenseCom_Data/sharedassets1.assets",
+   "size": 688652,
+   "sha256": "39daa108f008c71abd5a214e71b6513a661ade916564b65401eb27dc33dfcaa2",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/SenseCom_Data/sharedassets1.assets.resS",
+   "dest": "SenseCom_Data/sharedassets1.assets.resS",
+   "size": 131232,
+   "sha256": "26f291c9baa4aa2df86bc1cb44c1bef6c51e984982af6c8d35c725f1099e921c",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/SenseCom_Data/sharedassets2.assets",
+   "dest": "SenseCom_Data/sharedassets2.assets",
+   "size": 1284,
+   "sha256": "0508702f205aecfce793ec9de8a57e7431b63cf834b24a46684f47075491dc45",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/SenseCom_Data/sharedassets3.assets",
+   "dest": "SenseCom_Data/sharedassets3.assets",
+   "size": 4484,
+   "sha256": "4d361a7b171668fda53439178d212494b670c1c790b311325de7157006f066d0",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/SenseCom_Data/sharedassets3.assets.resS",
+   "dest": "SenseCom_Data/sharedassets3.assets.resS",
+   "size": 1941712,
+   "sha256": "79068eaf6841f2eedef5d7c167a5aca87a0f2f520878d9f051e3b5a20cbf8168",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/SenseCom_Data/sharedassets4.assets",
+   "dest": "SenseCom_Data/sharedassets4.assets",
+   "size": 3426876,
+   "sha256": "a77aa334e542784d935c2ec53e864bc23e3fed7289bc20f5bc46fbc00891bb57",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/SenseCom_Data/sharedassets4.assets.resS",
+   "dest": "SenseCom_Data/sharedassets4.assets.resS",
+   "size": 131232,
+   "sha256": "26f291c9baa4aa2df86bc1cb44c1bef6c51e984982af6c8d35c725f1099e921c",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/SenseCom_Data/sharedassets5.assets",
+   "dest": "SenseCom_Data/sharedassets5.assets",
+   "size": 3116,
+   "sha256": "3a72b13278ed84c1d83958262ef947feb32cb1fa68756c14a1b127068d7e359e",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/SenseCom_Data/sharedassets5.assets.resS",
+   "dest": "SenseCom_Data/sharedassets5.assets.resS",
+   "size": 131232,
+   "sha256": "26f291c9baa4aa2df86bc1cb44c1bef6c51e984982af6c8d35c725f1099e921c",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/SenseCom_Data/sharedassets6.assets",
+   "dest": "SenseCom_Data/sharedassets6.assets",
+   "size": 1269,
+   "sha256": "56120c4b8a80c9e374eb71277c4b385f91e6c75fdffa418c7a446d2a051a269a",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/SenseCom_Data/sharedassets7.assets",
+   "dest": "SenseCom_Data/sharedassets7.assets",
+   "size": 1429,
+   "sha256": "821370efc79503f7a362c57fcf2438ae0e299e11ddf5617f600bdcb517fa9286",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/SenseCom_Data/sharedassets8.assets",
+   "dest": "SenseCom_Data/sharedassets8.assets",
+   "size": 1321,
+   "sha256": "b3bea1f90c33f5282759658e31a158662b72b7137e801e495f25e04649c76504",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/SenseCom_Data/sharedassets9.assets",
+   "dest": "SenseCom_Data/sharedassets9.assets",
+   "size": 53516,
+   "sha256": "40c27f9949e8f957730f058a2d8b41af3e462db6329fa0f2d304dab9df07c901",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/SenseCom_Data/sharedassets9.assets.resS",
+   "dest": "SenseCom_Data/sharedassets9.assets.resS",
+   "size": 839232,
+   "sha256": "d213f4ead5e676beab9cea0baa5313e3c39d04a4791a7b6fc071df4fa36ad4b9",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/UnityPlayer.so",
+   "dest": "UnityPlayer.so",
+   "size": 32953216,
+   "sha256": "1572595a72cf67f8a86db5864009f69baa5234368f8a81e7e7e25dbf85cc5de2",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/update/UnityPlayer.so",
+   "dest": "update/UnityPlayer.so",
+   "size": 32953216,
+   "sha256": "1572595a72cf67f8a86db5864009f69baa5234368f8a81e7e7e25dbf85cc5de2",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/update/sensecom-update.x86_64",
+   "dest": "update/sensecom-update.x86_64",
+   "size": 14720,
+   "sha256": "0bfe51325720c950b4ad75ce7c3b65595fd7e939908520ec33600919919327a8",
+   "mode": "0755"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/update/sensecom-update_Data/Managed/Assembly-CSharp.dll",
+   "dest": "update/sensecom-update_Data/Managed/Assembly-CSharp.dll",
+   "size": 587264,
+   "sha256": "035abd0b36f86c1b7e0fda56d75d2264c771712d46f88ad409ed01a54745cc06",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/update/sensecom-update_Data/Managed/Mono.Security.dll",
+   "dest": "update/sensecom-update_Data/Managed/Mono.Security.dll",
+   "size": 241152,
+   "sha256": "997fbe6782d758b61ccf9f2ccee20cde2286e06c497d6aee1167252e54ec94aa",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/update/sensecom-update_Data/Managed/Newtonsoft.Json.dll",
+   "dest": "update/sensecom-update_Data/Managed/Newtonsoft.Json.dll",
+   "size": 691712,
+   "sha256": "a56146202232958f46bd6a28b5a7da166aea123ee0d646735a46e5c341dfbf1f",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/update/sensecom-update_Data/Managed/Purchasing.Common.dll",
+   "dest": "update/sensecom-update_Data/Managed/Purchasing.Common.dll",
+   "size": 13824,
+   "sha256": "286a8a864668b6b31a5dfd94229db5c39f3a5ca42c931c91b321269bca9653e0",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/update/sensecom-update_Data/Managed/SGCoreCs.dll",
+   "dest": "update/sensecom-update_Data/Managed/SGCoreCs.dll",
+   "size": 158720,
+   "sha256": "241af1f191985eefb07b3e8843c8fe9d1f60a2ac412b571c9504837da95accd5",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/update/sensecom-update_Data/Managed/System.ComponentModel.Composition.dll",
+   "dest": "update/sensecom-update_Data/Managed/System.ComponentModel.Composition.dll",
+   "size": 257024,
+   "sha256": "3c820f5f0f17dabf7b0ae810f5f8416747d4e941333c29ba7101383026ed297a",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/update/sensecom-update_Data/Managed/System.Configuration.dll",
+   "dest": "update/sensecom-update_Data/Managed/System.Configuration.dll",
+   "size": 124928,
+   "sha256": "74715e695d8b3fb9b812b613da1c58f2016534d51e732a7e31987621314a92ab",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/update/sensecom-update_Data/Managed/System.Core.dll",
+   "dest": "update/sensecom-update_Data/Managed/System.Core.dll",
+   "size": 1115136,
+   "sha256": "8595625ec9846fc28cfc35c7920afd1ca7633b4d655babafaf240426320b91f1",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/update/sensecom-update_Data/Managed/System.Data.DataSetExtensions.dll",
+   "dest": "update/sensecom-update_Data/Managed/System.Data.DataSetExtensions.dll",
+   "size": 29696,
+   "sha256": "b66d0f739c5aa4c07d58c5df8443818110b634c59555012f3723171d81d8de09",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/update/sensecom-update_Data/Managed/System.Data.dll",
+   "dest": "update/sensecom-update_Data/Managed/System.Data.dll",
+   "size": 2104320,
+   "sha256": "6f7d1111a74e6d18037de6417bea995124ee1720fd7e50cfbc28a5cbff0bf927",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/update/sensecom-update_Data/Managed/System.Drawing.dll",
+   "dest": "update/sensecom-update_Data/Managed/System.Drawing.dll",
+   "size": 489984,
+   "sha256": "0b45091f7f2d6c68bd9b82bc2c60b03e3fbdd4244be8014f9df0267ec3c84546",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/update/sensecom-update_Data/Managed/System.EnterpriseServices.dll",
+   "dest": "update/sensecom-update_Data/Managed/System.EnterpriseServices.dll",
+   "size": 44544,
+   "sha256": "1edfd12a96315f198fb48854790b34e33368b79e34fbd03987d7a571720b9725",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/update/sensecom-update_Data/Managed/System.IO.Compression.FileSystem.dll",
+   "dest": "update/sensecom-update_Data/Managed/System.IO.Compression.FileSystem.dll",
+   "size": 18432,
+   "sha256": "8001293d1ec63b788360c7f9d4925a3c46ed5436196bbd2a95d940647c3ac9fa",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/update/sensecom-update_Data/Managed/System.IO.Compression.dll",
+   "dest": "update/sensecom-update_Data/Managed/System.IO.Compression.dll",
+   "size": 114688,
+   "sha256": "f47391c93479d8a540999b7ccd84aae1223e3f6e5a52a4c0d5e903aa14a8b2cc",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/update/sensecom-update_Data/Managed/System.Net.Http.dll",
+   "dest": "update/sensecom-update_Data/Managed/System.Net.Http.dll",
+   "size": 281600,
+   "sha256": "3321969722a1861520ea69adde58147ca0912429611d8e1113622ea1f7f83759",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/update/sensecom-update_Data/Managed/System.Numerics.dll",
+   "dest": "update/sensecom-update_Data/Managed/System.Numerics.dll",
+   "size": 119296,
+   "sha256": "ddbcc1f65468de4fbb92abb88bf53cb766b8398e88e11eca4d0444404f2e5910",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/update/sensecom-update_Data/Managed/System.Runtime.Serialization.dll",
+   "dest": "update/sensecom-update_Data/Managed/System.Runtime.Serialization.dll",
+   "size": 934400,
+   "sha256": "db71672507e174f2b0f476a7a16f58c23c0b005f5290d54e9e85fbe41304508a",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/update/sensecom-update_Data/Managed/System.Security.dll",
+   "dest": "update/sensecom-update_Data/Managed/System.Security.dll",
+   "size": 314880,
+   "sha256": "327930877b87f38768bc19994b23025c966047907cb90c3bbeef734791c73bbb",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/update/sensecom-update_Data/Managed/System.ServiceModel.Internals.dll",
+   "dest": "update/sensecom-update_Data/Managed/System.ServiceModel.Internals.dll",
+   "size": 215040,
+   "sha256": "3769d417ff5ad79c51a3a73c1b3bae8dd65d2fa755e8432b7bd62665dc8adf14",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/update/sensecom-update_Data/Managed/System.Transactions.dll",
+   "dest": "update/sensecom-update_Data/Managed/System.Transactions.dll",
+   "size": 35328,
+   "sha256": "d18802b621dd1d040a4b84caa986602291ae943f741e400643f8ffec94f012eb",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/update/sensecom-update_Data/Managed/System.Xml.Linq.dll",
+   "dest": "update/sensecom-update_Data/Managed/System.Xml.Linq.dll",
+   "size": 136704,
+   "sha256": "80198e85a2cf6cd36d8d6a782bd049db919cb6466268ffa409e76c55a452e490",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/update/sensecom-update_Data/Managed/System.Xml.dll",
+   "dest": "update/sensecom-update_Data/Managed/System.Xml.dll",
+   "size": 3160064,
+   "sha256": "6dbdb8e2f50c368f5614a2d93375f9a181240fc31d32a35f834fb8f61d5f76e9",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/update/sensecom-update_Data/Managed/System.dll",
+   "dest": "update/sensecom-update_Data/Managed/System.dll",
+   "size": 2653696,
+   "sha256": "2d60482f1cf7a1f23a75252b1dd2acaf55ae4137c65436b021314a50c6b63943",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/update/sensecom-update_Data/Managed/Unity.AI.Navigation.dll",
+   "dest": "update/sensecom-update_Data/Managed/Unity.AI.Navigation.dll",
+   "size": 20480,
+   "sha256": "5159ba4f37ed071535dcfb849b5a9a8ecbb337e053fb5825f46918c7efe16ec1",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/update/sensecom-update_Data/Managed/Unity.Analytics.DataPrivacy.dll",
+   "dest": "update/sensecom-update_Data/Managed/Unity.Analytics.DataPrivacy.dll",
+   "size": 8704,
+   "sha256": "d6b10e6b3b0c1f6b123f120d8c481af606b9f96c2a73c0afaa0b860610df9689",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/update/sensecom-update_Data/Managed/Unity.Services.Analytics.dll",
+   "dest": "update/sensecom-update_Data/Managed/Unity.Services.Analytics.dll",
+   "size": 73728,
+   "sha256": "b2e9e871403c5d4feb3216f678128c4bda9293cd413a5ac99a5f2680dd0bf5a4",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/update/sensecom-update_Data/Managed/Unity.Services.Core.Analytics.dll",
+   "dest": "update/sensecom-update_Data/Managed/Unity.Services.Core.Analytics.dll",
+   "size": 5632,
+   "sha256": "ad3d15ab4bb88d76cd06f4352420e1e5e575d90f2e6bbeef84021657b9182184",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/update/sensecom-update_Data/Managed/Unity.Services.Core.Components.dll",
+   "dest": "update/sensecom-update_Data/Managed/Unity.Services.Core.Components.dll",
+   "size": 10752,
+   "sha256": "95384b9c36bb45ebbb0151438579b7c87f9ae9fdc6dd89e4ff7a2397e1d49d3f",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/update/sensecom-update_Data/Managed/Unity.Services.Core.Configuration.dll",
+   "dest": "update/sensecom-update_Data/Managed/Unity.Services.Core.Configuration.dll",
+   "size": 14336,
+   "sha256": "14b09d9023b44c5422923e97a8a388c6b45049151969d0f2f869a7d8ffaf17b6",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/update/sensecom-update_Data/Managed/Unity.Services.Core.Device.dll",
+   "dest": "update/sensecom-update_Data/Managed/Unity.Services.Core.Device.dll",
+   "size": 6656,
+   "sha256": "e5c346093c9d4d06a4defcc08ef819cb89e5ce2c3b899127086d7c321f567847",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/update/sensecom-update_Data/Managed/Unity.Services.Core.Environments.Internal.dll",
+   "dest": "update/sensecom-update_Data/Managed/Unity.Services.Core.Environments.Internal.dll",
+   "size": 5120,
+   "sha256": "32bf2d9b0c01435020f163c66ed399cef405e4d1efa4136e94bd1a70e2450c58",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/update/sensecom-update_Data/Managed/Unity.Services.Core.Environments.dll",
+   "dest": "update/sensecom-update_Data/Managed/Unity.Services.Core.Environments.dll",
+   "size": 5632,
+   "sha256": "76c73e169589c2d9a5e697d6ae8da47a31753d10b1edb00d7cf395214ce6ff64",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/update/sensecom-update_Data/Managed/Unity.Services.Core.Internal.dll",
+   "dest": "update/sensecom-update_Data/Managed/Unity.Services.Core.Internal.dll",
+   "size": 74240,
+   "sha256": "cdb28f55fcfab52f030a0cb8ee39ddf1c1569eed3da10396ec0f649b5a488848",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/update/sensecom-update_Data/Managed/Unity.Services.Core.Networking.dll",
+   "dest": "update/sensecom-update_Data/Managed/Unity.Services.Core.Networking.dll",
+   "size": 8192,
+   "sha256": "48a449092df1ce96eb538d5a7bafada9cbfe5ef65dfa80f87106f4248f3f1f80",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/update/sensecom-update_Data/Managed/Unity.Services.Core.Registration.dll",
+   "dest": "update/sensecom-update_Data/Managed/Unity.Services.Core.Registration.dll",
+   "size": 18432,
+   "sha256": "e79ded3f9b3a77c6ed64b9bd1a46e6fc370e046b7088d07ab5d8a7a23e860076",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/update/sensecom-update_Data/Managed/Unity.Services.Core.Scheduler.dll",
+   "dest": "update/sensecom-update_Data/Managed/Unity.Services.Core.Scheduler.dll",
+   "size": 12800,
+   "sha256": "9c3f58f76626c082a683a5ee5fab0b4a10b348e0fc8048a2ff47d1f0b6e2febe",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/update/sensecom-update_Data/Managed/Unity.Services.Core.Telemetry.dll",
+   "dest": "update/sensecom-update_Data/Managed/Unity.Services.Core.Telemetry.dll",
+   "size": 8704,
+   "sha256": "ede3cb242c4696ce17878b0dc2fa61177fe5d0b3d000092515dc1a0f6f441602",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/update/sensecom-update_Data/Managed/Unity.Services.Core.Threading.dll",
+   "dest": "update/sensecom-update_Data/Managed/Unity.Services.Core.Threading.dll",
+   "size": 7168,
+   "sha256": "756f1b90f2fcd902abd3d480cb1683f3e5bc8239a9c42a7f71a3c09b9fbd7d26",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/update/sensecom-update_Data/Managed/Unity.Services.Core.dll",
+   "dest": "update/sensecom-update_Data/Managed/Unity.Services.Core.dll",
+   "size": 16384,
+   "sha256": "c55c6e7adf4304da9893f66a014503708b35007a2630551a920c129cc43d87e8",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/update/sensecom-update_Data/Managed/Unity.Timeline.dll",
+   "dest": "update/sensecom-update_Data/Managed/Unity.Timeline.dll",
+   "size": 127488,
+   "sha256": "d38d361b3af958144e00398626a1e5455bd07a03496ae28082452efdb74c0265",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/update/sensecom-update_Data/Managed/UnityEngine.AIModule.dll",
+   "dest": "update/sensecom-update_Data/Managed/UnityEngine.AIModule.dll",
+   "size": 48128,
+   "sha256": "436644f9a9f4768e1af7fff65abea880fc812481ef822adf1fbebbeedc6ad907",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/update/sensecom-update_Data/Managed/UnityEngine.AccessibilityModule.dll",
+   "dest": "update/sensecom-update_Data/Managed/UnityEngine.AccessibilityModule.dll",
+   "size": 12800,
+   "sha256": "258e5a58a21bdf7de07227da1228b3c8c5bcc36fa80f1f479f1bad9c57e4858a",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/update/sensecom-update_Data/Managed/UnityEngine.Advertisements.dll",
+   "dest": "update/sensecom-update_Data/Managed/UnityEngine.Advertisements.dll",
+   "size": 38400,
+   "sha256": "c7a42a6f009ced342dd3f3e1beab5f6ed616e3ead7c6371b195342a7f12edb94",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/update/sensecom-update_Data/Managed/UnityEngine.AndroidJNIModule.dll",
+   "dest": "update/sensecom-update_Data/Managed/UnityEngine.AndroidJNIModule.dll",
+   "size": 84480,
+   "sha256": "8558107ef109aa9d4c1d70409ac5e9267cbd77645a0b67972738055811dff235",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/update/sensecom-update_Data/Managed/UnityEngine.AnimationModule.dll",
+   "dest": "update/sensecom-update_Data/Managed/UnityEngine.AnimationModule.dll",
+   "size": 153600,
+   "sha256": "f9a425a255d803ca742d2c8203c576e1e8e9c2cd84ac93d5c47c68e0985480ec",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/update/sensecom-update_Data/Managed/UnityEngine.AssetBundleModule.dll",
+   "dest": "update/sensecom-update_Data/Managed/UnityEngine.AssetBundleModule.dll",
+   "size": 22528,
+   "sha256": "4a2e01fc5d6fd79476dbd5077dd62a856880edd80c30ca76ae29a4c8209b0540",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/update/sensecom-update_Data/Managed/UnityEngine.AudioModule.dll",
+   "dest": "update/sensecom-update_Data/Managed/UnityEngine.AudioModule.dll",
+   "size": 60928,
+   "sha256": "23603679297d0dceae52bf92d159212721ac3c414003de087b7eaf8cf308b556",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/update/sensecom-update_Data/Managed/UnityEngine.ClothModule.dll",
+   "dest": "update/sensecom-update_Data/Managed/UnityEngine.ClothModule.dll",
+   "size": 15872,
+   "sha256": "4f94825dfd17d99c642e44e81adcf741be050910a6fe56e82449c4ee784b9fb6",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/update/sensecom-update_Data/Managed/UnityEngine.ClusterInputModule.dll",
+   "dest": "update/sensecom-update_Data/Managed/UnityEngine.ClusterInputModule.dll",
+   "size": 11264,
+   "sha256": "1f20213660c5f876d7cb5943e148132e1307d9fedc69ded4dad34ae50b52f13c",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/update/sensecom-update_Data/Managed/UnityEngine.ClusterRendererModule.dll",
+   "dest": "update/sensecom-update_Data/Managed/UnityEngine.ClusterRendererModule.dll",
+   "size": 11776,
+   "sha256": "d07b964fb4ef3a57376c8ec9c6cfb78293faa8cbba5ad4294a9e69def476d8c0",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/update/sensecom-update_Data/Managed/UnityEngine.ContentLoadModule.dll",
+   "dest": "update/sensecom-update_Data/Managed/UnityEngine.ContentLoadModule.dll",
+   "size": 16896,
+   "sha256": "d107e6a7a0185e06024de95cbdddc7ad758a66443a2cd34388a6c797fcbd897d",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/update/sensecom-update_Data/Managed/UnityEngine.CoreModule.dll",
+   "dest": "update/sensecom-update_Data/Managed/UnityEngine.CoreModule.dll",
+   "size": 1381888,
+   "sha256": "44d613b2996334c7fc7afadbdd2020d769e70fee1f7e7060db9d51eb5e545e07",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/update/sensecom-update_Data/Managed/UnityEngine.CrashReportingModule.dll",
+   "dest": "update/sensecom-update_Data/Managed/UnityEngine.CrashReportingModule.dll",
+   "size": 10752,
+   "sha256": "7335502a07cb5b587becf8e6f70201ad0b087d1594f02da020b41bebba17deae",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/update/sensecom-update_Data/Managed/UnityEngine.DSPGraphModule.dll",
+   "dest": "update/sensecom-update_Data/Managed/UnityEngine.DSPGraphModule.dll",
+   "size": 18944,
+   "sha256": "24e9fa116550e315bb2824f54796ea6906ba916d43f835435bf65438773ec630",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/update/sensecom-update_Data/Managed/UnityEngine.DirectorModule.dll",
+   "dest": "update/sensecom-update_Data/Managed/UnityEngine.DirectorModule.dll",
+   "size": 14336,
+   "sha256": "ddbabcb2fdaa340d53fde8c024e06a2a000f2f2d90c950a82cb5e9aa42a47068",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/update/sensecom-update_Data/Managed/UnityEngine.GIModule.dll",
+   "dest": "update/sensecom-update_Data/Managed/UnityEngine.GIModule.dll",
+   "size": 9728,
+   "sha256": "9703570d65d3172aa905402fadeca880bce0d9f828acd50c5aea06a240105e5a",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/update/sensecom-update_Data/Managed/UnityEngine.GameCenterModule.dll",
+   "dest": "update/sensecom-update_Data/Managed/UnityEngine.GameCenterModule.dll",
+   "size": 29696,
+   "sha256": "3b6149b334ca3f73db3614717ff1e224490c805e63af7c0f84fa9728ca7fdb07",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/update/sensecom-update_Data/Managed/UnityEngine.GridModule.dll",
+   "dest": "update/sensecom-update_Data/Managed/UnityEngine.GridModule.dll",
+   "size": 14848,
+   "sha256": "98f5d803522928bc94f3dd1b18cb7de82471405fa48b2cf558bd7eeb6a831537",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/update/sensecom-update_Data/Managed/UnityEngine.HotReloadModule.dll",
+   "dest": "update/sensecom-update_Data/Managed/UnityEngine.HotReloadModule.dll",
+   "size": 9728,
+   "sha256": "030f75bd4ab90fd3c7bf949b24eb3b9f9b91b63766370675487c7e2d56ab2b93",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/update/sensecom-update_Data/Managed/UnityEngine.IMGUIModule.dll",
+   "dest": "update/sensecom-update_Data/Managed/UnityEngine.IMGUIModule.dll",
+   "size": 180736,
+   "sha256": "6d676cacf828379ede54428494dc6743ec2cef36b728ccde0c514347ce972189",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/update/sensecom-update_Data/Managed/UnityEngine.ImageConversionModule.dll",
+   "dest": "update/sensecom-update_Data/Managed/UnityEngine.ImageConversionModule.dll",
+   "size": 13824,
+   "sha256": "5e92af092a382fa4de48635368798912ad5ca38a4a744079442c17c33f32dbaf",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/update/sensecom-update_Data/Managed/UnityEngine.InputLegacyModule.dll",
+   "dest": "update/sensecom-update_Data/Managed/UnityEngine.InputLegacyModule.dll",
+   "size": 28672,
+   "sha256": "c13f4843fe67f8a78f27c8185cb9ebac1e377495144a1707c4fc9403734dfee7",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/update/sensecom-update_Data/Managed/UnityEngine.InputModule.dll",
+   "dest": "update/sensecom-update_Data/Managed/UnityEngine.InputModule.dll",
+   "size": 13312,
+   "sha256": "5178a355deb1fb7ec1d0b0d07e4cb16c1a0ae2213c21f87b33cc9dae00e9554c",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/update/sensecom-update_Data/Managed/UnityEngine.JSONSerializeModule.dll",
+   "dest": "update/sensecom-update_Data/Managed/UnityEngine.JSONSerializeModule.dll",
+   "size": 11776,
+   "sha256": "de4795a2e27d1ad8ec4bab415571f20bf818add7354beca23cd07798a99aee4e",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/update/sensecom-update_Data/Managed/UnityEngine.LocalizationModule.dll",
+   "dest": "update/sensecom-update_Data/Managed/UnityEngine.LocalizationModule.dll",
+   "size": 10752,
+   "sha256": "86935f9854bd9459d3fb23bd565383b8bee3380fff98373ba2002aadf96da44f",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/update/sensecom-update_Data/Managed/UnityEngine.ParticleSystemModule.dll",
+   "dest": "update/sensecom-update_Data/Managed/UnityEngine.ParticleSystemModule.dll",
+   "size": 151040,
+   "sha256": "50957fc418ea6ec75b9b4f40d6e987aa507d8785830a5a21dc3ecba16f718d1f",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/update/sensecom-update_Data/Managed/UnityEngine.PerformanceReportingModule.dll",
+   "dest": "update/sensecom-update_Data/Managed/UnityEngine.PerformanceReportingModule.dll",
+   "size": 10240,
+   "sha256": "5cf2f99dcc094cd295a4fccf3e7f6524f8677ad0bd6d770fdaee92d302022cff",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/update/sensecom-update_Data/Managed/UnityEngine.Physics2DModule.dll",
+   "dest": "update/sensecom-update_Data/Managed/UnityEngine.Physics2DModule.dll",
+   "size": 131072,
+   "sha256": "d084a2257dba938a67e2137fe392fa4da9249dbbe456d4348caa7280dc59a083",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/update/sensecom-update_Data/Managed/UnityEngine.PhysicsModule.dll",
+   "dest": "update/sensecom-update_Data/Managed/UnityEngine.PhysicsModule.dll",
+   "size": 128000,
+   "sha256": "b751d25946d651012d2f0839af6b6e102f44c3aa15276913a34c63d7df28791a",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/update/sensecom-update_Data/Managed/UnityEngine.ProfilerModule.dll",
+   "dest": "update/sensecom-update_Data/Managed/UnityEngine.ProfilerModule.dll",
+   "size": 9728,
+   "sha256": "e9a55d1a6ac9878ca6374c336fd65dc294437f4f1039e56abe21a950fbc212b9",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/update/sensecom-update_Data/Managed/UnityEngine.PropertiesModule.dll",
+   "dest": "update/sensecom-update_Data/Managed/UnityEngine.PropertiesModule.dll",
+   "size": 144896,
+   "sha256": "8763681ad2c57a6e72268c46360bc3cd5f5dbcb6ec0aa3e68fec5ce0aefae914",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/update/sensecom-update_Data/Managed/UnityEngine.Purchasing.AppleCore.dll",
+   "dest": "update/sensecom-update_Data/Managed/UnityEngine.Purchasing.AppleCore.dll",
+   "size": 6144,
+   "sha256": "a69a98cad8539ec01eeb68119d3f79edf38846b5c1f3412b66deb337d7b9d7a6",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/update/sensecom-update_Data/Managed/UnityEngine.Purchasing.AppleMacosStub.dll",
+   "dest": "update/sensecom-update_Data/Managed/UnityEngine.Purchasing.AppleMacosStub.dll",
+   "size": 6144,
+   "sha256": "0bf163c1315e19d7bd3706525293fad9eb26bd0c1960a4a40a47c53682bc3473",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/update/sensecom-update_Data/Managed/UnityEngine.Purchasing.AppleStub.dll",
+   "dest": "update/sensecom-update_Data/Managed/UnityEngine.Purchasing.AppleStub.dll",
+   "size": 6144,
+   "sha256": "ec9fd9255e7546773d73f1e8a2402fc800b3a1dcd01927dc0c9262af330eb60d",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/update/sensecom-update_Data/Managed/UnityEngine.Purchasing.Codeless.dll",
+   "dest": "update/sensecom-update_Data/Managed/UnityEngine.Purchasing.Codeless.dll",
+   "size": 23040,
+   "sha256": "e2324f1f37bdb3e07bc8d9bb963b895f9d23ec8ed8616924c56c13e554942052",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/update/sensecom-update_Data/Managed/UnityEngine.Purchasing.SecurityCore.dll",
+   "dest": "update/sensecom-update_Data/Managed/UnityEngine.Purchasing.SecurityCore.dll",
+   "size": 8704,
+   "sha256": "8c088ca130240c0b0e8285c652c2458140dede2c18d26c99f656fae34487e1e9",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/update/sensecom-update_Data/Managed/UnityEngine.Purchasing.SecurityStub.dll",
+   "dest": "update/sensecom-update_Data/Managed/UnityEngine.Purchasing.SecurityStub.dll",
+   "size": 7168,
+   "sha256": "0ff1e6ed4b54ee7258d42945d086f6019e9374f99275bacf5868f6cb9e885ac4",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/update/sensecom-update_Data/Managed/UnityEngine.Purchasing.Stores.dll",
+   "dest": "update/sensecom-update_Data/Managed/UnityEngine.Purchasing.Stores.dll",
+   "size": 199680,
+   "sha256": "2183ebcac97cf1e6fd95dbcfe659cd108d9ef45086239cb2c254669204ebdcb0",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/update/sensecom-update_Data/Managed/UnityEngine.Purchasing.WinRTCore.dll",
+   "dest": "update/sensecom-update_Data/Managed/UnityEngine.Purchasing.WinRTCore.dll",
+   "size": 7168,
+   "sha256": "ea6970159c7e7c7cb211eae9b2f8d9ba004552187e3368163f9183979b14e3c5",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/update/sensecom-update_Data/Managed/UnityEngine.Purchasing.WinRTStub.dll",
+   "dest": "update/sensecom-update_Data/Managed/UnityEngine.Purchasing.WinRTStub.dll",
+   "size": 5120,
+   "sha256": "bddcf17c895462519cade12ce090d12cd776ac4f154311a0b106b13c6c2eb40e",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/update/sensecom-update_Data/Managed/UnityEngine.Purchasing.dll",
+   "dest": "update/sensecom-update_Data/Managed/UnityEngine.Purchasing.dll",
+   "size": 62976,
+   "sha256": "60d24c20e88cff79fe6553bcf88d169a48e61b705773a8a2a17f73395f2ea39d",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/update/sensecom-update_Data/Managed/UnityEngine.RuntimeInitializeOnLoadManagerInitializerModule.dll",
+   "dest": "update/sensecom-update_Data/Managed/UnityEngine.RuntimeInitializeOnLoadManagerInitializerModule.dll",
+   "size": 9728,
+   "sha256": "a4adeebc59eed78ae00313bfd3ed1aa5373d1a69ef4fa6a03d93473ad157c998",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/update/sensecom-update_Data/Managed/UnityEngine.ScreenCaptureModule.dll",
+   "dest": "update/sensecom-update_Data/Managed/UnityEngine.ScreenCaptureModule.dll",
+   "size": 10752,
+   "sha256": "a1a68a09c6f4d50d5581dd9e4e77188588c44ffaeb69c7b121c6bd2c5e55f486",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/update/sensecom-update_Data/Managed/UnityEngine.SharedInternalsModule.dll",
+   "dest": "update/sensecom-update_Data/Managed/UnityEngine.SharedInternalsModule.dll",
+   "size": 22528,
+   "sha256": "5998e2afc5aa8e20e39316829b18df329b7a27ca5ffd4e602c456f13de906774",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/update/sensecom-update_Data/Managed/UnityEngine.SpatialTracking.dll",
+   "dest": "update/sensecom-update_Data/Managed/UnityEngine.SpatialTracking.dll",
+   "size": 11776,
+   "sha256": "b1fb996339c8cd3a8fd93f914b9d5f4a1aba168db5ccdc2065dc93fb44cb3f3e",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/update/sensecom-update_Data/Managed/UnityEngine.SpriteMaskModule.dll",
+   "dest": "update/sensecom-update_Data/Managed/UnityEngine.SpriteMaskModule.dll",
+   "size": 11264,
+   "sha256": "4963e748b69aa75b5812c76a4d411a6aac890410dc4e5331ff2e5851e7933ad3",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/update/sensecom-update_Data/Managed/UnityEngine.SpriteShapeModule.dll",
+   "dest": "update/sensecom-update_Data/Managed/UnityEngine.SpriteShapeModule.dll",
+   "size": 15872,
+   "sha256": "e7ee0af321047ac552290d4c47a114581810ab1b4bce7517f461d9be5692d6e8",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/update/sensecom-update_Data/Managed/UnityEngine.StreamingModule.dll",
+   "dest": "update/sensecom-update_Data/Managed/UnityEngine.StreamingModule.dll",
+   "size": 10240,
+   "sha256": "27dda6918487354c0cddd44140ff72eadc4c07dfd57dfc0740fdfd8c2dff83c3",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/update/sensecom-update_Data/Managed/UnityEngine.SubstanceModule.dll",
+   "dest": "update/sensecom-update_Data/Managed/UnityEngine.SubstanceModule.dll",
+   "size": 14336,
+   "sha256": "8b963a8897d650bf9d13234e1421b27e91a996ed4fc0cbf16d3234ce155eb07a",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/update/sensecom-update_Data/Managed/UnityEngine.SubsystemsModule.dll",
+   "dest": "update/sensecom-update_Data/Managed/UnityEngine.SubsystemsModule.dll",
+   "size": 24576,
+   "sha256": "7c7ddbc7caf863f658bd8866952e2a0fad1a77f3c7904011ab939b2e6bd687b3",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/update/sensecom-update_Data/Managed/UnityEngine.TLSModule.dll",
+   "dest": "update/sensecom-update_Data/Managed/UnityEngine.TLSModule.dll",
+   "size": 16384,
+   "sha256": "231c6c6fc2f38d42bdb4ab09675236395272caf0ece558741eeb5f33979f6766",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/update/sensecom-update_Data/Managed/UnityEngine.TerrainModule.dll",
+   "dest": "update/sensecom-update_Data/Managed/UnityEngine.TerrainModule.dll",
+   "size": 90624,
+   "sha256": "d58763fefbe594652d71a14c94dafa01790e3c548a7cacef65a57663bbbd46f9",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/update/sensecom-update_Data/Managed/UnityEngine.TerrainPhysicsModule.dll",
+   "dest": "update/sensecom-update_Data/Managed/UnityEngine.TerrainPhysicsModule.dll",
+   "size": 10752,
+   "sha256": "cd087e3621d5daa903d8adb9e2b7b93ead2f609018a966782006e1bdd64b228e",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/update/sensecom-update_Data/Managed/UnityEngine.TextCoreFontEngineModule.dll",
+   "dest": "update/sensecom-update_Data/Managed/UnityEngine.TextCoreFontEngineModule.dll",
+   "size": 62464,
+   "sha256": "4c71d37b3d59d57be67c213aaa15adf287544c52e3e7714456e5ff56135744e5",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/update/sensecom-update_Data/Managed/UnityEngine.TextCoreTextEngineModule.dll",
+   "dest": "update/sensecom-update_Data/Managed/UnityEngine.TextCoreTextEngineModule.dll",
+   "size": 239104,
+   "sha256": "c901c43a13f33cbd3292e248de70a20f8328043148e94d54f988e22eb38224d2",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/update/sensecom-update_Data/Managed/UnityEngine.TextRenderingModule.dll",
+   "dest": "update/sensecom-update_Data/Managed/UnityEngine.TextRenderingModule.dll",
+   "size": 28672,
+   "sha256": "ad92196a2427055694720b64d50b595de689302d81ce94fbae72ca62fba53af0",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/update/sensecom-update_Data/Managed/UnityEngine.TilemapModule.dll",
+   "dest": "update/sensecom-update_Data/Managed/UnityEngine.TilemapModule.dll",
+   "size": 36352,
+   "sha256": "8e0a5252365336d887619be082785ca5089af4a79fb782cc453b9d3dff3df26e",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/update/sensecom-update_Data/Managed/UnityEngine.UI.dll",
+   "dest": "update/sensecom-update_Data/Managed/UnityEngine.UI.dll",
+   "size": 264704,
+   "sha256": "b65491ded8dde11470f19e4be7dd1bc30348811c1fc9a35832ed0ec324b11fb9",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/update/sensecom-update_Data/Managed/UnityEngine.UIElementsModule.dll",
+   "dest": "update/sensecom-update_Data/Managed/UnityEngine.UIElementsModule.dll",
+   "size": 1526784,
+   "sha256": "01630a3b11c901a3bb406be1abe732754fae6a8699220f7b28935394c99c5f09",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/update/sensecom-update_Data/Managed/UnityEngine.UIModule.dll",
+   "dest": "update/sensecom-update_Data/Managed/UnityEngine.UIModule.dll",
+   "size": 26112,
+   "sha256": "9d7a87544ba02ce15e145e23038eab78a52253867dfaae6b90df2e9c05cc476e",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/update/sensecom-update_Data/Managed/UnityEngine.UmbraModule.dll",
+   "dest": "update/sensecom-update_Data/Managed/UnityEngine.UmbraModule.dll",
+   "size": 9728,
+   "sha256": "eb9eda25cb2264c4369fae4c4f2c68097d1b7df8a6e8dff8a73ef595a601baba",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/update/sensecom-update_Data/Managed/UnityEngine.UnityAnalyticsCommonModule.dll",
+   "dest": "update/sensecom-update_Data/Managed/UnityEngine.UnityAnalyticsCommonModule.dll",
+   "size": 10752,
+   "sha256": "2f7d95eda482665175329b15235018f7275e6d7add8e96257197c8267c1be4f2",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/update/sensecom-update_Data/Managed/UnityEngine.UnityAnalyticsModule.dll",
+   "dest": "update/sensecom-update_Data/Managed/UnityEngine.UnityAnalyticsModule.dll",
+   "size": 34304,
+   "sha256": "4c5feb1b0aa87c00f5d5ab770dad8bf7be1090141a0ee5e5a5525c8030b207c4",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/update/sensecom-update_Data/Managed/UnityEngine.UnityConnectModule.dll",
+   "dest": "update/sensecom-update_Data/Managed/UnityEngine.UnityConnectModule.dll",
+   "size": 11264,
+   "sha256": "05957877318fbd1367d414698bb3d0a53c80a587a918abdaba096645b3c5142b",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/update/sensecom-update_Data/Managed/UnityEngine.UnityCurlModule.dll",
+   "dest": "update/sensecom-update_Data/Managed/UnityEngine.UnityCurlModule.dll",
+   "size": 11264,
+   "sha256": "0fb91f98072a141a65c374105e26fb4778747d8ac54bca207a950fccfd5cac54",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/update/sensecom-update_Data/Managed/UnityEngine.UnityTestProtocolModule.dll",
+   "dest": "update/sensecom-update_Data/Managed/UnityEngine.UnityTestProtocolModule.dll",
+   "size": 9728,
+   "sha256": "341ace435326f810e8cbea225e194bff5e16ba2dfc79de8c95d82f63fc6c16e0",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/update/sensecom-update_Data/Managed/UnityEngine.UnityWebRequestAssetBundleModule.dll",
+   "dest": "update/sensecom-update_Data/Managed/UnityEngine.UnityWebRequestAssetBundleModule.dll",
+   "size": 12800,
+   "sha256": "4b927daa140f4a3ae143d2475deda795da0a62c7ce5e212cdfa470940d7547e5",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/update/sensecom-update_Data/Managed/UnityEngine.UnityWebRequestAudioModule.dll",
+   "dest": "update/sensecom-update_Data/Managed/UnityEngine.UnityWebRequestAudioModule.dll",
+   "size": 12288,
+   "sha256": "f9244788f8f0e60262f1f159043ce468d535bf4b713908d3173360be2782edb3",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/update/sensecom-update_Data/Managed/UnityEngine.UnityWebRequestModule.dll",
+   "dest": "update/sensecom-update_Data/Managed/UnityEngine.UnityWebRequestModule.dll",
+   "size": 47616,
+   "sha256": "61c5d06e129bcbf066b5ed9d6d5ee2e852108460ad10e5cbfcfa33af061cc66f",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/update/sensecom-update_Data/Managed/UnityEngine.UnityWebRequestTextureModule.dll",
+   "dest": "update/sensecom-update_Data/Managed/UnityEngine.UnityWebRequestTextureModule.dll",
+   "size": 11264,
+   "sha256": "c6b9e39f9ee2a35aa1e34b4fefc2ff84e8e202e76a73760792064c31d106637d",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/update/sensecom-update_Data/Managed/UnityEngine.UnityWebRequestWWWModule.dll",
+   "dest": "update/sensecom-update_Data/Managed/UnityEngine.UnityWebRequestWWWModule.dll",
+   "size": 20992,
+   "sha256": "7494a5d474c2697fe59e860091f2796388b0d1066daa9ef78aae97e8039b7030",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/update/sensecom-update_Data/Managed/UnityEngine.VFXModule.dll",
+   "dest": "update/sensecom-update_Data/Managed/UnityEngine.VFXModule.dll",
+   "size": 48128,
+   "sha256": "c2f5ff923b736c7e5a1a43365baa7b8a8169b022ea3b8b4950ab3a856a9dba99",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/update/sensecom-update_Data/Managed/UnityEngine.VRModule.dll",
+   "dest": "update/sensecom-update_Data/Managed/UnityEngine.VRModule.dll",
+   "size": 16384,
+   "sha256": "a4116fe6ccb056d98bb499682f0776dc4d572db48093b648aabc111666af0bbf",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/update/sensecom-update_Data/Managed/UnityEngine.VehiclesModule.dll",
+   "dest": "update/sensecom-update_Data/Managed/UnityEngine.VehiclesModule.dll",
+   "size": 13824,
+   "sha256": "08c5844d506bc3c716af74b8de5f1516a87f6d0cf05ad8abae71a77930656442",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/update/sensecom-update_Data/Managed/UnityEngine.VideoModule.dll",
+   "dest": "update/sensecom-update_Data/Managed/UnityEngine.VideoModule.dll",
+   "size": 30720,
+   "sha256": "3a746352f34e4555c4846ec7eeeb5ca0edb58cce81f8830c134b7cab6cf6257d",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/update/sensecom-update_Data/Managed/UnityEngine.VirtualTexturingModule.dll",
+   "dest": "update/sensecom-update_Data/Managed/UnityEngine.VirtualTexturingModule.dll",
+   "size": 25600,
+   "sha256": "3d5e11149bf187cf85dabbf1620484657484d40c3f40bd428f0db772d737dcfd",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/update/sensecom-update_Data/Managed/UnityEngine.WindModule.dll",
+   "dest": "update/sensecom-update_Data/Managed/UnityEngine.WindModule.dll",
+   "size": 10752,
+   "sha256": "56033c4b6e17433c880bdcbf4a13a7e4010a6589401bfd5a619471db5088af79",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/update/sensecom-update_Data/Managed/UnityEngine.XR.LegacyInputHelpers.dll",
+   "dest": "update/sensecom-update_Data/Managed/UnityEngine.XR.LegacyInputHelpers.dll",
+   "size": 23552,
+   "sha256": "914a7e74a49a1210b449ae05c194379fc7cc005ed449d9dbf391dc8f544699bd",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/update/sensecom-update_Data/Managed/UnityEngine.XRModule.dll",
+   "dest": "update/sensecom-update_Data/Managed/UnityEngine.XRModule.dll",
+   "size": 60416,
+   "sha256": "9d92202330d52e752647113a995c2edafe0308ada84bb4ecb6718e58fd7cb4c3",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/update/sensecom-update_Data/Managed/UnityEngine.dll",
+   "dest": "update/sensecom-update_Data/Managed/UnityEngine.dll",
+   "size": 115712,
+   "sha256": "c8c7fcb038611eeb6b6293601d1fffef72bffebc317256f16cfbc33a333b10fa",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/update/sensecom-update_Data/Managed/mscorlib.dll",
+   "dest": "update/sensecom-update_Data/Managed/mscorlib.dll",
+   "size": 4622848,
+   "sha256": "44670e7fd323ad5e4ec0fd0614e73e685e0a546aa59b9b9112f09e381689df79",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/update/sensecom-update_Data/Managed/netstandard.dll",
+   "dest": "update/sensecom-update_Data/Managed/netstandard.dll",
+   "size": 90624,
+   "sha256": "bf0b7eac9010b75413e4ec1a07a3453bc6a68eeb8e916fbed7c1f2777841f7c7",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/update/sensecom-update_Data/MonoBleedingEdge/etc/config",
+   "dest": "update/sensecom-update_Data/MonoBleedingEdge/etc/config",
+   "size": 3764,
+   "sha256": "b12f4e32436f1b417451eb5f69433433ae1f732b0c9e80b039073e1b6daa24da",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/update/sensecom-update_Data/MonoBleedingEdge/etc/mono/2.0/Browsers/Compat.browser",
+   "dest": "update/sensecom-update_Data/MonoBleedingEdge/etc/mono/2.0/Browsers/Compat.browser",
+   "size": 1586,
+   "sha256": "608f6314528124253dcdba16db71967eca61d5d62d9bf3ae3e2f4926c5891bc3",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/update/sensecom-update_Data/MonoBleedingEdge/etc/mono/2.0/DefaultWsdlHelpGenerator.aspx",
+   "dest": "update/sensecom-update_Data/MonoBleedingEdge/etc/mono/2.0/DefaultWsdlHelpGenerator.aspx",
+   "size": 60575,
+   "sha256": "751861040b69ea63a3827507b7c8da9c7f549dc181c1c8af4b7ca78cc97d710a",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/update/sensecom-update_Data/MonoBleedingEdge/etc/mono/2.0/machine.config",
+   "dest": "update/sensecom-update_Data/MonoBleedingEdge/etc/mono/2.0/machine.config",
+   "size": 29066,
+   "sha256": "e91782a27fa39fc6c1d6ee8b08529f5d35052310d0006034b878eb04b8f2af30",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/update/sensecom-update_Data/MonoBleedingEdge/etc/mono/2.0/settings.map",
+   "dest": "update/sensecom-update_Data/MonoBleedingEdge/etc/mono/2.0/settings.map",
+   "size": 2622,
+   "sha256": "49c6160f9d54af4270a3b4e997fc4a8301f79b9e2070118fa46ddbcbbc44f9a2",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/update/sensecom-update_Data/MonoBleedingEdge/etc/mono/2.0/web.config",
+   "dest": "update/sensecom-update_Data/MonoBleedingEdge/etc/mono/2.0/web.config",
+   "size": 11635,
+   "sha256": "cf2b54339e069b9e42f7d6795eecbf562c50c1011f4ca8f65f578fe52d97ff92",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/update/sensecom-update_Data/MonoBleedingEdge/etc/mono/4.0/Browsers/Compat.browser",
+   "dest": "update/sensecom-update_Data/MonoBleedingEdge/etc/mono/4.0/Browsers/Compat.browser",
+   "size": 1586,
+   "sha256": "608f6314528124253dcdba16db71967eca61d5d62d9bf3ae3e2f4926c5891bc3",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/update/sensecom-update_Data/MonoBleedingEdge/etc/mono/4.0/DefaultWsdlHelpGenerator.aspx",
+   "dest": "update/sensecom-update_Data/MonoBleedingEdge/etc/mono/4.0/DefaultWsdlHelpGenerator.aspx",
+   "size": 60575,
+   "sha256": "751861040b69ea63a3827507b7c8da9c7f549dc181c1c8af4b7ca78cc97d710a",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/update/sensecom-update_Data/MonoBleedingEdge/etc/mono/4.0/machine.config",
+   "dest": "update/sensecom-update_Data/MonoBleedingEdge/etc/mono/4.0/machine.config",
+   "size": 33598,
+   "sha256": "e60aec2c5115d65b3acb3c55ea21576dbd770f579166c017125571e46ae560ed",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/update/sensecom-update_Data/MonoBleedingEdge/etc/mono/4.0/settings.map",
+   "dest": "update/sensecom-update_Data/MonoBleedingEdge/etc/mono/4.0/settings.map",
+   "size": 2622,
+   "sha256": "ce1db1ad8a9512073164e3eccdc193f7eda036e1a9733caec4635de21b2865c8",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/update/sensecom-update_Data/MonoBleedingEdge/etc/mono/4.0/web.config",
+   "dest": "update/sensecom-update_Data/MonoBleedingEdge/etc/mono/4.0/web.config",
+   "size": 18802,
+   "sha256": "e38bb8cc68fe5b4edecdfd288d094b9e8ced7629039b2a347682aba0d8bd7492",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/update/sensecom-update_Data/MonoBleedingEdge/etc/mono/4.5/Browsers/Compat.browser",
+   "dest": "update/sensecom-update_Data/MonoBleedingEdge/etc/mono/4.5/Browsers/Compat.browser",
+   "size": 1586,
+   "sha256": "608f6314528124253dcdba16db71967eca61d5d62d9bf3ae3e2f4926c5891bc3",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/update/sensecom-update_Data/MonoBleedingEdge/etc/mono/4.5/DefaultWsdlHelpGenerator.aspx",
+   "dest": "update/sensecom-update_Data/MonoBleedingEdge/etc/mono/4.5/DefaultWsdlHelpGenerator.aspx",
+   "size": 60575,
+   "sha256": "751861040b69ea63a3827507b7c8da9c7f549dc181c1c8af4b7ca78cc97d710a",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/update/sensecom-update_Data/MonoBleedingEdge/etc/mono/4.5/machine.config",
+   "dest": "update/sensecom-update_Data/MonoBleedingEdge/etc/mono/4.5/machine.config",
+   "size": 34056,
+   "sha256": "ee950004b576fb28dc85f4b0435ed04bf96612de2e8b53be84d07afe85a0de6c",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/update/sensecom-update_Data/MonoBleedingEdge/etc/mono/4.5/settings.map",
+   "dest": "update/sensecom-update_Data/MonoBleedingEdge/etc/mono/4.5/settings.map",
+   "size": 2622,
+   "sha256": "ce1db1ad8a9512073164e3eccdc193f7eda036e1a9733caec4635de21b2865c8",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/update/sensecom-update_Data/MonoBleedingEdge/etc/mono/4.5/web.config",
+   "dest": "update/sensecom-update_Data/MonoBleedingEdge/etc/mono/4.5/web.config",
+   "size": 18811,
+   "sha256": "c4cbddd4fd9347b58cc5a72b36dc4ba1ad2bb699e65869d05cd3fb9865f0d824",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/update/sensecom-update_Data/MonoBleedingEdge/etc/mono/browscap.ini",
+   "dest": "update/sensecom-update_Data/MonoBleedingEdge/etc/mono/browscap.ini",
+   "size": 311984,
+   "sha256": "4ddd50f31fb968f30bedefc253a46dc3f2890192d05cdaa9e0a64a056eee807e",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/update/sensecom-update_Data/MonoBleedingEdge/etc/mono/config",
+   "dest": "update/sensecom-update_Data/MonoBleedingEdge/etc/mono/config",
+   "size": 3764,
+   "sha256": "b12f4e32436f1b417451eb5f69433433ae1f732b0c9e80b039073e1b6daa24da",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/update/sensecom-update_Data/MonoBleedingEdge/etc/mono/mconfig/config.xml",
+   "dest": "update/sensecom-update_Data/MonoBleedingEdge/etc/mono/mconfig/config.xml",
+   "size": 25817,
+   "sha256": "0c56e34c69124510fa8c19e7b4c2ca6c1c4ff460ae19f798dd0ca035809e396d",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/update/sensecom-update_Data/MonoBleedingEdge/x86_64/libMonoPosixHelper.so",
+   "dest": "update/sensecom-update_Data/MonoBleedingEdge/x86_64/libMonoPosixHelper.so",
+   "size": 264160,
+   "sha256": "f7cf05a21d6db5ee7c639956b9464f76d345ccc00d1f16649e9b3db9fa7e19fd",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/update/sensecom-update_Data/MonoBleedingEdge/x86_64/libmono-native.so",
+   "dest": "update/sensecom-update_Data/MonoBleedingEdge/x86_64/libmono-native.so",
+   "size": 2303896,
+   "sha256": "7eaefbab0125d09af57f2f6d6d91aac73c77a1561888fa82c716b57e418e5275",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/update/sensecom-update_Data/MonoBleedingEdge/x86_64/libmonobdwgc-2.0.so",
+   "dest": "update/sensecom-update_Data/MonoBleedingEdge/x86_64/libmonobdwgc-2.0.so",
+   "size": 3872688,
+   "sha256": "4b4cb5bff9a6326b5423bcd0c4511f1b523f9f3323f90b5d57bf27323d8b6152",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/update/sensecom-update_Data/Plugins/libSGConnect.so",
+   "dest": "update/sensecom-update_Data/Plugins/libSGConnect.so",
+   "size": 8656808,
+   "sha256": "b811d4d72d0bc72c1d3a97266388a4ab8ed4f9143df9501f27196673b597cb77",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/update/sensecom-update_Data/Resources/UnityPlayer.png",
+   "dest": "update/sensecom-update_Data/Resources/UnityPlayer.png",
+   "size": 11558,
+   "sha256": "ba0cc2ef71ed2da5452c339e531efdeea2c9bc8b81ab17eec8d31765cfb9269f",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/update/sensecom-update_Data/Resources/unity default resources",
+   "dest": "update/sensecom-update_Data/Resources/unity default resources",
+   "size": 1564240,
+   "sha256": "a11e3e24520676183b3750564b4d9f5a90e8f41fd3523cbfb0c49f3989453da2",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/update/sensecom-update_Data/Resources/unity_builtin_extra",
+   "dest": "update/sensecom-update_Data/Resources/unity_builtin_extra",
+   "size": 568780,
+   "sha256": "a8f9189c5358ad60a9ef34a60e838532a1751c9611ae92a06e981dd6024d6d61",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/update/sensecom-update_Data/RuntimeInitializeOnLoads.json",
+   "dest": "update/sensecom-update_Data/RuntimeInitializeOnLoads.json",
+   "size": 1553,
+   "sha256": "5327d70249fc685ab1a4518ce117170ea8129b27589aa3d345bf1f1bec616c8b",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/update/sensecom-update_Data/ScriptingAssemblies.json",
+   "dest": "update/sensecom-update_Data/ScriptingAssemblies.json",
+   "size": 3798,
+   "sha256": "43cc6672748558543bf7c3415d602b5b2c58c3c56eabb4405805cd2cc6985e86",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/update/sensecom-update_Data/StreamingAssets/UnityServicesProjectConfiguration.json",
+   "dest": "update/sensecom-update_Data/StreamingAssets/UnityServicesProjectConfiguration.json",
+   "size": 1410,
+   "sha256": "a3c1c178541299d189aa1c79bcbbadaf03a86f3a39cf93d3cd2b548ec47f996f",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/update/sensecom-update_Data/app.info",
+   "dest": "update/sensecom-update_Data/app.info",
+   "size": 33,
+   "sha256": "d68a3906322e38535a863aa7f98129ec68e8811c0c5f0994119702d42826976f",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/update/sensecom-update_Data/boot.config",
+   "dest": "update/sensecom-update_Data/boot.config",
+   "size": 113,
+   "sha256": "f5abc135ae411c76ac2e0e5fcb2c7a43e087a256029e2b0017c420e5a67ea1bb",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/update/sensecom-update_Data/globalgamemanagers",
+   "dest": "update/sensecom-update_Data/globalgamemanagers",
+   "size": 63308,
+   "sha256": "549ec89d03f226fdcfcda9b820833ad765e6f3afc4d47e412f54c360c58305e3",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/update/sensecom-update_Data/globalgamemanagers.assets",
+   "dest": "update/sensecom-update_Data/globalgamemanagers.assets",
+   "size": 133392,
+   "sha256": "fbff5ad651eae1680ae4ed39abd136e4ff49b2c9bbffa357479cbc9bb4935b9a",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/update/sensecom-update_Data/globalgamemanagers.assets.resS",
+   "dest": "update/sensecom-update_Data/globalgamemanagers.assets.resS",
+   "size": 2796240,
+   "sha256": "39dd38fcd8dd95d41d6d55fe16a448d29fe2c31d9a162c825c24c6d99a893d7a",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/update/sensecom-update_Data/level0",
+   "dest": "update/sensecom-update_Data/level0",
+   "size": 27328,
+   "sha256": "32b808838b1fdcd3b2af6e46afe6ead1ff4349ba25b13fbe6fb7817715f66041",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/update/sensecom-update_Data/level0.resS",
+   "dest": "update/sensecom-update_Data/level0.resS",
+   "size": 131232,
+   "sha256": "8e298dbadd8f34930733bf6bdfe57177b9345fb465e8dd3c0aaefe6362827bc4",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/update/sensecom-update_Data/resources.assets",
+   "dest": "update/sensecom-update_Data/resources.assets",
+   "size": 32356,
+   "sha256": "40fe408b7117dda862d5fbd0912ff3d44542f00dd75bdeb5a74ca9dc5523be5b",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/update/sensecom-update_Data/resources.assets.resS",
+   "dest": "update/sensecom-update_Data/resources.assets.resS",
+   "size": 4634400,
+   "sha256": "079485ee8b58a1e7ca351c1d938f0c1b20e8515a28bf15cd5c9afe188ab0d491",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/update/sensecom-update_Data/sharedassets0.assets",
+   "dest": "update/sensecom-update_Data/sharedassets0.assets",
+   "size": 3984484,
+   "sha256": "62727f8c61676688a23df6a906d3f5fb9e18c0ba40489adabc440fdd59d10ca7",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/update/sensecom-update_Data/sharedassets0.assets.resS",
+   "dest": "update/sensecom-update_Data/sharedassets0.assets.resS",
+   "size": 523680,
+   "sha256": "3c34f9539558eaf29559af89ad1c585fcfac571d99436697ff911c9c9eca4828",
+   "mode": "0644"
+  },
+  {
+   "src": "Linux/SenseCom_Linux_Latest/versionInfo.txt",
+   "dest": "versionInfo.txt",
+   "size": 61,
+   "sha256": "b980c9af5ded3206e096e351fe6a206f795a92d30c5631ce762a99bdf761038c",
+   "mode": "0644"
+  }
+ ]
+}

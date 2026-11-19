@@ -68,5 +68,16 @@
   "midi_opl3_font": "SoundFont de estilo OPL3 para un sintetizador de muestras. No emula un chip FM.",
   "midi_mt32": "Usa tus propias ROM de control y PCM del MT-32 en los ajustes de ROM de Munt. No se proporcionan ni descargan ROM.",
   "midi_fm_bank": "Biblioteca de síntesis FM para programas compatibles. Proporciona tu propio banco de instrumentos WOPL o WOPN; no se incluye ninguno.",
-  "midi_dosbox": "Emulador de DOS independiente del proyecto DOSBox original. General MIDI usa el SoundFont predeterminado instalado. MT-32 necesita tus propias ROM de control y PCM."
+  "midi_dosbox": "Emulador de DOS independiente del proyecto DOSBox original. General MIDI usa el SoundFont predeterminado instalado. MT-32 necesita tus propias ROM de control y PCM.",
+  "tree_facts": "Descarga: {size} desde {host}, la dirección del propio fabricante. Fijado al commit {commit}, SHA-256 de la lista de archivos {manifest}…; cada archivo se comprueba antes de instalar nada. Licencia: {licence}, {holder}.",
+  "tree_checksum_failed": "{name}: el archivo {file} no coincide con el SHA-256 fijado. Se rechazó la descarga y no se instaló nada.",
+  "tree_manifest_failed": "La lista de archivos fijada de {name} está dañada o fue modificada. No se descargó ni se instaló nada.",
+  "tree_licence_title": "Licencia de {name} ({licence}), tal como la publica su fabricante:",
+  "tree_no_bluetooth": "Este equipo no tiene adaptador Bluetooth, así que {name} no puede encontrar un guante aquí.",
+  "tree_removed": "Se eliminó {name}. Tus propios ajustes en tu carpeta personal se dejaron como estaban.",
+  "tree_installed": "{name} está instalado en {path}. Ábrelo desde el menú de aplicaciones.",
+  "download_note_tree": "Instrucciones del fabricante",
+  "sensecom_note": "El programa propio de SenseGlove para encontrar y conectar sus guantes hápticos, descargado de la dirección de SenseGlove exactamente como ellos lo publican. Sin ningún guante conectado, su lista queda vacía. Su ventana está en inglés. Las notas del fabricante para Linux dicen que todavía no es compatible con los guantes Nova.",
+  "sensecom_comment": "Encuentra y conecta guantes hápticos SenseGlove",
+  "senseglove_api_note": "Las dos bibliotecas del SDK de C++ de SenseGlove (SGCore y SGConnect), descargadas de la dirección de SenseGlove exactamente como las publican, para los programas que compilas con el paquete senseglove-api-dev. Su código fuente no está publicado."
 }

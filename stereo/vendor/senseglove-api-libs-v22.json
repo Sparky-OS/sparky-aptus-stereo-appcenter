@@ -1,0 +1,30 @@
+{
+ "format": 1,
+ "id": "senseglove-api-libs",
+ "version": "v22",
+ "commit": "31900b320aa0e84cb976ebef976dac6330f73fac",
+ "base": "https://raw.githubusercontent.com/Adjuvo/SenseGlove-API/31900b320aa0e84cb976ebef976dac6330f73fac/",
+ "files": [
+  {
+   "src": "LICENSE",
+   "dest": "LICENSE",
+   "size": 1067,
+   "sha256": "10b1ff14e60d5ac10841bde22aa25196a83146f704057700b9359c3085a78130",
+   "mode": "0644"
+  },
+  {
+   "src": "lib/linux/v22/x86-64/release/libsgconnect.so",
+   "dest": "lib/libsgconnect.so",
+   "size": 1361944,
+   "sha256": "2344809c9e367d5ca749dbab2f1a9d7a7a9b3d7696f22742d81d439c26901583",
+   "mode": "0644"
+  },
+  {
+   "src": "lib/linux/v22/x86-64/release/libsgcore.so",
+   "dest": "lib/libsgcore.so",
+   "size": 1574648,
+   "sha256": "f3a7f786b715d5c846a714c651463dbe1bbdabd1ea820695afb4045fc924cb43",
+   "mode": "0644"
+  }
+ ]
+}

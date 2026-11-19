@@ -57,6 +57,14 @@ def render():
                 note += f'<p><a href="{e(row["documentation"])}">{e(text["download_note"])}</a></p>'
                 if selected:
                     note += f'<p>{e("/var/cache/sparky-aptus-stereo-appcenter/" + row["filename"])}</p>'
+            if row['kind'] == 'tree' and current.get('tree'):
+                # a maker's program fetched from the maker: size, address, pin and licence before the button, and what this computer lacks
+                if current['tree'].get('error'):
+                    note += f'<p class="error">{e(current["tree"]["error"])}</p>'
+                else:
+                    note += f'<p class="download">{e(current["tree"]["facts"])}</p>'
+                    note += ''.join(f'<p class="error">{e(line)}</p>' for line in current['tree']['hints'])
+                note += f'<p><a href="{e(row["documentation"])}">{e(text["download_note_tree"])}</a> · <a href="{e(row["source_page"])}">{e(row["source_page"])}</a></p>'
             if current.get('download') and current['download'].get('error'):
                 note += f'<p class="error">{e(current["download"]["error"])}</p>'
             elif current.get('download'):

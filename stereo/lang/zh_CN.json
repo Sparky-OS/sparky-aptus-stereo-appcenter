@@ -68,5 +68,16 @@
   "midi_opl3_font": "用于采样合成器的 OPL3 风格 SoundFont。它不会模拟 FM 芯片。",
   "midi_mt32": "在 Munt 的 ROM 设置中指定您自己的 MT-32 控制 ROM 和 PCM ROM。不提供或下载 ROM。",
   "midi_fm_bank": "供兼容程序使用的 FM 合成库。请提供您自己的 WOPL 或 WOPN 音色库；不包含音色库。",
-  "midi_dosbox": "独立于原 DOSBox 项目的 DOS 模拟器。General MIDI 使用已安装的默认 SoundFont。MT-32 需要您自己的控制 ROM 和 PCM ROM。"
+  "midi_dosbox": "独立于原 DOSBox 项目的 DOS 模拟器。General MIDI 使用已安装的默认 SoundFont。MT-32 需要您自己的控制 ROM 和 PCM ROM。",
+  "tree_facts": "下载：{size}，来自制造商自己的地址 {host}。已固定到提交 {commit}，文件列表 SHA-256 为 {manifest}…；安装前会逐个校验每个文件。许可证：{licence}，{holder}。",
+  "tree_checksum_failed": "{name}：文件 {file} 与固定的 SHA-256 不符。已拒绝下载，未安装任何内容。",
+  "tree_manifest_failed": "{name} 固定的文件列表已损坏或被修改。未下载也未安装任何内容。",
+  "tree_licence_title": "{name} 的许可证（{licence}），与制造商发布的一致：",
+  "tree_no_bluetooth": "这台电脑没有蓝牙适配器，因此 {name} 在这里找不到手套。",
+  "tree_removed": "已移除 {name}。您主文件夹中的个人设置保持原样。",
+  "tree_installed": "{name} 已安装在 {path}。请从应用程序菜单启动。",
+  "download_note_tree": "制造商的说明",
+  "sensecom_note": "SenseGlove 自己的程序，用于查找并连接他们的触觉手套，按他们发布的原样从 SenseGlove 的地址下载。没有连接手套时，其列表为空。它的窗口是英文的。制造商的 Linux 说明称它尚不兼容 Nova 手套。",
+  "sensecom_comment": "查找并连接 SenseGlove 触觉手套",
+  "senseglove_api_note": "SenseGlove C++ SDK 的两个库（SGCore 和 SGConnect），按他们发布的原样从 SenseGlove 的地址下载，供用 senseglove-api-dev 软件包构建的程序使用。它们的源代码未公开。"
 }

@@ -68,5 +68,16 @@
   "midi_opl3_font": "SoundFont de style OPL3 pour un synthétiseur à échantillons. Il ne simule pas une puce FM.",
   "midi_mt32": "Sélectionnez vos propres ROM de contrôle et PCM MT-32 dans les réglages ROM de Munt. Aucune ROM n’est fournie ni téléchargée.",
   "midi_fm_bank": "Bibliothèque de synthèse FM pour les logiciels compatibles. Fournissez votre propre banque WOPL ou WOPN ; aucune banque n’est incluse.",
-  "midi_dosbox": "Émulateur DOS indépendant du projet DOSBox original. General MIDI utilise la SoundFont installée par défaut. MT-32 nécessite vos propres ROM de contrôle et PCM."
+  "midi_dosbox": "Émulateur DOS indépendant du projet DOSBox original. General MIDI utilise la SoundFont installée par défaut. MT-32 nécessite vos propres ROM de contrôle et PCM.",
+  "tree_facts": "Téléchargement : {size} depuis {host}, l'adresse du fabricant lui-même. Épinglé au commit {commit}, SHA-256 de la liste de fichiers {manifest}… ; chaque fichier est vérifié avant toute installation. Licence : {licence}, {holder}.",
+  "tree_checksum_failed": "{name} : le fichier {file} ne correspond pas au SHA-256 épinglé. Le téléchargement a été refusé et rien n'a été installé.",
+  "tree_manifest_failed": "La liste de fichiers épinglée de {name} est endommagée ou a été modifiée. Rien n'a été téléchargé ni installé.",
+  "tree_licence_title": "Licence de {name} ({licence}), telle que son fabricant la publie :",
+  "tree_no_bluetooth": "Cet ordinateur n'a pas d'adaptateur Bluetooth : {name} ne peut donc pas trouver de gant ici.",
+  "tree_removed": "{name} a été supprimé. Vos propres réglages dans votre dossier personnel n'ont pas été touchés.",
+  "tree_installed": "{name} est installé dans {path}. Lancez-le depuis le menu des applications.",
+  "download_note_tree": "Les instructions du fabricant",
+  "sensecom_note": "Le programme de SenseGlove pour trouver et connecter ses gants haptiques, téléchargé depuis l'adresse de SenseGlove exactement tel qu'ils le publient. Sans gant connecté, sa liste est vide. Sa fenêtre est en anglais. Les notes Linux du fabricant indiquent qu'il n'est pas encore compatible avec les gants Nova.",
+  "sensecom_comment": "Trouve et connecte les gants haptiques SenseGlove",
+  "senseglove_api_note": "Les deux bibliothèques du SDK C++ de SenseGlove (SGCore et SGConnect), téléchargées depuis l'adresse de SenseGlove exactement telles qu'ils les publient, pour les programmes que vous compilez avec le paquet senseglove-api-dev. Leur code source n'est pas publié."
 }

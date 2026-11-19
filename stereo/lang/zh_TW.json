@@ -63,5 +63,10 @@
   "store_bad_address": "為 {name} 儲存的位址不是 {domain} 的 https 位址，因此未開啟。未安裝任何內容。",
   "store_unchangeable": "{name} 是指向 {vendor} 商店頁面的連結。Stereo APTus 不會為它安裝或移除任何內容。",
   "phonecamera_note": "把手機的攝影機當作這台電腦的攝影機。DroidCam：從手機自己的應用程式商店安裝 DroidCam 應用程式（該應用程式屬於 Dev47Apps），然後透過 Wi-Fi 或 USB 連線。scrcpy，完全開放的方式：手機上不需要應用程式，只需 USB 偵錯，Android 12 或更新；scrcpy 的套件會從專案的發行頁面下載在手機上執行的小型伺服端，並核對其 SHA-256。手機會以名為「Phone camera」的攝影機出現在您的程式和「系統設定」的「攝影機」中。不需要 KDE Connect。",
-  "spirula_note": "從照片或影片建立 3D 模型。選用處理設定檔會在安裝前顯示大小與授權條款。完整移除也會刪除已下載的設定檔。"
+  "spirula_note": "從照片或影片建立 3D 模型。選用處理設定檔會在安裝前顯示大小與授權條款。完整移除也會刪除已下載的設定檔。",
+  "midi_gm_font": "附加 MIDI 音色庫。使用以下指令選擇：sparky-stereo-audio midi --font /PATH",
+  "midi_opl3_font": "用於取樣合成器的 OPL3 風格 SoundFont。它不會模擬 FM 晶片。",
+  "midi_mt32": "在 Munt 的 ROM 設定中指定您自己的 MT-32 控制 ROM 和 PCM ROM。不提供或下載 ROM。",
+  "midi_fm_bank": "供相容程式使用的 FM 合成函式庫。請提供您自己的 WOPL 或 WOPN 音色庫；不包含音色庫。",
+  "midi_dosbox": "獨立於原 DOSBox 專案的 DOS 模擬器。General MIDI 使用已安裝的預設 SoundFont。MT-32 需要您自己的控制 ROM 和 PCM ROM。"
 }

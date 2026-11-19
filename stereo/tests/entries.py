@@ -66,6 +66,25 @@ class Transactions(unittest.TestCase):
             action.apt_change(row,'install')
             self.assertEqual(run.call_args.args[0],['/usr/bin/apt-get','-y','--no-remove','--no-allow-unauthenticated','install','simple-scan=50.0-2'])
 
+    def test_spirula_is_native_and_its_dependencies_are_entry_owned(self):
+        row = catalogue.entry('spirula-studio')
+        self.assertEqual((row['section'], row['kind'], row['package']), ('media', 'apt', 'spirula-studio'))
+        version = types.SimpleNamespace(version='2026.11.12-1+stereo3d1+lc1', origins=[types.SimpleNamespace(origin='Sparky Stereo OS', trusted=True)], downloadable=True)
+        cache = {'spirula-studio': types.SimpleNamespace(candidate=version)}
+        self.assertTrue(action.visible(row, cache, {'bino'}))
+        self.assertFalse(action.visible(row, {}, {'bino'}))
+        with patch.dict(sys.modules, apt=types.SimpleNamespace(Cache=lambda: cache)), patch.object(action.subprocess, 'run') as run:
+            action.apt_change(row, 'install')
+            self.assertEqual(run.call_args.args[0][-2:], ['install', 'spirula-studio=2026.11.12-1+stereo3d1+lc1'])
+
+    def test_profile_uses_graphical_consent_before_owner_transfer(self):
+        row=dict(id='spirula-studio-model-fixture',name='Fixture',package='spirula-studio-model-fixture',kind='apt',section='profiles',model_profile=True)
+        candidate=types.SimpleNamespace(version='1+lc1')
+        with patch.dict(sys.modules,apt=types.SimpleNamespace(Cache=lambda:{row['package']:types.SimpleNamespace(candidate=candidate)})),patch.object(action.subprocess,'run') as run:
+            action.apt_change(row,'install')
+            self.assertEqual(run.call_args.args[0],['/usr/lib/sparky-stereo-apt/model-install-gui','spirula-studio-model-fixture=1+lc1'])
+            self.assertNotIn('--consented',run.call_args.args[0])
+
     def test_cloudcompare_is_an_apt_entry_of_the_stereo_players_editors_and_tools(self):
         row=catalogue.entry('cloudcompare')
         self.assertEqual((row['section'],row['kind'],row['package']),('media','apt','cloudcompare'))

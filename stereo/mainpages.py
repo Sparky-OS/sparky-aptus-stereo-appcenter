@@ -9,8 +9,8 @@ import signal
 import re
 import subprocess
 import tempfile
-from common import BASE, PACKAGE, messages, language, install_downloads
-from catalogue import main_entries
+from common import BASE, PACKAGE, messages, language, install_downloads, problem_records
+from catalogue import main_entries, entry
 import appimage
 import tools
 import storelink
@@ -23,16 +23,18 @@ def request(uri):
         for prefix, action in (('debinst', 'install'), ('debrein', 'reinstall'), ('debremo', 'remove')):
             if uri == f'aptus://{prefix}_{row["id"]}':
                 return row, action
+    match=re.fullmatch(r'aptus://(graedi|debinst|debrein|debremo)_([a-z0-9][a-z0-9-]*)',uri)
+    if match:
+        try:row=entry(match[2])
+        except StopIteration:return None
+        if row.get('model_profile') or row['id']=='spirula-studio':
+            return row,dict(graedi=None,debinst='install',debrein='reinstall',debremo='remove')[match[1]]
     return None
 
 
 def problem_text(owner, key):
     """The sentences the one engine keeps for OWNER's problem KEY (all of OWNER's when KEY is None), in the person's language."""
-    problems = subprocess.run(['/usr/bin/sparky-stereo-problems', 'list', '--json', owner],
-                              capture_output=True, text=True, check=True)
-    records = json.loads(problems.stdout)
-    if isinstance(records, dict):
-        records = records.get('problems', [])
+    records = problem_records(owner)
     return '\n'.join(record.get('text', record.get('text_en', '')) + '\n' + record.get('output', '')
                      for record in records if key is None or record['key'] == key)
 
@@ -48,6 +50,9 @@ def apt_state(row):
 
 def render(row):
     text, main, e = messages(), BASE / 'main', html.escape
+    if row.get('model_profile') or row['id'] == 'spirula-studio':
+        from packagepages import render as native_render
+        return native_render(row)
     if row['kind'] == 'apt':
         return render_apt(row, text, main, e)
     if row['kind'] == 'store':
@@ -101,11 +106,7 @@ def handle(row, operation):
             command.insert(0, '/usr/bin/pkexec')
         result = subprocess.run(command, capture_output=True, text=True)
         if result.returncode:
-            saved = subprocess.run(['/usr/bin/sparky-stereo-problems', 'list', '--json', PACKAGE],
-                                   capture_output=True, text=True, check=True)
-            records = json.loads(saved.stdout)
-            if isinstance(records, dict):
-                records = records.get('problems', [])
+            records = problem_records()
             if not any(record.get('key') == row['id'] for record in records):
                 raise RuntimeError(result.stderr.strip() or result.stdout.strip() or
                                    str(subprocess.CalledProcessError(result.returncode, command)))

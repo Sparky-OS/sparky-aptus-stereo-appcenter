@@ -509,5 +509,13 @@
     "package": "displaycal",
     "sizes": true,
     "note": "displaycal_note"
+  },
+  {
+    "id": "spirula-studio",
+    "name": "Spirula Studio",
+    "section": "media",
+    "kind": "apt",
+    "package": "spirula-studio",
+    "note": "spirula_note"
   }
 ]

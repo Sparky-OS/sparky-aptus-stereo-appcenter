@@ -79,5 +79,6 @@
   "download_note_tree": "Instrukcje producenta",
   "sensecom_note": "Własny program SenseGlove do wyszukiwania i łączenia ich rękawic haptycznych, pobierany z adresu SenseGlove dokładnie tak, jak go publikują. Bez podłączonej rękawicy jego lista jest pusta. Jego okno jest po angielsku. Z uwag producenta dla Linuksa wynika, że nie jest jeszcze zgodny z rękawicami Nova.",
   "sensecom_comment": "Wyszukuje i łączy rękawice haptyczne SenseGlove",
-  "senseglove_api_note": "Dwie biblioteki SDK C++ SenseGlove (SGCore i SGConnect), pobierane z adresu SenseGlove dokładnie tak, jak je publikują, dla programów budowanych z pakietem senseglove-api-dev. Ich kod źródłowy nie jest opublikowany."
+  "senseglove_api_note": "Dwie biblioteki SDK C++ SenseGlove (SGCore i SGConnect), pobierane z adresu SenseGlove dokładnie tak, jak je publikują, dla programów budowanych z pakietem senseglove-api-dev. Ich kod źródłowy nie jest opublikowany.",
+  "tree_installed_library": "{name} jest zainstalowany w {path}."
 }

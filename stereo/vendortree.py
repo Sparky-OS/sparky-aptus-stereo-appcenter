@@ -252,4 +252,4 @@ def change(row, operation, ensure_tools=None, say=print):
             if old.exists():
                 old.rename(base)
             raise
-    say(text['tree_installed'].format(name=row['name'], path=base))
+    say(text['tree_installed' if row.get('desktop') else 'tree_installed_library'].format(name=row['name'], path=base))

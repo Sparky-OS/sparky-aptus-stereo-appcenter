@@ -632,7 +632,7 @@
     "manifest": "senseglove-api-libs-v22.json",
     "manifest_sha256": "f37fc6f394655f881dd849e69e3986e92869a4e7cad6929a2ae9d4cacbe126df",
     "prefix": "/opt/senseglove-api",
-    "min_glibc": "2.27",
+    "min_glibc": "2.17",
     "licence": {
       "name": "MIT",
       "holder": "SenseGlove B.V.",

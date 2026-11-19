@@ -79,5 +79,6 @@
   "download_note_tree": "Instruções do fabricante",
   "sensecom_note": "O programa da própria SenseGlove para encontrar e conectar suas luvas hápticas, baixado do endereço da SenseGlove exatamente como eles o publicam. Sem nenhuma luva conectada, a lista dele fica vazia. A janela dele é em inglês. As notas do fabricante para Linux dizem que ele ainda não é compatível com as luvas Nova.",
   "sensecom_comment": "Encontra e conecta luvas hápticas SenseGlove",
-  "senseglove_api_note": "As duas bibliotecas do SDK C++ da SenseGlove (SGCore e SGConnect), baixadas do endereço da SenseGlove exatamente como as publicam, para programas que você compila com o pacote senseglove-api-dev. O código-fonte delas não é publicado."
+  "senseglove_api_note": "As duas bibliotecas do SDK C++ da SenseGlove (SGCore e SGConnect), baixadas do endereço da SenseGlove exatamente como as publicam, para programas que você compila com o pacote senseglove-api-dev. O código-fonte delas não é publicado.",
+  "tree_installed_library": "{name} está instalado em {path}."
 }

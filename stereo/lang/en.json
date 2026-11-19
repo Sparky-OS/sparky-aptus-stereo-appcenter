@@ -79,5 +79,6 @@
   "download_note_tree": "The maker's instructions",
   "sensecom_note": "SenseGlove's own program for finding and connecting their haptic gloves, downloaded from SenseGlove's address exactly as they publish it. With no glove connected its list is empty. Its own window is in English. The maker's Linux notes say it is not yet compatible with Nova gloves.",
   "sensecom_comment": "Finds and connects SenseGlove haptic gloves",
-  "senseglove_api_note": "The two libraries of SenseGlove's C++ SDK (SGCore and SGConnect), downloaded from SenseGlove's address exactly as they publish them, for programs you build with the senseglove-api-dev package. Their source is not published."
+  "senseglove_api_note": "The two libraries of SenseGlove's C++ SDK (SGCore and SGConnect), downloaded from SenseGlove's address exactly as they publish them, for programs you build with the senseglove-api-dev package. Their source is not published.",
+  "tree_installed_library": "{name} is installed in {path}."
 }

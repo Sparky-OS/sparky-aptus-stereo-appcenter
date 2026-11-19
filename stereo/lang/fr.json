@@ -79,5 +79,6 @@
   "download_note_tree": "Les instructions du fabricant",
   "sensecom_note": "Le programme de SenseGlove pour trouver et connecter ses gants haptiques, téléchargé depuis l'adresse de SenseGlove exactement tel qu'ils le publient. Sans gant connecté, sa liste est vide. Sa fenêtre est en anglais. Les notes Linux du fabricant indiquent qu'il n'est pas encore compatible avec les gants Nova.",
   "sensecom_comment": "Trouve et connecte les gants haptiques SenseGlove",
-  "senseglove_api_note": "Les deux bibliothèques du SDK C++ de SenseGlove (SGCore et SGConnect), téléchargées depuis l'adresse de SenseGlove exactement telles qu'ils les publient, pour les programmes que vous compilez avec le paquet senseglove-api-dev. Leur code source n'est pas publié."
+  "senseglove_api_note": "Les deux bibliothèques du SDK C++ de SenseGlove (SGCore et SGConnect), téléchargées depuis l'adresse de SenseGlove exactement telles qu'ils les publient, pour les programmes que vous compilez avec le paquet senseglove-api-dev. Leur code source n'est pas publié.",
+  "tree_installed_library": "{name} est installé dans {path}."
 }

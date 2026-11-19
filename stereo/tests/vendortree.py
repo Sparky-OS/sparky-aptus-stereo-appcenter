@@ -28,7 +28,7 @@ import vendortree
 
 REQUIRED = ('en', 'pl', 'pt_BR', 'fr', 'de', 'es', 'ja', 'ko', 'zh_CN', 'zh_TW')
 KEYS = ('tree_facts', 'tree_checksum_failed', 'tree_manifest_failed', 'tree_licence_title', 'tree_no_bluetooth',
-        'tree_removed', 'tree_installed', 'download_note_tree', 'sensecom_note', 'sensecom_comment', 'senseglove_api_note')
+        'tree_removed', 'tree_installed', 'tree_installed_library', 'download_note_tree', 'sensecom_note', 'sensecom_comment', 'senseglove_api_note')
 ROWS = ('sensecom', 'senseglove-api-libs')
 
 

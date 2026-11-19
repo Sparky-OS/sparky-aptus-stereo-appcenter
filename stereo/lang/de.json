@@ -79,5 +79,6 @@
   "download_note_tree": "Anleitung des Herstellers",
   "sensecom_note": "Das eigene Programm von SenseGlove zum Finden und Verbinden ihrer haptischen Handschuhe, von SenseGloves Adresse heruntergeladen, genau wie sie es veröffentlichen. Ohne verbundenen Handschuh bleibt seine Liste leer. Sein Fenster ist englisch. Die Linux-Hinweise des Herstellers sagen, dass es noch nicht mit Nova-Handschuhen kompatibel ist.",
   "sensecom_comment": "Findet und verbindet haptische SenseGlove-Handschuhe",
-  "senseglove_api_note": "Die beiden Bibliotheken des C++-SDK von SenseGlove (SGCore und SGConnect), von SenseGloves Adresse heruntergeladen, genau wie sie sie veröffentlichen, für Programme, die Sie mit dem Paket senseglove-api-dev bauen. Ihr Quellcode ist nicht veröffentlicht."
+  "senseglove_api_note": "Die beiden Bibliotheken des C++-SDK von SenseGlove (SGCore und SGConnect), von SenseGloves Adresse heruntergeladen, genau wie sie sie veröffentlichen, für Programme, die Sie mit dem Paket senseglove-api-dev bauen. Ihr Quellcode ist nicht veröffentlicht.",
+  "tree_installed_library": "{name} ist in {path} installiert."
 }

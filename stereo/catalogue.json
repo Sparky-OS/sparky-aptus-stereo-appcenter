@@ -553,5 +553,41 @@
     "package": "opl3-soundfont",
     "sizes": true,
     "note": "midi_opl3_font"
+  },
+  {
+    "id": "munt",
+    "name": "Munt",
+    "section": "tools",
+    "kind": "apt",
+    "package": "munt",
+    "sizes": true,
+    "note": "midi_mt32"
+  },
+  {
+    "id": "libadlmidi1",
+    "name": "libADLMIDI",
+    "section": "tools",
+    "kind": "apt",
+    "package": "libadlmidi1",
+    "sizes": true,
+    "note": "midi_fm_bank"
+  },
+  {
+    "id": "libopnmidi1",
+    "name": "libOPNMIDI",
+    "section": "tools",
+    "kind": "apt",
+    "package": "libopnmidi1",
+    "sizes": true,
+    "note": "midi_fm_bank"
+  },
+  {
+    "id": "dosbox-staging",
+    "name": "DOSBox Staging",
+    "section": "tools",
+    "kind": "apt",
+    "package": "dosbox-staging",
+    "sizes": true,
+    "note": "midi_dosbox"
   }
 ]

@@ -65,5 +65,8 @@
   "phonecamera_note": "Use la cámara de un teléfono como cámara de este equipo. DroidCam: instale en el teléfono la aplicación DroidCam desde su propia tienda (la aplicación es de Dev47Apps) y conéctese por Wi-Fi o USB. scrcpy, el camino totalmente abierto: ninguna aplicación en el teléfono, solo la depuración USB, Android 12 o más nuevo; el paquete de scrcpy descarga de la página de versiones del proyecto el pequeño servidor que ejecuta en el teléfono y comprueba su SHA-256. El teléfono aparece como la cámara \"Phone camera\" en sus programas y en Preferencias del sistema, Cámara. KDE Connect no es necesario.",
   "spirula_note": "Cree un modelo 3D a partir de fotos o vídeo. Los perfiles opcionales muestran su tamaño y licencia antes de instalarse. La purga también elimina los perfiles descargados.",
   "midi_gm_font": "Banco de sonidos MIDI adicional. Elíjalo con: sparky-stereo-audio midi --font /PATH",
-  "midi_opl3_font": "SoundFont de estilo OPL3 para un sintetizador de muestras. No emula un chip FM."
+  "midi_opl3_font": "SoundFont de estilo OPL3 para un sintetizador de muestras. No emula un chip FM.",
+  "midi_mt32": "Usa tus propias ROM de control y PCM del MT-32 en los ajustes de ROM de Munt. No se proporcionan ni descargan ROM.",
+  "midi_fm_bank": "Biblioteca de síntesis FM para programas compatibles. Proporciona tu propio banco de instrumentos WOPL o WOPN; no se incluye ninguno.",
+  "midi_dosbox": "Emulador de DOS independiente del proyecto DOSBox original. General MIDI usa el SoundFont predeterminado instalado. MT-32 necesita tus propias ROM de control y PCM."
 }

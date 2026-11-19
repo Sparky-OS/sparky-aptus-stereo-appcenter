@@ -589,5 +589,56 @@
     "package": "dosbox-staging",
     "sizes": true,
     "note": "midi_dosbox"
+  },
+  {
+    "id": "sensecom",
+    "name": "SenseCom (SenseGlove)",
+    "section": "vr",
+    "kind": "tree",
+    "version": "1.9.2",
+    "size": 106422960,
+    "url": "https://raw.githubusercontent.com/Adjuvo/SenseCom/dbfd4266f04057ace64eea2c0c9e907c74eb196b/",
+    "source_page": "https://github.com/Adjuvo/SenseCom",
+    "manifest": "sensecom-1.9.2.json",
+    "manifest_sha256": "638f76fd9ec191dc39f29af4627ba11b5793139968919aa478d5a9e5571a99eb",
+    "prefix": "/opt/sensecom",
+    "exec": "SenseCom.x86_64",
+    "launcher": {
+      "/usr/bin/sensecom": "SenseCom.x86_64"
+    },
+    "desktop": "com.senseglove.SenseCom",
+    "comment": "sensecom_comment",
+    "icon": "input-gaming",
+    "categories": "Utility;",
+    "min_glibc": "2.27",
+    "bluetooth": true,
+    "licence": {
+      "name": "MIT",
+      "holder": "SenseGlove B.V.",
+      "dest": "LICENSE"
+    },
+    "note": "sensecom_note",
+    "documentation": "https://senseglove.gitlab.io/SenseGloveDocs/sensecom/install-instructions.html"
+  },
+  {
+    "id": "senseglove-api-libs",
+    "name": "SenseGlove API libraries (C++)",
+    "section": "vr",
+    "kind": "tree",
+    "version": "v22",
+    "size": 2937659,
+    "url": "https://raw.githubusercontent.com/Adjuvo/SenseGlove-API/31900b320aa0e84cb976ebef976dac6330f73fac/",
+    "source_page": "https://github.com/Adjuvo/SenseGlove-API",
+    "manifest": "senseglove-api-libs-v22.json",
+    "manifest_sha256": "f37fc6f394655f881dd849e69e3986e92869a4e7cad6929a2ae9d4cacbe126df",
+    "prefix": "/opt/senseglove-api",
+    "min_glibc": "2.17",
+    "licence": {
+      "name": "MIT",
+      "holder": "SenseGlove B.V.",
+      "dest": "LICENSE"
+    },
+    "note": "senseglove_api_note",
+    "documentation": "https://senseglove.gitlab.io/SenseGloveDocs/native/core-api-intro.html"
   }
 ]

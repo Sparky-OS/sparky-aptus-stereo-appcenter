@@ -68,5 +68,17 @@
   "midi_opl3_font": "SoundFont com timbres de OPL3 para um sintetizador de amostras. Não emula um chip FM.",
   "midi_mt32": "Use suas próprias ROMs de controle e PCM do MT-32 nas configurações de ROM do Munt. Nenhuma ROM é fornecida ou baixada.",
   "midi_fm_bank": "Biblioteca de síntese FM para programas compatíveis. Forneça seu próprio banco de instrumentos WOPL ou WOPN; nenhum banco está incluído.",
-  "midi_dosbox": "Emulador de DOS independente do projeto DOSBox original. General MIDI usa o SoundFont padrão instalado. MT-32 precisa das suas próprias ROMs de controle e PCM."
+  "midi_dosbox": "Emulador de DOS independente do projeto DOSBox original. General MIDI usa o SoundFont padrão instalado. MT-32 precisa das suas próprias ROMs de controle e PCM.",
+  "tree_facts": "Download: {size} de {host}, o endereço do próprio fabricante. Fixado no commit {commit}, SHA-256 da lista de arquivos {manifest}…; cada arquivo é conferido antes de qualquer instalação. Licença: {licence}, {holder}.",
+  "tree_checksum_failed": "{name}: o arquivo {file} não confere com o SHA-256 fixado. O download foi recusado e nada foi instalado.",
+  "tree_manifest_failed": "A lista de arquivos fixada de {name} está danificada ou foi alterada. Nada foi baixado nem instalado.",
+  "tree_licence_title": "Licença de {name} ({licence}), como o fabricante a publica:",
+  "tree_no_bluetooth": "Este computador não tem adaptador Bluetooth, então {name} não consegue encontrar uma luva aqui.",
+  "tree_removed": "{name} foi removido. Suas próprias configurações na sua pasta pessoal foram mantidas como estavam.",
+  "tree_installed": "{name} está instalado em {path}. Abra-o pelo menu de aplicativos.",
+  "download_note_tree": "Instruções do fabricante",
+  "sensecom_note": "O programa da própria SenseGlove para encontrar e conectar suas luvas hápticas, baixado do endereço da SenseGlove exatamente como eles o publicam. Sem nenhuma luva conectada, a lista dele fica vazia. A janela dele é em inglês. As notas do fabricante para Linux dizem que ele ainda não é compatível com as luvas Nova.",
+  "sensecom_comment": "Encontra e conecta luvas hápticas SenseGlove",
+  "senseglove_api_note": "As duas bibliotecas do SDK C++ da SenseGlove (SGCore e SGConnect), baixadas do endereço da SenseGlove exatamente como as publicam, para programas que você compila com o pacote senseglove-api-dev. O código-fonte delas não é publicado.",
+  "tree_installed_library": "{name} está instalado em {path}."
 }

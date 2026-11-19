@@ -68,5 +68,17 @@
   "midi_opl3_font": "SoundFont im OPL3-Stil für einen Sample-Synthesizer. Er emuliert keinen FM-Chip.",
   "midi_mt32": "Wählen Sie Ihre eigenen MT-32-Steuer- und PCM-ROMs in Munts ROM-Einstellungen. ROMs werden weder mitgeliefert noch heruntergeladen.",
   "midi_fm_bank": "FM-Synthesebibliothek für kompatible Programme. Stellen Sie eine eigene WOPL- oder WOPN-Instrumentenbank bereit; es sind keine Bänke enthalten.",
-  "midi_dosbox": "DOS-Emulator, unabhängig vom ursprünglichen DOSBox-Projekt. General MIDI nutzt die installierte Standard-SoundFont. MT-32 benötigt Ihre eigenen Steuer- und PCM-ROMs."
+  "midi_dosbox": "DOS-Emulator, unabhängig vom ursprünglichen DOSBox-Projekt. General MIDI nutzt die installierte Standard-SoundFont. MT-32 benötigt Ihre eigenen Steuer- und PCM-ROMs.",
+  "tree_facts": "Download: {size} von {host}, der eigenen Adresse des Herstellers. Festgelegt auf Commit {commit}, SHA-256 der Dateiliste {manifest}…; jede Datei wird vor der Installation geprüft. Lizenz: {licence}, {holder}.",
+  "tree_checksum_failed": "{name}: Die Datei {file} stimmt nicht mit der festgelegten SHA-256-Summe überein. Der Download wurde abgelehnt und nichts wurde installiert.",
+  "tree_manifest_failed": "Die festgelegte Dateiliste von {name} ist beschädigt oder wurde verändert. Es wurde nichts heruntergeladen oder installiert.",
+  "tree_licence_title": "Lizenz von {name} ({licence}), wie der Hersteller sie veröffentlicht:",
+  "tree_no_bluetooth": "Dieser Computer hat keinen Bluetooth-Adapter, daher kann {name} hier keinen Handschuh finden.",
+  "tree_removed": "{name} wurde entfernt. Ihre eigenen Einstellungen in Ihrem Home-Ordner blieben unverändert.",
+  "tree_installed": "{name} ist in {path} installiert. Starten Sie es über das Anwendungsmenü.",
+  "download_note_tree": "Anleitung des Herstellers",
+  "sensecom_note": "Das eigene Programm von SenseGlove zum Finden und Verbinden ihrer haptischen Handschuhe, von SenseGloves Adresse heruntergeladen, genau wie sie es veröffentlichen. Ohne verbundenen Handschuh bleibt seine Liste leer. Sein Fenster ist englisch. Die Linux-Hinweise des Herstellers sagen, dass es noch nicht mit Nova-Handschuhen kompatibel ist.",
+  "sensecom_comment": "Findet und verbindet haptische SenseGlove-Handschuhe",
+  "senseglove_api_note": "Die beiden Bibliotheken des C++-SDK von SenseGlove (SGCore und SGConnect), von SenseGloves Adresse heruntergeladen, genau wie sie sie veröffentlichen, für Programme, die Sie mit dem Paket senseglove-api-dev bauen. Ihr Quellcode ist nicht veröffentlicht.",
+  "tree_installed_library": "{name} ist in {path} installiert."
 }

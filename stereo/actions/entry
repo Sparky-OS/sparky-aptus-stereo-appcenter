@@ -65,6 +65,9 @@ def installed(row):
     if row['kind'] == 'appimage':
         import appimage
         return appimage.installed(row)
+    if row['kind'] == 'tree':
+        import vendortree
+        return vendortree.installed(row)
     if row['kind'] == 'download':
         path = DOWNLOADS / row['filename']
         if not path.is_file():
@@ -144,7 +147,7 @@ def downloads_note(cache, installed_now, rows):
     # which packages declare a download is read once; only the entries that can bring one of them in are resolved (resolving every
     # entry takes minutes, and nothing changes for the rest)
     for row in rows:
-        if row['kind'] != 'appimage' or installed_now[row['id']]:
+        if row['kind'] not in ('appimage', 'tree') or installed_now[row['id']]:
             continue
         if state is None:
             state = reader.metered() if mode == 'metered' else ('no', 'not asked')
@@ -176,6 +179,18 @@ def downloads_note(cache, installed_now, rows):
         if result['announce']:
             notes[row['id']] = {'state': result['state'], 'downloads': result['downloads'], 'text': result['text'][:-1]}
     return notes
+
+
+def tree_note(row):
+    """For an entry of the vendor-tree kind: what the person is told before the download (size, address, pin, licence) and what this
+    computer lacks for it. A pinned list that is not what the catalogue says is an error the page shows, never a blank card."""
+    if row['kind'] != 'tree':
+        return None
+    import vendortree
+    try:
+        return dict(facts=vendortree.facts(row), hints=vendortree.hints(row))
+    except (vendortree.Damaged, OSError, ValueError, KeyError) as error:
+        return dict(error=str(error))
 
 
 def tools_note(rows, installed_now, with_main=False):
@@ -289,7 +304,7 @@ def status():
     needs = tools_note(shown, present)
     return {row['id']: dict(installed=present[row['id']], error=errors.get(row['id'], ''),
                            visible=visible(row, cache, patterns), download=notes.get(row['id']),
-                           tools=needs.get(row['id'])) for row in rows}
+                           tools=needs.get(row['id']), tree=tree_note(row)) for row in rows}
 
 
 def apt_change(row, operation, found=None):
@@ -412,13 +427,18 @@ def appimage_change(row, operation, found=None):
     appimage.change(row, operation, lambda: tools.ensure(row, found))
 
 
+def tree_change(row, operation, found=None):
+    import vendortree
+    vendortree.change(row, operation, lambda: tools.ensure(row, found))
+
+
 def announce(row, found):
     """Said before anything is fetched: the tools the entry brings with apt's sizes, then, on a metered connection (or when
     NetworkManager cannot be read), the install-time download notice for the program's own download and the tools' together."""
     for line in tools.lines(row, found):
         print(line, flush=True)
     downloads = []
-    if row['kind'] == 'appimage':
+    if row['kind'] in ('appimage', 'tree'):
         downloads.append(dict(package=row['name'], version=row['version'], size=row['size'], source=row['url']))
     if found:
         downloads.append(tools.download(found))
@@ -441,7 +461,8 @@ def change(row, operation):
         found = tools.plan(row)
         announce(row, found)
     try:
-        {'apt': apt_change, 'flatpak': flatpak_change, 'download': download, 'appimage': appimage_change}[row['kind']](row, operation, found)
+        {'apt': apt_change, 'flatpak': flatpak_change, 'download': download, 'appimage': appimage_change,
+         'tree': tree_change}[row['kind']](row, operation, found)
         if installed(row) != (operation == 'install'):
             raise RuntimeError(row['name'] + ': ' + messages()['installed' if installed(row) else 'absent'])
     except Exception:

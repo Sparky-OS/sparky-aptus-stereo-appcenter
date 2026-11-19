@@ -68,5 +68,17 @@
   "midi_opl3_font": "SoundFont w stylu OPL3 dla syntezatora próbek. Nie emuluje układu FM.",
   "midi_mt32": "Ustaw własne ROM-y sterowania i PCM MT-32 w ustawieniach ROM Munt. ROM-y nie są dostarczane ani pobierane.",
   "midi_fm_bank": "Biblioteka syntezy FM dla zgodnych programów. Wskaż własny bank instrumentów WOPL lub WOPN; banki nie są dołączone.",
-  "midi_dosbox": "Emulator DOS niezależny od oryginalnego projektu DOSBox. General MIDI używa zainstalowanego domyślnego banku SoundFont. MT-32 wymaga własnych ROM-ów sterowania i PCM."
+  "midi_dosbox": "Emulator DOS niezależny od oryginalnego projektu DOSBox. General MIDI używa zainstalowanego domyślnego banku SoundFont. MT-32 wymaga własnych ROM-ów sterowania i PCM.",
+  "tree_facts": "Pobieranie: {size} z {host}, własnego adresu producenta. Przypięte do commitu {commit}, SHA-256 listy plików {manifest}…, każdy plik jest sprawdzany przed instalacją. Licencja: {licence}, {holder}.",
+  "tree_checksum_failed": "{name}: plik {file} nie zgadza się z przypiętą sumą SHA-256. Pobieranie odrzucono i nic nie zainstalowano.",
+  "tree_manifest_failed": "Przypięta lista plików programu {name} jest uszkodzona lub zmieniona. Nic nie pobrano ani nie zainstalowano.",
+  "tree_licence_title": "Licencja programu {name} ({licence}), tak jak publikuje ją producent:",
+  "tree_no_bluetooth": "Ten komputer nie ma karty Bluetooth, więc {name} nie znajdzie tu rękawicy.",
+  "tree_removed": "Usunięto {name}. Twoje własne ustawienia w katalogu domowym zostały bez zmian.",
+  "tree_installed": "{name} jest zainstalowany w {path}. Uruchom go z menu aplikacji.",
+  "download_note_tree": "Instrukcje producenta",
+  "sensecom_note": "Własny program SenseGlove do wyszukiwania i łączenia ich rękawic haptycznych, pobierany z adresu SenseGlove dokładnie tak, jak go publikują. Bez podłączonej rękawicy jego lista jest pusta. Jego okno jest po angielsku. Z uwag producenta dla Linuksa wynika, że nie jest jeszcze zgodny z rękawicami Nova.",
+  "sensecom_comment": "Wyszukuje i łączy rękawice haptyczne SenseGlove",
+  "senseglove_api_note": "Dwie biblioteki SDK C++ SenseGlove (SGCore i SGConnect), pobierane z adresu SenseGlove dokładnie tak, jak je publikują, dla programów budowanych z pakietem senseglove-api-dev. Ich kod źródłowy nie jest opublikowany.",
+  "tree_installed_library": "{name} jest zainstalowany w {path}."
 }

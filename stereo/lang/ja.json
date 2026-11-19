@@ -68,5 +68,17 @@
   "midi_opl3_font": "サンプル音源用のOPL3風SoundFontです。FMチップをエミュレートするものではありません。",
   "midi_mt32": "Munt の ROM 設定で、ご自身の MT-32 制御 ROM と PCM ROM を指定してください。ROM は提供、ダウンロードされません。",
   "midi_fm_bank": "対応アプリ用の FM 音源ライブラリです。ご自身の WOPL または WOPN 楽器バンクを指定してください。バンクは含まれていません。",
-  "midi_dosbox": "オリジナルの DOSBox プロジェクトから独立した DOS エミュレーターです。General MIDI はインストール済みの既定の SoundFont を使用します。MT-32 にはご自身の制御 ROM と PCM ROM が必要です。"
+  "midi_dosbox": "オリジナルの DOSBox プロジェクトから独立した DOS エミュレーターです。General MIDI はインストール済みの既定の SoundFont を使用します。MT-32 にはご自身の制御 ROM と PCM ROM が必要です。",
+  "tree_facts": "ダウンロード: {size}（{host}、メーカー自身のアドレスから）。コミット {commit} に固定、ファイル一覧の SHA-256 は {manifest}…。インストール前にすべてのファイルを検証します。ライセンス: {licence}、{holder}。",
+  "tree_checksum_failed": "{name}: ファイル {file} が固定された SHA-256 と一致しません。ダウンロードを拒否し、何もインストールしていません。",
+  "tree_manifest_failed": "{name} の固定されたファイル一覧が壊れているか、変更されています。何もダウンロード・インストールしていません。",
+  "tree_licence_title": "{name} のライセンス（{licence}）。メーカーが公開しているままです:",
+  "tree_no_bluetooth": "このコンピューターには Bluetooth アダプターがないため、{name} はここでグローブを見つけられません。",
+  "tree_removed": "{name} を削除しました。ホームフォルダー内のあなた自身の設定はそのまま残しています。",
+  "tree_installed": "{name} を {path} にインストールしました。アプリケーションメニューから起動してください。",
+  "download_note_tree": "メーカーの手順",
+  "sensecom_note": "SenseGlove 自身が提供する、同社のハプティックグローブを見つけて接続するプログラムです。SenseGlove のアドレスから、公開されているとおりにダウンロードします。グローブが接続されていないときは一覧が空になります。画面は英語です。メーカーの Linux 向けノートによると、Nova グローブにはまだ対応していません。",
+  "sensecom_comment": "SenseGlove のハプティックグローブを見つけて接続します",
+  "senseglove_api_note": "SenseGlove の C++ SDK の 2 つのライブラリ（SGCore と SGConnect）です。SenseGlove のアドレスから、公開されているとおりにダウンロードします。senseglove-api-dev パッケージでビルドするプログラム向けです。ソースコードは公開されていません。",
+  "tree_installed_library": "{name} を {path} にインストールしました。"
 }

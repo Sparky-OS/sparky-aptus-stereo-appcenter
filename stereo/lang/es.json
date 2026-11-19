@@ -63,5 +63,7 @@
   "store_bad_address": "La dirección guardada para {name} no es una dirección https de {domain}, por eso no se abrió. No se instaló nada.",
   "store_unchangeable": "{name} es un enlace a la página de la tienda de {vendor}. Stereo APTus no instala ni elimina nada para él.",
   "phonecamera_note": "Use la cámara de un teléfono como cámara de este equipo. DroidCam: instale en el teléfono la aplicación DroidCam desde su propia tienda (la aplicación es de Dev47Apps) y conéctese por Wi-Fi o USB. scrcpy, el camino totalmente abierto: ninguna aplicación en el teléfono, solo la depuración USB, Android 12 o más nuevo; el paquete de scrcpy descarga de la página de versiones del proyecto el pequeño servidor que ejecuta en el teléfono y comprueba su SHA-256. El teléfono aparece como la cámara \"Phone camera\" en sus programas y en Preferencias del sistema, Cámara. KDE Connect no es necesario.",
-  "spirula_note": "Cree un modelo 3D a partir de fotos o vídeo. Los perfiles opcionales muestran su tamaño y licencia antes de instalarse. La purga también elimina los perfiles descargados."
+  "spirula_note": "Cree un modelo 3D a partir de fotos o vídeo. Los perfiles opcionales muestran su tamaño y licencia antes de instalarse. La purga también elimina los perfiles descargados.",
+  "midi_gm_font": "Banco de sonidos MIDI adicional. Elíjalo con: sparky-stereo-audio midi --font /PATH",
+  "midi_opl3_font": "SoundFont de estilo OPL3 para un sintetizador de muestras. No emula un chip FM."
 }

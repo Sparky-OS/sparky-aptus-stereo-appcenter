@@ -63,5 +63,7 @@
   "store_bad_address": "{name}에 저장된 주소가 {domain}의 https 주소가 아니어서 열지 않았습니다. 아무것도 설치되지 않았습니다.",
   "store_unchangeable": "{name}은(는) {vendor}의 스토어 페이지로 가는 링크입니다. Stereo APTus는 이 항목을 위해 아무것도 설치하거나 제거하지 않습니다.",
   "phonecamera_note": "휴대폰의 카메라를 이 컴퓨터의 카메라로 씁니다. DroidCam: 휴대폰의 자체 스토어에서 DroidCam 앱(Dev47Apps의 앱)을 설치한 뒤 Wi-Fi 또는 USB로 연결합니다. scrcpy, 완전히 열린 방법: 휴대폰에 앱이 필요 없고 USB 디버깅만 있으면 되며 Android 12 이상이어야 합니다. scrcpy 패키지는 휴대폰에서 실행할 작은 서버를 프로젝트의 릴리스 페이지에서 받아 SHA-256을 확인합니다. 휴대폰은 \"Phone camera\"라는 카메라로 프로그램과 시스템 설정의 카메라에 나타납니다. KDE Connect는 필요하지 않습니다.",
-  "spirula_note": "사진이나 동영상으로 3D 모델을 만드세요. 선택적 처리 프로필은 설치 전에 크기와 라이선스를 표시합니다. 완전히 제거하면 다운로드한 프로필도 삭제됩니다."
+  "spirula_note": "사진이나 동영상으로 3D 모델을 만드세요. 선택적 처리 프로필은 설치 전에 크기와 라이선스를 표시합니다. 완전히 제거하면 다운로드한 프로필도 삭제됩니다.",
+  "midi_gm_font": "추가 MIDI 사운드폰트입니다. 다음 명령으로 선택하세요: sparky-stereo-audio midi --font /PATH",
+  "midi_opl3_font": "샘플 신시사이저용 OPL3 스타일 SoundFont입니다. FM 칩을 에뮬레이션하지 않습니다."
 }

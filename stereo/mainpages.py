@@ -13,6 +13,7 @@ from common import BASE, PACKAGE, messages, language, install_downloads, problem
 from catalogue import main_entries, entry
 import appimage
 import tools
+import vendortree
 import storelink
 
 
@@ -57,7 +58,8 @@ def render(row):
         return render_apt(row, text, main, e)
     if row['kind'] == 'store':
         return render_store(row, text, main, e)
-    selected = appimage.installed(row)
+    # a maker's tree (Betterbird's archive, ORDER 70) is installed when every pinned file is in place, as on the stereo pages
+    selected = vendortree.installed(row) if row['kind'] == 'tree' else appimage.installed(row)
     errors = problem_text(PACKAGE, row['id'])
     reader = install_downloads()
     import apt_pkg
@@ -77,13 +79,15 @@ def render(row):
             needs = ''.join('<p class="tools">' + e(line) + '</p>' for line in tools.lines(row, found))
     notice = reader.assess(downloads, mode, 'asked')
     lines = ''.join('<p>' + e(line) + '</p>' for line in notice['text'][:-1]) if notice['announce'] else ''
+    # the pin said before the download: the maker's archive, its checksum, the unpacked size, the licence
+    facts = '<p>' + e(vendortree.facts(row)) + '</p>' if row['kind'] == 'tree' and not selected else ''
     operation, label = ('debremo', 'remove') if selected else ('debinst', 'install')
     buttons = f'<a class="buttonmenu" href="aptus://{operation}_{row["id"]}">{e(text[label])}</a>'
     if selected:
         buttons += f' <a class="buttonmenu" href="aptus://debrein_{row["id"]}">{e(text["reinstall"])}</a>'
     return in_page(row, text, main, e, f'''<p><b>{e(row['name'])}</b></p><p>{e(text[row['id'] + '_note'])}</p>
 <p>{e(row.get('author', 'Dionatan Simioni'))} · {e(row['version'])}</p>
-<p>{e(text['download_size'])}: {row['size']:,} B</p>{needs}
+<p>{e(text['download_size'])}: {row['size']:,} B</p>{facts}{needs}
 <p>{e(text['installed' if selected else 'absent'])}</p>
 <div style="color:#9a1818;white-space:pre-wrap">{e(errors)}</div>{lines}<p>{buttons}</p>''')
 
@@ -156,6 +160,8 @@ def render_apt(row, text, main, e):
             lines += ''.join('<p>' + e(line) + '</p>' for line in note['text'])
         elif state.get('declared'):
             lines += ''.join('<p>' + e(line) + '</p>' for line in state['declared'])
+    # the pin said before the download: the maker's archive, its checksum, the unpacked size, the licence
+    facts = '<p>' + e(vendortree.facts(row)) + '</p>' if row['kind'] == 'tree' and not selected else ''
     operation, label = ('debremo', 'remove') if selected else ('debinst', 'install')
     buttons = f'<a class="buttonmenu" href="aptus://{operation}_{row["id"]}">{e(text[label])}</a>'
     return in_page(row, text, main, e, f'''<p><b>{e(row['name'])}</b></p><p>{e(text[row['id'] + '_note'])}</p>

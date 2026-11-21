@@ -85,5 +85,7 @@
   "tree_facts_archive": "Download: {size} from {host}, the maker's own address: {file}, checked against the maker's SHA-256 {sha256}… before it is unpacked ({unpacked}); each file in it is checked again before anything is installed. Licence: {licence}, {holder}.",
   "tree_no_room": "{name} needs {size} free in {path} for its download, its unpacked files and the installed copy, and there are {free}. Nothing was downloaded or changed.",
   "tree_extract_failed": "{name}: the archive {file} could not be unpacked ({why}). Nothing was installed.",
-  "tree_not_ours": "{path} already holds a copy of {name} that this app center did not install. It was left as it is and nothing was changed; remove that copy first to install this one."
+  "tree_not_ours": "{path} already holds a copy of {name} that this app center did not install. It was left as it is and nothing was changed; remove that copy first to install this one.",
+  "betterbird_note": "Betterbird, the Thunderbird of the Betterbird Project with their fixes and additions: their English (US) build, downloaded from their address exactly as they publish it and checked against their SHA-256. It does not update itself: a newer release arrives with a newer version of this entry. The ThunderAI add-on is not installed with it; when you add it in Betterbird, it starts from the text choice of System Settings, Partners.",
+  "betterbird_comment": "Read and write mail, with calendars and contacts"
 }

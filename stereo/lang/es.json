@@ -80,5 +80,6 @@
   "sensecom_note": "El programa propio de SenseGlove para encontrar y conectar sus guantes hápticos, descargado de la dirección de SenseGlove exactamente como ellos lo publican. Sin ningún guante conectado, su lista queda vacía. Su ventana está en inglés. Las notas del fabricante para Linux dicen que todavía no es compatible con los guantes Nova.",
   "sensecom_comment": "Encuentra y conecta guantes hápticos SenseGlove",
   "senseglove_api_note": "Las dos bibliotecas del SDK de C++ de SenseGlove (SGCore y SGConnect), descargadas de la dirección de SenseGlove exactamente como las publican, para los programas que compilas con el paquete senseglove-api-dev. Su código fuente no está publicado.",
-  "tree_installed_library": "{name} está instalado en {path}."
+  "tree_installed_library": "{name} está instalado en {path}.",
+  "vibe_note": "Transcribe audio y vídeo de forma local con Vibe. Instala ajustes predefinidos para el equipo y la acción de archivos «Crear subtítulos (Vibe)». Vibe descarga el modelo de voz al iniciarse por primera vez. Para Light y Basic, selecciona medium-q8_0 (ggml-medium-q8_0.bin) en la lista de modelos de Vibe. Basic conserva FFmpeg y deja desactivadas las tareas de IA."
 }

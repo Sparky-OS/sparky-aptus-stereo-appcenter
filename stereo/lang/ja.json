@@ -80,5 +80,6 @@
   "sensecom_note": "SenseGlove 自身が提供する、同社のハプティックグローブを見つけて接続するプログラムです。SenseGlove のアドレスから、公開されているとおりにダウンロードします。グローブが接続されていないときは一覧が空になります。画面は英語です。メーカーの Linux 向けノートによると、Nova グローブにはまだ対応していません。",
   "sensecom_comment": "SenseGlove のハプティックグローブを見つけて接続します",
   "senseglove_api_note": "SenseGlove の C++ SDK の 2 つのライブラリ（SGCore と SGConnect）です。SenseGlove のアドレスから、公開されているとおりにダウンロードします。senseglove-api-dev パッケージでビルドするプログラム向けです。ソースコードは公開されていません。",
-  "tree_installed_library": "{name} を {path} にインストールしました。"
+  "tree_installed_library": "{name} を {path} にインストールしました。",
+  "vibe_note": "Vibe で音声や動画をローカルで文字起こしします。コンピューター用のプリセットと、ファイルの操作「字幕を作成 (Vibe)」を追加します。音声認識モデルは Vibe の初回起動時にダウンロードされます。Light と Basic では、Vibe のモデル一覧から medium-q8_0 (ggml-medium-q8_0.bin) を選んでください。Basic では FFmpeg を残し、AI タスクは無効のままにします。"
 }

@@ -80,5 +80,6 @@
   "sensecom_note": "Własny program SenseGlove do wyszukiwania i łączenia ich rękawic haptycznych, pobierany z adresu SenseGlove dokładnie tak, jak go publikują. Bez podłączonej rękawicy jego lista jest pusta. Jego okno jest po angielsku. Z uwag producenta dla Linuksa wynika, że nie jest jeszcze zgodny z rękawicami Nova.",
   "sensecom_comment": "Wyszukuje i łączy rękawice haptyczne SenseGlove",
   "senseglove_api_note": "Dwie biblioteki SDK C++ SenseGlove (SGCore i SGConnect), pobierane z adresu SenseGlove dokładnie tak, jak je publikują, dla programów budowanych z pakietem senseglove-api-dev. Ich kod źródłowy nie jest opublikowany.",
-  "tree_installed_library": "{name} jest zainstalowany w {path}."
+  "tree_installed_library": "{name} jest zainstalowany w {path}.",
+  "vibe_note": "Przepisuj nagrania audio i wideo lokalnie za pomocą Vibe. Instaluje ustawienia wstępne dla komputera i działanie na plikach „Utwórz napisy (Vibe)”. Vibe pobiera model rozpoznawania mowy przy pierwszym uruchomieniu. W przypadku Light i Basic wybierz medium-q8_0 (ggml-medium-q8_0.bin) z listy modeli w Vibe. Basic zachowuje FFmpeg i pozostawia zadania AI wyłączone."
 }

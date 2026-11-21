@@ -81,5 +81,5 @@
   "sensecom_comment": "Encontra e conecta luvas hápticas SenseGlove",
   "senseglove_api_note": "As duas bibliotecas do SDK C++ da SenseGlove (SGCore e SGConnect), baixadas do endereço da SenseGlove exatamente como as publicam, para programas que você compila com o pacote senseglove-api-dev. O código-fonte delas não é publicado.",
   "tree_installed_library": "{name} está instalado em {path}.",
-  "vibe_note": "Transcreva áudio e vídeo localmente com o Vibe. Instala predefinições para o computador e a ação “Criar legendas (Vibe)” nos arquivos. A configuração inicial do próprio Vibe baixa o modelo de fala na primeira execução."
+  "vibe_note": "Transcreva áudio e vídeo localmente com o Vibe. Instala predefinições para o computador e a ação “Criar legendas (Vibe)” nos arquivos. A configuração inicial do próprio Vibe baixa o modelo de fala na primeira execução. Para Light e Basic, escolha medium-q8_0 (ggml-medium-q8_0.bin) na lista de modelos do Vibe. Basic mantém o FFmpeg e deixa as tarefas de IA desativadas."
 }

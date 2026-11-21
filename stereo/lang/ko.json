@@ -80,5 +80,6 @@
   "sensecom_note": "SenseGlove가 직접 만든, 자사의 햅틱 장갑을 찾고 연결하는 프로그램입니다. SenseGlove의 주소에서 공개된 그대로 내려받습니다. 연결된 장갑이 없으면 목록이 비어 있습니다. 창은 영어입니다. 제조사의 Linux 안내에 따르면 아직 Nova 장갑과 호환되지 않습니다.",
   "sensecom_comment": "SenseGlove 햅틱 장갑을 찾아 연결합니다",
   "senseglove_api_note": "SenseGlove C++ SDK의 라이브러리 두 개(SGCore, SGConnect)입니다. SenseGlove의 주소에서 공개된 그대로 내려받으며, senseglove-api-dev 패키지로 빌드하는 프로그램용입니다. 소스 코드는 공개되어 있지 않습니다.",
-  "tree_installed_library": "{name}이(가) {path}에 설치되었습니다."
+  "tree_installed_library": "{name}이(가) {path}에 설치되었습니다.",
+  "vibe_note": "Vibe로 오디오와 동영상의 음성을 로컬에서 텍스트로 변환합니다. 컴퓨터용 사전 설정과 파일 작업 ‘자막 만들기 (Vibe)’를 설치합니다. Vibe가 처음 실행될 때 음성 인식 모델을 내려받습니다. Light와 Basic에서는 Vibe의 모델 목록에서 medium-q8_0 (ggml-medium-q8_0.bin)을 선택하십시오. Basic은 FFmpeg를 유지하고 AI 작업은 꺼 둡니다."
 }

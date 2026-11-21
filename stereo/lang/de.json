@@ -80,5 +80,6 @@
   "sensecom_note": "Das eigene Programm von SenseGlove zum Finden und Verbinden ihrer haptischen Handschuhe, von SenseGloves Adresse heruntergeladen, genau wie sie es veröffentlichen. Ohne verbundenen Handschuh bleibt seine Liste leer. Sein Fenster ist englisch. Die Linux-Hinweise des Herstellers sagen, dass es noch nicht mit Nova-Handschuhen kompatibel ist.",
   "sensecom_comment": "Findet und verbindet haptische SenseGlove-Handschuhe",
   "senseglove_api_note": "Die beiden Bibliotheken des C++-SDK von SenseGlove (SGCore und SGConnect), von SenseGloves Adresse heruntergeladen, genau wie sie sie veröffentlichen, für Programme, die Sie mit dem Paket senseglove-api-dev bauen. Ihr Quellcode ist nicht veröffentlicht.",
-  "tree_installed_library": "{name} ist in {path} installiert."
+  "tree_installed_library": "{name} ist in {path} installiert.",
+  "vibe_note": "Audio und Video mit Vibe lokal transkribieren. Installiert Voreinstellungen für den Rechner und die Dateiaktion „Untertitel erstellen (Vibe)“. Vibe lädt das Spracherkennungsmodell beim ersten Start herunter. Wählen Sie für Light und Basic in der Modellliste von Vibe medium-q8_0 (ggml-medium-q8_0.bin). Basic behält FFmpeg bei und lässt KI-Aufgaben deaktiviert."
 }

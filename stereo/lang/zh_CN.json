@@ -80,5 +80,6 @@
   "sensecom_note": "SenseGlove 自己的程序，用于查找并连接他们的触觉手套，按他们发布的原样从 SenseGlove 的地址下载。没有连接手套时，其列表为空。它的窗口是英文的。制造商的 Linux 说明称它尚不兼容 Nova 手套。",
   "sensecom_comment": "查找并连接 SenseGlove 触觉手套",
   "senseglove_api_note": "SenseGlove C++ SDK 的两个库（SGCore 和 SGConnect），按他们发布的原样从 SenseGlove 的地址下载，供用 senseglove-api-dev 软件包构建的程序使用。它们的源代码未公开。",
-  "tree_installed_library": "{name} 已安装在 {path}。"
+  "tree_installed_library": "{name} 已安装在 {path}。",
+  "vibe_note": "使用 Vibe 在本地转录音频和视频。安装本机预设和“生成字幕 (Vibe)”文件操作。Vibe 首次启动时会下载语音识别模型。对于 Light 和 Basic，请在 Vibe 的模型列表中选择 medium-q8_0 (ggml-medium-q8_0.bin)。Basic 保留 FFmpeg，AI 任务保持关闭。"
 }

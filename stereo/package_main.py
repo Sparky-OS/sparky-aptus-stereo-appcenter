@@ -43,7 +43,7 @@ for name, action in (('aptus-app', None), ('aptus-package-install', 'install'),
     text = path.read_text()
     first, rest = text.split('\n', 1)
     command = (base + '/main-entry "$1"') if action is None else (base + '/actions/entry "$1" ' + action)
-    guard = 'case "$1" in vinci|kamlynk|vibe) exec ' + command + ' ;; esac\n'
+    guard = 'case "$1" in vinci|kamlynk|vibe|betterbird) exec ' + command + ' ;; esac\n'
     path.write_text(first + '\n' + guard + rest)
 
 # Main's empty selector is its Applications/Home destination; retain the edition's tabs there.

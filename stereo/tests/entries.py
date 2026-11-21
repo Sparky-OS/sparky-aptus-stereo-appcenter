@@ -48,7 +48,7 @@ class Transactions(unittest.TestCase):
             action.apt_change(row, 'install')
             self.assertEqual(run.call_args.args[1][-3:], ['install', 'vibe=3.3.5-1+lc1', 'sparky-stereo-vibe'])
         for name in ('aptus-app', 'aptus-package-install', 'aptus-package-reinstall', 'aptus-package-remove'):
-            self.assertIn('vinci|kamlynk|vibe)', (SOURCE / 'main/bin' / name).read_text())
+            self.assertIn('vinci|kamlynk|vibe|betterbird)', (SOURCE / 'main/bin' / name).read_text())
         state = dict(installed=False, tools=None, download=None, declared=[])
         with patch.object(mainpages, 'apt_state', return_value=state), patch.object(mainpages, 'problem_text', return_value=''):
             html = mainpages.render(row)

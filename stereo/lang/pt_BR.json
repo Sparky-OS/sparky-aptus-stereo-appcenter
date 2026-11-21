@@ -81,5 +81,11 @@
   "sensecom_comment": "Encontra e conecta luvas hápticas SenseGlove",
   "senseglove_api_note": "As duas bibliotecas do SDK C++ da SenseGlove (SGCore e SGConnect), baixadas do endereço da SenseGlove exatamente como as publicam, para programas que você compila com o pacote senseglove-api-dev. O código-fonte delas não é publicado.",
   "tree_installed_library": "{name} está instalado em {path}.",
-  "vibe_note": "Transcreva áudio e vídeo localmente com o Vibe. Instala predefinições para o computador e a ação “Criar legendas (Vibe)” nos arquivos. A configuração inicial do próprio Vibe baixa o modelo de fala na primeira execução. Para Light e Basic, escolha medium-q8_0 (ggml-medium-q8_0.bin) na lista de modelos do Vibe. Basic mantém o FFmpeg e deixa as tarefas de IA desativadas."
+  "vibe_note": "Transcreva áudio e vídeo localmente com o Vibe. Instala predefinições para o computador e a ação “Criar legendas (Vibe)” nos arquivos. A configuração inicial do próprio Vibe baixa o modelo de fala na primeira execução. Para Light e Basic, escolha medium-q8_0 (ggml-medium-q8_0.bin) na lista de modelos do Vibe. Basic mantém o FFmpeg e deixa as tarefas de IA desativadas.",
+  "tree_facts_archive": "Download: {size} de {host}, o endereço do próprio autor: {file}, verificado contra o SHA-256 do autor {sha256}… antes de ser descompactado ({unpacked}); cada arquivo dentro dele é verificado de novo antes que qualquer coisa seja instalada. Licença: {licence}, {holder}.",
+  "tree_no_room": "{name} precisa de {size} livres em {path} para o download, os arquivos descompactados e a cópia instalada, e há {free}. Nada foi baixado nem alterado.",
+  "tree_extract_failed": "{name}: não foi possível descompactar o arquivo {file} ({why}). Nada foi instalado.",
+  "tree_not_ours": "{path} já contém uma cópia de {name} que esta central de aplicativos não instalou. Ela ficou como está e nada foi alterado; remova essa cópia antes para instalar esta.",
+  "betterbird_note": "Betterbird, o Thunderbird do Betterbird Project com as correções e acréscimos deles: a versão em inglês (EUA), baixada do endereço deles exatamente como a publicam e verificada contra o SHA-256 deles. Ele não se atualiza sozinho: uma versão mais nova chega com uma versão mais nova desta entrada. O complemento ThunderAI não é instalado com ele; quando você o adiciona no Betterbird, ele começa com a escolha de texto de Configurações do sistema, Parceiros.",
+  "betterbird_comment": "Ler e escrever e-mails, com agendas e contatos"
 }

@@ -1,0 +1,399 @@
+{
+ "format": 1,
+ "id": "betterbird",
+ "version": "153.7.0esr-bb13",
+ "base": "https://www.betterbird.eu/downloads/LinuxArchive/",
+ "archive": {
+  "file": "betterbird-153.7.0esr-bb13.en-US.linux-x86_64.tar.xz",
+  "size": 81594356,
+  "sha256": "145d07a34fc05bba50a41b2d93bc57692e0690e57e6fd9ca413c2fcb642c3934",
+  "root": "betterbird"
+ },
+ "files": [
+  {
+   "src": "betterbird/application.ini",
+   "dest": "application.ini",
+   "size": 536,
+   "sha256": "dc11225f7b7cd1b2e50a54da402b6606c670d86d3ac1f1d3be0236eafc8a568b",
+   "mode": "0644"
+  },
+  {
+   "src": "betterbird/betterbird",
+   "dest": "betterbird",
+   "size": 5544,
+   "sha256": "99aa19937482b19e4a00dd1a85564df45369c5943fbbc34289f06b661b7cb843",
+   "mode": "0755"
+  },
+  {
+   "src": "betterbird/betterbird-bin",
+   "dest": "betterbird-bin",
+   "size": 573872,
+   "sha256": "221a698895859e48b86826dc2070653222af8d2405d6ebcc9c4c00c11b368fa2",
+   "mode": "0755"
+  },
+  {
+   "src": "betterbird/chrome/icons/default/calendar-alarm-dialog.png",
+   "dest": "chrome/icons/default/calendar-alarm-dialog.png",
+   "size": 560,
+   "sha256": "c72e98df0aa973379e1c367dcf6f5b7ad207a538974d8dc418d05f4181c59c87",
+   "mode": "0644"
+  },
+  {
+   "src": "betterbird/chrome/icons/default/calendar-general-dialog.png",
+   "dest": "chrome/icons/default/calendar-general-dialog.png",
+   "size": 696,
+   "sha256": "0c67f910f42fa02677714f5ed36a5d7b3e8a0bded379849edd55cca5b74a7da2",
+   "mode": "0644"
+  },
+  {
+   "src": "betterbird/chrome/icons/default/default.svg",
+   "dest": "chrome/icons/default/default.svg",
+   "size": 4475,
+   "sha256": "076882a25b6717d47e285e343959f2431f4dbf7c8c01c600710baa7df5488d1f",
+   "mode": "0644"
+  },
+  {
+   "src": "betterbird/chrome/icons/default/default128.png",
+   "dest": "chrome/icons/default/default128.png",
+   "size": 10159,
+   "sha256": "0e8a6c9c7399160e7fea1c8a8cb29ebda06f3375773145ce8ed27f1cd9c85b74",
+   "mode": "0644"
+  },
+  {
+   "src": "betterbird/chrome/icons/default/default16.png",
+   "dest": "chrome/icons/default/default16.png",
+   "size": 889,
+   "sha256": "88dac0ea3b126825743fffc1c5105afd35fcd9bc6e1c65786e64cb4e9b54b81d",
+   "mode": "0644"
+  },
+  {
+   "src": "betterbird/chrome/icons/default/default22.png",
+   "dest": "chrome/icons/default/default22.png",
+   "size": 1322,
+   "sha256": "19d2a7222dd115548047d2c2b752ab8afda3d9d03d1e64f03540a6442dc12a9d",
+   "mode": "0644"
+  },
+  {
+   "src": "betterbird/chrome/icons/default/default24.png",
+   "dest": "chrome/icons/default/default24.png",
+   "size": 1440,
+   "sha256": "49e4b5136724119abe7843ef06fd0253d94f3c4adce92a6d3af4933532cb41d8",
+   "mode": "0644"
+  },
+  {
+   "src": "betterbird/chrome/icons/default/default256.png",
+   "dest": "chrome/icons/default/default256.png",
+   "size": 21393,
+   "sha256": "b44e05789a173fee915d8e47693dc6f3d661bbb1f0b845d3506513d52f2c12c4",
+   "mode": "0644"
+  },
+  {
+   "src": "betterbird/chrome/icons/default/default32.png",
+   "dest": "chrome/icons/default/default32.png",
+   "size": 2084,
+   "sha256": "bd6b3b78f320511d6617202e06cae48d5e9a4de74e03d6e36603cbbdc00c09cd",
+   "mode": "0644"
+  },
+  {
+   "src": "betterbird/chrome/icons/default/default48.png",
+   "dest": "chrome/icons/default/default48.png",
+   "size": 3441,
+   "sha256": "6f7f55ff039654f1ca6ebf92a80b4593b1edf3e71daf13ffb264e3dd65ad6b34",
+   "mode": "0644"
+  },
+  {
+   "src": "betterbird/chrome/icons/default/default64.png",
+   "dest": "chrome/icons/default/default64.png",
+   "size": 4770,
+   "sha256": "3969d218832438289f91d5890ec9d3fa9b492583055d6a953da2eec2c86bc1f5",
+   "mode": "0644"
+  },
+  {
+   "src": "betterbird/chrome/icons/default/msgcomposeWindow16.png",
+   "dest": "chrome/icons/default/msgcomposeWindow16.png",
+   "size": 453,
+   "sha256": "9fca9694301d7b029fdf66b89c356a0def4bf60918afaa475fc7ed28f5e5bae2",
+   "mode": "0644"
+  },
+  {
+   "src": "betterbird/chrome/icons/default/msgcomposeWindow24.png",
+   "dest": "chrome/icons/default/msgcomposeWindow24.png",
+   "size": 719,
+   "sha256": "fa2ba3547fce99c8a48eac34370c6c9db252df777cfa4e5f7395d083f7fe17b5",
+   "mode": "0644"
+  },
+  {
+   "src": "betterbird/chrome/icons/default/msgcomposeWindow32.png",
+   "dest": "chrome/icons/default/msgcomposeWindow32.png",
+   "size": 872,
+   "sha256": "120a0a50fa945c5b8d3135a353e3b9ca504aa3be52e33b3b6ad0adecec41f384",
+   "mode": "0644"
+  },
+  {
+   "src": "betterbird/chrome/icons/default/msgcomposeWindow48.png",
+   "dest": "chrome/icons/default/msgcomposeWindow48.png",
+   "size": 1408,
+   "sha256": "fec23837982492b50eeee6ad6484f4f664af7cadc95f324d8c912a2a50582de4",
+   "mode": "0644"
+  },
+  {
+   "src": "betterbird/chrome/icons/default/newmail.svg",
+   "dest": "chrome/icons/default/newmail.svg",
+   "size": 4535,
+   "sha256": "a00981e0b73f2787afc893c885dd9deac461eba760f49a12035ee37a8f0d1a07",
+   "mode": "0644"
+  },
+  {
+   "src": "betterbird/defaults/messenger/mailViews.dat",
+   "dest": "defaults/messenger/mailViews.dat",
+   "size": 472,
+   "sha256": "196980b8b53a77c9e4ff051b27fe4c8aaf737ba72036255e6f1e6576383ca5c1",
+   "mode": "0644"
+  },
+  {
+   "src": "betterbird/defaults/pref/channel-prefs.js",
+   "dest": "defaults/pref/channel-prefs.js",
+   "size": 245,
+   "sha256": "f89cdb0e43dc6a79021b99f6faf623c768ade1418a7647fe83e4320ed21e9a30",
+   "mode": "0644"
+  },
+  {
+   "src": "betterbird/dependentlibs.list",
+   "dest": "dependentlibs.list",
+   "size": 189,
+   "sha256": "621f575eaaf819dd0b18976c6a8a94d1caae95a9c748f4c9058a052395a4d173",
+   "mode": "0644"
+  },
+  {
+   "src": "betterbird/fonts/TwemojiMozilla.ttf",
+   "dest": "fonts/TwemojiMozilla.ttf",
+   "size": 1474284,
+   "sha256": "6d90152ee0d29e82fe2a87793af5aa4b7ad13e6538360889e141e81ed299ee8e",
+   "mode": "0644"
+  },
+  {
+   "src": "betterbird/glxtest",
+   "dest": "glxtest",
+   "size": 23040,
+   "sha256": "2c2c6cca740d66e42f850d021ac59869aa92ae867b06d52bf6208f245945ebd5",
+   "mode": "0755"
+  },
+  {
+   "src": "betterbird/interesting_serverknobs.json",
+   "dest": "interesting_serverknobs.json",
+   "size": 322285,
+   "sha256": "8da55a07bd9bc46739e7c06665e3fbc866a307d6342bdc5343ce0f9702cf2e6d",
+   "mode": "0644"
+  },
+  {
+   "src": "betterbird/isp/Bogofilter.sfd",
+   "dest": "isp/Bogofilter.sfd",
+   "size": 352,
+   "sha256": "77b87415f0203270cda81ea8d65fe8a2c0fd17e6c2f8ddbdfac6c1ff06045984",
+   "mode": "0644"
+  },
+  {
+   "src": "betterbird/isp/DSPAM.sfd",
+   "dest": "isp/DSPAM.sfd",
+   "size": 287,
+   "sha256": "4e451da538b546d2dcfc10733146ae4146b642b4032eb95bb8981b25ee0aa787",
+   "mode": "0644"
+  },
+  {
+   "src": "betterbird/isp/POPFile.sfd",
+   "dest": "isp/POPFile.sfd",
+   "size": 353,
+   "sha256": "6998ff81663dae5c04a0d4ff8405d3147173413c4ea3cf2b3dc7e64c2be178f9",
+   "mode": "0644"
+  },
+  {
+   "src": "betterbird/isp/SpamAssassin.sfd",
+   "dest": "isp/SpamAssassin.sfd",
+   "size": 365,
+   "sha256": "9c1b5f8e46a9075bf72ba5118eaf8c1951eb7fcd5ea87dbbe2f9851a52fee11e",
+   "mode": "0644"
+  },
+  {
+   "src": "betterbird/isp/SpamPal.sfd",
+   "dest": "isp/SpamPal.sfd",
+   "size": 277,
+   "sha256": "7c6428ec5dc902248af764d91a14d19de1853aaba33a57351bbdee888942a7b5",
+   "mode": "0644"
+  },
+  {
+   "src": "betterbird/libfreeblpriv3.so",
+   "dest": "libfreeblpriv3.so",
+   "size": 1018008,
+   "sha256": "f0c56143a2b95e5259d1913464868bba43e74435eceab9289cf33c3e5b388d6a",
+   "mode": "0755"
+  },
+  {
+   "src": "betterbird/libgkcodecs.so",
+   "dest": "libgkcodecs.so",
+   "size": 9115912,
+   "sha256": "13ceb73d0551880b0968176dcc9b7d276d0c568a452935c79cf577f4cf8e55a3",
+   "mode": "0755"
+  },
+  {
+   "src": "betterbird/liblgpllibs.so",
+   "dest": "liblgpllibs.so",
+   "size": 52904,
+   "sha256": "4fa4774577b3cfa9302d46fdde95a4f0b3f9b9e7de1e618a7cbdc03e1757f838",
+   "mode": "0755"
+  },
+  {
+   "src": "betterbird/libmozavcodec.so",
+   "dest": "libmozavcodec.so",
+   "size": 4109760,
+   "sha256": "f5bc63e36162b7cf4e361a83d81148e6d10e54c1e6d2f737b13d03358dedebee",
+   "mode": "0755"
+  },
+  {
+   "src": "betterbird/libmozavutil.so",
+   "dest": "libmozavutil.so",
+   "size": 608288,
+   "sha256": "217b7ac5f72b95a67238850d3068a0aabb91c50230d75bc250135d62be2810da",
+   "mode": "0755"
+  },
+  {
+   "src": "betterbird/libmozgtk.so",
+   "dest": "libmozgtk.so",
+   "size": 4576,
+   "sha256": "a8da79c0d67c8e8c379523620e3818599bcdb997149fa2ba8a8813383c482b7a",
+   "mode": "0755"
+  },
+  {
+   "src": "betterbird/libmozsandbox.so",
+   "dest": "libmozsandbox.so",
+   "size": 222512,
+   "sha256": "6c4e9ae812ec6a83d931e17260ef028277423b334a6642043eb39352ad073483",
+   "mode": "0755"
+  },
+  {
+   "src": "betterbird/libmozsqlite3.so",
+   "dest": "libmozsqlite3.so",
+   "size": 1715312,
+   "sha256": "6576a99e6300fe742c76c56bdecc524653210cf261f24e02494691cedffd418d",
+   "mode": "0755"
+  },
+  {
+   "src": "betterbird/libmozwayland.so",
+   "dest": "libmozwayland.so",
+   "size": 13392,
+   "sha256": "39e6a12aa714d9ef6168fac13a05434454015d5b95bf02b334ead3e1ab39a894",
+   "mode": "0755"
+  },
+  {
+   "src": "betterbird/libnspr4.so",
+   "dest": "libnspr4.so",
+   "size": 220200,
+   "sha256": "cf9ba35aac4239d6f57afc79f80b67e97ec188608775d975c717181ccadfce90",
+   "mode": "0755"
+  },
+  {
+   "src": "betterbird/libnss3.so",
+   "dest": "libnss3.so",
+   "size": 717616,
+   "sha256": "5a6c6dce59841e58fd96f4fa0f7bf18efa4a2db4e2c360d4731ad6d76f07cb11",
+   "mode": "0755"
+  },
+  {
+   "src": "betterbird/libnssutil3.so",
+   "dest": "libnssutil3.so",
+   "size": 181112,
+   "sha256": "12a06ab82a58c8605b2e75cf92a92a1aee1f60eb645557a67536e166ab63e093",
+   "mode": "0755"
+  },
+  {
+   "src": "betterbird/libplc4.so",
+   "dest": "libplc4.so",
+   "size": 17352,
+   "sha256": "74b9e99381ec09e98ad52ac0cf8aad02e2379d91590db6f8ed237dac0fc7d11a",
+   "mode": "0755"
+  },
+  {
+   "src": "betterbird/libplds4.so",
+   "dest": "libplds4.so",
+   "size": 12696,
+   "sha256": "0fe15e427b3a74f0503f32aa49d5e220bd00e507f8fc1f4e2c72d4871e287b7b",
+   "mode": "0755"
+  },
+  {
+   "src": "betterbird/librnp.so",
+   "dest": "librnp.so",
+   "size": 3795552,
+   "sha256": "52e49ed26893598eab88ba5dbbb91068e964932e9040d56b6c7a783cee7752a7",
+   "mode": "0755"
+  },
+  {
+   "src": "betterbird/libsmime3.so",
+   "dest": "libsmime3.so",
+   "size": 167896,
+   "sha256": "ebba9614aea624313230d7b6a2d23a5ce8a137a08cc2228c1cf172728f984964",
+   "mode": "0755"
+  },
+  {
+   "src": "betterbird/libsoftokn3.so",
+   "dest": "libsoftokn3.so",
+   "size": 359936,
+   "sha256": "ef4e312c807341ef94a0a81b1fdeb11d8b9b17dd9943f73ac239e9373347f3c6",
+   "mode": "0755"
+  },
+  {
+   "src": "betterbird/libssl3.so",
+   "dest": "libssl3.so",
+   "size": 394408,
+   "sha256": "34911038d602fce0511526f5cc3ab893eb10e59e1e1c3fc64deb745490e4a0f6",
+   "mode": "0755"
+  },
+  {
+   "src": "betterbird/libxul.so",
+   "dest": "libxul.so",
+   "size": 196291584,
+   "sha256": "f7532aef712b753a9e5b85f8f147af830869e8b992fc59e5f0b459abcddee2f7",
+   "mode": "0755"
+  },
+  {
+   "src": "betterbird/omni.ja",
+   "dest": "omni.ja",
+   "size": 96724115,
+   "sha256": "d6a0cd0d37e867bfaf5ae67ecdb902d8d7cb4cf456af9cbfcf78328db9fa137a",
+   "mode": "0644"
+  },
+  {
+   "src": "betterbird/pingsender",
+   "dest": "pingsender",
+   "size": 662184,
+   "sha256": "2a07304082800dac58118ee0199a19cb422ebc0cc339de61b5d663db6280ec4c",
+   "mode": "0755"
+  },
+  {
+   "src": "betterbird/platform.ini",
+   "dest": "platform.ini",
+   "size": 166,
+   "sha256": "071b267179792bcc53ea01ab2781cf1f105a8bbcad7d5571efa52710ea0bdcb2",
+   "mode": "0644"
+  },
+  {
+   "src": "betterbird/precomplete",
+   "dest": "precomplete",
+   "size": 1846,
+   "sha256": "5345b301871e530f781dcaea1d6342d7f3bdce742848e637ff911e2e60f789b7",
+   "mode": "0644"
+  },
+  {
+   "src": "betterbird/removed-files",
+   "dest": "removed-files",
+   "size": 171,
+   "sha256": "9c928f3eb41faa3465a2a672af976432f7b0e65aff527c1747a346b5a514f572",
+   "mode": "0644"
+  },
+  {
+   "src": "betterbird/vaapitest",
+   "dest": "vaapitest",
+   "size": 19152,
+   "sha256": "fa14b5fd9a6d31a72cacf17788397c50f261eec0acf9e5c1e1cff0cb1a9fe8d0",
+   "mode": "0755"
+  }
+ ]
+}

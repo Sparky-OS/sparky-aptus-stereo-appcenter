@@ -81,5 +81,11 @@
   "sensecom_comment": "SenseGlove のハプティックグローブを見つけて接続します",
   "senseglove_api_note": "SenseGlove の C++ SDK の 2 つのライブラリ（SGCore と SGConnect）です。SenseGlove のアドレスから、公開されているとおりにダウンロードします。senseglove-api-dev パッケージでビルドするプログラム向けです。ソースコードは公開されていません。",
   "tree_installed_library": "{name} を {path} にインストールしました。",
-  "vibe_note": "Vibe で音声や動画をローカルで文字起こしします。コンピューター用のプリセットと、ファイルの操作「字幕を作成 (Vibe)」を追加します。音声認識モデルは Vibe の初回起動時にダウンロードされます。Light と Basic では、Vibe のモデル一覧から medium-q8_0 (ggml-medium-q8_0.bin) を選んでください。Basic では FFmpeg を残し、AI タスクは無効のままにします。"
+  "vibe_note": "Vibe で音声や動画をローカルで文字起こしします。コンピューター用のプリセットと、ファイルの操作「字幕を作成 (Vibe)」を追加します。音声認識モデルは Vibe の初回起動時にダウンロードされます。Light と Basic では、Vibe のモデル一覧から medium-q8_0 (ggml-medium-q8_0.bin) を選んでください。Basic では FFmpeg を残し、AI タスクは無効のままにします。",
+  "tree_facts_archive": "ダウンロード: 開発元のアドレス {host} から {size} を取得します。ファイルは {file} です。展開 ({unpacked}) の前に開発元の SHA-256 {sha256}… と照合し、インストールの前に個々のファイルを再確認します。ライセンス: {licence}、{holder}。",
+  "tree_no_room": "{name} のダウンロード、展開、インストールには {path} に {size} の空きが必要です。空き容量は {free} です。ダウンロードや変更は行われていません。",
+  "tree_extract_failed": "{name}: アーカイブ {file} を展開できませんでした ({why})。何もインストールされていません。",
+  "tree_not_ours": "{path} には、このアプリセンターからインストールされたものではない {name} がすでにあります。そのまま残しました。新しいものをインストールするには、先に既存のものを削除してください。",
+  "betterbird_note": "Betterbird は Betterbird Project が修正や機能追加を加えた Thunderbird です。米国英語版をプロジェクトの公開元から公開されたままダウンロードし、提供元の SHA-256 で確認します。自動更新は行われません。この項目が更新されると新しい版を入手できます。ThunderAI アドオンは同時にはインストールされません。Betterbird で追加すると、システム設定の「パートナー」で選んだテキスト用の設定が初期値になります。",
+  "betterbird_comment": "メールの読み書き、カレンダー、連絡先"
 }

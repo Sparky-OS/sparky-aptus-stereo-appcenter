@@ -81,5 +81,11 @@
   "sensecom_comment": "查找并连接 SenseGlove 触觉手套",
   "senseglove_api_note": "SenseGlove C++ SDK 的两个库（SGCore 和 SGConnect），按他们发布的原样从 SenseGlove 的地址下载，供用 senseglove-api-dev 软件包构建的程序使用。它们的源代码未公开。",
   "tree_installed_library": "{name} 已安装在 {path}。",
-  "vibe_note": "使用 Vibe 在本地转录音频和视频。安装本机预设和“生成字幕 (Vibe)”文件操作。Vibe 首次启动时会下载语音识别模型。对于 Light 和 Basic，请在 Vibe 的模型列表中选择 medium-q8_0 (ggml-medium-q8_0.bin)。Basic 保留 FFmpeg，AI 任务保持关闭。"
+  "vibe_note": "使用 Vibe 在本地转录音频和视频。安装本机预设和“生成字幕 (Vibe)”文件操作。Vibe 首次启动时会下载语音识别模型。对于 Light 和 Basic，请在 Vibe 的模型列表中选择 medium-q8_0 (ggml-medium-q8_0.bin)。Basic 保留 FFmpeg，AI 任务保持关闭。",
+  "tree_facts_archive": "下载：从制作者自己的地址 {host} 下载 {size}，文件为 {file}。解包（{unpacked}）前按制作者提供的 SHA-256 {sha256}… 进行校验，并在安装前重新检查包内的每个文件。许可证：{licence}，{holder}。",
+  "tree_no_room": "{name} 需要在 {path} 中留出 {size}，用于下载、解包后的文件及安装副本。可用空间为 {free}。未下载或更改任何内容。",
+  "tree_extract_failed": "{name}：无法解包归档文件 {file}（{why}）。未安装任何内容。",
+  "tree_not_ours": "{path} 已经有一份并非此应用中心安装的 {name}。该副本保持原样。若要安装新副本，请先移除原有副本。",
+  "betterbird_note": "Betterbird 是 Betterbird Project 修正并扩充的 Thunderbird。从项目自己的地址原样下载项目发布的英语（美国）版本，并按其 SHA-256 校验。它不会自行更新。此条目更新后即可获得新版本。ThunderAI 扩展不会随 Betterbird 安装。在 Betterbird 中添加后，它会以“系统设置 > 伙伴”中的文本选项作为初始设置。",
+  "betterbird_comment": "收发邮件，管理日历和联系人"
 }

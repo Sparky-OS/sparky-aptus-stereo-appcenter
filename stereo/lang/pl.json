@@ -81,5 +81,11 @@
   "sensecom_comment": "Wyszukuje i łączy rękawice haptyczne SenseGlove",
   "senseglove_api_note": "Dwie biblioteki SDK C++ SenseGlove (SGCore i SGConnect), pobierane z adresu SenseGlove dokładnie tak, jak je publikują, dla programów budowanych z pakietem senseglove-api-dev. Ich kod źródłowy nie jest opublikowany.",
   "tree_installed_library": "{name} jest zainstalowany w {path}.",
-  "vibe_note": "Przepisuj nagrania audio i wideo lokalnie za pomocą Vibe. Instaluje ustawienia wstępne dla komputera i działanie na plikach „Utwórz napisy (Vibe)”. Vibe pobiera model rozpoznawania mowy przy pierwszym uruchomieniu. W przypadku Light i Basic wybierz medium-q8_0 (ggml-medium-q8_0.bin) z listy modeli w Vibe. Basic zachowuje FFmpeg i pozostawia zadania AI wyłączone."
+  "vibe_note": "Przepisuj nagrania audio i wideo lokalnie za pomocą Vibe. Instaluje ustawienia wstępne dla komputera i działanie na plikach „Utwórz napisy (Vibe)”. Vibe pobiera model rozpoznawania mowy przy pierwszym uruchomieniu. W przypadku Light i Basic wybierz medium-q8_0 (ggml-medium-q8_0.bin) z listy modeli w Vibe. Basic zachowuje FFmpeg i pozostawia zadania AI wyłączone.",
+  "tree_facts_archive": "Pobieranie: {size} z {host}, adresu wydawcy: {file}. Przed rozpakowaniem ({unpacked}) sprawdzana jest suma SHA-256 wydawcy {sha256}… Każdy plik jest sprawdzany ponownie przed instalacją. Licencja: {licence}, {holder}.",
+  "tree_no_room": "{name} potrzebuje {size} wolnego miejsca w {path} na pobranie, rozpakowane pliki i zainstalowaną kopię. Dostępne jest {free}. Niczego nie pobrano ani nie zmieniono.",
+  "tree_extract_failed": "{name}: nie udało się rozpakować archiwum {file} ({why}). Niczego nie zainstalowano.",
+  "tree_not_ours": "W {path} jest już kopia programu {name}, której nie zainstalowało to centrum aplikacji. Pozostawiono ją bez zmian. Usuń ją przed zainstalowaniem nowej kopii.",
+  "betterbird_note": "Betterbird to wersja Thunderbird rozwijana przez Betterbird Project, z jego poprawkami i dodatkami. Wersja w języku angielskim (USA) jest pobierana w postaci opublikowanej pod adresem projektu i sprawdzana według jego sumy SHA-256. Program nie aktualizuje się sam. Nowsza wersja jest dostępna po aktualizacji tej pozycji. Rozszerzenie ThunderAI nie jest instalowane razem z programem. Po dodaniu go w programie Betterbird przyjmuje na początek wybór dla tekstu ze strony „Partnerzy” w Ustawieniach systemowych.",
+  "betterbird_comment": "Czytanie i pisanie poczty z kalendarzami i kontaktami"
 }

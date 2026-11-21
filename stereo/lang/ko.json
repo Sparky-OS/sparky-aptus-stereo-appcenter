@@ -81,5 +81,11 @@
   "sensecom_comment": "SenseGlove 햅틱 장갑을 찾아 연결합니다",
   "senseglove_api_note": "SenseGlove C++ SDK의 라이브러리 두 개(SGCore, SGConnect)입니다. SenseGlove의 주소에서 공개된 그대로 내려받으며, senseglove-api-dev 패키지로 빌드하는 프로그램용입니다. 소스 코드는 공개되어 있지 않습니다.",
   "tree_installed_library": "{name}이(가) {path}에 설치되었습니다.",
-  "vibe_note": "Vibe로 오디오와 동영상의 음성을 로컬에서 텍스트로 변환합니다. 컴퓨터용 사전 설정과 파일 작업 ‘자막 만들기 (Vibe)’를 설치합니다. Vibe가 처음 실행될 때 음성 인식 모델을 내려받습니다. Light와 Basic에서는 Vibe의 모델 목록에서 medium-q8_0 (ggml-medium-q8_0.bin)을 선택하십시오. Basic은 FFmpeg를 유지하고 AI 작업은 꺼 둡니다."
+  "vibe_note": "Vibe로 오디오와 동영상의 음성을 로컬에서 텍스트로 변환합니다. 컴퓨터용 사전 설정과 파일 작업 ‘자막 만들기 (Vibe)’를 설치합니다. Vibe가 처음 실행될 때 음성 인식 모델을 내려받습니다. Light와 Basic에서는 Vibe의 모델 목록에서 medium-q8_0 (ggml-medium-q8_0.bin)을 선택하십시오. Basic은 FFmpeg를 유지하고 AI 작업은 꺼 둡니다.",
+  "tree_facts_archive": "다운로드: 제작자의 주소 {host}에서 {size} 크기의 {file} 파일을 받습니다. 압축을 풀기 전에({unpacked}) 제작자가 공개한 SHA-256 {sha256}… 값과 비교하며, 설치 전에 파일을 하나씩 다시 확인합니다. 라이선스: {licence}, {holder}.",
+  "tree_no_room": "{name}의 다운로드, 압축을 푼 파일 및 설치본에 필요한 {path}의 여유 공간은 {size}입니다. 사용 가능한 공간은 {free}입니다. 아무것도 다운로드하거나 변경하지 않았습니다.",
+  "tree_extract_failed": "{name}: 아카이브 {file}의 압축을 풀 수 없습니다 ({why}). 아무것도 설치하지 않았습니다.",
+  "tree_not_ours": "{path}에 이 앱 센터에서 설치하지 않은 {name}의 복사본이 이미 있습니다. 기존 복사본을 그대로 두었습니다. 새 복사본을 설치하려면 기존 복사본을 먼저 제거하십시오.",
+  "betterbird_note": "Betterbird는 Betterbird Project에서 수정 사항과 추가 기능을 적용한 Thunderbird입니다. 프로젝트 주소에서 공개된 영어(미국) 빌드를 그대로 다운로드하고 프로젝트의 SHA-256으로 확인합니다. 자체 업데이트는 하지 않습니다. 이 항목이 업데이트되면 새 버전을 받을 수 있습니다. ThunderAI 추가 기능은 함께 설치되지 않습니다. Betterbird에서 추가하면 시스템 설정의 파트너 페이지에서 선택한 텍스트 설정을 처음에 사용합니다.",
+  "betterbird_comment": "메일 읽기 및 쓰기, 캘린더와 연락처"
 }

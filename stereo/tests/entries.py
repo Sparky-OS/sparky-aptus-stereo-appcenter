@@ -36,6 +36,25 @@ class Transactions(unittest.TestCase):
         policy.start()
         self.addCleanup(policy.stop)
 
+    def test_vibe_existing_entry_installs_its_pack(self):
+        import mainpages
+        mainpages.BASE = SOURCE
+        row = catalogue.entry('vibe')
+        self.assertEqual(mainpages.request('aptus://accbot_vibe'), (row, None))
+        self.assertEqual(mainpages.request('aptus://debinst_vibe'), (row, 'install'))
+        self.assertEqual(action.package_set(row), ['vibe', 'sparky-stereo-vibe'])
+        version = types.SimpleNamespace(version='3.3.5-1+lc1')
+        with patch.dict(sys.modules, apt=types.SimpleNamespace(Cache=lambda: {'vibe': types.SimpleNamespace(candidate=version)})), patch.object(action, 'held'), patch.object(action, 'run_said') as run:
+            action.apt_change(row, 'install')
+            self.assertEqual(run.call_args.args[1][-3:], ['install', 'vibe=3.3.5-1+lc1', 'sparky-stereo-vibe'])
+        for name in ('aptus-app', 'aptus-package-install', 'aptus-package-reinstall', 'aptus-package-remove'):
+            self.assertIn('vinci|kamlynk|vibe)', (SOURCE / 'main/bin' / name).read_text())
+        state = dict(installed=False, tools=None, download=None, declared=[])
+        with patch.object(mainpages, 'apt_state', return_value=state), patch.object(mainpages, 'problem_text', return_value=''):
+            html = mainpages.render(row)
+        self.assertIn('aptus://debinst_vibe', html)
+        self.assertIn('Make captions (Vibe)', html)
+
     def test_exact_routes_only(self):
         for row in catalogue.entries():
             for operation in ('install', 'remove', 'repair'):

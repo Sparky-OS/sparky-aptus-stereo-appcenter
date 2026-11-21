@@ -48,30 +48,44 @@
       "/etc/udev/rules.d/99-kamlynk-sony-camera.rules"
     ]
   },
- {
-  "id": "pjeoffice",
-  "name": "PJeOffice Pro",
-  "section": "main",
-  "kind": "apt",
-  "package": "sparky-pjeoffice",
-  "sizes": true,
-  "problem_key": "install",
-  "page": "office-document.html",
-  "key": "offdoc",
-  "author": "CNJ, TRF3",
-  "note": "pjeoffice_note"
- },
- {
-  "id": "phonecamera",
-  "name": "Phone as a camera",
-  "section": "main",
-  "kind": "apt",
-  "package": "sparky-stereo-phone-camera",
-  "sizes": true,
-  "problem_key": "install",
-  "page": "graphics-others.html",
-  "key": "graoth",
-  "author": "Dev47Apps, Genymobile",
-  "note": "phonecamera_note"
- }
+  {
+    "id": "pjeoffice",
+    "name": "PJeOffice Pro",
+    "section": "main",
+    "kind": "apt",
+    "package": "sparky-pjeoffice",
+    "sizes": true,
+    "problem_key": "install",
+    "page": "office-document.html",
+    "key": "offdoc",
+    "author": "CNJ, TRF3",
+    "note": "pjeoffice_note"
+  },
+  {
+    "id": "phonecamera",
+    "name": "Phone as a camera",
+    "section": "main",
+    "kind": "apt",
+    "package": "sparky-stereo-phone-camera",
+    "sizes": true,
+    "problem_key": "install",
+    "page": "graphics-others.html",
+    "key": "graoth",
+    "author": "Dev47Apps, Genymobile",
+    "note": "phonecamera_note"
+  },
+  {
+    "id": "vibe",
+    "name": "Vibe",
+    "section": "main",
+    "kind": "apt",
+    "package": "vibe",
+    "also": [
+      "sparky-stereo-vibe"
+    ],
+    "sizes": true,
+    "page": "accessories-chatbot.html",
+    "key": "accbot",
+    "author": "thewh1teagle"
+  }
 ]
